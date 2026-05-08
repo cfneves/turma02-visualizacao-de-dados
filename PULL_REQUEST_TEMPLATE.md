@@ -1,21 +1,23 @@
-## Descrição
+## O que este PR entrega?
 
-<!-- Descreva brevemente o que você está entregando neste PR -->
+<!-- Descreva em 1-2 frases o que você está enviando -->
 
 ## Tipo de entrega
 
 - [ ] Exercício
 - [ ] Projeto final
+- [ ] Atualização do portfólio (README)
 - [ ] Correção de entrega anterior
 - [ ] Outro: ___________
 
-## Checklist
+## Checklist obrigatório
 
-- [ ] Meus arquivos estão dentro da minha pasta em `alunos/nome-sobrenome/`
+- [ ] Meus arquivos estão dentro de `alunos/meu-nome/` — nada fora dessa pasta
 - [ ] Não modifiquei arquivos de outros alunos
-- [ ] Os arquivos têm nomes descritivos (sem espaços)
-- [ ] O código roda sem erros
+- [ ] Nomes de arquivo sem espaços (uso de `_` ou `-`)
+- [ ] Executei o notebook do início ao fim sem erros (`Kernel > Restart & Run All`)
+- [ ] Sincronizei meu fork com o upstream antes de abrir este PR
 
-## Observações
+## Observações para o professor
 
-<!-- Alguma observação para o professor? Dificuldades encontradas? -->
+<!-- Dificuldades encontradas? Algo que gostaria de destacar? Deixe em branco se não houver. -->
