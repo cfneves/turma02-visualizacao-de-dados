@@ -24,6 +24,7 @@ aulas/
 ---
 
 ## Semana 02 — Versionamento com Git e GitHub
+## Semana 02
 
 | Arquivo | Descrição |
 |---------|-----------|
