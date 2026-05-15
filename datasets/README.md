@@ -20,7 +20,7 @@ Datasets utilizados nas aulas e exercícios da turma. Todos os arquivos aqui sã
 
 | Arquivo | Descrição | Fonte | Adicionado por |
 |---------|-----------|-------|----------------|
-| — | A ser adicionado | — | — |
+| `base_rh.csv` | Dataset de RH fictício com funcionários, departamentos, salários, cargos e datas de admissão — utilizado nas aulas de manipulação de dados | Criado para o curso | Professor |
 
 ---
 
