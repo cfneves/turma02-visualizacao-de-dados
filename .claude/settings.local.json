@@ -11,7 +11,9 @@
       "Bash(git log *)",
       "Bash(powershell *)",
       "Bash(python *)",
-      "Bash(git rebase *)"
+      "Bash(git rebase *)",
+      "Bash(git config *)",
+      "Bash(Select-String -Pattern \"user|remote|url|credential|email\")"
     ]
   }
 }
