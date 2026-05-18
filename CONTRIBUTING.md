@@ -11,8 +11,9 @@ Bem-vindo! Este guia explica como enviar seus trabalhos corretamente e manter o 
 3. [Fluxo de entrega](#3-fluxo-de-entrega)
 4. [Convenção de commits](#4-convenção-de-commits)
 5. [Abrindo um Pull Request](#5-abrindo-um-pull-request)
-6. [Resolvendo conflitos](#6-resolvendo-conflitos)
-7. [Boas práticas em notebooks](#7-boas-práticas-em-notebooks)
+6. [Verificação automática de PRs](#6-verificação-automática-de-prs)
+7. [Resolvendo conflitos](#7-resolvendo-conflitos)
+8. [Boas práticas em notebooks](#8-boas-práticas-em-notebooks)
 
 ---
 
@@ -20,18 +21,29 @@ Bem-vindo! Este guia explica como enviar seus trabalhos corretamente e manter o 
 
 Faça isso **uma única vez** no início do curso.
 
-> **Pré-requisito:** aceite o convite de colaborador que o professor enviou para o seu e-mail do GitHub.
+**Passo 1 — Faça um Fork do repositório:**
+
+Clique no botão **Fork** no canto superior direito da página do repositório no GitHub. Isso cria uma cópia pessoal na sua conta.
+
+**Passo 2 — Clone o seu fork e configure o upstream:**
 
 ```bash
-# Clone o repositório diretamente (você já é colaborador):
-git clone https://github.com/cfneves/turma-visualizacao-de-dados.git
+# Clone o SEU fork (substitua SEU_USUARIO pelo seu username):
+git clone https://github.com/SEU_USUARIO/turma-visualizacao-de-dados.git
 cd turma-visualizacao-de-dados
 
-# Confirme o remote configurado:
+# Adicione o repositório original como "upstream":
+git remote add upstream https://github.com/cfneves/turma-visualizacao-de-dados.git
+
+# Confirme os remotes configurados:
 git remote -v
-# origin  https://github.com/cfneves/turma-visualizacao-de-dados.git (fetch)
-# origin  https://github.com/cfneves/turma-visualizacao-de-dados.git (push)
+# origin    https://github.com/SEU_USUARIO/turma-visualizacao-de-dados.git (fetch)
+# origin    https://github.com/SEU_USUARIO/turma-visualizacao-de-dados.git (push)
+# upstream  https://github.com/cfneves/turma-visualizacao-de-dados.git (fetch)
+# upstream  https://github.com/cfneves/turma-visualizacao-de-dados.git (push)
 ```
+
+> **Por que fork?** O repositório principal está protegido — nenhum aluno pode fazer push direto. O fluxo correto é: trabalhe na sua fork → abra um PR → o professor revisa e merge.
 
 ---
 
@@ -65,25 +77,29 @@ Edite o `README.md` com suas informações reais — esse arquivo é o seu cart�
 Para **cada entrega** (exercício ou projeto), siga este fluxo:
 
 ```bash
-# Passo 1: Atualize seu repositório local
+# Passo 1: Sincronize sua fork com o repositório principal
+git fetch upstream
 git checkout master
-git pull origin master
+git merge upstream/master
+git push origin master          # mantém sua fork atualizada
 
 # Passo 2: Crie uma branch para esta entrega
 git checkout -b feat/exercicio-01-seu-nome
 
-# Passo 3: Adicione seus arquivos na sua pasta
-# (nunca modifique arquivos fora de alunos/seu-nome/)
+# Passo 3: Adicione seus arquivos SOMENTE dentro da sua pasta
+# ⚠️  Nunca modifique arquivos fora de alunos/seu-nome/
 
 # Passo 4: Commit
 git add alunos/seu-nome/
 git commit -m "feat(alunos): adiciona exercício 01 - Seu Nome"
 
-# Passo 5: Envie a branch
+# Passo 5: Envie a branch para o SEU fork
 git push origin feat/exercicio-01-seu-nome
 
 # Passo 6: Abra o Pull Request no GitHub
 # (o terminal exibe o link direto após o push)
+# Base: cfneves/turma-visualizacao-de-dados → master
+# Compare: SEU_USUARIO/turma-visualizacao-de-dados → feat/exercicio-01-seu-nome
 ```
 
 ---
@@ -131,7 +147,26 @@ feat(alunos): adiciona [exercício/projeto] - Seu Nome
 
 ---
 
-## 6. Resolvendo Conflitos
+## 6. Verificação Automática de PRs
+
+Ao abrir um PR, dois workflows são disparados automaticamente:
+
+| Workflow | O que faz |
+|----------|-----------|
+| **🔒 Validador de Escopo** | Verifica se todos os arquivos alterados estão dentro de `alunos/SeuNome/`. Se arquivos fora da sua pasta forem detectados, o PR é bloqueado com um comentário explicativo. |
+| **👋 Boas-vindas** | No seu primeiro PR, você recebe uma mensagem com checklist rápido. |
+
+**O que fazer se o validador reprovar seu PR:**
+
+1. Leia o comentário automático — ele lista os arquivos com problema
+2. Corrija sua branch removendo alterações fora da sua pasta
+3. Faça um novo push — o workflow re-executa automaticamente
+
+**Para que a validação funcione**, seu GitHub username precisa estar cadastrado em `.github/students.json`. Se for seu primeiro PR no repositório, avise o professor para que ele faça o cadastro.
+
+---
+
+## 7. Resolvendo Conflitos
 
 Conflitos acontecem quando outro aluno enviou arquivos enquanto você trabalhava na sua branch. É normal — não é erro seu.
 
@@ -169,7 +204,7 @@ git push origin feat/seu-exercicio --force-with-lease
 
 ---
 
-## 7. Boas Práticas em Notebooks
+## 8. Boas Práticas em Notebooks
 
 - Reinicie o kernel e execute todas as células (`Kernel > Restart & Run All`) antes de commitar
 - Sem erros de execução — células com erro **bloqueiam o PR**

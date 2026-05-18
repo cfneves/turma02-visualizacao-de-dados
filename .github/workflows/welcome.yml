@@ -1,0 +1,56 @@
+name: 👋 Boas-vindas ao Contribuidor
+
+on:
+  pull_request_target:
+    types: [opened]
+    branches: [master, main]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  welcome:
+    name: Mensagem de boas-vindas
+    runs-on: ubuntu-latest
+    # Dispara apenas para primeira contribuição (nunca para o professor)
+    if: |
+      github.event.pull_request.user.login != 'cfneves' &&
+      (github.event.pull_request.author_association == 'FIRST_TIME_CONTRIBUTOR' ||
+       github.event.pull_request.author_association == 'FIRST_TIMER')
+
+    steps:
+      - name: Postar mensagem de boas-vindas
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const author    = context.payload.pull_request.user.login;
+            const prNumber  = context.payload.pull_request.number;
+
+            await github.rest.issues.createComment({
+              owner:        context.repo.owner,
+              repo:         context.repo.repo,
+              issue_number: prNumber,
+              body: [
+                `## 👋 Bem-vindo(a) ao repositório, @${author}!`,
+                ``,
+                `Este é o seu **primeiro Pull Request** — parabéns por chegar até aqui! 🎉`,
+                ``,
+                `Enquanto o professor @cfneves revisa seu PR, confira o checklist rápido:`,
+                ``,
+                `- [ ] Seus arquivos estão dentro de \`alunos/SeuNome/\` apenas?`,
+                `- [ ] Nenhum arquivo fora da sua pasta foi alterado?`,
+                `- [ ] Nomes de arquivo sem espaços (use \`_\` ou \`-\`)?`,
+                `- [ ] Notebook executado sem erros (\`Kernel › Restart & Run All\`)?`,
+                `- [ ] Sua fork está sincronizada com o upstream?`,
+                ``,
+                `**Links úteis:**`,
+                `- 📖 [Guia de contribuição](../blob/master/CONTRIBUTING.md)`,
+                `- ❓ [Abrir uma dúvida](../issues/new?template=duvida.md)`,
+                `- 🔒 [Política de segurança](../blob/master/SECURITY.md)`,
+                ``,
+                `> 🤖 Mensagem automática — aguarde a revisão do professor`,
+              ].join('\n'),
+            });
+
+            console.log(`✅ Boas-vindas enviadas para @${author} no PR #${prNumber}`);

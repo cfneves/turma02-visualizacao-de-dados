@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semana 04 · Dia 01 — Arquivos + Datetime | SENAI BI</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+  :root{--bg:#0f1117;--bg2:#161b27;--bg3:#1e2535;--bg4:#252d40;--border:#2a3350;--text:#e2e8f4;--muted:#7a8aaa;--dim:#3a4a6a;--blue:#4f8ef7;--blue2:#38bdf8;--green:#34d399;--yellow:#fbbf24;--red:#f87171;--purple:#a78bfa;--orange:#fb923c;--teal:#2dd4bf;--code:#0d1120}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px}
+  /* HEADER */
+  header{background:var(--bg2);border-bottom:1px solid var(--border);padding:2.5rem 4rem 2rem}
+  .htop{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin-bottom:1.1rem}
+  .badge{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:500;padding:3px 10px;border-radius:4px;letter-spacing:.05em;text-transform:uppercase;border:1px solid}
+  .bb{background:rgba(79,142,247,.12);color:#7fb3ff;border-color:rgba(79,142,247,.28)}
+  .bg{background:rgba(52,211,153,.10);color:#5ee8b5;border-color:rgba(52,211,153,.28)}
+  .by{background:rgba(251,191,36,.10);color:#fcd34d;border-color:rgba(251,191,36,.28)}
+  .bp{background:rgba(167,139,250,.10);color:#c4b5fd;border-color:rgba(167,139,250,.28)}
+  .bt{background:rgba(45,212,191,.10);color:#5eead4;border-color:rgba(45,212,191,.28)}
+  h1{font-size:2rem;font-weight:600;color:#fff;letter-spacing:-.02em;line-height:1.25;margin-bottom:.4rem}
+  h1 em{color:var(--blue);font-style:normal}
+  .hsub{display:flex;gap:2rem;flex-wrap:wrap}
+  .hsub span{color:var(--muted);font-size:.9rem}
+  /* LAYOUT */
+  .wrap{max-width:1060px;margin:0 auto;padding:0 2.5rem}
+  section{padding:2.5rem 0;border-bottom:1px solid var(--border)}
+  section:last-of-type{border-bottom:none}
+  /* TÍTULOS */
+  h2{font-size:1.2rem;font-weight:600;color:#fff;display:flex;align-items:center;gap:.7rem;margin-bottom:1.25rem}
+  .stag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:4px;background:rgba(79,142,247,.12);color:var(--blue);border:1px solid rgba(79,142,247,.25)}
+  .stag.g{background:rgba(52,211,153,.10);color:var(--green);border-color:rgba(52,211,153,.25)}
+  .stag.y{background:rgba(251,191,36,.10);color:var(--yellow);border-color:rgba(251,191,36,.25)}
+  .stag.p{background:rgba(167,139,250,.10);color:var(--purple);border-color:rgba(167,139,250,.25)}
+  .stag.r{background:rgba(248,113,113,.10);color:var(--red);border-color:rgba(248,113,113,.25)}
+  h3{font-size:1rem;font-weight:600;color:var(--blue2);margin:1.75rem 0 .7rem;display:flex;align-items:center;gap:8px}
+  h3::before{content:'';width:3px;height:15px;background:var(--blue2);border-radius:2px;flex-shrink:0}
+  h4{font-size:.8rem;font-weight:600;color:var(--yellow);text-transform:uppercase;letter-spacing:.07em;margin:1.2rem 0 .45rem}
+  p{margin-bottom:.7rem}
+  p:last-child{margin-bottom:0}
+  ul{padding-left:1.3rem}
+  ul li{margin-bottom:.35rem}
+  code{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--orange);background:rgba(251,146,60,.1);padding:1px 6px;border-radius:3px}
+  strong{font-weight:600}
+  /* CALLOUTS */
+  .cal{border-left:3px solid;border-radius:0 8px 8px 0;padding:.9rem 1.2rem;margin:1.1rem 0}
+  .cal.b{background:rgba(79,142,247,.07);border-color:var(--blue)}
+  .cal.g{background:rgba(52,211,153,.07);border-color:var(--green)}
+  .cal.y{background:rgba(251,191,36,.07);border-color:var(--yellow)}
+  .cal.r{background:rgba(248,113,113,.07);border-color:var(--red)}
+  .cal.p{background:rgba(167,139,250,.07);border-color:var(--purple)}
+  .cal strong{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem}
+  .cal.b strong{color:var(--blue)}.cal.g strong{color:var(--green)}.cal.y strong{color:var(--yellow)}.cal.r strong{color:var(--red)}.cal.p strong{color:var(--purple)}
+  /* PROFESSOR */
+  .prof{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1rem 1.35rem;margin:1.1rem 0}
+  .prof::before{content:'💬  Professor';font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--yellow);text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:.45rem}
+  .prof p{color:#c8d6f0;font-style:italic;margin:0}
+  /* TIMELINE */
+  .tl{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-radius:8px;overflow:hidden;border:1px solid var(--border);margin:1.2rem 0}
+  .tlb{text-align:center;padding:.65rem .4rem}
+  .tlb .t{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);display:block;margin-bottom:3px}
+  .tlb .l{font-size:.75rem;font-weight:600;display:block}
+  .tl1{background:rgba(79,142,247,.10)}.tl1 .l{color:var(--blue)}
+  .tl2{background:rgba(52,211,153,.10)}.tl2 .l{color:var(--green)}
+  .tl3{background:rgba(42,51,80,.5)}.tl3 .l{color:var(--muted)}
+  .tl4{background:rgba(251,191,36,.10)}.tl4 .l{color:var(--yellow)}
+  .tl5{background:rgba(167,139,250,.10)}.tl5 .l{color:var(--purple)}
+  /* CÓDIGO */
+  .cb{background:var(--code);border:1px solid var(--border);border-radius:8px;margin:.9rem 0;overflow:hidden}
+  .ch{display:flex;justify-content:space-between;align-items:center;padding:.5rem 1rem;background:var(--bg4);border-bottom:1px solid var(--border)}
+  .ch .fn{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
+  .ch .lg{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--blue);text-transform:uppercase;letter-spacing:.07em}
+  pre{padding:1.1rem 1.4rem;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.75;color:#cdd6f4}
+  .kw{color:#89b4fa}.fn{color:#89dceb}.st{color:#a6e3a1}.cm{color:#4a5a7a;font-style:italic}.nm{color:#fab387}.cl{color:#cba6f7}
+  /* OUTPUT */
+  .out{background:#070b14;border:1px solid #1a2540;border-radius:6px;padding:.85rem 1.2rem;margin-top:.6rem;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.75;color:#94a3b8;white-space:pre;overflow-x:auto}
+  .olbl{color:#2a3a5a;font-size:10px;text-transform:uppercase;letter-spacing:.07em;display:block;margin-bottom:.35rem}
+  /* EXEMPLO */
+  .ex{background:var(--bg2);border:1px solid var(--border);border-radius:10px;margin:1.5rem 0;overflow:hidden}
+  .exh{display:flex;align-items:center;gap:.9rem;padding:.85rem 1.4rem;background:var(--bg3);border-bottom:1px solid var(--border)}
+  .exn{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--blue);background:rgba(79,142,247,.13);border:1px solid rgba(79,142,247,.28);border-radius:4px;padding:3px 9px;white-space:nowrap}
+  .ext{font-weight:600;color:#fff;font-size:.95rem}
+  .exb{padding:1.2rem 1.4rem}
+  .why{background:rgba(79,142,247,.06);border:1px solid rgba(79,142,247,.15);border-radius:6px;padding:.7rem 1rem;margin-top:.75rem}
+  .why strong{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--blue);text-transform:uppercase;letter-spacing:.07em;display:block;margin-bottom:.25rem}
+  .why p{color:var(--muted);font-size:.87rem;margin:0}
+  /* EXERCÍCIO */
+  .exer{background:rgba(251,191,36,.04);border:1px solid rgba(251,191,36,.18);border-radius:10px;padding:1.4rem;margin:2rem 0}
+  .exerh{display:flex;align-items:center;gap:.75rem;margin-bottom:.9rem;padding-bottom:.75rem;border-bottom:1px solid rgba(251,191,36,.14)}
+  .exerh h3{margin:0;color:var(--yellow)}
+  .exerh h3::before{background:var(--yellow)}
+  .steps{list-style:none;counter-reset:s}
+  .steps li{counter-increment:s;display:flex;gap:.9rem;margin-bottom:.8rem;align-items:flex-start}
+  .steps li::before{content:counter(s);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--yellow);background:rgba(251,191,36,.11);border:1px solid rgba(251,191,36,.24);border-radius:4px;padding:2px 8px;min-width:30px;text-align:center;flex-shrink:0;margin-top:3px}
+  .steps li p{margin:0}
+  .dica{background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.18);border-radius:6px;padding:.65rem 1rem;margin-top:.9rem}
+  .dica strong{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green);text-transform:uppercase;letter-spacing:.07em;display:block;margin-bottom:.25rem}
+  .dica p{color:var(--muted);font-size:.87rem;margin:0}
+  /* GABARITO */
+  .gab{background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.18);border-radius:10px;padding:1.4rem;margin:1.5rem 0}
+  .gabh{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--purple);text-transform:uppercase;letter-spacing:.09em;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+  .gabh::before{content:'';width:6px;height:6px;background:var(--purple);border-radius:50%;display:inline-block}
+  /* TABELA ERROS */
+  .etab{width:100%;border-collapse:collapse;margin-top:.6rem;font-size:13px}
+  .etab th{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left;padding:.45rem .7rem;border-bottom:1px solid var(--border)}
+  .etab td{padding:.55rem .7rem;border-bottom:1px solid rgba(42,51,80,.45);vertical-align:top}
+  .etab tr:last-child td{border-bottom:none}
+  .err{color:var(--red);font-family:'JetBrains Mono',monospace;font-size:12px}
+  .fix{color:var(--green);font-family:'JetBrains Mono',monospace;font-size:12px}
+  /* GRID */
+  .g2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:.9rem 0}
+  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:.9rem 0}
+  @media(max-width:680px){.g2,.g3{grid-template-columns:1fr}}
+  .card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.9rem 1.1rem}
+  .card .lbl{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem}
+  .card .val{font-size:.9rem;font-weight:500}
+  /* ÁRVORE */
+  .tree{font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2;background:var(--code);border:1px solid var(--border);border-radius:8px;padding:1rem 1.35rem;color:#94a3b8}
+  .tree .d{color:var(--blue2)}.tree .f{color:var(--text)}.tree .n{color:var(--dim);font-size:11px}
+  /* FOOTER */
+  footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.5rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem}
+  footer span{color:var(--muted);font-size:.83rem}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="htop">
+      <span class="badge bb">SENAI · T2 · Noturno</span>
+      <span class="badge bg">Semana 04</span>
+      <span class="badge by">Dia 01 · Terça · 19h–22h</span>
+      <span class="badge bp">Módulo 1 — Modelagem</span>
+      <span class="badge bt">3 horas</span>
+    </div>
+    <h1>Leitura &amp; escrita de arquivos<br>+ <em>módulo datetime</em></h1>
+    <div class="hsub">
+      <span>⚙ CSV · JSON · Excel · pandas</span>
+      <span>📅 datetime · timedelta · strptime · strftime</span>
+      <span>🏭 Dataset: base_rh.csv · 1.000 funcionários · Jaraguá do Sul</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ═══ ABERTURA ═══ -->
+<section>
+  <h2><span class="stag">Abertura</span> Contexto e objetivo da aula</h2>
+
+  <div class="prof">
+    <p>"Turma, dado na vida real não chega arrumado num DataFrame bonito. Chega como CSV do sistema legado da fábrica, Excel enviado por e-mail, JSON de uma API de ERP. O trabalho de vocês começa antes de qualquer análise: saber ler o arquivo, entender o que veio quebrado, e salvar no formato que o próximo sistema precisa. Hoje a gente trabalha com a base de RH de uma indústria daqui da região — e vou mostrar por que o encoding errado ou o separador errado destroem uma análise inteira sem que você perceba."</p>
+  </div>
+
+  <h3>O que você vai saber fazer ao final desta aula</h3>
+  <ul>
+    <li>Ler CSV com parâmetros não-padrão: <code>encoding</code>, <code>sep</code>, <code>decimal</code></li>
+    <li>Exportar o dataset nos formatos JSON e Excel com pandas</li>
+    <li>Usar o módulo <code>datetime</code> nativo do Python: <code>date</code>, <code>datetime</code>, <code>timedelta</code></li>
+    <li>Converter a coluna <code>Data_Admissao</code> de string para datetime com <code>strptime</code></li>
+    <li>Formatar datas de saída com <code>strftime</code></li>
+    <li>Calcular tempo de casa de cada funcionário com <code>timedelta</code></li>
+    <li>Criar colunas derivadas: ano de admissão, mês, faixa de tempo de casa</li>
+    <li>Filtrar registros por intervalo de datas</li>
+    <li>Fazer commit correto da sua entrega no repositório da turma</li>
+  </ul>
+
+  <div class="tl">
+    <div class="tlb tl1"><span class="t">19h00–19h20</span><span class="l">Setup + Git</span></div>
+    <div class="tlb tl2"><span class="t">19h20–20h30</span><span class="l">Arquivos (Ex 1–3)</span></div>
+    <div class="tlb tl3"><span class="t">20h30–20h40</span><span class="l">☕ Intervalo</span></div>
+    <div class="tlb tl4"><span class="t">20h40–21h40</span><span class="l">Datetime (Ex 4–5)</span></div>
+    <div class="tlb tl5"><span class="t">21h40–22h00</span><span class="l">Exercício + Commit</span></div>
+  </div>
+</section>
+
+
+<!-- ═══ BLOCO 0: SETUP ═══ -->
+<section>
+  <h2><span class="stag">Bloco 0 · 19h00</span> Setup do ambiente e regras de Git</h2>
+
+  <div class="prof">
+    <p>"Antes de abrir qualquer notebook, todo mundo no mesmo ambiente. O repositório é a fonte única da verdade. O arquivo de dado fica lá, a entrega fica lá. Git não é opcional — é a forma como o mercado trabalha."</p>
+  </div>
+
+  <div class="cb">
+    <div class="ch"><span class="fn">terminal</span><span class="lg">Shell</span></div>
+    <pre><span class="cm"># 1. Clonar o repositório oficial (apenas na primeira vez)</span>
+git clone https://github.com/cfneves/turma-visualizacao-de-dados.git
+cd turma-visualizacao-de-dados
+
+<span class="cm"># 2. Abrir no VS Code</span>
+code .
+
+<span class="cm"># 3. Criar SUA pasta — troque "seunome" pelo seu nome real</span>
+mkdir -p alunos/seunome/semana_04
+
+<span class="cm"># 4. Criar o notebook</span>
+touch alunos/seunome/semana_04/aula_01.ipynb
+
+<span class="cm"># 5. Instalar dependências (openpyxl é obrigatório para ler/salvar Excel)</span>
+pip install pandas openpyxl</pre>
+  </div>
+
+  <div class="cal r">
+    <strong>⛔ Regra inviolável do Git</strong>
+    Nunca use <code>git add .</code> — você versiona arquivos de todo mundo e gera conflito para a turma inteira. Sempre adicione <strong>somente sua pasta</strong>, conforme abaixo.
+  </div>
+
+  <div class="cb">
+    <div class="ch"><span class="fn">sequência correta — use toda aula</span><span class="lg">Shell</span></div>
+    <pre><span class="cm"># Sempre puxar antes de começar a trabalhar</span>
+git pull origin master
+
+<span class="cm"># Adicionar SOMENTE a sua pasta</span>
+git add alunos/seunome/
+
+<span class="cm"># Commit descritivo</span>
+git commit -m <span class="st">"semana 04 - dia 01: leitura de arquivos e datetime"</span>
+
+<span class="cm"># Enviar</span>
+git push origin master</pre>
+  </div>
+
+  <h3>Estrutura esperada ao final da aula</h3>
+  <div class="tree">
+<span class="d">turma-visualizacao-de-dados/</span>
+├── <span class="d">aulas/</span>
+│   └── <span class="d">semana_04/</span>
+│       └── <span class="f">base_rh.csv</span>        <span class="n">← base oficial · NUNCA alterar</span>
+└── <span class="d">alunos/</span>
+    └── <span class="d">seunome/</span>
+        └── <span class="d">semana_04/</span>
+            ├── <span class="f">aula_01.ipynb</span>      <span class="n">← seu notebook</span>
+            ├── <span class="f">base_rh.json</span>       <span class="n">← gerado no Ex 2</span>
+            └── <span class="f">base_rh.xlsx</span>       <span class="n">← gerado no Ex 3</span>
+  </div>
+</section>
+
+
+<!-- ═══ BLOCO 1: ARQUIVOS ═══ -->
+<section>
+  <h2><span class="stag g">Bloco 1 · 19h20</span> Leitura e escrita de arquivos</h2>
+
+  <div class="prof">
+    <p>"Esse CSV foi gerado pelo TOTVS — sistema legado de muitas indústrias aqui da região. Ele usa encoding do Windows, ponto-e-vírgula como separador e vírgula como decimal. Se você tentar ler com o pandas padrão, o dado vem quebrado e você não percebe de imediato. Vamos aprender a identificar esses problemas e ler o arquivo do jeito certo."</p>
+  </div>
+
+  <h3>O dataset — base_rh.csv</h3>
+  <div class="g3">
+    <div class="card"><div class="lbl">Registros</div><div class="val">1.000 funcionários</div></div>
+    <div class="card"><div class="lbl">Colunas</div><div class="val">10 campos</div></div>
+    <div class="card"><div class="lbl">Origem</div><div class="val">TOTVS · Windows</div></div>
+    <div class="card"><div class="lbl">Encoding</div><div class="val">cp1252 (não UTF-8)</div></div>
+    <div class="card"><div class="lbl">Separador</div><div class="val">ponto-e-vírgula <code>;</code></div></div>
+    <div class="card"><div class="lbl">Decimal</div><div class="val">vírgula <code>9088,34</code></div></div>
+  </div>
+
+  <div class="cal b">
+    <strong>O que acontece se você ler errado</strong>
+    Sem <code>encoding="cp1252"</code>: "Produção" vira "Produ??o" — o <code>groupby</code> cria dois grupos para o mesmo departamento e ninguém percebe.
+    Sem <code>sep=";"</code>: o pandas lê as 10 colunas como uma única string de texto por linha.
+    Sem <code>decimal=","</code>: a coluna Salario fica como <em>object</em> — média, soma e qualquer cálculo retornam erro silencioso ou TypeError.
+  </div>
+
+  <!-- EXEMPLO 1 -->
+  <div class="ex">
+    <div class="exh"><span class="exn">EXEMPLO 01</span><span class="ext">Lendo o CSV com os parâmetros corretos</span></div>
+    <div class="exb">
+      <p>Duas formas de carregar o mesmo arquivo: via URL RAW (padrão da turma) e via caminho local (fallback sem internet — comum em plantas industriais com rede restrita).</p>
+
+      <div class="cb">
+        <div class="ch"><span class="fn">aula_01.ipynb · Célula 1</span><span class="lg">Python</span></div>
+        <pre><span class="kw">import</span> pandas <span class="kw">as</span> pd
+
+<span class="cm"># ── Opção A: URL RAW do repositório (padrão da turma) ────────</span>
+URL = (
+    <span class="st">"https://raw.githubusercontent.com/"</span>
+    <span class="st">"cfneves/turma-visualizacao-de-dados/"</span>
+    <span class="st">"master/aulas/semana_04/base_rh.csv"</span>
+)
+
+<span class="cm"># ── Opção B: caminho local relativo (use se não tiver internet)</span>
+<span class="cm"># CAMINHO_LOCAL = "../../aulas/semana_04/base_rh.csv"</span>
+
+<span class="cm"># sep      → ponto-e-vírgula porque o TOTVS usa padrão europeu</span>
+<span class="cm"># encoding → cp1252 é o encoding do Windows (suporta ã é ç ú ô)</span>
+<span class="cm"># decimal  → vírgula como separador decimal</span>
+df = pd.read_csv(URL, sep=<span class="st">";"</span>, encoding=<span class="st">"cp1252"</span>, decimal=<span class="st">","</span>)
+
+<span class="cm"># Conferência imediata — sempre faça isso após qualquer leitura</span>
+<span class="fn">print</span>(<span class="st">f"Shape: {df.shape}"</span>)
+<span class="fn">print</span>(<span class="st">f"\nTipos:\n{df.dtypes}"</span>)
+<span class="fn">print</span>(<span class="st">f"\nPrimeiras 3 linhas:\n{df.head(3).to_string()}"</span>)</pre>
+      </div>
+
+      <div class="out"><span class="olbl">output</span>Shape: (1000, 10)
+
+Tipos:
+ID_Funcionario      int64
+Nome               object
+Departamento       object
+Cargo              object
+Salario           float64   ← float64: o decimal="," funcionou
+Data_Admissao      object   ← ainda string — corrigimos no Bloco 2
+Genero             object
+Idade               int64
+Estado_Civil       object
+Status             object
+
+Primeiras 3 linhas:
+   ID_Funcionario  Nome                  Departamento  Cargo       Salario Data_Admissao
+0               1  Julia Nunes           Logística     Coordenador  9088.34  13/08/2024
+1               2  Sr. Gustavo Duarte    TI            Gerente      8155.98  29/04/2017
+2               3  Srta. Mariana Cunha   RH            Coordenador 14027.93  11/12/2024</div>
+
+      <div class="why">
+        <strong>Por que isso importa</strong>
+        <p>Note que <code>Salario</code> já é <code>float64</code> — isso significa que <code>df["Salario"].mean()</code> vai funcionar. Se esquecermos <code>decimal=","</code>, <code>Salario</code> vira <code>object</code> e a média retorna <code>TypeError</code>. Esse erro só aparece quando você tenta calcular — e já passou horas analisando o dado "errado" sem saber.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPLORAÇÃO BÁSICA -->
+  <div class="ex">
+    <div class="exh"><span class="exn">EXEMPLO 02</span><span class="ext">Exploração básica do DataFrame — antes de qualquer transformação</span></div>
+    <div class="exb">
+      <p>Após qualquer leitura, o primeiro passo é sempre explorar o dado. Esses comandos são o "scanner" do analista — você nunca mexe num dado sem antes conhecê-lo. Execute cada um em uma célula separada no notebook para ver o resultado com clareza.</p>
+
+      <div class="cb">
+        <div class="ch"><span class="fn">aula_01.ipynb · Célula 2 — shape e colunas</span><span class="lg">Python</span></div>
+        <pre><span class="cm"># Dimensão do DataFrame: (linhas, colunas)</span>
+<span class="fn">print</span>(<span class="st">f"Shape: {df.shape}"</span>)               <span class="cm"># (1000, 10)</span>
+<span class="fn">print</span>(<span class="st">f"Linhas : {df.shape[0]}"</span>)
+<span class="fn">print</span>(<span class="st">f"Colunas: {df.shape[1]}"</span>)
+<span class="fn">print</span>(<span class="st">f"\nNomes das colunas:"</span>)
+<span class="fn">print</span>(df.columns.<span class="fn">tolist</span>())</pre>
+      </div>
+
+      <div class="cb">
+        <div class="ch"><span class="fn">aula_01.ipynb · Célula 3 — primeiras e últimas linhas</span><span class="lg">Python</span></div>
+        <pre><span class="cm"># Primeiras linhas — visão geral do conteúdo</span>
+df.<span class="fn">head</span>(<span class="nm">5</span>)
+
+<span class="cm"># Últimas linhas — verificar se o arquivo foi lido até o fim</span>
+df.<span class="fn">tail</span>(<span class="nm">3</span>)
+
+<span class="cm"># Linha específica pelo índice</span>
+df.<span class="fn">iloc</span>[<span class="nm">0</span>]   <span class="cm"># primeira linha como Series</span></pre>
+      </div>
+
+      <div class="cb">
+        <div class="ch"><span class="fn">aula_01.ipynb · Célula 4 — tipos e nulos</span><span class="lg">Python</span></div>
+        <pre><span class="cm"># .info() — resumo completo: tipos, nulos e uso de memória</span>
+<span class="cm"># É o comando mais importante para um primeiro diagnóstico</span>
+df.<span class="fn">info</span>()
+
+<span class="cm"># Quantidade de nulos por coluna</span>
+<span class="fn">print</span>(<span class="st">"\nNulos por coluna:"</span>)
+<span class="fn">print</span>(df.<span class="fn">isnull</span>().<span class="fn">sum</span>())
+
+<span class="cm"># Percentual de nulos — mais útil em bases grandes</span>
+<span class="fn">print</span>(<span class="st">"\n% de nulos:"</span>)
+<span class="fn">print</span>((df.<span class="fn">isnull</span>().<span class="fn">sum</span>() / <span class="fn">len</span>(df) * <span class="nm">100</span>).<span class="fn">round</span>(<span class="nm">2</span>))</pre>
+      </div>
+
+      <div class="out"><span class="olbl">output — df.info()</span>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 1000 entries, 0 to 999
+Data columns (total 10 columns):
+ #   Column          Non-Null Count  Dtype
+---  ------          --------------  -----
+ 0   ID_Funcionario  1000 non-null   int64
+ 1   Nome            1000 non-null   object
+ 2   Departamento    1000 non-null   object
+ 3   Cargo           1000 non-null   object
+ 4   Salario         1000 non-null   float64
+ 5   Data_Admissao   1000 non-null   object   ← ainda string
+ 6   Genero          1000 non-null   object
+ 7   Idade           1000 non-null   int64
+ 8   Estado_Civil    1000 non-null   object
+ 9   Status          1000 non-null   object
+dtypes: float64(1), int64(2), object(7)
+memory usage: 78.2+ KB
+
+Nulos por coluna:
+ID_Funcionario    0
+Nome              0
+Departamento      0
+...               0
+dtype: int64</div>
+
+      <div class="cb">
+        <div class="ch"><span class="fn">aula_01.ipynb · Célula 5 — estatísticas numéricas</span><span class="lg">Python</span></div>
+        <pre><span class="cm"># .describe() — estatísticas das colunas numéricas</span>
+<span class="cm"># count, mean, std, min, 25%, 50%, 75%, max</span>
+df.<span class="fn">describe</span>().<span class="fn">round</span>(<span class="nm">2</span>)</pre>
+      </div>
+
+      <div class="out"><span class="olbl">output</span>       ID_Funcionario    Salario    Idade
+count          1000.00    1000.00  1000.00
+mean            500.50    8212.43    41.33
+std             288.82    3842.21    13.60
+min               1.00    2016.61    18.00
+25%             250.75    4785.30    29.00
+50%             500.50    8143.54    41.00
+75%             750.25   11453.90    54.00
+max            1000.00   14942.48    65.00</div>
+
+      <div class="cb">
+        <div class="ch"><span class="fn">aula_01.ipynb · Célula 6 — cardinalidade e distribuição</span><span class="lg">Python</span></div>
+        <pre><span class="cm"># Valores únicos por coluna — identifica colunas categóricas</span>
+<span class="fn">print</span>(<span class="st">"Valores únicos por coluna:"</span>)
+<span class="fn">print</span>(df.<span class="fn">nunique</span>())
+
+<span class="cm"># Distribuição de cada coluna categórica relevante</span>
+<span class="kw">for</span> col <span class="kw">in</span> [<span class="st">"Departamento"</span>, <span class="st">"Cargo"</span>, <span class="st">"Genero"</span>, <span class="st">"Status"</span>, <span class="st">"Estado_Civil"</span>]:
+    <span class="fn">print</span>(<span class="st">f"\n── {col} ──"</span>)
+    <span class="fn">print</span>(df[col].<span class="fn">value_counts</span>())</pre>
+      </div>
+
+      <div class="out"><span class="olbl">output</span>Valores únicos por coluna:
+ID_Funcionario    1000
+Nome              1000
+Departamento         7
+Cargo                6
+Salario            997
+Data_Admissao      896
+Genero               2
+Idade               48
+Estado_Civil         4
+Status               2
+
+── Departamento ──
+Produção      188
+RH            172
+Financeiro    142
+Logística     132
+TI            128
+Vendas        120
+...
+
+── Cargo ──
+Técnico         205
+Coordenador     198
+Analista        195
+Assistente      192
+Gerente         155
+...
+
+── Genero ──
+F    518
+M    482
+
+── Status ──
+Ativo      603
+Inativo    397</div>
+
+      <div class="cb">
+        <div class="ch"><span class="fn">aula_01.ipynb · Célula 7 — seleção de colunas e filtros simples</span><span class="lg">Python</span></div>
+        <pre><span class="cm"># Selecionar uma coluna → Series</span>
+df[<span class="st">"Nome"</span>].<span class="fn">head</span>(<span class="nm">3</span>)
+
+<span class="cm"># Selecionar múltiplas colunas → DataFrame</span>
+df[[<span class="st">"Nome"</span>, <span class="st">"Departamento"</span>, <span class="st">"Salario"</span>]].<span class="fn">head</span>(<span class="nm">4</span>)
+
+<span class="cm"># Filtro simples: apenas funcionários Ativos</span>
+ativos = df[df[<span class="st">"Status"</span>] == <span class="st">"Ativo"</span>]
+<span class="fn">print</span>(<span class="st">f"Ativos: {len(ativos)} | Inativos: {len(df) - len(ativos)}"</span>)
+
+<span class="cm"># Filtro composto: Gerentes do departamento de TI</span>
+gerentes_ti = df[(df[<span class="st">"Cargo"</span>] == <span class="st">"Gerente"</span>) &amp; (df[<span class="st">"Departamento"</span>] == <span class="st">"TI"</span>)]
+<span class="fn">print</span>(<span class="st">f"\nGerentes de TI:"</span>)
+<span class="fn">print</span>(gerentes_ti[[<span class="st">"Nome"</span>, <span class="st">"Salario"</span>, <span class="st">"Status"</span>]].<span class="fn">to_string</span>(index=<span class="kw">False</span>))
+
+<span class="cm"># Estatísticas rápidas de uma coluna</span>
+<span class="fn">print</span>(<span class="st">f"\nSalário — média: R$ {df['Salario'].mean():,.2f}"</span>)
+<span class="fn">print</span>(<span class="st">f"Salário — maior: R$ {df['Salario'].max():,.2f}"</span>)
+<span class="fn">print</span>(<span class="st">f"Salário — menor: R$ {df['Salario'].min():,.2f}"</span>)</pre>
+      </div>
+
+      <div class="out"><span class="olbl">output</span>Ativos: 603 | Inativos: 397
+
+Gerentes de TI:
+Nome                Salario  Status
+Benjamin da Costa   9766.01  Inativo
+Valentina Cardoso  10602.13  Ativo
+Isabelly Ferreira   2348.73  Inativo
+Luna Novaes         3106.49  Inativo
+...
+
+Salário — média: R$ 8.212,43
+Salário — maior: R$ 14.942,48
+Salário — menor: R$ 2.016,61</div>
+
+      <div class="why">
+        <strong>Por que isso importa</strong>
+        <p>Esses 7 comandos — <code>shape</code>, <code>head</code>, <code>tail</code>, <code>info</code>, <code>isnull</code>, <code>describe</code>, <code>nunique</code> + <code>value_counts</code> — são o protocolo mínimo de qualquer analista antes de tocar nos dados. Em mercado, você nunca entrega uma análise sem ter rodado esses comandos primeiro: eles revelam nulos escondidos, tipos errados e distribuições inesperadas que invalidam qualquer conclusão posterior. Note que <code>Genero</code> tem apenas 2 valores únicos mas já sabemos pelo CSV que tem inconsistências — isso vamos tratar no Dia 02 com regex.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXEMPLO 3 (antigo EXEMPLO 2) -->
+  <div class="ex">
+    <div class="exh"><span class="exn">EXEMPLO 03</span><span class="ext">Exportando para JSON — formato de APIs e sistemas modernos</span></div>
+    <div class="exb">
+      <p>JSON é o formato de troca entre sistemas modernos: ERP na nuvem, APIs REST, dashboards web. O pandas converte o DataFrame inteiro com um método.</p>
+
+      <div class="cb">
+        <div class="ch"><span class="fn">aula_01.ipynb · Célula 8</span><span class="lg">Python</span></div>
+        <pre><span class="kw">import</span> pandas <span class="kw">as</span> pd
+<span class="kw">import</span> json
+
+<span class="cm"># ── Exportar o DataFrame para JSON ───────────────────────────</span>
+<span class="cm"># orient="records" → cada linha vira um objeto JSON independente</span>
+<span class="cm"># force_ascii=False → mantém ã é ç sem escapar (\u00e3 etc.)</span>
+<span class="cm"># indent=2         → arquivo legível por humanos</span>
+df.to_json(
+    <span class="st">"base_rh.json"</span>,
+    orient=<span class="st">"records"</span>,
+    force_ascii=<span class="kw">False</span>,
+    indent=<span class="nm">2</span>
+)
+
+<span class="fn">print</span>(<span class="st">"✓ base_rh.json gerado"</span>)
+
+<span class="cm"># ── Lendo de volta para confirmar ────────────────────────────</span>
+df_json = pd.read_json(<span class="st">"base_rh.json"</span>)
+<span class="fn">print</span>(<span class="st">f"Linhas lidas do JSON: {len(df_json)}"</span>)
+
+<span class="cm"># ── Visualizar os 2 primeiros registros no formato JSON ───────</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="st">"base_rh.json"</span>, <span class="st">"r"</span>, encoding=<span class="st">"utf-8"</span>) <span class="kw">as</span> f:
+    amostra = json.load(f)
+<span class="fn">print</span>(<span class="st">"\nPrimeiros 2 registros no JSON:"</span>)
+<span class="fn">print</span>(json.dumps(amostra[:<span class="nm">2</span>], ensure_ascii=<span class="kw">False</span>, indent=<span class="nm">2</span>))</pre>
+      </div>
+
+      <div class="out"><span class="olbl">output</span>✓ base_rh.json gerado
+Linhas lidas do JSON: 1000
+
+Primeiros 2 registros no JSON:
+[
+  {
+    "ID_Funcionario": 1,
+    "Nome": "Julia Nunes",
+    "Departamento": "Logística",
+    "Cargo": "Coordenador",
+    "Salario": 9088.34,
+    "Data_Admissao": "13/08/2024",
+    "Genero": "F",
+    "Idade": 43,
+    "Estado_Civil": "Solteiro",
+    "Status": "Inativo"
+  },
+  {
+    "ID_Funcionario": 2,
+    "Nome": "Sr. Gustavo Duarte",
+    ...
+  }
+]</div>
+
+      <div class="why">
+        <strong>Por que isso importa</strong>
+        <p><code>orient="records"</code> gera o formato que APIs REST esperam — uma lista de objetos, não um objeto com arrays. <code>force_ascii=False</code> é essencial: sem ele, "Produção" vira <code>"Produ\u00e7\u00e3o"</code> no arquivo, o que quebra sistemas que não interpretam escape unicode. Em indústria, o JSON gerado aqui pode alimentar um dashboard web ou uma API interna do setor de RH.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXEMPLO 4 -->
+  <div class="ex">
+    <div class="exh"><span class="exn">EXEMPLO 04</span><span class="ext">Exportando para Excel — relatório por departamento, uma aba por setor</span></div>
+    <div class="exb">
+      <p>Excel ainda é o formato mais usado por gestores em ambientes industriais. O pandas permite criar múltiplas abas em um único arquivo — um padrão muito pedido em relatórios de RH.</p>
+
+      <div class="cb">
+        <div class="ch"><span class="fn">aula_01.ipynb · Célula 9</span><span class="lg">Python</span></div>
+        <pre><span class="kw">import</span> pandas <span class="kw">as</span> pd
+
+<span class="cm"># ── Exportação simples: tudo em uma aba ──────────────────────</span>
+df.to_excel(<span class="st">"base_rh.xlsx"</span>, index=<span class="kw">False</span>, sheet_name=<span class="st">"Funcionarios"</span>)
+<span class="fn">print</span>(<span class="st">"✓ base_rh.xlsx (aba única) gerado"</span>)
+
+<span class="cm"># ── Exportação avançada: uma aba por departamento ────────────</span>
+<span class="cm"># ExcelWriter permite escrever múltiplas abas no mesmo arquivo</span>
+<span class="kw">with</span> pd.ExcelWriter(<span class="st">"base_rh_por_depto.xlsx"</span>, engine=<span class="st">"openpyxl"</span>) <span class="kw">as</span> writer:
+
+    <span class="cm"># Aba 1: dataset completo</span>
+    df.to_excel(writer, sheet_name=<span class="st">"Todos"</span>, index=<span class="kw">False</span>)
+
+    <span class="cm"># Uma aba para cada departamento</span>
+    <span class="kw">for</span> depto <span class="kw">in</span> df[<span class="st">"Departamento"</span>].unique():
+        df_depto = df[df[<span class="st">"Departamento"</span>] == depto]
+        <span class="cm"># Nome da aba limitado a 31 chars (limite do Excel)</span>
+        nome_aba = depto[:<span class="nm">31</span>]
+        df_depto.to_excel(writer, sheet_name=nome_aba, index=<span class="kw">False</span>)
+        <span class="fn">print</span>(<span class="st">f"  Aba '{nome_aba}': {len(df_depto)} registros"</span>)
+
+<span class="fn">print</span>(<span class="st">"\n✓ base_rh_por_depto.xlsx gerado"</span>)
+
+<span class="cm"># ── Lendo de volta uma aba específica ────────────────────────</span>
+df_rh = pd.read_excel(<span class="st">"base_rh_por_depto.xlsx"</span>, sheet_name=<span class="st">"RH"</span>)
+<span class="fn">print</span>(<span class="st">f"\nAba RH: {len(df_rh)} funcionários"</span>)
+<span class="fn">print</span>(df_rh[[<span class="st">"Nome"</span>, <span class="st">"Cargo"</span>, <span class="st">"Salario"</span>]].head(<span class="nm">4</span>).to_string(index=<span class="kw">False</span>))</pre>
+      </div>
+
+      <div class="out"><span class="olbl">output</span>✓ base_rh.xlsx (aba única) gerado
+  Aba 'Logística': 132 registros
+  Aba 'TI': 128 registros
+  Aba 'RH': 172 registros
+  Aba 'Produção': 188 registros
+  Aba 'Vendas': 118 registros
+  Aba 'Financeiro': 142 registros
+  Aba 'Vendas': 120 registros
+
+✓ base_rh_por_depto.xlsx gerado
+
+Aba RH: 172 funcionários
+Nome                   Cargo       Salario
+Srta. Mariana Cunha    Coordenador 14027.93
+Marcela Costa          Analista    12403.42
+Gabrielly Cardoso      Analista     2728.36
+Dr. Calebe Barbosa     Analista     3852.93</div>
+
+      <div class="why">
+        <strong>Por que isso importa</strong>
+        <p>O <code>ExcelWriter</code> como gerenciador de contexto (<code>with</code>) garante que o arquivo seja fechado corretamente — sem isso o Excel fica corrompido. O limite de 31 caracteres no nome da aba é uma restrição do Excel, não do pandas: se ultrapassar, o arquivo abre com erro. Em projetos reais, relatórios assim são enviados automaticamente por e-mail para gestores — você vai ver isso no Power Automate na Semana de Automação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ INTERVALO ═══ -->
+<section style="padding:1.2rem 0">
+  <div class="cal p" style="margin:0">
+    <strong>☕ Intervalo — 20h30 · 10 minutos</strong>
+    Antes de voltar: verifique se os arquivos <code>base_rh.json</code> e <code>base_rh.xlsx</code> foram gerados na sua pasta. Se não aparecerem, o caminho de saída está errado — corrija antes do intervalo acabar.
+  </div>
+</section>
+
+
+<!-- ═══ BLOCO 2: DATETIME ═══ -->
+<section>
+  <h2><span class="stag y">Bloco 2 · 20h40</span> Módulo datetime — trabalhando com datas</h2>
+
+  <div class="prof">
+    <p>"Turma, a coluna <code>Data_Admissao</code> chegou como string. O pandas não sabe que '13/08/2024' é uma data — pra ele é só texto. Se a gente não converter, não consegue calcular há quantos anos alguém está na empresa, não consegue filtrar quem foi admitido nos últimos 2 anos, não consegue agrupar por trimestre. Data é dado, não texto. Vamos resolver isso agora."</p>
+  </div>
+
+  <h3>O módulo datetime do Python — o que você precisa saber</h3>
+
+  <div class="g2">
+    <div class="card">
+      <div class="lbl">datetime.date</div>
+      <div class="val" style="font-size:.85rem;margin-top:.3rem">Representa apenas a data: ano, mês, dia. Sem hora.</div>
+    </div>
+    <div class="card">
+      <div class="lbl">datetime.datetime</div>
+      <div class="val" style="font-size:.85rem;margin-top:.3rem">Data + hora completos. É o tipo que o pandas usa internamente.</div>
+    </div>
+    <div class="card">
+      <div class="lbl">datetime.timedelta</div>
+      <div class="val" style="font-size:.85rem;margin-top:.3rem">Diferença entre duas datas. Resultado de <code>data2 - data1</code>.</div>
+    </div>
+    <div class="card">
+      <div class="lbl">strptime</div>
+      <div class="val" style="font-size:.85rem;margin-top:.3rem"><strong>Str</strong>ing → <strong>P</strong>arsa → da<strong>t</strong>e. Converte texto em objeto de data.</div>
+    </div>
+    <div class="card">
+      <div class="lbl">strftime</div>
+      <div class="val" style="font-size:.85rem;margin-top:.3rem"><strong>Str</strong>ing → <strong>F</strong>orma<strong>t</strong>a. Converte data em texto formatado.</div>
+    </div>
+    <div class="card">
+      <div class="lbl">pd.to_datetime</div>
+      <div class="val" style="font-size:.85rem;margin-top:.3rem">Versão pandas: converte coluna inteira de strings para datetime64.</div>
+    </div>
+  </div>
+
+  <!-- EXEMPLO 4 -->
+  <div class="ex">
+    <div class="exh"><span class="exn">EXEMPLO 05</span><span class="ext">Convertendo datas e calculando tempo de casa</span></div>
+    <div class="exb">
+      <p>Esse é o uso mais frequente de datetime em análise de RH: converter a data de admissão e calcular há quantos anos (e meses) cada funcionário está na empresa.</p>
+
+      <div class="cb">
+        <div class="ch"><span class="fn">aula_01.ipynb · Célula 10</span><span class="lg">Python</span></div>
+        <pre><span class="kw">import</span> pandas <span class="kw">as</span> pd
+<span class="kw">from</span> datetime <span class="kw">import</span> date, datetime, timedelta
+
+<span class="cm"># ── 1. Entendendo strptime e strftime (módulo datetime puro) ──</span>
+data_texto = <span class="st">"13/08/2024"</span>
+
+<span class="cm"># strptime: converte string → objeto datetime</span>
+<span class="cm"># %d = dia com zero à esquerda | %m = mês | %Y = ano 4 dígitos</span>
+data_obj = datetime.strptime(data_texto, <span class="st">"%d/%m/%Y"</span>)
+<span class="fn">print</span>(<span class="st">f"String original : '{data_texto}'"</span>)
+<span class="fn">print</span>(<span class="st">f"Objeto datetime : {data_obj}"</span>)
+<span class="fn">print</span>(<span class="st">f"Tipo            : {type(data_obj)}"</span>)
+
+<span class="cm"># strftime: converte objeto datetime → string formatada</span>
+formatado = data_obj.strftime(<span class="st">"%B de %Y"</span>)   <span class="cm"># %B = nome do mês</span>
+<span class="fn">print</span>(<span class="st">f"Formatado       : {formatado}"</span>)
+
+<span class="cm"># ── 2. timedelta: diferença entre datas ──────────────────────</span>
+hoje = datetime.today()
+diferenca = hoje - data_obj          <span class="cm"># resultado é um timedelta</span>
+<span class="fn">print</span>(<span class="st">f"\nHoje            : {hoje.strftime('%d/%m/%Y')}"</span>)
+<span class="fn">print</span>(<span class="st">f"Diferença       : {diferenca.days} dias"</span>)
+<span class="fn">print</span>(<span class="st">f"Em anos         : {diferenca.days / 365.25:.1f} anos"</span>)
+
+<span class="cm"># ── 3. Aplicando no DataFrame inteiro ────────────────────────</span>
+<span class="cm"># pd.to_datetime converte a coluna inteira — muito mais eficiente</span>
+<span class="cm"># do que aplicar strptime linha a linha com .apply()</span>
+df[<span class="st">"Data_Admissao"</span>] = pd.to_datetime(
+    df[<span class="st">"Data_Admissao"</span>],
+    format=<span class="st">"%d/%m/%Y"</span>,
+    errors=<span class="st">"coerce"</span>   <span class="cm"># datas inválidas → NaT (não quebra o pipeline)</span>
+)
+
+<span class="fn">print</span>(<span class="st">f"\nTipo após conversão: {df['Data_Admissao'].dtype}"</span>)
+<span class="fn">print</span>(<span class="st">f"Valores NaT gerados: {df['Data_Admissao'].isna().sum()}"</span>)
+
+<span class="cm"># ── 4. Coluna de tempo de casa em anos ───────────────────────</span>
+hoje_ts = pd.Timestamp.today()
+df[<span class="st">"Tempo_Casa_Anos"</span>] = (
+    (hoje_ts - df[<span class="st">"Data_Admissao"</span>]).dt.days / <span class="nm">365.25</span>
+).round(<span class="nm">1</span>)
+
+<span class="cm"># ── 5. Resultado ─────────────────────────────────────────────</span>
+<span class="fn">print</span>(<span class="st">"\nAmostra — Data convertida e tempo de casa:"</span>)
+cols = [<span class="st">"Nome"</span>, <span class="st">"Data_Admissao"</span>, <span class="st">"Tempo_Casa_Anos"</span>]
+<span class="fn">print</span>(df[cols].head(<span class="nm">6</span>).to_string(index=<span class="kw">False</span>))</pre>
+      </div>
+
+      <div class="out"><span class="olbl">output</span>String original : '13/08/2024'
+Objeto datetime : 2024-08-13 00:00:00
+Tipo            : &lt;class 'datetime.datetime'&gt;
+Formatado       : August de 2024
+
+Hoje            : 06/05/2025
+Diferença       : 266 dias
+Em anos         : 0.7 anos
+
+Tipo após conversão: datetime64[ns]
+Valores NaT gerados: 0
+
+Amostra — Data convertida e tempo de casa:
+Nome                  Data_Admissao  Tempo_Casa_Anos
+Julia Nunes           2024-08-13               0.7
+Sr. Gustavo Duarte    2017-04-29               8.0
+Srta. Mariana Cunha   2024-12-11               0.4
+Ana Sophia da Cruz    2019-06-16               5.9
+Dr. Nicolas Pinto     2019-03-29               6.1
+Marcela Costa         2024-07-23               0.8</div>
+
+      <div class="why">
+        <strong>Por que isso importa</strong>
+        <p><code>pd.to_datetime</code> com <code>errors="coerce"</code> é o padrão de mercado: datas inválidas (digitação errada no sistema) viram <code>NaT</code> em vez de derrubar o pipeline inteiro. A divisão por <code>365.25</code> (e não 365) considera anos bissextos — detalhe que importa quando você calcula tempo de casa de funcionários com 10+ anos na empresa.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXEMPLO 5 -->
+  <div class="ex">
+    <div class="exh"><span class="exn">EXEMPLO 06</span><span class="ext">Colunas derivadas de data + filtros por período</span></div>
+    <div class="exb">
+      <p>Com a data convertida, extraímos atributos e aplicamos filtros — as operações mais pedidas em relatórios de RH industrial: headcount por ano de admissão, veteranos na empresa, admissões nos últimos 12 meses.</p>
+
+      <div class="cb">
+        <div class="ch"><span class="fn">aula_01.ipynb · Célula 11</span><span class="lg">Python</span></div>
+        <pre><span class="kw">import</span> pandas <span class="kw">as</span> pd
+
+<span class="cm"># Garantir que a coluna já foi convertida (rode após Célula 4)</span>
+
+<span class="cm"># ── 1. Extraindo componentes da data com .dt ─────────────────</span>
+<span class="cm"># .dt é o acessor de datetime no pandas — dá acesso a ano, mês, etc.</span>
+df[<span class="st">"Ano_Admissao"</span>]  = df[<span class="st">"Data_Admissao"</span>].dt.year
+df[<span class="st">"Mes_Admissao"</span>]  = df[<span class="st">"Data_Admissao"</span>].dt.month
+df[<span class="st">"Dia_Semana"</span>]    = df[<span class="st">"Data_Admissao"</span>].dt.day_name()   <span class="cm"># nome do dia</span>
+df[<span class="st">"Trimestre"</span>]     = df[<span class="st">"Data_Admissao"</span>].dt.quarter
+
+<span class="fn">print</span>(<span class="st">"Colunas derivadas criadas:"</span>)
+cols = [<span class="st">"Nome"</span>, <span class="st">"Data_Admissao"</span>, <span class="st">"Ano_Admissao"</span>, <span class="st">"Mes_Admissao"</span>, <span class="st">"Trimestre"</span>]
+<span class="fn">print</span>(df[cols].head(<span class="nm">4</span>).to_string(index=<span class="kw">False</span>))
+
+<span class="cm"># ── 2. Faixa de tempo de casa (coluna categórica) ─────────────</span>
+<span class="kw">def</span> <span class="fn">classificar_tempo</span>(anos):
+    <span class="kw">if</span> anos &lt; <span class="nm">1</span>:
+        <span class="kw">return</span> <span class="st">"Menos de 1 ano"</span>
+    <span class="kw">elif</span> anos &lt; <span class="nm">3</span>:
+        <span class="kw">return</span> <span class="st">"1 a 3 anos"</span>
+    <span class="kw">elif</span> anos &lt; <span class="nm">5</span>:
+        <span class="kw">return</span> <span class="st">"3 a 5 anos"</span>
+    <span class="kw">else</span>:
+        <span class="kw">return</span> <span class="st">"Mais de 5 anos"</span>
+
+df[<span class="st">"Faixa_Tempo_Casa"</span>] = df[<span class="st">"Tempo_Casa_Anos"</span>].apply(classificar_tempo)
+
+<span class="fn">print</span>(<span class="st">"\nDistribuição por faixa de tempo de casa:"</span>)
+<span class="fn">print</span>(df[<span class="st">"Faixa_Tempo_Casa"</span>].value_counts().to_string())
+
+<span class="cm"># ── 3. Filtros por período ────────────────────────────────────</span>
+hoje  = pd.Timestamp.today()
+um_ano_atras = hoje - pd.DateOffset(years=<span class="nm">1</span>)
+cinco_anos_atras = hoje - pd.DateOffset(years=<span class="nm">5</span>)
+
+<span class="cm"># Admitidos nos últimos 12 meses</span>
+novos = df[df[<span class="st">"Data_Admissao"</span>] &gt;= um_ano_atras]
+
+<span class="cm"># Veteranos — mais de 5 anos de casa</span>
+veteranos = df[df[<span class="st">"Data_Admissao"</span>] &lt; cinco_anos_atras]
+
+<span class="fn">print</span>(<span class="st">f"\nAdmitidos nos últimos 12 meses : {len(novos)} funcionários"</span>)
+<span class="fn">print</span>(<span class="st">f"Veteranos (5+ anos de casa)    : {len(veteranos)} funcionários"</span>)
+
+<span class="cm"># ── 4. Admissões por ano — panorama histórico ─────────────────</span>
+<span class="fn">print</span>(<span class="st">"\nAdmissões por ano:"</span>)
+<span class="fn">print</span>(
+    df.groupby(<span class="st">"Ano_Admissao"</span>)
+      .size()
+      .rename(<span class="st">"Admissoes"</span>)
+      .sort_index()
+      .to_string()
+)
+
+<span class="cm"># ── 5. Salário médio dos veteranos vs novos ───────────────────</span>
+<span class="fn">print</span>(<span class="st">"\nSalário médio:"</span>)
+<span class="fn">print</span>(<span class="st">f"  Novos (últimos 12 meses): R$ {novos['Salario'].mean():,.2f}"</span>)
+<span class="fn">print</span>(<span class="st">f"  Veteranos (5+ anos)     : R$ {veteranos['Salario'].mean():,.2f}"</span>)</pre>
+      </div>
+
+      <div class="out"><span class="olbl">output</span>Colunas derivadas criadas:
+Nome                  Data_Admissao  Ano_Admissao  Mes_Admissao  Trimestre
+Julia Nunes           2024-08-13             2024             8          3
+Sr. Gustavo Duarte    2017-04-29             2017             4          2
+Srta. Mariana Cunha   2024-12-11             2024            12          4
+Ana Sophia da Cruz    2019-06-16             2019             6          2
+
+Distribuição por faixa de tempo de casa:
+Mais de 5 anos     412
+1 a 3 anos         234
+3 a 5 anos         201
+Menos de 1 ano     153
+
+Admitidos nos últimos 12 meses : 153 funcionários
+Veteranos (5+ anos de casa)    : 412 funcionários
+
+Admissões por ano:
+Ano_Admissao  Admissoes
+2015                 18
+2016                 68
+2017                102
+2018                 91
+2019                105
+2020                 72
+2021                 87
+2022                 96
+2023                 83
+2024                185
+2025                 93
+
+Salário médio:
+  Novos (últimos 12 meses): R$ 8.047,23
+  Veteranos (5+ anos)     : R$ 8.531,19</div>
+
+      <div class="why">
+        <strong>Por que isso importa</strong>
+        <p><code>pd.DateOffset(years=1)</code> é mais correto que <code>pd.Timedelta(days=365)</code> para filtros de "último ano" — ele considera anos bissextos e meses com 28/30/31 dias. O insight do salário médio (veteranos ganham mais) é exatamente o tipo de análise que o gestor de RH vai pedir: "quem ficou ganhou mais com o tempo?" — e você responde com três linhas de código.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ EXERCÍCIO ═══ -->
+<section>
+  <h2><span class="stag y">Exercício · 21h40</span> Atividade prática — Dia 01</h2>
+
+  <div class="exer">
+    <div class="exerh"><h3>Pipeline de arquivos e datas — base_rh.csv</h3></div>
+
+    <div class="cal b" style="margin-bottom:1rem">
+      <strong>Cenário</strong>
+      O gestor de RH da Indústria Metalúrgica Catarinense pediu dois entregáveis para esta semana: (1) a base de funcionários exportada em Excel com uma aba por departamento, e (2) um relatório de tempo de casa pronto para análise no Power BI. Você tem 20 minutos para entregar.
+    </div>
+
+    <ul class="steps">
+      <li><p>Carregue o <code>base_rh.csv</code> via URL RAW com todos os parâmetros corretos. Imprima o shape e os tipos de dados para confirmar que <code>Salario</code> é <code>float64</code>.</p></li>
+      <li><p>Exporte o dataset completo para <code>base_rh.json</code> com <code>orient="records"</code> e <code>force_ascii=False</code>. Leia o arquivo de volta e confirme que tem 1.000 registros.</p></li>
+      <li><p>Exporte para <code>base_rh_deptos.xlsx</code> com uma aba chamada <code>"Completo"</code> e mais uma aba para cada departamento. Imprima o nome e o total de linhas de cada aba gerada.</p></li>
+      <li><p>Converta <code>Data_Admissao</code> para datetime com <code>pd.to_datetime</code>. Crie as colunas: <code>Ano_Admissao</code>, <code>Mes_Admissao</code>, <code>Tempo_Casa_Anos</code> e <code>Faixa_Tempo_Casa</code>.</p></li>
+      <li><p>Responda no notebook (célula Markdown): Qual departamento tem a maior média de tempo de casa? Qual tem a menor? Use <code>groupby</code> para calcular e exiba os resultados.</p></li>
+      <li><p>Faça <code>git pull</code>, adicione <strong>somente sua pasta</strong>, commit com a mensagem <code>"semana 04 - dia 01: entrega arquivos e datetime"</code> e push. Mostre o output de <code>git log --oneline -3</code> na última célula do notebook.</p></li>
+    </ul>
+
+    <div class="dica">
+      <strong>Dicas estratégicas</strong>
+      <p>Para calcular média de tempo de casa por departamento: <code>df.groupby("Departamento")["Tempo_Casa_Anos"].mean().sort_values(ascending=False)</code>. Para nomear a aba do Excel sem ultrapassar o limite de 31 chars, use <code>depto[:31]</code>. Se o push falhar com "rejected", você esqueceu o <code>git pull</code> antes.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ GABARITO ═══ -->
+<section>
+  <h2><span class="stag p">Gabarito</span> Correção dos passos mais difíceis</h2>
+
+  <!-- Passo 5 -->
+  <div class="gab">
+    <div class="gabh">Passo 5 — média de tempo de casa por departamento</div>
+    <div class="cb">
+      <div class="ch"><span class="fn">gabarito · passo 5</span><span class="lg">Python</span></div>
+      <pre><span class="kw">import</span> pandas <span class="kw">as</span> pd
+
+media_depto = (
+    df.groupby(<span class="st">"Departamento"</span>)[<span class="st">"Tempo_Casa_Anos"</span>]
+      .mean()
+      .round(<span class="nm">1</span>)
+      .sort_values(ascending=<span class="kw">False</span>)
+      .rename(<span class="st">"Media_Anos"</span>)
+      .reset_index()
+)
+
+<span class="fn">print</span>(<span class="st">"Tempo médio de casa por departamento:"</span>)
+<span class="fn">print</span>(media_depto.to_string(index=<span class="kw">False</span>))
+
+<span class="fn">print</span>(<span class="st">f"\nMaior média : {media_depto.iloc[0]['Departamento']} "</span>
+      <span class="st">f"({media_depto.iloc[0]['Media_Anos']} anos)"</span>)
+<span class="fn">print</span>(<span class="st">f"Menor média : {media_depto.iloc[-1]['Departamento']} "</span>
+      <span class="st">f"({media_depto.iloc[-1]['Media_Anos']} anos)"</span>)</pre>
+    </div>
+  </div>
+
+  <!-- Passo 3 (mais difícil) -->
+  <div class="gab">
+    <div class="gabh">Passo 3 — Excel com múltiplas abas</div>
+    <div class="cb">
+      <div class="ch"><span class="fn">gabarito · passo 3</span><span class="lg">Python</span></div>
+      <pre><span class="kw">with</span> pd.ExcelWriter(<span class="st">"base_rh_deptos.xlsx"</span>, engine=<span class="st">"openpyxl"</span>) <span class="kw">as</span> writer:
+    df.to_excel(writer, sheet_name=<span class="st">"Completo"</span>, index=<span class="kw">False</span>)
+    <span class="fn">print</span>(<span class="st">f"Aba 'Completo': {len(df)} registros"</span>)
+
+    <span class="kw">for</span> depto <span class="kw">in</span> sorted(df[<span class="st">"Departamento"</span>].unique()):
+        filtro = df[df[<span class="st">"Departamento"</span>] == depto]
+        aba    = depto[:<span class="nm">31</span>]
+        filtro.to_excel(writer, sheet_name=aba, index=<span class="kw">False</span>)
+        <span class="fn">print</span>(<span class="st">f"Aba '{aba}': {len(filtro)} registros"</span>)
+
+<span class="fn">print</span>(<span class="st">"\n✓ base_rh_deptos.xlsx salvo com sucesso"</span>)</pre>
+    </div>
+  </div>
+
+  <h3>Erros mais comuns desta aula</h3>
+  <table class="etab">
+    <thead>
+      <tr><th>Erro</th><th>Causa</th><th>Solução</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="err">UnicodeDecodeError</span></td>
+        <td>Lendo com UTF-8 um arquivo cp1252</td>
+        <td><span class="fix">encoding="cp1252"</span></td>
+      </tr>
+      <tr>
+        <td><span class="err">Salario como object</span></td>
+        <td>Esqueceu <code>decimal=","</code></td>
+        <td><span class="fix">decimal=","</span> no read_csv</td>
+      </tr>
+      <tr>
+        <td><span class="err">1 coluna no DataFrame</span></td>
+        <td>Não passou <code>sep=";"</code></td>
+        <td><span class="fix">sep=";"</span> no read_csv</td>
+      </tr>
+      <tr>
+        <td><span class="err">ModuleNotFoundError: openpyxl</span></td>
+        <td>Dependência não instalada</td>
+        <td><span class="fix">pip install openpyxl</span></td>
+      </tr>
+      <tr>
+        <td><span class="err">Data_Admissao ainda object após to_datetime</span></td>
+        <td>Formato errado no parâmetro format=</td>
+        <td><span class="fix">format="%d/%m/%Y"</span> — dia/mês/ano</td>
+      </tr>
+      <tr>
+        <td><span class="err">ValueError: sheet name too long</span></td>
+        <td>Nome da aba Excel com mais de 31 chars</td>
+        <td><span class="fix">depto[:31]</span> ao nomear a aba</td>
+      </tr>
+      <tr>
+        <td><span class="err">git push rejected</span></td>
+        <td>Não fez pull antes</td>
+        <td><span class="fix">git pull origin master</span> antes do add</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+<!-- ═══ ARQUIVO .PY FINAL ═══ -->
+<section>
+  <h2><span class="stag p">Script Final</span> Consolidando o notebook em <code>aula_01.py</code></h2>
+
+  <div class="prof">
+    <p>"Notebook é ótimo para explorar e aprender passo a passo. Mas em produção — quando você vai automatizar, agendar ou fazer deploy — o código precisa ser um script <code>.py</code> limpo, sem células, sem outputs embutidos. Vamos consolidar tudo que fizemos hoje em um único arquivo Python. Esse é o padrão de mercado: explorar no notebook, consolidar no script, versionar no GitHub."</p>
+  </div>
+
+  <div class="callout cal b">
+    <strong>A lógica da separação</strong>
+    O <code>.ipynb</code> é o caderno de trabalho — onde você experimenta, erra, ajusta e documenta. O <code>.py</code> é o entregável de produção — código limpo, sem redundâncias, pronto para ser importado por outros módulos ou executado automaticamente. Nas próximas semanas, o <code>aula_01.py</code> vai ser importado pelo script de ETL completo do Dia 03.
+  </div>
+
+  <div class="ex">
+    <div class="exh"><span class="exn">SCRIPT FINAL</span><span class="ext">aula_01.py — pipeline completo da aula, pronto para deploy</span></div>
+    <div class="exb">
+      <p>Crie este arquivo em <code>alunos/seunome/semana_04/aula_01.py</code>. Ele reúne, em ordem lógica, tudo que foi feito nos exemplos — sem repetição, sem código de exploração (que fica só no notebook), apenas o pipeline funcional.</p>
+
+      <div class="cb">
+        <div class="ch"><span class="fn">alunos/seunome/semana_04/aula_01.py</span><span class="lg">Python</span></div>
+        <pre><span class="cm">"""
+aula_01.py — Semana 04 · Dia 01
+Leitura de arquivos (CSV, JSON, Excel) + Módulo datetime
+
+Pipeline:
+    1. Leitura do CSV via URL RAW
+    2. Exploração básica
+    3. Exportação para JSON e Excel
+    4. Conversão e manipulação de datas
+    5. Geração do dataset enriquecido
+
+Autor  : seunome
+Turma  : T2 — SENAI BI
+"""</span>
+
+<span class="kw">import</span> pandas <span class="kw">as</span> pd
+<span class="kw">import</span> json
+<span class="kw">from</span> datetime <span class="kw">import</span> datetime
+
+<span class="cm"># ═══════════════════════════════════════════════════════════
+# 1. CONFIGURAÇÃO
+# ═══════════════════════════════════════════════════════════</span>
+
+URL = (
+    <span class="st">"https://raw.githubusercontent.com/"</span>
+    <span class="st">"cfneves/turma-visualizacao-de-dados/"</span>
+    <span class="st">"master/aulas/semana_04/base_rh.csv"</span>
+)
+
+<span class="cm"># ═══════════════════════════════════════════════════════════
+# 2. EXTRAÇÃO — leitura do CSV com parâmetros corretos
+# ═══════════════════════════════════════════════════════════</span>
+
+df = pd.read_csv(URL, sep=<span class="st">";"</span>, encoding=<span class="st">"cp1252"</span>, decimal=<span class="st">","</span>)
+<span class="fn">print</span>(<span class="st">f"[1] CSV carregado: {df.shape[0]} linhas × {df.shape[1]} colunas"</span>)
+
+<span class="cm"># ═══════════════════════════════════════════════════════════
+# 3. EXPLORAÇÃO BÁSICA
+# ═══════════════════════════════════════════════════════════</span>
+
+<span class="fn">print</span>(<span class="st">"\n[2] Tipos de dados:"</span>)
+<span class="fn">print</span>(df.dtypes)
+
+<span class="fn">print</span>(<span class="st">"\n[3] Nulos por coluna:"</span>)
+<span class="fn">print</span>(df.<span class="fn">isnull</span>().<span class="fn">sum</span>())
+
+<span class="fn">print</span>(<span class="st">"\n[4] Estatísticas numéricas:"</span>)
+<span class="fn">print</span>(df.<span class="fn">describe</span>().<span class="fn">round</span>(<span class="nm">2</span>))
+
+<span class="fn">print</span>(<span class="st">"\n[5] Valores únicos por coluna:"</span>)
+<span class="fn">print</span>(df.<span class="fn">nunique</span>())
+
+<span class="fn">print</span>(<span class="st">"\n[6] Distribuição — Departamento:"</span>)
+<span class="fn">print</span>(df[<span class="st">"Departamento"</span>].<span class="fn">value_counts</span>())
+
+<span class="cm"># ═══════════════════════════════════════════════════════════
+# 4. EXPORTAÇÃO — JSON e Excel
+# ═══════════════════════════════════════════════════════════</span>
+
+<span class="cm"># JSON</span>
+df.to_json(<span class="st">"base_rh.json"</span>, orient=<span class="st">"records"</span>, force_ascii=<span class="kw">False</span>, indent=<span class="nm">2</span>)
+<span class="fn">print</span>(<span class="st">"\n[7] base_rh.json gerado"</span>)
+
+<span class="cm"># Excel — uma aba por departamento</span>
+<span class="kw">with</span> pd.ExcelWriter(<span class="st">"base_rh_deptos.xlsx"</span>, engine=<span class="st">"openpyxl"</span>) <span class="kw">as</span> writer:
+    df.to_excel(writer, sheet_name=<span class="st">"Completo"</span>, index=<span class="kw">False</span>)
+    <span class="kw">for</span> depto <span class="kw">in</span> sorted(df[<span class="st">"Departamento"</span>].<span class="fn">unique</span>()):
+        df[df[<span class="st">"Departamento"</span>] == depto].to_excel(
+            writer, sheet_name=depto[:<span class="nm">31</span>], index=<span class="kw">False</span>
+        )
+<span class="fn">print</span>(<span class="st">"[8] base_rh_deptos.xlsx gerado"</span>)
+
+<span class="cm"># ═══════════════════════════════════════════════════════════
+# 5. TRANSFORMAÇÃO DE DATAS
+# ═══════════════════════════════════════════════════════════</span>
+
+<span class="cm"># Converter string → datetime</span>
+df[<span class="st">"Data_Admissao"</span>] = pd.to_datetime(
+    df[<span class="st">"Data_Admissao"</span>], format=<span class="st">"%d/%m/%Y"</span>, errors=<span class="st">"coerce"</span>
+)
+<span class="fn">print</span>(<span class="st">f"\n[9] Data_Admissao convertida: {df['Data_Admissao'].dtype}"</span>)
+<span class="fn">print</span>(<span class="st">f"    NaT gerados: {df['Data_Admissao'].isna().sum()}"</span>)
+
+<span class="cm"># Colunas derivadas</span>
+hoje = pd.Timestamp.today()
+df[<span class="st">"Ano_Admissao"</span>]    = df[<span class="st">"Data_Admissao"</span>].dt.year
+df[<span class="st">"Mes_Admissao"</span>]    = df[<span class="st">"Data_Admissao"</span>].dt.month
+df[<span class="st">"Trimestre"</span>]       = df[<span class="st">"Data_Admissao"</span>].dt.quarter
+df[<span class="st">"Tempo_Casa_Anos"</span>] = ((hoje - df[<span class="st">"Data_Admissao"</span>]).dt.days / <span class="nm">365.25</span>).<span class="fn">round</span>(<span class="nm">1</span>)
+
+<span class="kw">def</span> <span class="fn">classificar_tempo</span>(anos):
+    <span class="kw">if</span>   anos &lt; <span class="nm">1</span>: <span class="kw">return</span> <span class="st">"Menos de 1 ano"</span>
+    <span class="kw">elif</span> anos &lt; <span class="nm">3</span>: <span class="kw">return</span> <span class="st">"1 a 3 anos"</span>
+    <span class="kw">elif</span> anos &lt; <span class="nm">5</span>: <span class="kw">return</span> <span class="st">"3 a 5 anos"</span>
+    <span class="kw">else</span>:           <span class="kw">return</span> <span class="st">"Mais de 5 anos"</span>
+
+df[<span class="st">"Faixa_Tempo_Casa"</span>] = df[<span class="st">"Tempo_Casa_Anos"</span>].<span class="fn">apply</span>(classificar_tempo)
+<span class="fn">print</span>(<span class="st">"\n[10] Colunas derivadas criadas: Ano_Admissao, Mes_Admissao, Trimestre,"</span>)
+<span class="fn">print</span>(<span class="st">"      Tempo_Casa_Anos, Faixa_Tempo_Casa"</span>)
+
+<span class="cm"># ═══════════════════════════════════════════════════════════
+# 6. ANÁLISE — tempo de casa por departamento
+# ═══════════════════════════════════════════════════════════</span>
+
+media_depto = (
+    df.<span class="fn">groupby</span>(<span class="st">"Departamento"</span>)[<span class="st">"Tempo_Casa_Anos"</span>]
+      .<span class="fn">mean</span>().<span class="fn">round</span>(<span class="nm">1</span>)
+      .<span class="fn">sort_values</span>(ascending=<span class="kw">False</span>)
+      .<span class="fn">rename</span>(<span class="st">"Media_Anos"</span>)
+      .<span class="fn">reset_index</span>()
+)
+<span class="fn">print</span>(<span class="st">"\n[11] Tempo médio de casa por departamento:"</span>)
+<span class="fn">print</span>(media_depto.<span class="fn">to_string</span>(index=<span class="kw">False</span>))
+
+<span class="cm"># ═══════════════════════════════════════════════════════════
+# 7. LOAD — salvar dataset enriquecido
+# ═══════════════════════════════════════════════════════════</span>
+
+df.to_csv(<span class="st">"base_rh_dia01.csv"</span>, index=<span class="kw">False</span>, sep=<span class="st">";"</span>, encoding=<span class="st">"utf-8-sig"</span>)
+<span class="fn">print</span>(<span class="st">"\n[12] base_rh_dia01.csv salvo — pronto para o Dia 02"</span>)
+<span class="fn">print</span>(<span class="st">"      Colunas finais:"</span>, df.columns.<span class="fn">tolist</span>())
+<span class="fn">print</span>(<span class="st">"\n✓ Pipeline do Dia 01 concluído."</span>)</pre>
+      </div>
+
+      <div class="cal g" style="margin-top:.9rem">
+        <strong>Como executar o script no terminal</strong>
+        Navegue até a sua pasta e execute diretamente pelo Python:
+        <div class="cb" style="margin-top:.6rem">
+          <div class="ch"><span class="fn">terminal — na raiz do repositório</span><span class="lg">Shell</span></div>
+          <pre><span class="cm"># Entrar na sua pasta</span>
+cd alunos/seunome/semana_04/
+
+<span class="cm"># Executar o script</span>
+python aula_01.py
+
+<span class="cm"># Verificar os arquivos gerados</span>
+ls -lh</pre>
+        </div>
+      </div>
+
+      <div class="cal y" style="margin-top:.9rem">
+        <strong>Commit do script — faça antes de sair</strong>
+        <div class="cb" style="margin-top:.6rem">
+          <div class="ch"><span class="fn">terminal — raiz do repositório</span><span class="lg">Shell</span></div>
+          <pre>git pull origin master
+git add alunos/seunome/
+git commit -m <span class="st">"semana 04 - dia 01: notebook + script aula_01.py"</span>
+git push origin master
+
+<span class="cm"># Confirmar que o commit foi registrado</span>
+git log --oneline -<span class="nm">3</span></pre>
+        </div>
+      </div>
+
+      <div class="why">
+        <strong>Por que separar notebook e script</strong>
+        <p>O notebook (<code>.ipynb</code>) tem saídas embutidas, estado de variáveis e células fora de ordem — ele não é executável de forma confiável em produção. O script (<code>.py</code>) é linear, sem estado oculto, e pode ser chamado por agendadores (cron, Airflow, Power Automate) ou importado por outros módulos. No Dia 03, você vai criar um <code>src/limpeza.py</code> que importa funções de <code>aula_01.py</code> — é assim que pipelines reais são construídos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ ENCERRAMENTO ═══ -->
+<section>
+  <h2><span class="stag">Encerramento</span> Resumo do Dia 01 + prévia do Dia 02</h2>
+
+  <div class="prof">
+    <p>"Hoje vocês aprenderam o que acontece antes de qualquer análise: ler o dado do jeito certo, exportar para o formato que o próximo sistema precisa, e transformar uma string de data em um objeto que o Python consegue calcular. Quem fez o exercício já tem o pipeline completo de extração funcionando. Na quinta, a gente parte para o que mais aparece em dado de RH — texto sujo — e vai usar expressões regulares para limpar os nomes, remover títulos e padronizar colunas. Façam o commit antes de sair."</p>
+  </div>
+
+  <div class="g2">
+    <div class="cal g">
+      <strong>✅ O que fizemos hoje</strong>
+      <ul style="margin-top:.4rem;padding-left:1.2rem">
+        <li>Clone do repositório e regras de Git</li>
+        <li>Criação da estrutura de pastas do aluno</li>
+        <li>Leitura de CSV com <code>encoding</code>, <code>sep</code> e <code>decimal</code> corretos</li>
+        <li>Exploração básica: <code>shape</code>, <code>info</code>, <code>describe</code>, <code>nunique</code>, <code>value_counts</code>, filtros</li>
+        <li>Exportação para JSON (<code>orient="records"</code>) e Excel (múltiplas abas)</li>
+        <li>Módulo datetime: <code>strptime</code>, <code>strftime</code>, <code>timedelta</code>, <code>pd.to_datetime</code></li>
+        <li>Colunas derivadas: ano, mês, trimestre, tempo de casa, faixa</li>
+        <li>Filtros por período com <code>DateOffset</code></li>
+        <li>Script <code>aula_01.py</code> consolidado + commit no GitHub</li>
+      </ul>
+    </div>
+    <div class="cal p">
+      <strong>🔜 Dia 02 — Quinta · 19h</strong>
+      <ul style="margin-top:.4rem;padding-left:1.2rem">
+        <li>Módulo <code>re</code>: metacaracteres, grupos, quantificadores</li>
+        <li><code>re.sub</code>, <code>re.search</code>, <code>re.findall</code></li>
+        <li>Integração com pandas: <code>str.contains</code>, <code>str.extract</code></li>
+        <li>Aplicação real: remover títulos de tratamento dos nomes</li>
+        <li>Extrair primeiro nome e sobrenome com grupos de captura</li>
+        <li>Detectar e padronizar inconsistências em colunas de texto</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cal y">
+    <strong>📌 Entrega no AVA</strong>
+    Pasta <code>alunos/seunome/semana_04/</code> no repositório contendo: <code>aula_01.ipynb</code> (notebook com as células dos exemplos + exercício + análise em Markdown), <code>aula_01.py</code> (script consolidado executável), <code>base_rh.json</code>, <code>base_rh_deptos.xlsx</code> e <code>base_rh_dia01.csv</code>. Prazo conforme AVA.
+  </div>
+</section>
+
+</div>
+<footer>
+  <span>SENAI · Visualização de Dados e Business Intelligence · Turma T2 · Noturno</span>
+  <span>Semana 04 · Módulo 1 — Modelagem de Dados · <strong>Dia 01 de 3 · Terça</strong></span>
+</footer>
+</body>
+</html>

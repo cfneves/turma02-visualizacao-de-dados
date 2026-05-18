@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Cláudio Ferreira Neves">
+    <title>Guia Visual Python - Primeiros Passos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #1a1d29;
+            --bg-secondary: #252834;
+            --bg-code: #1e1e1e;
+            --accent-blue: #4a9eff;
+            --accent-green: #00ff88;
+            --accent-yellow: #ffcc00;
+            --accent-red: #ff4757;
+            --accent-purple: #a855f7;
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --border: #374151;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1d29 0%, #252834 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Navegação */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 29, 41, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--accent-blue);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .top-bar h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .slide-info {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.5rem 1.5rem;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* Slides */
+        .slide {
+            min-height: 100vh;
+            padding: 100px 2rem 2rem;
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Títulos */
+        .slide-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .slide-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+        }
+
+        /* Big Icon */
+        .big-icon {
+            text-align: center;
+            font-size: 10rem;
+            margin: 2rem 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Step Cards */
+        .step-card {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 15px 40px rgba(74, 158, 255, 0.2);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+            font-weight: 800;
+            font-size: 2rem;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 20px rgba(74, 158, 255, 0.4);
+        }
+
+        .step-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+        }
+
+        .step-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Terminal */
+        .terminal {
+            background: var(--bg-code);
+            border: 2px solid var(--accent-blue);
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .terminal-header {
+            background: #2d2d2d;
+            padding: 0.8rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-bottom: 1px solid #404040;
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot.red { background: #ff5f56; }
+        .terminal-dot.yellow { background: #ffbd2e; }
+        .terminal-dot.green { background: #27c93f; }
+
+        .terminal-title {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-left: auto;
+        }
+
+        .terminal-body {
+            padding: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .terminal-line {
+            margin: 0.3rem 0;
+        }
+
+        .prompt { color: var(--accent-green); }
+        .command { color: var(--accent-blue); }
+        .output { color: var(--text-secondary); }
+        .success { color: var(--accent-green); }
+        .error { color: var(--accent-red); }
+        .comment { color: #6b7280; }
+
+        /* Code Block */
+        .code-block {
+            background: var(--bg-code);
+            border: 2px solid var(--accent-purple);
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .code-header {
+            background: #2d2d2d;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-bottom: 1px solid #404040;
+        }
+
+        .code-body {
+            padding: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        .code-line {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .line-num {
+            color: #6b7280;
+            user-select: none;
+            min-width: 2rem;
+            text-align: right;
+        }
+
+        .keyword { color: #ff79c6; }
+        .string { color: #f1fa8c; }
+        .function { color: #50fa7b; }
+        .number { color: #bd93f9; }
+        .builtin { color: #8be9fd; }
+
+        /* Comparison Grid */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-box {
+            background: var(--bg-secondary);
+            border: 3px solid;
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .comparison-box.correct {
+            border-color: var(--accent-green);
+        }
+
+        .comparison-box.incorrect {
+            border-color: var(--accent-red);
+        }
+
+        .comparison-label {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .comparison-box.correct .comparison-label {
+            color: var(--accent-green);
+        }
+
+        .comparison-box.incorrect .comparison-label {
+            color: var(--accent-red);
+        }
+
+        /* Alert Boxes */
+        .alert {
+            border-left: 4px solid;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .alert-info { border-color: var(--accent-blue); }
+        .alert-warning { border-color: var(--accent-yellow); }
+        .alert-success { border-color: var(--accent-green); }
+        .alert-danger { border-color: var(--accent-red); }
+
+        .alert-title {
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .alert-info .alert-title { color: var(--accent-blue); }
+        .alert-warning .alert-title { color: var(--accent-yellow); }
+        .alert-success .alert-title { color: var(--accent-green); }
+        .alert-danger .alert-title { color: var(--accent-red); }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .info-card {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 15px 35px rgba(74, 158, 255, 0.25);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-yellow);
+            margin-bottom: 0.8rem;
+        }
+
+        .card-text {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Big Number */
+        .big-number {
+            font-size: 10rem;
+            font-weight: 800;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin: 2rem 0;
+        }
+
+        /* Footer */
+        .slide-footer {
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .footer-highlight {
+            color: var(--accent-blue);
+            font-weight: 700;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .slide-title {
+                font-size: 2.5rem;
+            }
+
+            .comparison-grid,
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .big-icon {
+                font-size: 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de Navegação -->
+    <div class="top-bar">
+        <h1>🐍 Guia Visual Python Fundamentos</h1>
+        <div class="slide-info">
+            Passo <span id="current-slide">1</span> de <span id="total-slides">8</span>
+        </div>
+        <div class="nav-controls">
+            <button class="nav-btn" id="prev-btn" onclick="prevSlide()">← Anterior</button>
+            <button class="nav-btn" id="next-btn" onclick="nextSlide()">Próximo →</button>
+        </div>
+    </div>
+
+    <!-- SLIDE 1: Título -->
+    <div class="slide active" data-slide="1">
+        <div class="container">
+            <div style="text-align: center;">
+                <div class="big-icon">🐍</div>
+                <h1 class="slide-title">Python Fundamentos</h1>
+                <p class="slide-subtitle">Guia prático passo a passo para iniciantes</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="info-card">
+                    <div class="card-icon">🎯</div>
+                    <h3 class="card-title">Objetivo</h3>
+                    <p class="card-text">
+                        Aprender a escrever seus primeiros programas em Python, trabalhar com variáveis e criar lógica de programação.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-icon">⏱️</div>
+                    <h3 class="card-title">Duração</h3>
+                    <p class="card-text">
+                        Este guia cobre aproximadamente 3 horas de conteúdo prático com exemplos reais e exercícios.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-icon">💻</div>
+                    <h3 class="card-title">Pré-requisitos</h3>
+                    <p class="card-text">
+                        Python 3 instalado, VS Code configurado, e vontade de aprender! Git/GitHub já configurado (Aula 01).
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-icon">📚</div>
+                    <h3 class="card-title">O que vamos fazer</h3>
+                    <p class="card-text">
+                        Instalar Python, escrever primeiro código, aprender variáveis, estruturas condicionais e loops.
+                    </p>
+                </div>
+            </div>
+
+            <div class="alert alert-info">
+                <div class="alert-title">📌 Importante</div>
+                <p>Siga cada passo com atenção. Teste TODOS os exemplos no seu computador. Programação se aprende fazendo!</p>
+            </div>
+
+            <div class="slide-footer">
+                <p>Desenvolvido por <span class="footer-highlight">Cláudio Ferreira Neves</span></p>
+                <p>Visualização de Dados e Business Intelligence • SENAI 2026</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: Instalação Python -->
+    <div class="slide" data-slide="2">
+        <div class="container">
+            <h1 class="slide-title">Passo 1: Instalar Python</h1>
+            <p class="slide-subtitle">Preparando o ambiente de desenvolvimento</p>
+
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3 class="step-title">Download do Python</h3>
+                <p class="step-description">
+                    Acesse: <strong>https://python.org/downloads</strong><br>
+                    Clique em "Download Python 3.12" (ou versão mais recente)<br>
+                    IMPORTANTE: Use Python 3, NÃO Python 2!
+                </p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3 class="step-title">Instalação (Windows)</h3>
+                <p class="step-description">
+                    1. Execute o instalador baixado<br>
+                    2. ✅ <strong>MARQUE "Add Python to PATH"</strong> (MUITO IMPORTANTE!)<br>
+                    3. Clique em "Install Now"<br>
+                    4. Aguarde a instalação
+                </p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3 class="step-title">Verificar Instalação</h3>
+                <p class="step-description">
+                    Abra o terminal (CMD ou PowerShell) e digite:
+                </p>
+            </div>
+
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <div class="terminal-title">Terminal</div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">C:\></span> <span class="command">python --version</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="success">Python 3.12.0</span>
+                    </div>
+                    <div class="terminal-line"></div>
+                    <div class="terminal-line">
+                        <span class="comment"># Se aparecer a versão, está instalado corretamente!</span>
+                    </div>
+                    <div class="terminal-line"></div>
+                    <div class="terminal-line">
+                        <span class="comment"># Também teste:</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt">C:\></span> <span class="command">pip --version</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="success">pip 23.3.1 from ...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-danger">
+                <div class="alert-title">⚠️ Erro Comum</div>
+                <p>
+                    Se aparecer "'python' is not recognized", você ESQUECEU de marcar "Add Python to PATH"!<br><br>
+                    <strong>Solução:</strong> Desinstale e reinstale marcando a opção.
+                </p>
+            </div>
+
+            <div class="alert alert-success">
+                <div class="alert-title">✅ Instalação Completa!</div>
+                <p>Python instalado e funcionando. Próximo passo: criar seu primeiro programa!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: Primeiro Programa -->
+    <div class="slide" data-slide="3">
+        <div class="container">
+            <h1 class="slide-title">Passo 2: Primeiro Programa</h1>
+            <p class="slide-subtitle">O famoso "Hello World"</p>
+
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3 class="step-title">Criar Pasta do Projeto</h3>
+                <p class="step-description">
+                    Crie uma pasta onde vai guardar seus códigos Python
+                </p>
+            </div>
+
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <div class="terminal-title">Terminal</div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="comment"># Navegue até a pasta do seu repositório</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt">$</span> <span class="command">cd turma-visualizacao-de-dados</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt">$</span> <span class="command">cd alunos/seu_nome</span>
+                    </div>
+                    <div class="terminal-line"></div>
+                    <div class="terminal-line">
+                        <span class="comment"># Crie pasta para exercício 02 (Python)</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt">$</span> <span class="command">mkdir exercicio_02</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt">$</span> <span class="command">cd exercicio_02</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3 class="step-title">Criar Arquivo Python</h3>
+                <p class="step-description">
+                    Abra o VS Code e crie um arquivo chamado <code>hello.py</code>
+                </p>
+            </div>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <div class="terminal-title">hello.py</div>
+                </div>
+                <div class="code-body">
+<div class="code-line"><span class="line-num">1</span><span><span class="comment"># Meu primeiro programa em Python</span></span></div>
+<div class="code-line"><span class="line-num">2</span><span><span class="builtin">print</span>(<span class="string">"Olá, mundo!"</span>)</span></div>
+<div class="code-line"><span class="line-num">3</span><span><span class="builtin">print</span>(<span class="string">"Meu nome é João Silva"</span>)</span></div>
+<div class="code-line"><span class="line-num">4</span><span><span class="builtin">print</span>(<span class="string">"Estou aprendendo Python!"</span>)</span></div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3 class="step-title">Executar o Programa</h3>
+                <p class="step-description">
+                    No terminal (dentro da pasta exercicio_02):
+                </p>
+            </div>
+
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <div class="terminal-title">Terminal</div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">$</span> <span class="command">python hello.py</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="success">Olá, mundo!</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="success">Meu nome é João Silva</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="success">Estou aprendendo Python!</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-success">
+                <div class="alert-title">🎉 Parabéns!</div>
+                <p>Você acabou de executar seu primeiro programa em Python! Cada linha com <code>print()</code> exibe uma mensagem na tela.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: Variáveis -->
+    <div class="slide" data-slide="4">
+        <div class="container">
+            <h1 class="slide-title">Passo 3: Variáveis</h1>
+            <p class="slide-subtitle">Guardando informações na memória</p>
+
+            <div class="alert alert-info">
+                <div class="alert-title">💡 O que é uma variável?</div>
+                <p>
+                    Variável é como uma "caixa" onde você guarda um valor. Essa caixa tem um nome (identificador) e pode guardar diferentes tipos de dados: números, textos, etc.
+                </p>
+            </div>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <div class="terminal-title">variaveis.py</div>
+                </div>
+                <div class="code-body">
+<div class="code-line"><span class="line-num">1</span><span><span class="comment"># Tipos de dados básicos</span></span></div>
+<div class="code-line"><span class="line-num">2</span><span></span></div>
+<div class="code-line"><span class="line-num">3</span><span><span class="comment"># Números inteiros (int)</span></span></div>
+<div class="code-line"><span class="line-num">4</span><span>idade = <span class="number">25</span></span></div>
+<div class="code-line"><span class="line-num">5</span><span>ano = <span class="number">2026</span></span></div>
+<div class="code-line"><span class="line-num">6</span><span></span></div>
+<div class="code-line"><span class="line-num">7</span><span><span class="comment"># Números decimais (float)</span></span></div>
+<div class="code-line"><span class="line-num">8</span><span>altura = <span class="number">1.75</span></span></div>
+<div class="code-line"><span class="line-num">9</span><span>preco = <span class="number">19.90</span></span></div>
+<div class="code-line"><span class="line-num">10</span><span></span></div>
+<div class="code-line"><span class="line-num">11</span><span><span class="comment"># Texto (string)</span></span></div>
+<div class="code-line"><span class="line-num">12</span><span>nome = <span class="string">"João Silva"</span></span></div>
+<div class="code-line"><span class="line-num">13</span><span>cidade = <span class="string">"São Paulo"</span></span></div>
+<div class="code-line"><span class="line-num">14</span><span></span></div>
+<div class="code-line"><span class="line-num">15</span><span><span class="comment"># Verdadeiro/Falso (bool)</span></span></div>
+<div class="code-line"><span class="line-num">16</span><span>estudante = <span class="keyword">True</span></span></div>
+<div class="code-line"><span class="line-num">17</span><span>trabalha = <span class="keyword">False</span></span></div>
+<div class="code-line"><span class="line-num">18</span><span></span></div>
+<div class="code-line"><span class="line-num">19</span><span><span class="comment"># Exibir valores</span></span></div>
+<div class="code-line"><span class="line-num">20</span><span><span class="builtin">print</span>(<span class="string">"Nome:"</span>, nome)</span></div>
+<div class="code-line"><span class="line-num">21</span><span><span class="builtin">print</span>(<span class="string">"Idade:"</span>, idade)</span></div>
+<div class="code-line"><span class="line-num">22</span><span><span class="builtin">print</span>(<span class="string">"Altura:"</span>, altura)</span></div>
+                </div>
+            </div>
+
+            <h3 style="font-size: 2rem; margin: 3rem 0 1.5rem; color: var(--accent-green);">Regras para Nomes de Variáveis</h3>
+
+            <div class="comparison-grid">
+                <div class="comparison-box correct">
+                    <div class="comparison-label">
+                        ✅ CORRETO
+                    </div>
+                    <div class="code-block" style="margin: 0;">
+                        <div class="code-body" style="padding: 1rem;">
+                            <div>nome</div>
+                            <div>idade_usuario</div>
+                            <div>preco_produto</div>
+                            <div>nota1</div>
+                            <div>total_vendas</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-box incorrect">
+                    <div class="comparison-label">
+                        ❌ ERRADO
+                    </div>
+                    <div class="code-block" style="margin: 0;">
+                        <div class="code-body" style="padding: 1rem;">
+                            <div>1nome <span class="comment"># não pode começar com número</span></div>
+                            <div>meu-nome <span class="comment"># não pode ter hífen</span></div>
+                            <div>meu nome <span class="comment"># não pode ter espaço</span></div>
+                            <div>for <span class="comment"># palavra reservada</span></div>
+                            <div>Meu@Email <span class="comment"># caracteres especiais</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-warning">
+                <div class="alert-title">📝 Convenção: snake_case</div>
+                <p>
+                    Em Python, use <strong>snake_case</strong> para variáveis:<br>
+                    • Tudo minúsculo<br>
+                    • Palavras separadas por _ (underscore)<br>
+                    • Exemplos: <code>nome_completo</code>, <code>preco_total</code>, <code>idade_usuario</code>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: Input e Operações -->
+    <div class="slide" data-slide="5">
+        <div class="container">
+            <h1 class="slide-title">Passo 4: Input e Operações</h1>
+            <p class="slide-subtitle">Recebendo dados do usuário e fazendo cálculos</p>
+
+            <h3 style="font-size: 2rem; margin: 2rem 0 1.5rem; color: var(--accent-green);">Receber Dados do Usuário</h3>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <div class="terminal-title">input_exemplo.py</div>
+                </div>
+                <div class="code-body">
+<div class="code-line"><span class="line-num">1</span><span><span class="comment"># Pedir nome do usuário</span></span></div>
+<div class="code-line"><span class="line-num">2</span><span>nome = <span class="builtin">input</span>(<span class="string">"Digite seu nome: "</span>)</span></div>
+<div class="code-line"><span class="line-num">3</span><span><span class="builtin">print</span>(<span class="string">"Olá,"</span>, nome)</span></div>
+<div class="code-line"><span class="line-num">4</span><span></span></div>
+<div class="code-line"><span class="line-num">5</span><span><span class="comment"># IMPORTANTE: input() sempre retorna STRING!</span></span></div>
+<div class="code-line"><span class="line-num">6</span><span><span class="comment"># Se precisar de número, converta:</span></span></div>
+<div class="code-line"><span class="line-num">7</span><span></span></div>
+<div class="code-line"><span class="line-num">8</span><span>idade = <span class="builtin">input</span>(<span class="string">"Digite sua idade: "</span>)  <span class="comment"># Retorna string</span></span></div>
+<div class="code-line"><span class="line-num">9</span><span>idade = <span class="builtin">int</span>(idade)  <span class="comment"># Converte para número inteiro</span></span></div>
+<div class="code-line"><span class="line-num">10</span><span></span></div>
+<div class="code-line"><span class="line-num">11</span><span><span class="comment"># Ou faça tudo em uma linha:</span></span></div>
+<div class="code-line"><span class="line-num">12</span><span>peso = <span class="builtin">float</span>(<span class="builtin">input</span>(<span class="string">"Digite seu peso (kg): "</span>))</span></div>
+                </div>
+            </div>
+
+            <h3 style="font-size: 2rem; margin: 3rem 0 1.5rem; color: var(--accent-green);">Operações Matemáticas</h3>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <div class="terminal-title">calculadora.py</div>
+                </div>
+                <div class="code-body">
+<div class="code-line"><span class="line-num">1</span><span><span class="comment"># Calculadora simples</span></span></div>
+<div class="code-line"><span class="line-num">2</span><span></span></div>
+<div class="code-line"><span class="line-num">3</span><span>n1 = <span class="builtin">float</span>(<span class="builtin">input</span>(<span class="string">"Digite o primeiro número: "</span>))</span></div>
+<div class="code-line"><span class="line-num">4</span><span>n2 = <span class="builtin">float</span>(<span class="builtin">input</span>(<span class="string">"Digite o segundo número: "</span>))</span></div>
+<div class="code-line"><span class="line-num">5</span><span></span></div>
+<div class="code-line"><span class="line-num">6</span><span>soma = n1 + n2</span></div>
+<div class="code-line"><span class="line-num">7</span><span>subtracao = n1 - n2</span></div>
+<div class="code-line"><span class="line-num">8</span><span>multiplicacao = n1 * n2</span></div>
+<div class="code-line"><span class="line-num">9</span><span>divisao = n1 / n2</span></div>
+<div class="code-line"><span class="line-num">10</span><span></span></div>
+<div class="code-line"><span class="line-num">11</span><span><span class="builtin">print</span>(<span class="string">f"Soma: <span class="builtin">{soma}</span>"</span>)</span></div>
+<div class="code-line"><span class="line-num">12</span><span><span class="builtin">print</span>(<span class="string">f"Subtração: <span class="builtin">{subtracao}</span>"</span>)</span></div>
+<div class="code-line"><span class="line-num">13</span><span><span class="builtin">print</span>(<span class="string">f"Multiplicação: <span class="builtin">{multiplicacao}</span>"</span>)</span></div>
+<div class="code-line"><span class="line-num">14</span><span><span class="builtin">print</span>(<span class="string">f"Divisão: <span class="builtin">{divisao}</span>"</span>)</span></div>
+                </div>
+            </div>
+
+            <div class="alert alert-info">
+                <div class="alert-title">💡 F-strings (Formatação Moderna)</div>
+                <p>
+                    Use <code>f"texto {variavel}"</code> para inserir variáveis dentro de strings:<br><br>
+                    <code>nome = "João"</code><br>
+                    <code>idade = 25</code><br>
+                    <code>print(f"Olá, {nome}! Você tem {idade} anos")</code><br><br>
+                    Resultado: "Olá, João! Você tem 25 anos"
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 6: Condicionais -->
+    <div class="slide" data-slide="6">
+        <div class="container">
+            <h1 class="slide-title">Passo 5: Condicionais (if/else)</h1>
+            <p class="slide-subtitle">Tomando decisões no código</p>
+
+            <div class="alert alert-info">
+                <div class="alert-title">🤔 O que são condicionais?</div>
+                <p>
+                    Condicionais permitem que o programa tome decisões baseadas em condições.<br>
+                    É como perguntar: "SE isso for verdadeiro, faça aquilo. SENÃO, faça outra coisa."
+                </p>
+            </div>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <div class="terminal-title">condicional.py</div>
+                </div>
+                <div class="code-body">
+<div class="code-line"><span class="line-num">1</span><span><span class="comment"># Exemplo 1: Verificar maioridade</span></span></div>
+<div class="code-line"><span class="line-num">2</span><span>idade = <span class="builtin">int</span>(<span class="builtin">input</span>(<span class="string">"Digite sua idade: "</span>))</span></div>
+<div class="code-line"><span class="line-num">3</span><span></span></div>
+<div class="code-line"><span class="line-num">4</span><span><span class="keyword">if</span> idade >= <span class="number">18</span>:</span></div>
+<div class="code-line"><span class="line-num">5</span><span>    <span class="builtin">print</span>(<span class="string">"Você é maior de idade"</span>)</span></div>
+<div class="code-line"><span class="line-num">6</span><span><span class="keyword">else</span>:</span></div>
+<div class="code-line"><span class="line-num">7</span><span>    <span class="builtin">print</span>(<span class="string">"Você é menor de idade"</span>)</span></div>
+<div class="code-line"><span class="line-num">8</span><span></span></div>
+<div class="code-line"><span class="line-num">9</span><span><span class="comment"># Exemplo 2: Múltiplas condições (elif)</span></span></div>
+<div class="code-line"><span class="line-num">10</span><span>nota = <span class="builtin">float</span>(<span class="builtin">input</span>(<span class="string">"Digite sua nota: "</span>))</span></div>
+<div class="code-line"><span class="line-num">11</span><span></span></div>
+<div class="code-line"><span class="line-num">12</span><span><span class="keyword">if</span> nota >= <span class="number">9.0</span>:</span></div>
+<div class="code-line"><span class="line-num">13</span><span>    <span class="builtin">print</span>(<span class="string">"Excelente!"</span>)</span></div>
+<div class="code-line"><span class="line-num">14</span><span><span class="keyword">elif</span> nota >= <span class="number">7.0</span>:</span></div>
+<div class="code-line"><span class="line-num">15</span><span>    <span class="builtin">print</span>(<span class="string">"Bom!"</span>)</span></div>
+<div class="code-line"><span class="line-num">16</span><span><span class="keyword">elif</span> nota >= <span class="number">5.0</span>:</span></div>
+<div class="code-line"><span class="line-num">17</span><span>    <span class="builtin">print</span>(<span class="string">"Regular"</span>)</span></div>
+<div class="code-line"><span class="line-num">18</span><span><span class="keyword">else</span>:</span></div>
+<div class="code-line"><span class="line-num">19</span><span>    <span class="builtin">print</span>(<span class="string">"Insuficiente"</span>)</span></div>
+                </div>
+            </div>
+
+            <div class="alert alert-danger">
+                <div class="alert-title">⚠️ ATENÇÃO: Indentação é OBRIGATÓRIA!</div>
+                <p>
+                    Em Python, os espaços no início da linha NÃO são opcionais!<br>
+                    Use sempre 4 espaços (ou 1 tab) para cada nível de indentação.<br><br>
+                    <strong>Isso está ERRADO:</strong><br>
+                    <code>if idade >= 18:</code><br>
+                    <code>print("Maior de idade")</code> ← SEM indentação = ERRO!<br><br>
+                    <strong>Isso está CERTO:</strong><br>
+                    <code>if idade >= 18:</code><br>
+                    <code>&nbsp;&nbsp;&nbsp;&nbsp;print("Maior de idade")</code> ← COM indentação
+                </p>
+            </div>
+
+            <h3 style="font-size: 2rem; margin: 3rem 0 1.5rem; color: var(--accent-green);">Operadores de Comparação</h3>
+
+            <div class="cards-grid">
+                <div class="info-card">
+                    <div class="card-title">== (igual)</div>
+                    <p class="card-text"><code>5 == 5</code> → True<br><code>5 == 3</code> → False</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-title">!= (diferente)</div>
+                    <p class="card-text"><code>5 != 3</code> → True<br><code>5 != 5</code> → False</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-title">> (maior)</div>
+                    <p class="card-text"><code>10 > 5</code> → True<br><code>3 > 10</code> → False</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-title">< (menor)</div>
+                    <p class="card-text"><code>3 < 10</code> → True<br><code>10 < 5</code> → False</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-title">>= (maior ou igual)</div>
+                    <p class="card-text"><code>5 >= 5</code> → True<br><code>3 >= 5</code> → False</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-title"><= (menor ou igual)</div>
+                    <p class="card-text"><code>5 <= 5</code> → True<br><code>10 <= 5</code> → False</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 7: Loops -->
+    <div class="slide" data-slide="7">
+        <div class="container">
+            <h1 class="slide-title">Passo 6: Loops (Repetição)</h1>
+            <p class="slide-subtitle">Repetindo ações sem copiar código</p>
+
+            <h3 style="font-size: 2rem; margin: 2rem 0 1.5rem; color: var(--accent-green);">Loop FOR (repetições definidas)</h3>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <div class="terminal-title">loop_for.py</div>
+                </div>
+                <div class="code-body">
+<div class="code-line"><span class="line-num">1</span><span><span class="comment"># Repetir 5 vezes</span></span></div>
+<div class="code-line"><span class="line-num">2</span><span><span class="keyword">for</span> i <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">5</span>):</span></div>
+<div class="code-line"><span class="line-num">3</span><span>    <span class="builtin">print</span>(<span class="string">"Contagem:"</span>, i)</span></div>
+<div class="code-line"><span class="line-num">4</span><span></span></div>
+<div class="code-line"><span class="line-num">5</span><span><span class="comment"># Saída: 0, 1, 2, 3, 4</span></span></div>
+<div class="code-line"><span class="line-num">6</span><span></span></div>
+<div class="code-line"><span class="line-num">7</span><span><span class="comment"># Tabuada do 5</span></span></div>
+<div class="code-line"><span class="line-num">8</span><span><span class="keyword">for</span> i <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">1</span>, <span class="number">11</span>):  <span class="comment"># 1 até 10</span></span></div>
+<div class="code-line"><span class="line-num">9</span><span>    resultado = <span class="number">5</span> * i</span></div>
+<div class="code-line"><span class="line-num">10</span><span>    <span class="builtin">print</span>(<span class="string">f"5 x <span class="builtin">{i}</span> = <span class="builtin">{resultado}</span>"</span>)</span></div>
+                </div>
+            </div>
+
+            <h3 style="font-size: 2rem; margin: 3rem 0 1.5rem; color: var(--accent-green);">Loop WHILE (repetições condicionais)</h3>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <div class="terminal-title">loop_while.py</div>
+                </div>
+                <div class="code-body">
+<div class="code-line"><span class="line-num">1</span><span><span class="comment"># Contador de 0 a 4</span></span></div>
+<div class="code-line"><span class="line-num">2</span><span>contador = <span class="number">0</span></span></div>
+<div class="code-line"><span class="line-num">3</span><span></span></div>
+<div class="code-line"><span class="line-num">4</span><span><span class="keyword">while</span> contador < <span class="number">5</span>:</span></div>
+<div class="code-line"><span class="line-num">5</span><span>    <span class="builtin">print</span>(<span class="string">"Contador:"</span>, contador)</span></div>
+<div class="code-line"><span class="line-num">6</span><span>    contador += <span class="number">1</span>  <span class="comment"># contador = contador + 1</span></span></div>
+<div class="code-line"><span class="line-num">7</span><span></span></div>
+<div class="code-line"><span class="line-num">8</span><span><span class="comment"># Validação de senha</span></span></div>
+<div class="code-line"><span class="line-num">9</span><span>senha_correta = <span class="string">"1234"</span></span></div>
+<div class="code-line"><span class="line-num">10</span><span>senha = <span class="string">""</span></span></div>
+<div class="code-line"><span class="line-num">11</span><span></span></div>
+<div class="code-line"><span class="line-num">12</span><span><span class="keyword">while</span> senha != senha_correta:</span></div>
+<div class="code-line"><span class="line-num">13</span><span>    senha = <span class="builtin">input</span>(<span class="string">"Digite a senha: "</span>)</span></div>
+<div class="code-line"><span class="line-num">14</span><span>    <span class="keyword">if</span> senha != senha_correta:</span></div>
+<div class="code-line"><span class="line-num">15</span><span>        <span class="builtin">print</span>(<span class="string">"Senha incorreta!"</span>)</span></div>
+<div class="code-line"><span class="line-num">16</span><span></span></div>
+<div class="code-line"><span class="line-num">17</span><span><span class="builtin">print</span>(<span class="string">"Acesso concedido!"</span>)</span></div>
+                </div>
+            </div>
+
+            <div class="alert alert-danger">
+                <div class="alert-title">⚠️ Cuidado: Loop Infinito!</div>
+                <p>
+                    Se a condição do while NUNCA ficar falsa, o programa nunca para!<br><br>
+                    <code>while True:</code><br>
+                    <code>&nbsp;&nbsp;&nbsp;&nbsp;print("Infinito!")</code><br><br>
+                    Isso trava seu programa! Sempre tenha uma forma de sair do loop.<br>
+                    (Use Ctrl+C para parar um programa travado)
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 8: Exercício Prático -->
+    <div class="slide" data-slide="8">
+        <div class="container">
+            <h1 class="slide-title">Exercício Prático</h1>
+            <p class="slide-subtitle">Crie seu programa e envie via Pull Request</p>
+
+            <div class="alert alert-success">
+                <div class="alert-title">🎯 Desafio: Sistema de Caixa</div>
+                <p>
+                    Crie um programa que simula um caixa de loja:<br><br>
+                    1. Peça nome e preço de 3 produtos<br>
+                    2. Calcule o total da compra<br>
+                    3. Se total > R$ 100, aplique 10% de desconto<br>
+                    4. Exiba o valor final formatado (com 2 casas decimais)<br><br>
+                    Salve como: <code>alunos/seu_nome/exercicio_02/caixa.py</code>
+                </p>
+            </div>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <div class="terminal-title">caixa.py (exemplo de início)</div>
+                </div>
+                <div class="code-body">
+<div class="code-line"><span class="line-num">1</span><span><span class="comment"># Sistema de Caixa - [Seu Nome]</span></span></div>
+<div class="code-line"><span class="line-num">2</span><span></span></div>
+<div class="code-line"><span class="line-num">3</span><span><span class="builtin">print</span>(<span class="string">"=== SISTEMA DE CAIXA ==="</span>)</span></div>
+<div class="code-line"><span class="line-num">4</span><span></span></div>
+<div class="code-line"><span class="line-num">5</span><span><span class="comment"># Produto 1</span></span></div>
+<div class="code-line"><span class="line-num">6</span><span>produto1 = <span class="builtin">input</span>(<span class="string">"Nome do produto 1: "</span>)</span></div>
+<div class="code-line"><span class="line-num">7</span><span>preco1 = <span class="builtin">float</span>(<span class="builtin">input</span>(<span class="string">"Preço: R$ "</span>))</span></div>
+<div class="code-line"><span class="line-num">8</span><span></span></div>
+<div class="code-line"><span class="line-num">9</span><span><span class="comment"># Continue você...</span></span></div>
+                </div>
+            </div>
+
+            <h3 style="font-size: 2rem; margin: 3rem 0 1.5rem; color: var(--accent-green);">Como Entregar</h3>
+
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <div class="terminal-title">Terminal</div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="comment"># Após criar o arquivo caixa.py</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt">$</span> <span class="command">cd turma-visualizacao-de-dados</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt">$</span> <span class="command">git add .</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt">$</span> <span class="command">git commit -m "[Seu Nome] Adiciona exercício 02 - Sistema de Caixa"</span>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt">$</span> <span class="command">git push origin main</span>
+                    </div>
+                    <div class="terminal-line"></div>
+                    <div class="terminal-line">
+                        <span class="comment"># Depois: Abra Pull Request no GitHub!</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="info-card">
+                    <div class="card-icon">📝</div>
+                    <h3 class="card-title">Exercícios Extras</h3>
+                    <p class="card-text">
+                        • Calculadora de IMC<br>
+                        • Conversor de temperaturas<br>
+                        • Jogo de adivinhação<br>
+                        • Contador de vogais
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-icon">📚</div>
+                    <h3 class="card-title">Próxima Aula</h3>
+                    <p class="card-text">
+                        Aula 03: Pandas Básico<br>
+                        Vamos aprender a trabalhar com dados em tabelas usando a biblioteca Pandas!
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-icon">💡</div>
+                    <h3 class="card-title">Dicas de Estudo</h3>
+                    <p class="card-text">
+                        • Pratique todo dia (30 min)<br>
+                        • Erre e aprenda com erros<br>
+                        • Leia código de outros<br>
+                        • Faça projetos pessoais
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-icon">🔗</div>
+                    <h3 class="card-title">Recursos</h3>
+                    <p class="card-text">
+                        • python.org/docs<br>
+                        • realpython.com<br>
+                        • stackoverflow.com<br>
+                        • youtube.com/python
+                    </p>
+                </div>
+            </div>
+
+            <div class="slide-footer">
+                <p>Desenvolvido por <span class="footer-highlight">Cláudio Ferreira Neves</span></p>
+                <p>Visualização de Dados e Business Intelligence • SENAI 2026</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 8;
+
+        function updateSlideCounter() {
+            document.getElementById('current-slide').textContent = currentSlide;
+            document.getElementById('total-slides').textContent = totalSlides;
+            
+            document.getElementById('prev-btn').disabled = currentSlide === 1;
+            document.getElementById('next-btn').disabled = currentSlide === totalSlides;
+        }
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            if (n > totalSlides) currentSlide = totalSlides;
+            if (n < 1) currentSlide = 1;
+            
+            document.querySelector(`[data-slide="${currentSlide}"]`).classList.add('active');
+            updateSlideCounter();
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        updateSlideCounter();
+    </script>
+</body>
+</html>

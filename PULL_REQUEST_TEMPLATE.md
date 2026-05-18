@@ -12,11 +12,15 @@
 
 ## Checklist obrigatório
 
-- [ ] Meus arquivos estão dentro de `alunos/meu-nome/` — nada fora dessa pasta
-- [ ] Não modifiquei arquivos de outros alunos
+- [ ] Meus arquivos estão dentro de `alunos/meu-nome/` — **nada fora dessa pasta**
+- [ ] Não modifiquei arquivos de outros alunos, aulas, exercicios ou datasets
 - [ ] Nomes de arquivo sem espaços (uso de `_` ou `-`)
 - [ ] Executei o notebook do início ao fim sem erros (`Kernel > Restart & Run All`)
-- [ ] Sincronizei meu fork com o upstream antes de abrir este PR
+- [ ] Sincronizei minha fork com o upstream antes de abrir este PR
+
+## Verificação automática
+
+Após abrir o PR, o bot **🔒 Validador de Escopo** verificará automaticamente se todos os seus arquivos estão na pasta correta. Se reprovar, leia o comentário automático para saber como corrigir.
 
 ## Observações para o professor
 

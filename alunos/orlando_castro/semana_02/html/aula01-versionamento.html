@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Cláudio Ferreira Neves">
+    <meta name="description" content="Aula completa sobre versionamento de código com Git e GitHub - Visualização de Dados e Business Intelligence T2 SENAI">
+    <title>Aula 01 - Versionamento com GitHub | Cláudio Ferreira Neves</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Cabinet+Grotesk:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --accent-green: #39ff14;
+            --accent-blue: #00d4ff;
+            --accent-purple: #c084fc;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --border: #30363d;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Background animado */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+            background: 
+                radial-gradient(circle at 20% 50%, var(--accent-green) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--accent-blue) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, var(--accent-purple) 0%, transparent 50%);
+            animation: bgPulse 15s ease-in-out infinite;
+        }
+
+        @keyframes bgPulse {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.2; }
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Navegação */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--border);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            border-color: var(--accent-green);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn.active {
+            background: var(--accent-blue);
+            color: var(--bg-dark);
+            border-color: var(--accent-blue);
+        }
+
+        /* Seções */
+        .section {
+            min-height: 100vh;
+            padding-top: 100px;
+            display: none;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Título de seção */
+        .section-title {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-weight: 800;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            animation: slideInLeft 0.8s ease-out 0.2s backwards;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        .card:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(57, 255, 20, 0.2);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .card-title {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-green);
+        }
+
+        .card-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Fluxograma */
+        .flow-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            animation: slideInRight 0.6s ease-out backwards;
+        }
+
+        .flow-step:nth-child(1) { animation-delay: 0.1s; }
+        .flow-step:nth-child(2) { animation-delay: 0.2s; }
+        .flow-step:nth-child(3) { animation-delay: 0.3s; }
+        .flow-step:nth-child(4) { animation-delay: 0.4s; }
+        .flow-step:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .flow-number {
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+            color: var(--bg-dark);
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 2rem;
+            flex-shrink: 0;
+        }
+
+        .flow-content {
+            flex: 1;
+        }
+
+        .flow-title {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-blue);
+        }
+
+        .flow-description {
+            color: var(--text-secondary);
+        }
+
+        .flow-arrow {
+            text-align: center;
+            color: var(--accent-purple);
+            font-size: 2rem;
+            margin: 1rem 0;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Diagrama comparativo */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .comparison-item {
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .comparison-item:first-child {
+            border-color: var(--accent-green);
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .comparison-item:last-child {
+            border-color: var(--accent-blue);
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .comparison-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .comparison-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .comparison-title {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .comparison-list {
+            list-style: none;
+            text-align: left;
+            color: var(--text-secondary);
+        }
+
+        .comparison-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .comparison-list li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+        }
+
+        /* Terminal de comandos */
+        .terminal {
+            background: #000;
+            border: 1px solid var(--accent-green);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-family: 'Space Mono', monospace;
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+        }
+
+        .terminal-header {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-button.red { background: #ff5f56; }
+        .terminal-button.yellow { background: #ffbd2e; }
+        .terminal-button.green { background: #27c93f; }
+
+        .terminal-line {
+            margin: 0.5rem 0;
+            animation: typewriter 0.5s steps(40) backwards;
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        .terminal-prompt {
+            color: var(--accent-green);
+        }
+
+        .terminal-command {
+            color: var(--accent-blue);
+        }
+
+        .terminal-comment {
+            color: var(--text-secondary);
+        }
+
+        /* Botões de navegação */
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4rem;
+            padding-bottom: 2rem;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+            color: var(--bg-dark);
+            border: none;
+            padding: 1rem 2rem;
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(57, 255, 20, 0.4);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Conceitos visuais */
+        .concept-visual {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .git-graph {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .commit-node {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-weight: 800;
+            color: var(--bg-dark);
+            animation: pulse 2s infinite;
+            position: relative;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .commit-node::after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            width: 20px;
+            height: 2px;
+            background: var(--accent-purple);
+        }
+
+        .commit-node:last-child::after {
+            display: none;
+        }
+
+        .branch-visual {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--bg-card);
+            border-radius: 8px;
+        }
+
+        .branch-line {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+            gap: 1rem;
+        }
+
+        .branch-name {
+            padding: 0.5rem 1rem;
+            background: var(--accent-green);
+            color: var(--bg-dark);
+            border-radius: 4px;
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-weight: 600;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .branch-commits {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .mini-commit {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            border: 2px solid var(--accent-purple);
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .navigation-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Loading screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeOut 1s ease-out 2s forwards;
+        }
+
+        @keyframes fadeOut {
+            to { opacity: 0; pointer-events: none; }
+        }
+
+        .loading-content {
+            text-align: center;
+        }
+
+        .loading-logo {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-weight: 800;
+            font-size: 4rem;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glitch 1s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% { text-shadow: 0 0 10px rgba(57, 255, 20, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
+        }
+
+        .loading-text {
+            color: var(--text-secondary);
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">GIT SENAI</div>
+            <div class="loading-text">Carregando aula...</div>
+        </div>
+    </div>
+
+    <!-- Background animado -->
+    <div class="animated-bg"></div>
+
+    <!-- Navegação -->
+    <nav>
+        <div class="nav-content">
+            <div class="nav-logo">AULA 01 • VERSIONAMENTO</div>
+            <div class="nav-buttons">
+                <button class="nav-btn active" data-section="intro">Introdução</button>
+                <button class="nav-btn" data-section="conceitos">Conceitos</button>
+                <button class="nav-btn" data-section="git-vs-github">Git vs GitHub</button>
+                <button class="nav-btn" data-section="fundamentos">Fundamentos</button>
+                <button class="nav-btn" data-section="instalacao">Instalação</button>
+                <button class="nav-btn" data-section="pratica">Prática</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- SEÇÃO 1: INTRODUÇÃO -->
+        <section id="intro" class="section active">
+            <h1 class="section-title">Versionamento com GitHub</h1>
+            <p class="section-subtitle">Dia 1 • 3 horas • Nível Iniciante Absoluto</p>
+
+            <div class="card" style="background: linear-gradient(135deg, rgba(57, 255, 20, 0.15), rgba(0, 212, 255, 0.15)); border: 2px solid var(--accent-green); margin-bottom: 3rem;">
+                <h3 class="card-title" style="font-size: 1.8rem; margin-bottom: 1rem;">👋 Bem-vindos!</h3>
+                <p class="card-text" style="font-size: 1.1rem; line-height: 1.8;">
+                    Esta é sua primeira aula de versionamento de código. Não se preocupe se nunca ouviu falar de Git ou GitHub antes — 
+                    vamos começar do ZERO absoluto. Ao final desta aula, você vai entender como programadores profissionais 
+                    guardam, organizam e compartilham código no mundo todo.
+                </p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card" style="animation-delay: 0.1s;">
+                    <div class="card-icon">📸</div>
+                    <h3 class="card-title">O que você vai aprender</h3>
+                    <p class="card-text">
+                        <strong>Versionamento é como tirar "fotografias" do seu código ao longo do tempo.</strong><br><br>
+                        Imagine que você está escrevendo um trabalho de faculdade. Você salva como:<br>
+                        • TCC_versao1.doc<br>
+                        • TCC_versao2.doc<br>
+                        • TCC_FINAL.doc<br>
+                        • TCC_FINAL_AGORA_VAI.doc<br><br>
+                        <strong>Com versionamento, você tem apenas UM arquivo</strong> com todo o histórico de mudanças!
+                    </p>
+                </div>
+
+                <div class="card" style="animation-delay: 0.2s;">
+                    <div class="card-icon">🎯</div>
+                    <h3 class="card-title">Objetivo da Aula</h3>
+                    <p class="card-text">
+                        Ao final desta aula você será capaz de:<br><br>
+                        ✅ Entender o que é versionamento<br>
+                        ✅ Diferenciar Git de GitHub<br>
+                        ✅ Instalar e configurar as ferramentas<br>
+                        ✅ Criar seu primeiro repositório<br>
+                        ✅ Fazer commits (salvar versões)<br>
+                        ✅ Trabalhar com branches<br>
+                        ✅ Enviar código para a nuvem (GitHub)
+                    </p>
+                </div>
+
+                <div class="card" style="animation-delay: 0.3s;">
+                    <div class="card-icon">💼</div>
+                    <h3 class="card-title">Por que isso importa?</h3>
+                    <p class="card-text">
+                        <strong>TODO programador profissional usa Git TODOS os dias.</strong><br><br>
+                        • É a ferramenta #1 de colaboração em desenvolvimento<br>
+                        • Empresas EXIGEM conhecimento em Git<br>
+                        • Sem Git, não dá pra trabalhar em equipe<br>
+                        • Seu portfólio fica no GitHub<br>
+                        • Recrutadores olham seu GitHub antes de contratar<br><br>
+                        <strong>Aprender Git agora = investimento na sua carreira!</strong>
+                    </p>
+                </div>
+            </div>
+
+            <div class="concept-visual" style="margin-top: 3rem;">
+                <h2 style="font-family: 'Cabinet Grotesk', sans-serif; font-size: 2rem; margin-bottom: 2rem;">
+                    🤔 Antes do Git: O Caos
+                </h2>
+                <div class="card">
+                    <p style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.1rem;">
+                        Imagine que você está desenvolvendo um site de vendas. Veja como seria SEM versionamento:
+                    </p>
+                    <div style="background: #1a1a1a; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ff5555; margin: 1rem 0;">
+                        <p style="color: #ff5555; margin: 0.5rem 0;">📁 site_vendas_v1.html</p>
+                        <p style="color: #ff5555; margin: 0.5rem 0;">📁 site_vendas_v2_com_carrinho.html</p>
+                        <p style="color: #ff5555; margin: 0.5rem 0;">📁 site_vendas_v3_bugfix.html</p>
+                        <p style="color: #ff5555; margin: 0.5rem 0;">📁 site_vendas_FINAL.html</p>
+                        <p style="color: #ff5555; margin: 0.5rem 0;">📁 site_vendas_FINAL_MESMO.html</p>
+                        <p style="color: #ff5555; margin: 0.5rem 0;">📁 site_vendas_FINAL_REVISADO.html</p>
+                        <p style="color: #ff5555; margin: 0.5rem 0;">📁 site_vendas_AGORA_VAI.html</p>
+                    </div>
+                    <p style="color: var(--text-secondary); margin-top: 1rem;">
+                        ❌ Qual é a versão atual?<br>
+                        ❌ O que mudou entre versões?<br>
+                        ❌ Como voltar se quebrar algo?<br>
+                        ❌ Como duas pessoas trabalham juntas?<br>
+                        ❌ Qual versão está no ar (em produção)?
+                    </p>
+                </div>
+            </div>
+
+            <div class="concept-visual">
+                <h2 style="font-family: 'Cabinet Grotesk', sans-serif; font-size: 2rem; margin-bottom: 2rem;">
+                    ✅ Com Git: Organização Profissional
+                </h2>
+                <div class="card" style="border: 2px solid var(--accent-green);">
+                    <p style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.1rem;">
+                        Com versionamento, você tem:
+                    </p>
+                    <div style="background: #1a1a1a; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--accent-green); margin: 1rem 0;">
+                        <p style="color: var(--accent-green); margin: 0.5rem 0; font-weight: 600;">📁 site_vendas.html (arquivo único)</p>
+                        <p style="color: var(--text-secondary); margin-left: 2rem; margin: 0.3rem 0; font-size: 0.9rem;">
+                            ↳ Commit 1: "Criação inicial do site" (10/01/2026 - João)
+                        </p>
+                        <p style="color: var(--text-secondary); margin-left: 2rem; margin: 0.3rem 0; font-size: 0.9rem;">
+                            ↳ Commit 2: "Adicionado carrinho de compras" (15/01/2026 - Maria)
+                        </p>
+                        <p style="color: var(--text-secondary); margin-left: 2rem; margin: 0.3rem 0; font-size: 0.9rem;">
+                            ↳ Commit 3: "Corrigido bug no cálculo de frete" (20/01/2026 - João)
+                        </p>
+                        <p style="color: var(--text-secondary); margin-left: 2rem; margin: 0.3rem 0; font-size: 0.9rem;">
+                            ↳ Commit 4: "Adicionado pagamento PIX" (25/01/2026 - Pedro)
+                        </p>
+                        <p style="color: var(--accent-blue); margin-left: 2rem; margin: 0.3rem 0; font-size: 0.9rem; font-weight: 600;">
+                            ↳ Commit 5: "Versão final para lançamento" (30/01/2026 - João) ← ATUAL
+                        </p>
+                    </div>
+                    <p style="color: var(--text-primary); margin-top: 1rem;">
+                        ✅ Histórico completo de TODAS as mudanças<br>
+                        ✅ Você vê QUEM mudou, O QUE mudou e QUANDO<br>
+                        ✅ Volta para qualquer versão com 1 comando<br>
+                        ✅ Várias pessoas podem trabalhar ao mesmo tempo<br>
+                        ✅ Se algo quebrar, você sabe exatamente quando e onde
+                    </p>
+                </div>
+            </div>
+
+            <div class="concept-visual">
+                <h2 style="font-family: 'Cabinet Grotesk', sans-serif; font-size: 2rem; margin-bottom: 2rem;">
+                    Histórico Visual de Versões (Commits)
+                </h2>
+                <div class="git-graph">
+                    <div class="commit-node" style="animation-delay: 0.1s;">v1</div>
+                    <div class="commit-node" style="animation-delay: 0.2s;">v2</div>
+                    <div class="commit-node" style="animation-delay: 0.3s;">v3</div>
+                    <div class="commit-node" style="animation-delay: 0.4s;">v4</div>
+                    <div class="commit-node" style="animation-delay: 0.5s;">atual</div>
+                </div>
+                <p style="color: var(--text-secondary); margin-top: 2rem; text-align: center; line-height: 1.8;">
+                    Cada círculo representa um <strong style="color: var(--accent-green);">"commit"</strong> (fotografia do código).<br>
+                    Você pode <strong>voltar para QUALQUER versão</strong> a qualquer momento!<br>
+                    É como ter uma máquina do tempo para o seu código. ⏰
+                </p>
+            </div>
+
+            <div class="card" style="background: linear-gradient(135deg, rgba(192, 132, 252, 0.1), rgba(57, 255, 20, 0.1)); border: 2px solid var(--accent-purple); margin-top: 3rem;">
+                <div class="card-icon">💡</div>
+                <h3 class="card-title">Exemplo Real do Dia a Dia</h3>
+                <p class="card-text" style="line-height: 1.8;">
+                    <strong>Cenário:</strong> Você está desenvolvendo um aplicativo de pedidos para uma lanchonete.<br><br>
+                    
+                    <strong>Segunda-feira:</strong> Você cria a tela de login. Faz um commit: "Adiciona tela de login"<br>
+                    <strong>Terça-feira:</strong> Adiciona o menu de produtos. Commit: "Adiciona menu de produtos"<br>
+                    <strong>Quarta-feira:</strong> Adiciona carrinho de compras. Commit: "Adiciona carrinho"<br>
+                    <strong>Quinta-feira:</strong> Você muda a cor do botão e o app para de funcionar! 😱<br><br>
+                    
+                    <strong style="color: var(--accent-green);">Com Git:</strong> Você simplesmente volta para o commit de quarta-feira (que funcionava) 
+                    e descobre que a mudança de cor causou um conflito com outro código. Você corrige e faz novo commit!<br><br>
+                    
+                    <strong style="color: var(--accent-blue);">Total de tempo perdido:</strong> 5 minutos<br>
+                    <strong style="color: var(--accent-purple);">Sem Git:</strong> Você gastaria HORAS tentando lembrar o que mudou e refazendo código.
+                </p>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="btn" disabled>← Anterior</button>
+                <button class="btn" onclick="navigateToSection('conceitos')">Próximo: Conceitos →</button>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 2: CONCEITOS -->
+        <section id="conceitos" class="section">
+            <h1 class="section-title">O que é Versionamento?</h1>
+            <p class="section-subtitle">Entenda o conceito fundamental</p>
+
+            <div class="flow-container">
+                <h2 style="font-family: 'Cabinet Grotesk', sans-serif; font-size: 2rem; margin-bottom: 2rem; color: var(--accent-green);">
+                    Analogia do Mundo Real
+                </h2>
+                
+                <div class="card">
+                    <div class="card-icon">📄</div>
+                    <h3 class="card-title">Trabalhando sem versionamento (BAGUNÇA)</h3>
+                    <p class="card-text" style="margin-bottom: 1rem;">Imagine que você está escrevendo um TCC:</p>
+                    <ul style="color: var(--text-secondary); margin-left: 2rem;">
+                        <li>TCC_versao1.doc</li>
+                        <li>TCC_versao2.doc</li>
+                        <li>TCC_versao2_revisado.doc</li>
+                        <li>TCC_FINAL.doc</li>
+                        <li>TCC_FINAL_FINAL.doc</li>
+                        <li>TCC_FINAL_AGORA_VAI.doc</li>
+                        <li>TCC_FINAL_REVISADO_PROFESSORA.doc</li>
+                    </ul>
+                    <p class="card-text" style="margin-top: 1rem;">
+                        ❌ Qual é a versão atual? <br>
+                        ❌ O que mudou entre as versões? <br>
+                        ❌ Como voltar para uma versão que funcionava?
+                    </p>
+                </div>
+
+                <div class="flow-arrow">↓</div>
+
+                <div class="card">
+                    <div class="card-icon">✅</div>
+                    <h3 class="card-title">Trabalhando com versionamento (ORGANIZADO)</h3>
+                    <p class="card-text">
+                        Você tem apenas <strong>UM arquivo: TCC.doc</strong><br><br>
+                        ✅ Histórico completo de TODAS as mudanças<br>
+                        ✅ Você vê QUEM mudou, O QUE mudou e QUANDO<br>
+                        ✅ Volta para qualquer versão com 1 clique<br>
+                        ✅ Várias pessoas podem editar ao mesmo tempo sem conflito
+                    </p>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🔄</div>
+                    <h3 class="card-title">Principais Benefícios</h3>
+                    <ul style="color: var(--text-secondary); list-style: none;">
+                        <li style="margin: 0.5rem 0;">📌 Histórico completo de mudanças</li>
+                        <li style="margin: 0.5rem 0;">🔙 Voltar para versões anteriores</li>
+                        <li style="margin: 0.5rem 0;">👥 Trabalho em equipe organizado</li>
+                        <li style="margin: 0.5rem 0;">🐛 Identificar quando/onde bugs surgiram</li>
+                        <li style="margin: 0.5rem 0;">🚀 Deploy de código com segurança</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🎓</div>
+                    <h3 class="card-title">Exemplo Prático</h3>
+                    <p class="card-text">
+                        Imagine que você está desenvolvendo um site. Na versão 5, você adiciona uma nova funcionalidade 
+                        e o site para de funcionar. Com versionamento, você simplesmente volta para a versão 4 
+                        (que funcionava) enquanto descobre o problema. <strong>Sem pânico, sem perda de código!</strong>
+                    </p>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="btn" onclick="navigateToSection('intro')">← Introdução</button>
+                <button class="btn" onclick="navigateToSection('git-vs-github')">Próximo: Git vs GitHub →</button>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: GIT VS GITHUB -->
+        <section id="git-vs-github" class="section">
+            <h1 class="section-title">Git ≠ GitHub</h1>
+            <p class="section-subtitle">A confusão que TODO iniciante faz (e agora você não vai fazer!)</p>
+
+            <div class="comparison">
+                <div class="comparison-item">
+                    <div class="comparison-icon">🔧</div>
+                    <h2 class="comparison-title" style="color: var(--accent-green);">GIT</h2>
+                    <ul class="comparison-list">
+                        <li>É um SOFTWARE que você instala no PC</li>
+                        <li>Funciona OFFLINE (não precisa de internet)</li>
+                        <li>Controla versões LOCALMENTE</li>
+                        <li>Criado por Linus Torvalds em 2005</li>
+                        <li>É a FERRAMENTA que faz o versionamento</li>
+                        <li>Gratuito e open source</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-item">
+                    <div class="comparison-icon">☁️</div>
+                    <h2 class="comparison-title" style="color: var(--accent-blue);">GITHUB</h2>
+                    <ul class="comparison-list">
+                        <li>É um SITE na internet (github.com)</li>
+                        <li>Precisa de INTERNET para funcionar</li>
+                        <li>Guarda repositórios na NUVEM</li>
+                        <li>Criado em 2008, comprado pela Microsoft</li>
+                        <li>É o "Google Drive" para código</li>
+                        <li>Permite colaboração entre desenvolvedores</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="concept-visual">
+                <h2 style="font-family: 'Cabinet Grotesk', sans-serif; font-size: 2rem; margin-bottom: 2rem;">
+                    Analogia Perfeita
+                </h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <h3 class="card-title" style="color: var(--accent-green);">Git = Microsoft Word</h3>
+                        <p class="card-text">
+                            Software instalado no seu computador que você usa para criar e editar documentos localmente.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-title" style="color: var(--accent-blue);">GitHub = OneDrive</h3>
+                        <p class="card-text">
+                            Serviço na nuvem onde você guarda e compartilha esses documentos com outras pessoas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">🌍 Outros serviços similares ao GitHub</h3>
+                <p class="card-text">
+                    • <strong>GitLab</strong> - Alternativa popular, muito usado em empresas<br>
+                    • <strong>Bitbucket</strong> - Da Atlassian (mesma empresa do Jira)<br>
+                    • <strong>Azure DevOps</strong> - Da Microsoft<br><br>
+                    Mas o GitHub é o mais popular e usado pela comunidade open source!
+                </p>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="btn" onclick="navigateToSection('conceitos')">← Conceitos</button>
+                <button class="btn" onclick="navigateToSection('fundamentos')">Próximo: Fundamentos →</button>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4: FUNDAMENTOS -->
+        <section id="fundamentos" class="section">
+            <h1 class="section-title">Conceitos Fundamentais</h1>
+            <p class="section-subtitle">Os 4 pilares que você precisa dominar</p>
+
+            <div class="flow-container">
+                <div class="flow-step">
+                    <div class="flow-number">1</div>
+                    <div class="flow-content">
+                        <h3 class="flow-title">📁 REPOSITÓRIO (Repo)</h3>
+                        <p class="flow-description">
+                            É a PASTA do seu projeto. Dentro dela fica todo o código + histórico de versões.<br><br>
+                            • <strong>Repositório Local</strong> = pasta no seu computador<br>
+                            • <strong>Repositório Remoto</strong> = pasta lá no GitHub (nuvem)
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-number">2</div>
+                    <div class="flow-content">
+                        <h3 class="flow-title">📸 COMMIT</h3>
+                        <p class="flow-description">
+                            É uma "fotografia" do código em um momento específico. Cada commit tem:<br><br>
+                            • Mensagem explicando o que mudou<br>
+                            • Data e hora<br>
+                            • Nome de quem fez<br>
+                            • Quais arquivos foram alterados
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-number">3</div>
+                    <div class="flow-content">
+                        <h3 class="flow-title">🌿 BRANCH (Ramificação)</h3>
+                        <p class="flow-description">
+                            É como criar uma "cópia paralela" do código para testar coisas novas sem estragar o código principal.<br><br>
+                            • <strong>main</strong> = branch principal (código funcionando)<br>
+                            • <strong>develop</strong> = branch de desenvolvimento<br>
+                            • <strong>feature/nova-funcionalidade</strong> = branch para funcionalidade específica
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-number">4</div>
+                    <div class="flow-content">
+                        <h3 class="flow-title">🔀 GITFLOW</h3>
+                        <p class="flow-description">
+                            É uma METODOLOGIA de organização de branches. Um jeito padronizado de nomear e usar branches 
+                            para que todo o time trabalhe de forma organizada e sem conflitos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="branch-visual">
+                <h2 style="font-family: 'Cabinet Grotesk', sans-serif; font-size: 1.8rem; margin-bottom: 2rem; color: var(--accent-purple);">
+                    Estrutura de Branches (GitFlow)
+                </h2>
+                <div class="branch-line">
+                    <div class="branch-name" style="background: var(--accent-green);">main</div>
+                    <div class="branch-commits">
+                        <div class="mini-commit"></div>
+                        <div class="mini-commit"></div>
+                        <div class="mini-commit"></div>
+                    </div>
+                    <span style="color: var(--text-secondary);">← Código em produção (no ar)</span>
+                </div>
+                <div class="flow-arrow" style="font-size: 1.5rem;">↑ merge</div>
+                <div class="branch-line">
+                    <div class="branch-name" style="background: var(--accent-blue);">develop</div>
+                    <div class="branch-commits">
+                        <div class="mini-commit"></div>
+                        <div class="mini-commit"></div>
+                        <div class="mini-commit"></div>
+                        <div class="mini-commit"></div>
+                    </div>
+                    <span style="color: var(--text-secondary);">← Desenvolvimento ativo</span>
+                </div>
+                <div class="flow-arrow" style="font-size: 1.5rem;">↑ merge</div>
+                <div class="branch-line">
+                    <div class="branch-name" style="background: var(--accent-purple);">feature/login</div>
+                    <div class="branch-commits">
+                        <div class="mini-commit"></div>
+                        <div class="mini-commit"></div>
+                    </div>
+                    <span style="color: var(--text-secondary);">← Funcionalidade específica</span>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="btn" onclick="navigateToSection('git-vs-github')">← Git vs GitHub</button>
+                <button class="btn" onclick="navigateToSection('instalacao')">Próximo: Instalação →</button>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 5: INSTALAÇÃO -->
+        <section id="instalacao" class="section">
+            <h1 class="section-title">Instalação das Ferramentas</h1>
+            <p class="section-subtitle">Passo a passo completo e sem erro</p>
+
+            <div class="flow-container">
+                <h2 style="font-family: 'Cabinet Grotesk', sans-serif; font-size: 2rem; margin-bottom: 2rem; color: var(--accent-green);">
+                    PASSO 1: Instalar Git Bash
+                </h2>
+                
+                <div class="flow-step">
+                    <div class="flow-number">1</div>
+                    <div class="flow-content">
+                        <h3 class="flow-title">Baixar o instalador</h3>
+                        <p class="flow-description">
+                            Acesse: <strong style="color: var(--accent-blue);">https://git-scm.com/downloads</strong><br>
+                            Clique em "Download for Windows" (ou seu sistema operacional)
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-number">2</div>
+                    <div class="flow-content">
+                        <h3 class="flow-title">Executar instalador</h3>
+                        <p class="flow-description">
+                            ⚠️ <strong>IMPORTANTE:</strong> Use as opções PADRÃO (recomendadas)<br>
+                            ✅ Marque "Git Bash Here" (permite abrir terminal Git em qualquer pasta)<br>
+                            ✅ Escolha VS Code como editor padrão
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-number">3</div>
+                    <div class="flow-content">
+                        <h3 class="flow-title">Testar instalação</h3>
+                        <div class="terminal">
+                            <div class="terminal-header">
+                                <div class="terminal-button red"></div>
+                                <div class="terminal-button yellow"></div>
+                                <div class="terminal-button green"></div>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">$</span> 
+                                <span class="terminal-command">git --version</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span style="color: var(--accent-green);">git version 2.43.0</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-comment"># ✅ Se aparecer a versão, instalou corretamente!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flow-container">
+                <h2 style="font-family: 'Cabinet Grotesk', sans-serif; font-size: 2rem; margin-bottom: 2rem; color: var(--accent-blue);">
+                    PASSO 2: Instalar GitHub Desktop
+                </h2>
+                
+                <div class="flow-step">
+                    <div class="flow-number">1</div>
+                    <div class="flow-content">
+                        <h3 class="flow-title">Baixar GitHub Desktop</h3>
+                        <p class="flow-description">
+                            Acesse: <strong style="color: var(--accent-green);">https://desktop.github.com/</strong><br>
+                            Interface gráfica (visual) para usar o Git - MUITO mais fácil para iniciantes!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-number">2</div>
+                    <div class="flow-content">
+                        <h3 class="flow-title">Criar conta no GitHub</h3>
+                        <p class="flow-description">
+                            Se você NÃO tem conta:<br>
+                            • Clique em "Create your free account"<br>
+                            • Preencha: nome de usuário, email, senha<br>
+                            • Confirme o email que o GitHub vai enviar<br>
+                            • Faça login no GitHub Desktop
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-number">3</div>
+                    <div class="flow-content">
+                        <h3 class="flow-title">Pronto para usar!</h3>
+                        <p class="flow-description">
+                            Agora você tem:<br>
+                            ✅ Git instalado (comandos no terminal)<br>
+                            ✅ GitHub Desktop (interface visual)<br>
+                            ✅ Conta no GitHub (para guardar código na nuvem)
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="btn" onclick="navigateToSection('fundamentos')">← Fundamentos</button>
+                <button class="btn" onclick="navigateToSection('pratica')">Próximo: Prática →</button>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 6: PRÁTICA -->
+        <section id="pratica" class="section">
+            <h1 class="section-title">Fluxo Profissional da Turma</h1>
+            <p class="section-subtitle">Como trabalharemos com Git nesta turma (igual ao mercado!)</p>
+
+            <div class="card" style="background: linear-gradient(135deg, rgba(57, 255, 20, 0.1), rgba(0, 212, 255, 0.1)); border: 2px solid var(--accent-green); margin-bottom: 3rem;">
+                <h3 class="card-title" style="font-size: 1.8rem;">🎯 Repositório da Turma</h3>
+                <p class="card-text" style="font-size: 1.2rem; color: var(--text-primary);">
+                    <strong style="color: var(--accent-blue);">github.com/professor/turma-visualizacao-dados-bi-t2</strong>
+                </p>
+                <p class="card-text" style="margin-top: 1rem;">
+                    ⚠️ <strong>REGRA IMPORTANTE:</strong> NINGUÉM commita direto na branch main!<br>
+                    Todo código será entregue via <strong style="color: var(--accent-green);">Pull Request (PR)</strong>
+                </p>
+            </div>
+
+            <div class="concept-visual" style="margin-bottom: 3rem;">
+                <h2 style="font-family: 'Cabinet Grotesk', sans-serif; font-size: 2rem; margin-bottom: 2rem; color: var(--accent-purple);">
+                    📁 Estrutura do Repositório
+                </h2>
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-button red"></div>
+                        <div class="terminal-button yellow"></div>
+                        <div class="terminal-button green"></div>
+                    </div>
+                    <div class="terminal-line">turma-visualizacao-dados-bi-t2/</div>
+                    <div class="terminal-line">│</div>
+                    <div class="terminal-line">├── <span style="color: var(--accent-green);">README.md</span> <span class="terminal-comment"># Informações da turma</span></div>
+                    <div class="terminal-line">├── <span style="color: var(--accent-green);">CONTRIBUTING.md</span> <span class="terminal-comment"># Como contribuir</span></div>
+                    <div class="terminal-line">├── <span style="color: var(--accent-green);">.gitignore</span> <span class="terminal-comment"># Arquivos ignorados</span></div>
+                    <div class="terminal-line">│</div>
+                    <div class="terminal-line">├── 📂 <span style="color: var(--accent-blue);">aulas/</span> <span class="terminal-comment"># Material das aulas</span></div>
+                    <div class="terminal-line">│   ├── aula_01_intro/</div>
+                    <div class="terminal-line">│   ├── aula_02_git/</div>
+                    <div class="terminal-line">│   └── aula_03_python/</div>
+                    <div class="terminal-line">│</div>
+                    <div class="terminal-line">├── 📂 <span style="color: var(--accent-blue);">exercicios/</span> <span class="terminal-comment"># Exercícios das aulas</span></div>
+                    <div class="terminal-line">│   ├── exercicio_01/</div>
+                    <div class="terminal-line">│   └── exercicio_02/</div>
+                    <div class="terminal-line">│</div>
+                    <div class="terminal-line">├── 📂 <span style="color: var(--accent-blue);">datasets/</span> <span class="terminal-comment"># Bases de dados para prática</span></div>
+                    <div class="terminal-line">│</div>
+                    <div class="terminal-line">├── 📂 <span style="color: var(--accent-blue);">alunos/</span> <span class="terminal-comment"># ← AQUI VOCÊ VAI TRABALHAR!</span></div>
+                    <div class="terminal-line">│   ├── README.md</div>
+                    <div class="terminal-line">│   ├── joao_silva/</div>
+                    <div class="terminal-line">│   ├── maria_santos/</div>
+                    <div class="terminal-line">│   └── <span style="color: var(--accent-green);">SEU_NOME/</span> <span class="terminal-comment"># ← Sua pasta pessoal</span></div>
+                    <div class="terminal-line">│</div>
+                    <div class="terminal-line">└── 📂 <span style="color: var(--accent-blue);">projetos/</span> <span class="terminal-comment"># Projetos finais</span></div>
+                </div>
+            </div>
+
+            <div class="flow-container">
+                <h2 style="font-family: 'Cabinet Grotesk', sans-serif; font-size: 2rem; margin-bottom: 2rem; color: var(--accent-green);">
+                    🔄 Fluxo de Trabalho: Fork → PR
+                </h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                    Este é o fluxo PROFISSIONAL usado em empresas como Google, Microsoft, Meta. 
+                    É como projetos open-source trabalham (Linux, Python, React, etc)
+                </p>
+                
+                <div class="flow-step">
+                    <div class="flow-number">1</div>
+                    <div class="flow-content">
+                        <h3 class="flow-title">🍴 Fazer FORK do repositório da turma</h3>
+                        <p class="flow-description">
+                            No GitHub, clique no botão <strong>"Fork"</strong> (canto superior direito)<br>
+                            Isso cria uma CÓPIA do repositório da turma na sua conta<br>
+                            Agora você tem: <code>github.com/SEU_USUARIO/turma-visualizacao-dados-bi-t2</code>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flow-arrow">↓</div>
+
+                <div class="flow-step">
+                    <div class="flow-number">2</div>
+                    <div class="flow-content">
+                        <h3 class="flow-title">📥 Clonar SEU FORK para o computador</h3>
+                        <div class="terminal" style="margin-top: 1rem;">
+                            <div class="terminal-header">
+                                <div class="terminal-button red"></div>
+                                <div class="terminal-button yellow"></div>
+                                <div class="terminal-button green"></div>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">$</span> 
+                                <span class="terminal-command">git clone https://github.com/SEU_USUARIO/turma-visualizacao-dados-bi-t2.git</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">$</span> 
+                                <span class="terminal-command">cd turma-visualizacao-dados-bi-t2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-arrow">↓</div>
+
+                <div class="flow-step">
+                    <div class="flow-number">3</div>
+                    <div class="flow-content">
+                        <h3 class="flow-title">📝 Criar SUA pasta e adicionar código</h3>
+                        <div class="terminal" style="margin-top: 1rem;">
+                            <div class="terminal-header">
+                                <div class="terminal-button red"></div>
+                                <div class="terminal-button yellow"></div>
+                                <div class="terminal-button green"></div>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-comment"># Navegue até a pasta alunos</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">$</span> 
+                                <span class="terminal-command">cd alunos/</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">$</span> 
+                                <span class="terminal-command">mkdir joao_silva</span>
+                                <span class="terminal-comment"> # Use seu nome (sem espaços!)</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">$</span> 
+                                <span class="terminal-command">cd joao_silva/</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-comment"># Crie seus arquivos aqui</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">$</span> 
+                                <span class="terminal-command">code exercicio_01.py</span>
+                                <span class="terminal-comment"> # Abre no VS Code</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-arrow">↓</div>
+
+                <div class="flow-step">
+                    <div class="flow-number">4</div>
+                    <div class="flow-content">
+                        <h3 class="flow-title">💾 Fazer commit das mudanças</h3>
+                        <div class="terminal" style="margin-top: 1rem;">
+                            <div class="terminal-header">
+                                <div class="terminal-button red"></div>
+                                <div class="terminal-button yellow"></div>
+                                <div class="terminal-button green"></div>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">$</span> 
+                                <span class="terminal-command">git add .</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">$</span> 
+                                <span class="terminal-command">git commit -m "Adiciona exercício 01 - João Silva"</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">$</span> 
+                                <span class="terminal-command">git push origin main</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-arrow">↓</div>
+
+                <div class="flow-step">
+                    <div class="flow-number">5</div>
+                    <div class="flow-content">
+                        <h3 class="flow-title">🔀 Criar PULL REQUEST</h3>
+                        <p class="flow-description">
+                            1. Vá no GitHub, no SEU fork<br>
+                            2. Clique em <strong>"Pull Request"</strong><br>
+                            3. Clique em <strong>"New Pull Request"</strong><br>
+                            4. Escreva um título claro: <em>"[João Silva] Exercício 01 - Sistema de Cadastro"</em><br>
+                            5. Na descrição, explique o que você fez<br>
+                            6. Clique em <strong>"Create Pull Request"</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flow-arrow">↓</div>
+
+                <div class="flow-step">
+                    <div class="flow-number">6</div>
+                    <div class="flow-content">
+                        <h3 class="flow-title">👨‍🏫 Professor revisa e aprova (ou pede correção)</h3>
+                        <p class="flow-description">
+                            O professor vai:<br>
+                            • Revisar seu código<br>
+                            • Fazer comentários se necessário<br>
+                            • Pedir correções (se houver problemas)<br>
+                            • <strong>APROVAR e fazer merge</strong> quando estiver OK<br><br>
+                            Assim que for aprovado, seu código entra no repositório principal! 🎉
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card" style="border: 2px solid var(--accent-green);">
+                    <div class="card-icon">✅</div>
+                    <h3 class="card-title">Por que fazemos assim?</h3>
+                    <p class="card-text">
+                        <strong>Governança:</strong> Professor controla qualidade<br>
+                        <strong>Code Review:</strong> Feedback antes de aprovar<br>
+                        <strong>Histórico:</strong> Todas as mudanças rastreadas<br>
+                        <strong>Mercado:</strong> É EXATAMENTE assim que empresas trabalham<br>
+                        <strong>Portfolio:</strong> Seus PRs ficam no GitHub para recrutadores verem!
+                    </p>
+                </div>
+
+                <div class="card" style="border: 2px solid var(--accent-blue);">
+                    <div class="card-icon">🚫</div>
+                    <h3 class="card-title">O que NÃO fazer</h3>
+                    <p class="card-text">
+                        ❌ Clonar o repositório original (clone do professor)<br>
+                        ❌ Tentar fazer push direto na main<br>
+                        ❌ Criar repositório próprio separado<br>
+                        ❌ Enviar código por email/WhatsApp<br>
+                        ❌ Copiar código de colegas sem citar fonte
+                    </p>
+                </div>
+            </div>
+
+            <div class="terminal" style="margin: 3rem 0;">
+                <div class="terminal-header">
+                    <div class="terminal-button red"></div>
+                    <div class="terminal-button yellow"></div>
+                    <div class="terminal-button green"></div>
+                </div>
+                <div class="terminal-line" style="color: var(--accent-purple); font-weight: bold; margin-bottom: 1rem;">
+                    📋 COMANDOS ESSENCIAIS DO GIT (RESUMO)
+                </div>
+                <div class="terminal-line" style="animation-delay: 0.1s;">
+                    <span class="terminal-prompt">$</span> 
+                    <span class="terminal-command">git clone URL</span>
+                    <span class="terminal-comment"> # Copia repositório do GitHub para PC</span>
+                </div>
+                <div class="terminal-line" style="animation-delay: 0.2s;">
+                    <span class="terminal-prompt">$</span> 
+                    <span class="terminal-command">git status</span>
+                    <span class="terminal-comment"> # Mostra arquivos modificados</span>
+                </div>
+                <div class="terminal-line" style="animation-delay: 0.3s;">
+                    <span class="terminal-prompt">$</span> 
+                    <span class="terminal-command">git add .</span>
+                    <span class="terminal-comment"> # Prepara TODOS os arquivos</span>
+                </div>
+                <div class="terminal-line" style="animation-delay: 0.4s;">
+                    <span class="terminal-prompt">$</span> 
+                    <span class="terminal-command">git commit -m "Mensagem clara"</span>
+                    <span class="terminal-comment"> # Salva versão localmente</span>
+                </div>
+                <div class="terminal-line" style="animation-delay: 0.5s;">
+                    <span class="terminal-prompt">$</span> 
+                    <span class="terminal-command">git push origin main</span>
+                    <span class="terminal-comment"> # Envia para SEU fork no GitHub</span>
+                </div>
+                <div class="terminal-line" style="animation-delay: 0.6s;">
+                    <span class="terminal-prompt">$</span> 
+                    <span class="terminal-command">git pull origin main</span>
+                    <span class="terminal-comment"> # Baixa atualizações do GitHub</span>
+                </div>
+                <div class="terminal-line" style="animation-delay: 0.7s;">
+                    <span class="terminal-prompt">$</span> 
+                    <span class="terminal-command">git log</span>
+                    <span class="terminal-comment"> # Mostra histórico de commits</span>
+                </div>
+            </div>
+
+            <div class="concept-visual">
+                <h2 style="font-family: 'Cabinet Grotesk', sans-serif; font-size: 2rem; margin-bottom: 2rem;">
+                    🎯 Recapitulando a Aula
+                </h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <h3 class="card-title">Você aprendeu:</h3>
+                        <ul style="color: var(--text-secondary); text-align: left; margin-left: 1rem;">
+                            <li>✅ O que é versionamento de código</li>
+                            <li>✅ Diferença entre Git e GitHub</li>
+                            <li>✅ Conceitos: repositório, commit, branch, GitFlow</li>
+                            <li>✅ Como instalar Git e GitHub Desktop</li>
+                            <li>✅ Fluxo Fork → PR (profissional!)</li>
+                            <li>✅ Estrutura do repositório da turma</li>
+                            <li>✅ Como entregar exercícios via Pull Request</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-title">Próximos passos:</h3>
+                        <p class="card-text">
+                            📌 Criar conta no GitHub<br>
+                            📌 Fazer fork do repositório da turma<br>
+                            📌 Clonar SEU fork para o computador<br>
+                            📌 Criar sua pasta em <code>alunos/</code><br>
+                            📌 Fazer primeiro commit e PR<br>
+                            📌 No DIA 2: Python + Git integrados!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="background: linear-gradient(135deg, rgba(192, 132, 252, 0.1), rgba(57, 255, 20, 0.1)); border: 2px solid var(--accent-purple); margin-top: 3rem;">
+                <div class="card-icon">💡</div>
+                <h3 class="card-title">Dica de Ouro: Mensagens de Commit</h3>
+                <p class="card-text">
+                    Use mensagens CLARAS e DESCRITIVAS:<br><br>
+                    ❌ "mudanças"<br>
+                    ❌ "fix"<br>
+                    ❌ "código novo"<br><br>
+                    ✅ "[João Silva] Adiciona exercício 01 - Sistema de cadastro"<br>
+                    ✅ "[Maria Santos] Corrige bug no cálculo de desconto"<br>
+                    ✅ "[Pedro Costa] Implementa validação de CPF"<br><br>
+                    <strong>Padrão da turma:</strong> <code>[SEU NOME] Descrição clara</code>
+                </p>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="btn" onclick="navigateToSection('instalacao')">← Instalação</button>
+                <button class="btn" onclick="alert('Parabéns! Você concluiu a Aula 01! 🎉\n\nPróximo passo: Faça fork do repositório da turma!')">Finalizar Aula ✨</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Rodapé com créditos -->
+    <footer style="background: var(--bg-card); border-top: 1px solid var(--border); padding: 2rem; text-align: center; margin-top: 4rem;">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <p style="font-family: 'Cabinet Grotesk', sans-serif; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">
+                Material desenvolvido por <span style="color: var(--accent-green);">Cláudio Ferreira Neves</span>
+            </p>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                Visualização de Dados e Business Intelligence T2 • SENAI
+            </p>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 1rem;">
+                © 2026 - Todos os direitos reservados
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Sistema de navegação
+        function navigateToSection(sectionId) {
+            // Esconde todas as seções
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Mostra a seção selecionada
+            document.getElementById(sectionId).classList.add('active');
+
+            // Atualiza botões da navegação
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.section === sectionId) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Scroll para o topo
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Event listeners para botões de navegação
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                navigateToSection(btn.dataset.section);
+            });
+        });
+
+        // Atalhos de teclado
+        document.addEventListener('keydown', (e) => {
+            const sections = ['intro', 'conceitos', 'git-vs-github', 'fundamentos', 'instalacao', 'pratica'];
+            const currentSection = document.querySelector('.section.active').id;
+            const currentIndex = sections.indexOf(currentSection);
+
+            // Seta direita: próxima seção
+            if (e.key === 'ArrowRight' && currentIndex < sections.length - 1) {
+                navigateToSection(sections[currentIndex + 1]);
+            }
+
+            // Seta esquerda: seção anterior
+            if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                navigateToSection(sections[currentIndex - 1]);
+            }
+        });
+
+        // Animações ao scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observa todos os cards
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Easter egg: clique triplo no logo
+        let logoClickCount = 0;
+        document.querySelector('.nav-logo').addEventListener('click', () => {
+            logoClickCount++;
+            if (logoClickCount === 3) {
+                alert('🎉 Você encontrou o Easter Egg! Parabéns por explorar a interface! 🚀');
+                logoClickCount = 0;
+            }
+            setTimeout(() => { logoClickCount = 0; }, 2000);
+        });
+
+        console.log('%c🚀 AULA 01 - VERSIONAMENTO COM GITHUB', 'color: #39ff14; font-size: 20px; font-weight: bold;');
+        console.log('%c📌 Dica: Use as setas do teclado ← → para navegar entre seções!', 'color: #00d4ff; font-size: 14px;');
+    </script>
+</body>
+</html>

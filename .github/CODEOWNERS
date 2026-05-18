@@ -1,0 +1,78 @@
+# ============================================================
+# CODEOWNERS — Controle de revisão por área do repositório
+# Documentação: https://docs.github.com/articles/about-code-owners
+#
+# Regra: o último padrão que corresponder a um arquivo ganha.
+# Para funcionar, ative "Require review from Code Owners"
+# nas Branch Protection Rules (veja docs/BRANCH_PROTECTION.md).
+# ============================================================
+
+# ------------------------------------------------------------
+# REGRA GLOBAL — professor revisa absolutamente tudo
+# ------------------------------------------------------------
+*    @cfneves
+
+# ------------------------------------------------------------
+# INFRAESTRUTURA DO REPOSITÓRIO — professor apenas
+# Alunos não têm permissão de alterar estas áreas.
+# ------------------------------------------------------------
+/.github/             @cfneves
+/aulas/               @cfneves
+/exercicios/          @cfneves
+/datasets/            @cfneves
+/docs/                @cfneves
+/projetos/            @cfneves
+README.md             @cfneves
+CONTRIBUTING.md       @cfneves
+CHANGELOG.md          @cfneves
+SECURITY.md           @cfneves
+CODE_OF_CONDUCT.md    @cfneves
+LICENSE               @cfneves
+.gitignore            @cfneves
+
+# ------------------------------------------------------------
+# PASTAS DOS ALUNOS
+#
+# Cada aluno é co-owner da sua pasta pessoal.
+# Para ativar a co-propriedade, adicione o @username do GitHub
+# do aluno ao lado de @cfneves na linha correspondente.
+#
+# Exemplo:
+#   /alunos/nome_aluno/  @cfneves @github_username_do_aluno
+#
+# ATENÇÃO: o aluno precisa ter acesso de leitura ao repositório
+# (colaborador ou membro da organização) para que o CODEOWNERS
+# funcione. Sem isso, @cfneves já garante a revisão obrigatória.
+# ------------------------------------------------------------
+/alunos/Andressa_Alves/       @cfneves
+/alunos/anaysa_lopes/         @cfneves
+/alunos/beatriz_bruns/        @cfneves
+/alunos/Bruno_Briani/         @cfneves
+/alunos/camilla_nascimento/   @cfneves
+/alunos/Carlos_F/             @cfneves
+/alunos/Christian_Wis/        @cfneves
+/alunos/claudi_borges/        @cfneves
+/alunos/claudio_neves/        @cfneves
+/alunos/daniel_roberto/       @cfneves
+/alunos/felipe_vampre/        @cfneves
+/alunos/gustavo_branga/       @cfneves
+/alunos/Isaac_Trenard/        @cfneves
+/alunos/jakson_luis/          @cfneves
+/alunos/jonatas_mag/          @cfneves
+/alunos/Leo_Gobel/            @cfneves
+/alunos/lourenco_lemos/       @cfneves
+/alunos/luis_napolitano/      @cfneves
+/alunos/luis_oliveira/        @cfneves
+/alunos/luiz_fernando_jesus/  @cfneves
+/alunos/marcos_bhering/       @cfneves
+/alunos/maria_helena/         @cfneves
+/alunos/orlando_castro/       @cfneves
+/alunos/robsonaamerico/       @cfneves
+/alunos/rogerio_estumano/     @cfneves
+/alunos/ruan.fernandes/       @cfneves
+/alunos/samuel_bucco/         @cfneves
+/alunos/sergio_leite/         @cfneves
+/alunos/stefano_laurito/      @cfneves
+/alunos/victor_h_santos/      @cfneves
+/alunos/waldinei_lameira/     @cfneves
+/alunos/zaira_wendt/          @cfneves

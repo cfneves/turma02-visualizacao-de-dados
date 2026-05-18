@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\s2bcl\\\\OneDrive\\\\Documents\\\\Lab365\\\\turma\\\\visualizacao_de_dados\\\\turma-visualizacao-de-dados\" -Force)",
+      "Bash(Select-Object Name, PSIsContainer)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git pull *)",
+      "Bash(git stash *)",
+      "Bash(git log *)",
+      "Bash(powershell *)",
+      "Bash(python *)",
+      "Bash(git rebase *)",
+      "Bash(git config *)",
+      "Bash(Select-String -Pattern \"user|remote|url|credential|email\")"
+    ]
+  }
+}

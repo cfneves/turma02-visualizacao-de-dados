@@ -1,44 +1,4 @@
-# Python
-__pycache__/
-*.py[cod]
-*.pyo
-.env
-.venv/
-env/
-venv/
-*.egg-info/
-dist/
-build/
-.ipynb_checkpoints/
-
-# Jupyter
-.jupyter/
-*.ipynb_checkpoints
-
-# Node
-node_modules/
-npm-debug.log*
-
-# Datasets grandes (usar Git LFS ou link externo)
-*.csv.gz
-*.parquet
-*.zip
-*.tar.gz
-
-# Sistema operacional
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# IDEs
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Credenciais e variáveis de ambiente
-.env
-.env.local
-secrets.json
-credentials.json
-alunos/Isaac Trenard/Readme.txt
+/*
+!/alunos
+!/alunos/**
+!.gitignore

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Guia de Contribuição
+    url: https://github.com/cfneves/turma-visualizacao-de-dados/blob/master/CONTRIBUTING.md
+    about: Leia o guia completo antes de abrir uma issue — pode já ter a resposta.
+  - name: Discussões da Turma
+    url: https://github.com/cfneves/turma-visualizacao-de-dados/discussions
+    about: Para perguntas abertas, sugestões e conversas que não são bugs ou dúvidas pontuais.

@@ -11,25 +11,29 @@ Aqui ficam todos os materiais didáticos produzidos pelo professor — guias vis
 ```
 aulas/
 ├── semana_02/              → Introdução ao Versionamento com Git e GitHub
-│   ├── aula01-guia-visual-alunos.html
-│   └── aula01-versionamento.html
+│   └── html/
 │
-└── semana_03/              → Python: Fundamentos e Colaboração no GitHub
-    ├── aula02-python-fundamentos.html
-    ├── git-github-colab-curso.html
-    ├── guia-criar-pasta-github.html
-    └── guia-python-fundamentos.html
+├── semana_03/              → Python: Fundamentos e Colaboração no GitHub
+│   └── html/
+│
+├── semana_04/              → Manipulação de Dados · Funções e Modularização
+│   ├── html/
+│   ├── bases/
+│   └── notebooks/
+│
+└── semana_05/              → Pandas e NumPy
+    ├── aula_01.ipynb
+    └── aula_02.ipynb
 ```
 
 ---
 
 ## Semana 02 — Versionamento com Git e GitHub
-## Semana 02
 
 | Arquivo | Descrição |
 |---------|-----------|
-| [`aula01-guia-visual-alunos.html`](./semana_02/aula01-guia-visual-alunos.html) | Guia visual passo a passo para os alunos criarem sua pasta e enviarem o primeiro PR |
-| [`aula01-versionamento.html`](./semana_02/aula01-versionamento.html) | Slides da aula: conceitos de versionamento, Git, GitHub — fork, clone, commit, push e PR |
+| [`aula01-guia-visual-alunos.html`](./semana_02/html/aula01-guia-visual-alunos.html) | Guia visual passo a passo para os alunos criarem sua pasta e enviarem o primeiro PR |
+| [`aula01-versionamento.html`](./semana_02/html/aula01-versionamento.html) | Slides da aula: conceitos de versionamento, Git, GitHub — fork, clone, commit, push e PR |
 
 **Temas abordados:** repositório, commit, branch, fork, clone, pull request, fluxo de trabalho colaborativo.
 
@@ -39,12 +43,39 @@ aulas/
 
 | Arquivo | Descrição |
 |---------|-----------|
-| [`aula02-python-fundamentos.html`](./semana_03/aula02-python-fundamentos.html) | Slides da aula: fundamentos de Python — tipos, variáveis, operadores, estruturas de controle |
-| [`git-github-colab-curso.html`](./semana_03/git-github-colab-curso.html) | Guia de colaboração no GitHub para o contexto do curso |
-| [`guia-criar-pasta-github.html`](./semana_03/guia-criar-pasta-github.html) | Tutorial visual: como criar sua pasta de aluno no repositório |
-| [`guia-python-fundamentos.html`](./semana_03/guia-python-fundamentos.html) | Referência de consulta rápida sobre fundamentos de Python |
+| [`aula02-python-fundamentos.html`](./semana_03/html/aula02-python-fundamentos.html) | Slides da aula: fundamentos de Python — tipos, variáveis, operadores, estruturas de controle |
+| [`git-github-colab-curso.html`](./semana_03/html/git-github-colab-curso.html) | Guia de colaboração no GitHub para o contexto do curso |
+| [`guia-criar-pasta-github.html`](./semana_03/html/guia-criar-pasta-github.html) | Tutorial visual: como criar sua pasta de aluno no repositório |
+| [`guia-python-fundamentos.html`](./semana_03/html/guia-python-fundamentos.html) | Referência de consulta rápida sobre fundamentos de Python |
 
 **Temas abordados:** `print`, `input`, tipos primitivos (`int`, `float`, `str`, `bool`), operadores, `if/elif/else`, `for`, `while`.
+
+---
+
+## Semana 04 — Manipulação de Dados · Funções e Modularização
+
+| Arquivo | Descrição |
+|---------|-----------|
+| [`aula 01 e 02.html`](./semana_04/html/aula%2001%20e%2002.html) | Slides das aulas 01 e 02: manipulação de dados com Python |
+| [`aula 03.html`](./semana_04/html/aula%2003.html) | Slides da aula 03: funções e modularização |
+| [`semana04_guia_interativo.html`](./semana_04/html/semana04_guia_interativo.html) | Guia interativo da semana 04 |
+| [`commit.ipynb`](./semana_04/notebooks/commit.ipynb) | Notebook de revisão — fluxo de commit |
+| [`revisao.ipynb`](./semana_04/notebooks/revisao.ipynb) | Notebook de revisão da semana |
+
+**Bases de dados disponíveis em `semana_04/bases/`:** `base_rh.csv`, `base_rh.json`, `base_rh.xlsx`, `base_rh_dia01.csv`, `base_rh_por_depto.xlsx`
+
+**Temas abordados:** leitura de arquivos, manipulação com dicionários e listas, funções com parâmetros e retorno, modularização de código.
+
+---
+
+## Semana 05 — Pandas e NumPy
+
+| Arquivo | Descrição |
+|---------|-----------|
+| [`aula_01.ipynb`](./semana_05/aula_01.ipynb) | Notebook da aula 01 — fundamentos de Pandas: Series, DataFrame, leitura de CSV e Excel |
+| [`aula_02.ipynb`](./semana_05/aula_02.ipynb) | Notebook da aula 02 — NumPy e operações vetorizadas |
+
+**Temas abordados:** `pd.Series`, `pd.DataFrame`, `read_csv`, `read_excel`, seleção e filtragem, operações com NumPy, arrays e broadcasting.
 
 ---
 
