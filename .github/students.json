@@ -9,10 +9,11 @@
   ],
   "professor": ["cfneves"],
   "students": [
-    { "github": "", "folder": "Andressa_Alves",       "_nome": "Andressa Alves" },
+    { "github": "github.com/andressasouza98", "folder": "Andressa_Alves",       "_nome": "Andressa Alves" },
     { "github": "", "folder": "anaysa_lopes",         "_nome": "Anaysa Lopes" },
     { "github": "", "folder": "beatriz_bruns",        "_nome": "Beatriz Bruns" },
     { "github": "", "folder": "Bruno_Briani",         "_nome": "Bruno Briani" },
+    { "github": "camillalonatas94-hash", "folder": "Camilla Lonatas",      "_nome": "Camilla Lonatas" },
     { "github": "", "folder": "camilla_nascimento",   "_nome": "Camilla Nascimento" },
     { "github": "", "folder": "Carlos_F",             "_nome": "Carlos F." },
     { "github": "", "folder": "Christian_Wis",        "_nome": "Christian Wis" },

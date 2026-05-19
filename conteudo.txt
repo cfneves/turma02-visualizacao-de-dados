@@ -1,0 +1,91 @@
+turma-visualizacao-de-dados\aulas
+Adicionar em cada pasta da semana e reescrever nos seus respectivos REAMDE.md de cada semana
+
+SEMANA 01
+Tema: Introdução e Fundamentos de Business Intelligence
+Conteúdo: 
+"Funcionamento do curso, Ferramentas e Fundamentos de Business Intelligence
+- Modelo e funcionamento do curso
+- Como usar as ferramentas Discord, E-Mail/Meet, AVA e Espaço do estudante
+- Kanban e como usar o Trello
+- Fundamentos de Business Intelligence
+  - Mercado de trabalho para Business Intelligence
+  - Introdução à Cultura Data-Driven
+  - Diferença entre Análise de Dados, Ciência de Dados e Engenharia de Dados
+  - Compreensão dos conceitos (tipo, dado, informação, conhecimento)
+  - Etapas da análise de dados (ciclo de vida: análise, visualização, comunicação)"
+
+SEMANA 02:
+Tema: Lógica de Programação
+Conteúdo:
+"Lógica de Programação com Python:
+- Utilização do Google Colab
+- Lógica booleana
+- Variáveis e tipos de dados
+- Operadores aritméticos, lógicos e relacionais
+- Estruturas condicionais (if, else, elif)
+- Estruturas de repetição (for, while)"
+
+SEMANA 03: 
+Tema: Python
+Conteúdo:
+"Versionamento com GitHub
+- O que é versionamento, Git, GitHub, branchs, GitFlow e etc
+- Instalação Git Bash e GitHub Desktop
+
+Iniciando com Python:
+- Instalação do Python local e VS Code
+- Sintaxe e estrutura básica do Python
+- Revisão de estruturas
+- Listas, vetores, tuplas, dicionários e estruturas compostas"
+
+SEMANA 04:
+Tema: Python
+Conteúdo:
+"Manipulação básica de dados:
+- Leitura/escrita de arquivos (CSV, JSON, Excel)
+- Trabalhando com datas (módulo datetime)
+- Expressões regulares básicas para limpeza de dados
+
+Funções e modularização:
+- Definição de funções
+- Parâmetros e retorno
+- Funções lambda
+- Módulos e importação"
+
+SEMANA 05:
+Tema: Python
+Conteúdo:
+"Introdução ao Pandas:
+- Series e DataFrames
+- Leitura de dados de diferentes fontes
+- Filtros e seleções
+- Operações básicas (groupby, merge, pivot)
+
+Numpy para operações numéricas:
+- Arrays numpy
+- Operações vetorizadas
+- Broadcasting"
+
+SEMANA 06:
+Tema: Python
+Conteúdo:
+"Limpeza de dados:
+- Tratamento de missings (NA, NaN)
+- Remoção de duplicatas
+- Detecção e tratamento de outliers
+- Normalização de dados
+
+Transformações:
+- Aplicação de funções em colunas
+- Transformações condicionais
+- Junção e concatenação de datasets
+- Exemplos práticos com dados ""sujos"" reais"
+
+SEMANA 07:
+Tema: Python
+Conteúdo:
+"Fontes de dados:
+- Dados públicos do .gov
+- Dados do keagle
+- Python Web Scraping (o que é e como realiazar)"

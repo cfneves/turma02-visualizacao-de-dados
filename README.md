@@ -31,7 +31,7 @@
 </p>
 
 <p>
-  <img src="https://img.shields.io/badge/alunos-31-blue?style=flat-square" alt="Alunos">
+  <img src="https://img.shields.io/badge/alunos-32-blue?style=flat-square" alt="Alunos">
   <img src="https://img.shields.io/badge/módulos-2-8B5CF6?style=flat-square" alt="Módulos">
   <img src="https://img.shields.io/badge/semanas-28-0EA5E9?style=flat-square" alt="Semanas">
   <img src="https://img.shields.io/badge/status-em%20andamento-22C55E?style=flat-square" alt="Status">
@@ -41,7 +41,7 @@
   </a>
 </p>
 
-<sub>Lab365 / SENAI SC · Curso de Análise de Dados · 2025</sub>
+<sub>Lab365 / SENAI SC · Curso de Análise de Dados · 2026 - Turma T2 - Disciplina: Visualização de Dados e Business Intelligence</sub>
 
 </div>
 
@@ -211,6 +211,7 @@ turma-visualizacao-de-dados/
 | Anaysa Lopes | [→ ver portfólio](./alunos/anaysa_lopes/) |
 | Beatriz Bruns | [→ ver portfólio](./alunos/beatriz_bruns/) |
 | Bruno Briani | [→ ver portfólio](./alunos/Bruno_Briani/) |
+| Camilla Lonatas | [→ ver portfólio](./alunos/Camilla%20Lonatas/) |
 | Camilla Nascimento | [→ ver portfólio](./alunos/camilla_nascimento/) |
 | Carlos F. | [→ ver portfólio](./alunos/Carlos_F/) |
 | Christian Wis | [→ ver portfólio](./alunos/Christian_Wis/) |

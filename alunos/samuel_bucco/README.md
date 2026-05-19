@@ -103,6 +103,15 @@ README.md
 
 ---
 
+## Entregas
+
+| Pasta | Conteúdo |
+|-------|---------|
+| `semana_04/` | `base_rh.csv`, `base_rh.ipynb`, `base_rh.json`, `base_rh.py`, `base_rh.xlsx`, `base_rh_deptos.xlsx`, `aula_sexta_08_05_26.ipynb` e outros datasets de RH |
+| `semana_05/` | `aula_01_professor.ipynb`, `aula_12_05.ipynb` — Pandas e NumPy |
+
+---
+
 ## Autor
 
 Samuel Bucco

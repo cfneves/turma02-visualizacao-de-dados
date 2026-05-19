@@ -143,10 +143,10 @@ while contador < 5:
 
 | Arquivo | Desafio |
 |---------|---------|
-| `pratica.py` | 4 exercícios progressivos (calculadora, par/ímpar, média, tabuada) |
+| `calculadora.py` | 4 exercícios progressivos (calculadora, par/ímpar, média, tabuada) |
 | `cadastro_produtos.py` | Desafio final: simulador de caixa de loja com desconto |
 
-### pratica.py — Exercicios Progressivos
+### calculadora.py — Exercicios Progressivos
 
 ```
 Exercicio 1 → Calculadora: soma, subtracao, multiplicacao e divisao
@@ -200,7 +200,7 @@ Exercicio 4 → Tabuada: loop for com range(1, 11)
 | 06 | 03 | Estruturas | Condicionais if/elif/else | `03.Estruturas/01.condicionais.py` | Disponível |
 | 07 | 03 | Estruturas | Loop for | `03.Estruturas/02.loop_for.py` | Disponível |
 | 08 | 03 | Estruturas | Loop while | `03.Estruturas/03.loop_while.py` | Disponível |
-| 09 | 03 | Prática | Exercícios mistos | `04. Exercicios/pratica.py` | Disponível |
+| 09 | 03 | Prática | Exercícios mistos | `04. Exercicios/calculadora.py` | Disponível |
 | 10 | 03 | Prática | Desafio final — caixa de loja | `04. Exercicios/cadastro_produtos.py` | Disponível |
 
 ---
