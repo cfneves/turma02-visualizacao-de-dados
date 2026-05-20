@@ -5,3 +5,6 @@ nome = input("Digite seu nome: ")
 print("Olá,", nome)
 idade = int(input("Digite sua idade: "))
 print("VOcê tem", idade, "anos")
+
+print("Seu nome é", nome)
+print("Sua idade é", idade)

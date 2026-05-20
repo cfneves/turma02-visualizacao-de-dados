@@ -7,7 +7,13 @@
       "Bash(git commit -m ' *)",
       "Bash(git push *)",
       "Bash(git pull *)",
-      "Bash(git stash *)"
+      "Bash(git stash *)",
+      "Bash(git log *)",
+      "Bash(powershell *)",
+      "Bash(python *)",
+      "Bash(git rebase *)",
+      "Bash(git config *)",
+      "Bash(Select-String -Pattern \"user|remote|url|credential|email\")"
     ]
   }
 }

@@ -4,10 +4,10 @@ __pycache__/
 *$py.class
 
 # Ambiente virtual
+.venv/
 venv/
-.env/
-ENV/
 env/
+ENV/
 
 # Variáveis de ambiente
 .env

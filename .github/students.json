@@ -9,7 +9,7 @@
   ],
   "professor": ["cfneves"],
   "students": [
-    { "github": "github.com/andressasouza98", "folder": "Andressa_Alves",       "_nome": "Andressa Alves" },
+    { "github": "andressasouza98", "folder": "Andressa_Alves",       "_nome": "Andressa Alves" },
     { "github": "", "folder": "anaysa_lopes",         "_nome": "Anaysa Lopes" },
     { "github": "", "folder": "beatriz_bruns",        "_nome": "Beatriz Bruns" },
     { "github": "", "folder": "Bruno_Briani",         "_nome": "Bruno Briani" },
@@ -31,7 +31,7 @@
     { "github": "", "folder": "luiz_fernando_jesus",  "_nome": "Luiz Fernando Jesus" },
     { "github": "", "folder": "marcos_bhering",       "_nome": "Marcos Bhering" },
     { "github": "", "folder": "maria_helena",         "_nome": "Maria Helena" },
-    { "github": "", "folder": "orlando_castro",       "_nome": "Orlando Castro" },
+    { "github": "orlandovcj", "folder": "orlando_castro",       "_nome": "Orlando Castro" },
     { "github": "", "folder": "robsonaamerico",       "_nome": "Robson Americo" },
     { "github": "", "folder": "rogerio_estumano",     "_nome": "Rogerio Estumano" },
     { "github": "", "folder": "ruan.fernandes",       "_nome": "Ruan Fernandes" },
