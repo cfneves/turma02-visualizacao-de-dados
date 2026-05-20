@@ -1,4 +1,4 @@
-meu_produto = "petição inicial"
+meu_produto = "Camiseta"
 meu_turno = "manhã"
 minhas_pecas = 2.0
 minha_temperatura = 36.5
