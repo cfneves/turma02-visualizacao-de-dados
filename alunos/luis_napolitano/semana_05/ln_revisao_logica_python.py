@@ -1,68 +1,10 @@
-# Revisão de Lógica de Programação em Python 
-# Ministrado pelo professor Claudio F Neves
-print("  ")
-print(" ---------------- ----------------- ----------------- ")
-print("  ")
+# Meu arquivo somente irá tratar as ativades da ln_revisao)logica_python.ipynb
+# Os exercícios jpá realizados em aula serão reescritos, para pratica da digitação e aprendizado do conteúdo.
 
-print("Bloco 1 - Revisão")
-# Inicial - Bloco 1
-print("Olá, turma de Análise de Dados do SENAI!")
-print("Bem-vindos ao mundo do Python! 🐍")
+print("       -- ATIVIDADE - #01 ACOMPANHADA --     ")
+print("\n")
 
-print("  ")
-print(" ---------------- ----------------- ----------------- ")
-print("  ")
-
-
-print("Bloco 2 - Variáveis e Tipos de Dados")
-print("  ")
-
-#Variáeis e Tipos de Dados - Bloco 2
-# =============================================
-# 🏭 CENÁRIO: Dados de uma linha de produção
-# =============================================
-
-# Variáveis do tipo int (inteiro)
-pecas_produzidas = 1500
-pecas_com_defeito = 37
-numero_operadores = 8
-
-# Variáveis do tipo float (decimal)
-temperatura_forno = 182.5
-velocidade_esteira = 0.75  # metros por segundo
-
-# Variáveis do tipo str (texto)
-nome_produto = "Engrenagem Tipo A"
-turno = "Manhã"
-data_producao = "2025-05-19"
-
-# Variáveis do tipo bool (verdadeiro ou falso)
-linha_ativa = True
-manutencao_pendente = False
-
-# Exibindo os dados
-print("=== RELATÓRIO DA LINHA DE PRODUÇÃO ===")
-print(f"Produto: {nome_produto}")
-print(f"Turno: {turno}")
-print(f"Data: {data_producao}")
-print(f"Peças produzidas: {pecas_produzidas}")
-print(f"Peças com defeito: {pecas_com_defeito}")
-print(f"Temperatura do forno: {temperatura_forno}°C")
-print(f"Linha ativa: {linha_ativa}")
-
-print("...")
-
-# Descobrindo o TIPO de uma variável com type()
-print(type(pecas_produzidas))   # int
-print(type(temperatura_forno))  # float
-print(type(nome_produto))       # str
-print(type(linha_ativa))        # bool
-
-print("  ")
-print(" ---------------- ----------------- ----------------- ")
-print("  ")
-
-# ✏️ ATIVIDADE ACOMPANHADA 1
+# ATIVIDADE ACOMPANHADA 1
 # Preencha as variáveis com dados de uma linha de produção fictícia
 
 meu_produto = "Pizza Quatro Queijos"    # TODO: coloque o nome de um produto industrial
@@ -77,81 +19,443 @@ print(f"Peças: {minhas_pecas}")
 print(f"Temperatura: {minha_temperatura}°C")
 print(f"Linha funcionando: {linha_funcionando}")
 
-print("  ")
-print(" ---------------- ----------------- ----------------- ")
-print("  ")
-
-print("Bloco 3 - Operadores e Expressões")
-print("  ")
-
-# =============================================
-# 🏭 CENÁRIO: Calculando indicadores de produção
-# =============================================
-
-pecas_produzidas = 1500
-pecas_com_defeito = 37
-horas_trabalhadas = 8
-numero_operadores = 6
-custo_por_peca = 12.50  # reais
-
-# Peças boas
-pecas_boas = pecas_produzidas - pecas_com_defeito
-print(f"Peças boas: {pecas_boas}")
-
-# Taxa de defeito (em %)
-taxa_defeito = (pecas_com_defeito / pecas_produzidas) * 100
-print(f"Taxa de defeito: {taxa_defeito:.2f}%")
-
-# Produtividade por operador
-produtividade = pecas_produzidas / numero_operadores
-print(f"Peças por operador: {produtividade:.1f}")
-
-# Produção por hora
-pecas_por_hora = pecas_produzidas / horas_trabalhadas
-print(f"Peças por hora: {pecas_por_hora:.1f}")
-
-# Faturamento do turno
-faturamento = pecas_boas * custo_por_peca
-print(f"Faturamento do turno: R$ {faturamento:,.2f}")
+print("\n")
+print("       -- ATIVIDADE - #02 ACOMPANHADA --     ")  
+print("\n")
 
 
-print(" ---------------- ----------------- ----------------- ")
+# ATIVIDADE ACOMPANHADA 2
+# O forno deve operar entre 160°C e 200°C
+# Classifique a temperatura como: Baixa / Normal / Alta
+
+temperatura_forno = 360.5  # Mude esse valor para testar!
+
+# TODO: Complete as condições abaixo
+if temperatura_forno < 160:       # TODO: condição para BAIXA
+    print("🔵 Temperatura BAIXA — aquecer forno")
+elif temperatura_forno <= 200:    # TODO: condição para NORMAL
+    print("✅ Temperatura NORMAL — produção liberada")
+else:
+    print("🔴 Temperatura ALTA — risco de queima das peças")
+
+print("\n")
+print("       -- ATIVIDADE - #03 ACOMPANHADA --     ")  
+print("\n")
+
+# ATIVIDADE ACOMPANHADA 3
+
+temperaturas = [182.5, 179.3, 185.1, 183.8, 180.0, 178.5, 184.2, 246.0, 362.5, 192, 100]
+
+                                    # TODO: Complete o código abaixo
+soma = 0
+leituras_altas = 0                  # temperaturas acima de 184°C
+
+for temp in temperaturas:
+    soma += temp                    # TODO: acumule a soma
+    if temp > 184:
+        leituras_altas += 1         # TODO: conte leituras acima de 184°C
+
+media = soma / len(temperaturas)    # TODO: calcule a média
+
+print(f"Total de leituras: {len(temperaturas)}")
+print(f"Soma: {soma:.1f}°C")
+print(f"Média: {media:.2f}°C")
 
 
-# Operadores de comparação — retornam True ou False
-print("=== COMPARAÇÕES ===")
-print(f"1500 > 1000? {1500 > 1000}")    # Maior que
-print(f"37 < 50? {37 < 50}")            # Menor que
-print(f"taxa_defeito <= 5? {taxa_defeito <= 5.0}")  # Menor ou igual
-print(f"turno == 'Tarde'? {'Manhã' == 'Tarde'}")   # Igual
-print(f"turno != 'Tarde'? {'Manhã' != 'Tarde'}")   # Diferente
+print("\n")
+print("       -- ATIVIDADE - #04 ACOMPANHADA --     ")  
+print("\n")
 
-print("  ")
-print(" ---------------- ----------------- ----------------- ")
-print("  ")
 
-print("Bloco 4 - Input")
-print("  ")
+# ATIVIDADE ACOMPANHADA 4
+# OEE = Disponibilidade × Performance × Qualidade × 100
+# Cada fator vai de 0 a 1 (ex: 0.85 = 85%)
 
-# =============================================
-# 🏭 CENÁRIO: Coletor de dados de produção
-# =============================================
+def calcular_oee(disponibilidade, performance, qualidade):
+    """
+    Calcula o OEE (Overall Equipment Effectiveness)
+    
+    Parâmetros:
+        disponibilidade: tempo disponível / tempo planejado (0 a 1)
+        performance: velocidade real / velocidade ideal (0 a 1)
+        qualidade: peças boas / total produzido (0 a 1)
+    """
+    # TODO: calcule o OEE
+    oee = disponibilidade * performance * qualidade * 100
+    return oee
 
-print("=== REGISTRO DE PRODUÇÃO ===")
 
-operador = input("Nome do operador: ")
-produto = input("Nome do produto: ")
-pecas = int(input("Quantidade de peças produzidas: "))    # convertendo para int
-defeitos = int(input("Quantidade de peças com defeito: "))
+# Testando a função
+oee_resultado = calcular_oee(
+    disponibilidade=0.90,       # máquina disponível 90% do tempo
+    performance=0.95,           # operando a 95% da velocidade ideal
+    qualidade=0.98              # 98% de peças boas
+)
 
-taxa = (defeitos / pecas) * 100
+print(f"OEE calculado: {oee_resultado:.1f}%")
 
-print("\n--- RESUMO DO REGISTRO ---")
-print(f"Operador: {operador}")
-print(f"Produto: {produto}")
-print(f"Total produzido: {pecas}")
-print(f"Defeituosos: {defeitos}")
-print(f"Taxa de defeito: {taxa:.2f}%")
+# OEE de classe mundial é ≥ 88%
+if oee_resultado >= 88:
+    print("🏆 Equipamento de CLASSE MUNDIAL!")
+else:
+    print("📈 Há oportunidade de melhoria")
 
-# 🔷 Bloco 5 — Estruturas Condicionais (`if`, `elif`, `else`)
+print("\n")
+print("       -- ATIVIDADE - #01 INDIVIDUAL --     ")  
+print("\n")
 
+# ============================================================
+# ATIVIDADE INDIVIDUAL 1 — Calculadora de Salário
+# ============================================================
+# 
+# ENUNCIADO:
+# Um operador recebe R$ 18,50 por hora normal.              # (ht = 18.50)
+# Horas extras (acima de 44h semanais) valem 50% a mais.    # (he = ht * 1.5)
+#
+# Crie um programa que:
+# 1. Peça o nome do funcionário                             # input - string para nome do funcionário
+# 2. Peça as horas trabalhadas na semana                    # input - float para horas trabalhadas semanais
+# 3. Calcule o salário semanal (com horas extras se houver) # criar condicional para he se ht > 44
+# 4. Exiba um comprovante formatado                         # exibir saida
+#
+# DICA:
+# - Salário normal = horas normais x R$ 18,50
+# - Horas extras = horas trabalhadas - 44 (se > 44)
+# - Valor hora extra = 18,50 x 1,5
+# ============================================================
+
+# SEU CÓDIGO AQUI:
+
+#informações fixadas pelo exercicio
+
+"""
+vlr_hr = 18.50
+vlr_hr_extra = vlr_hr * 1.5
+
+# Informações prestadas pelo usuário
+
+nome_func = input("Nome do funcionário: ")
+hr_trab_sem = float(input("Horas trabalhadas na semana: "))
+"""
+
+
+"""
+# ============================================================
+# 📝 ATIVIDADE INDIVIDUAL 1 — Calculadora de Salário
+# ============================================================
+
+# Pedindo o nome do funcionário
+nome = input("Digite o nome do funcionário: ")
+
+# Pedindo as horas trabalhadas
+horas_trabalhadas = float(input("Digite as horas trabalhadas na semana: "))
+
+# Valor da hora normal
+valor_hora = 18.50
+
+# Limite semanal sem hora extra
+limite_horas = 44
+
+# Verificando se houve hora extra
+if horas_trabalhadas > limite_horas:
+    
+    # Calculando horas normais
+    horas_normais = limite_horas
+    
+    # Calculando horas extras
+    horas_extras = horas_trabalhadas - limite_horas
+    
+    # Calculando valor da hora extra
+    valor_hora_extra = valor_hora * 1.5
+    
+    # Calculando salário normal
+    salario_normal = horas_normais * valor_hora
+    
+    # Calculando salário extra
+    salario_extra = horas_extras * valor_hora_extra
+    
+    # Calculando salário total
+    salario_total = salario_normal + salario_extra
+
+else:
+    
+    # Quando não existe hora extra
+    horas_normais = horas_trabalhadas
+    horas_extras = 0
+    
+    # Calculando salário total
+    salario_total = horas_normais * valor_hora
+
+# Exibindo comprovante
+print("\n========== COMPROVANTE ==========")
+print(f"Funcionário: {nome}")
+print(f"Horas trabalhadas: {horas_trabalhadas:.1f}h")
+print(f"Horas extras: {horas_extras:.1f}h")
+print(f"Salário semanal: R$ {salario_total:.2f}")
+print("=================================")
+
+"""
+
+
+# Pedindo o nome do funcionário
+nome = input("Digite o nome do funcionário: ")
+
+# Pedindo as horas trabalhadas
+horas_trabalhadas = float(input("Digite as horas trabalhadas na semana: "))
+
+# Valor da hora normal
+valor_hora = 18.50
+
+# Valor da hora extra
+valor_hora_extra = valor_hora * 1.5
+
+# Limite semanal sem hora extra
+limite_horas = 44
+
+if horas_trabalhadas < 0:
+    print("Você deve digitar um valor válido.")
+    horas_extras = 0
+
+elif horas_trabalhadas <= limite_horas:
+    salario_total = horas_trabalhadas * valor_hora
+    horas_extras = 0
+else:
+    horas_extras = horas_trabalhadas - limite_horas
+    salario_total = (limite_horas * valor_hora) + ((horas_trabalhadas - limite_horas) * valor_hora_extra)
+    
+
+# Exibindo comprovante
+print("\n========== COMPROVANTE ==========")
+print(f"Funcionário: {nome}")
+print(f"Horas trabalhadas: {horas_trabalhadas:.1f}h")
+print(f"Horas extras: {horas_extras:.1f}h")
+print(f"Salário semanal: R$ {salario_total:.2f}")
+print("=================================")
+
+
+print("\n")
+print("       -- ATIVIDADE - #02 INDIVIDUAL --     ")  
+print("\n")
+
+## Atividade Individual 2 — Verificador de Lote
+
+# ============================================================
+# ATIVIDADE INDIVIDUAL 2 — Verificador de Lote
+# ============================================================
+#
+# ENUNCIADO:
+# Um lote de peças passa pelo controle de qualidade.
+# Você tem a lista de medições de diâmetro (em mm) abaixo.
+# A especificação permite entre 49.8mm e 50.2mm.
+#
+# Crie um programa que:
+# 1. Percorra a lista de medições                               # encontrar funçao para percorrer a lista de medições
+# 2. Conte quantas peças estão DENTRO e FORA da especificação   # criar contador de peças len
+# 3. Calcule o percentual de aprovação                          # calcular percentual de aprovação  
+# 4. Classifique o lote:                                        # criar a condicional para classificar o lote (peça a peça)
+#    - Aprovado: aprovação >= 98%
+#    - Aprovado c/ ressalvas: entre 95% e 97.9%
+#    - Reprovado: < 95%
+# ============================================================
+
+# medicoes = [50.1, 49.9, 50.0, 50.3, 49.7, 50.2, 50.1, 49.8,
+#            50.0, 50.1, 49.6, 50.2, 50.0, 49.9, 50.1, 50.4,
+#            49.8, 50.0, 50.1, 49.9]
+
+# especificacao_min = 49.8
+# especificacao_max = 50.2
+
+medicoes = [50.1, 49.9, 50.0, 50.3, 49.7, 50.2, 50.1, 49.8,
+            50.0, 50.1, 49.6, 50.2, 50.0, 49.9, 50.1, 50.4,
+            49.8, 50.0, 50.1, 49.9]
+
+especificacao_min = 49.8
+especificacao_max = 50.2
+
+dentro_especif = 0
+fora_especif = 0
+ 
+
+for diametro in medicoes:
+    if especificacao_min <= diametro <= especificacao_max:
+        dentro_especif += 1
+    else:
+        fora_especif += 1
+
+total_pecas = len(medicoes)
+perc_aprovadas = (dentro_especif / total_pecas) * 100
+
+
+
+if perc_aprovadas >= 98:
+    classificacao = "APROVADO"
+elif perc_aprovadas >= 95:
+    classificacao = "APROVADO COM RESSALVAS"
+else:
+    classificacao = "REPROVADO"
+
+print("============== RELATORIO DE LOTE ==============")
+print(f"Peças aprovadas: {dentro_especif}")
+print(f"Peças não aprovadas: {fora_especif}")
+print(f"Percentual de aprovação: {perc_aprovadas:.2f}%")
+print(f"Classificação do lote: {classificacao}")
+
+
+print("\n")
+print("       -- ATIVIDADE - #03 INDIVIDUAL --     ")  
+print("\n")
+
+##  Atividade Individual 3 — Função de Conversão
+
+# ============================================================
+# ATIVIDADE INDIVIDUAL 3 — Funções de Conversão de Unidades
+# ============================================================
+#
+# ENUNCIADO:
+# Na indústria trabalhamos com diferentes unidades de medida.
+# Crie um programa com FUNÇÕES para converter:
+#
+# a) Temperatura: Celsius ↔ Fahrenheit                          # criar funcoes para conversao de C-> f e f ->C
+#    F = (C × 9/5) + 32
+#    C = (F - 32) × 5/9
+#
+# b) Pressão: bar → PSI e PSI → bar                             # criar funcoes para conversao de b-> P e P -> b
+#    1 bar = 14.504 PSI
+#
+# c) Velocidade: m/s → km/h e km/h → m/s                        # criar funcoes para conversao de m-> K e K -> m
+#    1 m/s = 3.6 km/h
+#
+# Depois crie um menu simples com while para o usuário
+# escolher qual conversão fazer.
+# ============================================================
+
+# Criando as funcões para conversão 
+
+def celsius_p_fahrenheit(cels):
+    fahrenheit = (cels * 9/5) + 32
+    return fahrenheit
+
+def fahrenheit_p_celsius(fahr):
+    celsius = (fahr - 32) * 5/9
+    return celsius
+
+def bar_p_psi(bar):
+    psi = bar * 14.504
+    return psi
+
+def psi_p_bar(psi):
+    bar = psi / 14.504
+    return bar
+
+def m_s_p_km_h(metsgund):
+    km_h = metsgund * 3.6
+    return km_h
+
+def km_h_p_m_s(kmhora):
+    m_s = kmhora / 3.6
+    return m_s
+
+# Após definidas as funcoes de conversao criaremos o "while" par criacao das opcoes de ecolha
+
+while True:
+    print("\nEscolha a conversão que deseja realizar:")
+    print("1. Celsius para Fahrenheit")
+    print("2. Fahrenheit para Celsius")
+    print("3. Bar para PSI")
+    print("4. PSI para Bar")
+    print("5. m/s para km/h")
+    print("6. km/h para m/s")
+    print("0. Sair")
+
+    opcao = input("Digite o número da opção de conversão: ")
+
+    if opcao == "1":
+        c = float(input("Insira a temperatura em Celsius (0.00): "))
+        f = celsius_p_fahrenheit(c)
+        print(f"{c}°C é igual a {f:.2f}°F")
+
+    elif opcao == "2":
+        f = float(input("Insira a temperatura em Fahrenheit (0.00): "))
+        c = fahrenheit_p_celsius(f)
+        print(f"{f}°F é igual a {c:.2f}°C")
+
+    elif opcao == "3":
+        bar = int(input("Insira a pressão em Bar (0): "))
+        psi = bar_p_psi(bar)
+        print(f"{bar} Bar é igual a {psi:.2f} PSI")
+
+    elif opcao == "4":
+        psi = float(input("Insira a pressão em PSI (0.00): "))
+        bar = psi_p_bar(psi)
+        print(f"{psi} PSI é igual a {bar:.0f} Bar")
+
+    elif opcao == "5":
+        m_s = float(input("Insira a velocidade em m/s (0.00): "))
+        km_h = m_s_p_km_h(m_s)
+        print(f"{m_s} m/s é igual a {km_h:.2f} km/h")
+
+    elif opcao == "6":
+        km_h = float(input("Insira a velocidade em km/h (0.00): "))
+        m_s = km_h_p_m_s(km_h)
+        print(f"{km_h} km/h é igual a {m_s:.2f} m/s")
+
+    elif opcao == "0":
+        print("Encerrando o programa.")
+        break
+
+    else:
+        print("Opção NÃO válida. Por favor, tente novamente.")
+
+input("\n Pressione 'Enter' para finalizar")
+
+
+print("\n")
+print("       -- ATIVIDADE - #01 GRUPO - MAS FOI INDIVIDUAL --     ")  
+print("\n")
+
+# ============================================================
+# 👥 ATIVIDADE EM GRUPO 1 — Sistema de Registro de Produção
+# ============================================================
+#
+# ENUNCIADO:
+# Vocês devem criar um mini-sistema de registro de produção.
+# O sistema deve:
+#
+# 1. Usar um while para manter o programa rodando
+# 2. Apresentar um menu com as opções:
+#    [1] Registrar produção de um turno
+#    [2] Ver todos os registros
+#    [3] Ver estatísticas (total, maior, menor, média)
+#    [4] Sair
+#
+# 3. Armazenar os registros em uma lista de dicionários
+# 4. Cada registro deve conter:
+#    - nome do operador
+#    - turno (Manhã/Tarde/Noite)
+#    - quantidade produzida
+#    - quantidade com defeito
+#    - taxa de defeito (calculada automaticamente)
+#
+# DICA: Dividam as tarefas! Uma pessoa faz o menu,
+#       outra faz o registro, outra faz as estatísticas.
+# ============================================================
+
+# CÓDIGO DO GRUPO AQUI:
+
+registros = []  # lista para armazenar os registros
+
+def registrar_producao():
+    # TODO: solicitar dados e adicionar à lista 'registros'
+    pass
+
+def ver_registros():
+    # TODO: exibir todos os registros formatados
+    pass
+
+def ver_estatisticas():
+    # TODO: calcular e exibir estatísticas
+    pass
+
+# Menu principal
+print("Sistema iniciado! Implemente o menu aqui.")
+# TODO: implementar o loop do menu
