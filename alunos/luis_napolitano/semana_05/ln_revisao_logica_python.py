@@ -441,21 +441,138 @@ print("\n")
 # ============================================================
 
 # CÓDIGO DO GRUPO AQUI:
+"""
+registros = []
+
+def registrar_produtos():
+	nome = input("Digite o nome do usuário: ")
+	
+	while True:
+		turno = input("Escreva o turno ('Matutino', 'Vespertino', 'Noturno')").strip().capitalize()
+		
+        if turno in ["Matutino", "Vespertino", "Noturno"]:
+            break
+        else:
+        	print("Turno NÃO válido. Redigite corretamente.")
+	try:
+		qtde_produzida = int(input("Qtde produzida: "))
+		qtde_defeito = int(input("Qtde com defeito"))
+	except ValueError:
+		print("Erro: Insira números inteiros válidos.")
+		return
+	
+	if qtde_produzida > 0:
+		tx_defeito = (qtde_defeito / qtde_produzida) * 100
+	else:
+		tx_defeito = 0.0
+          
+"""
+
+# ============================================================
+# 👥 ATIVIDADE EM GRUPO 1 — Sistema de Registro de Produção
+# ============================================================
 
 registros = []  # lista para armazenar os registros
 
-def registrar_producao():
-    # TODO: solicitar dados e adicionar à lista 'registros'
-    pass
+def reg_producao():
+    nome = input("Insira o nome do operador: ").strip()
+    
+    while True:
+        turno = input("Turno (Manhã/Tarde/Noite): ").strip().capitalize()
+        if turno in ["Manhã", "Tarde", "Noite"]:
+            break
+        print("Turno inválido! Digite Manhã, Tarde ou Noite.")
+    
+    try:
+        qtde_produzida = int(input("Insira a qtde produzida: "))
+        qtde_defeito = int(input("Insira a qtde com defeito: "))
+    except ValueError:
+        print("Erro: Por favor, insira números inteiros válidos para as quantidades.")
+        return
+
+    if qtde_produzida > 0:
+        taxa_defeito = (qtde_defeito / qtde_produzida) * 100
+    else:
+        taxa_defeito = 0.0
+
+    # Criação do dicionário e armazenamento na lista
+    novo_registro = {
+        "operador": nome,
+        "turno": turno,
+        "quantidade_produzida": qtde_produzida,
+        "quantidade_defeito": qtde_defeito,
+        "taxa_defeito": taxa_defeito
+    }
+    
+    registros.append(novo_registro)
+    print("\n✅ Registro adicionado com sucesso!")
+
 
 def ver_registros():
-    # TODO: exibir todos os registros formatados
-    pass
+    print("\n--- TODOS OS REGISTROS ---")
+    if not registros:
+        print("Nenhum registro encontrado.")
+        return
+
+    # Cabeçalho formatado para parecer uma tabela no terminal
+    print(f"{'Operador':<15} | {'Turno':<8} | {'Produzido':<10} | {'Defeito':<8} | {'Taxa Defeito':<12}")
+    print("-" * 62)
+    
+    for r in registros:
+        print(f"{r['operador']:<15} | {r['turno']:<8} | {r['quantidade_produzida']:<10} | {r['quantidade_defeito']:<8} | {r['taxa_defeito']:.2f}%")
+
 
 def ver_estatisticas():
-    # TODO: calcular e exibir estatísticas
-    pass
+    print("\n--- ESTATÍSTICAS DA PRODUÇÃO ---")
+    if not registros:
+        print("Sem dados suficientes para calcular estatísticas.")
+        return
+
+    # Criando listas auxiliares para facilitar os cálculos matemáticos
+    producoes = [r['quantidade_produzida'] for r in registros]
+    defeitos = [r['quantidade_defeito'] for r in registros]
+    
+    total_produzido = sum(producoes)
+    total_defeito = sum(defeitos)
+    maior_producao = max(producoes)
+    menor_producao = min(producoes)
+    media_producao = total_produzido / len(registros)
+    
+    # Taxa de defeito global da fábrica
+    taxa_global_defeito = (total_defeito / total_produzido * 100) if total_produzido > 0 else 0
+
+    print(f"Total produzido (geral): {total_produzido} unidades")
+    print(f"Total com defeito (geral): {total_defeito} unidades")
+    print(f"Média de produção por turno: {media_producao:.2f} unidades")
+    print(f"Maior produção registrada: {maior_producao} unidades")
+    print(f"Menor produção registrada: {menor_producao} unidades")
+    print(f"Taxa de defeito global: {taxa_global_defeito:.2f}%")
+
 
 # Menu principal
-print("Sistema iniciado! Implemente o menu aqui.")
-# TODO: implementar o loop do menu
+while True:
+    print("\n" + "="*40)
+    print("      SISTEMA DE REGISTRO DE PRODUÇÃO")
+    print("="*40)
+    print("[1] Registrar produção de um turno")
+    print("[2] Ver todos os registros")
+    print("[3] Ver estatísticas (total, maior, menor, média)")
+    print("[4] Sair")
+    print("="*40)
+    
+    opcao = input("Escolha uma opção: ").strip()
+    
+    if opcao == '1':
+        reg_producao()
+    elif opcao == '2':
+        ver_registros()
+    elif opcao == '3':
+        ver_estatisticas()
+    elif opcao == '4':
+        print("\nEncerrando o sistema de produção. Bom trabalho!")
+        break
+    else:
+        print("\n Opção inválida! Escolha um número de 1 a 4.")
+    
+    # Pausa para o usuário ler o resultado antes do menu reaparecer
+    input("\nPressione Enter para continuar...")
