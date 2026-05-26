@@ -1,3 +1,5 @@
+# Document Heading
+
 👩‍💻 Andressa Alves de Souza
 
 Olá! Seja bem-vindo(a) ao meu espaço no repositório da turma de Visualização de Dados e BI - SESI-SENAI 🚀
@@ -11,7 +13,6 @@ Sou apaixonada por tecnologia, análise de dados e desenvolvimento front-end. At
 🐍 Aprendendo Python e ferramentas de dados
 🚀 Interessada em IA Generativa e Tecnologia
 📖 Gosto de estudar e aprender coisas novas
-
 
 🛠️ Tecnologias e Ferramentas
 Python
@@ -32,7 +33,6 @@ Melhorar minhas habilidades em análise de dados
 Trabalhar com projetos reais
 Evoluir na área de tecnologia e BI
 
-
 📂 Estrutura da minha pasta
 Aqui você encontrará:
 
@@ -42,15 +42,13 @@ Dashboards
 Anotações
 Desafios do curso
 
-
 🌎 Contato
 
-📧 Email: andressanikki@gmail.com
+📧 Email: <andressanikki@gmail.com>
 
-💼 GitHub: https://github.com/andressasouza98
+💼 GitHub: <https://github.com/andressasouza98>
 
 ✨ “A tecnologia move o mundo, mas o conhecimento transforma pessoas.” ✨
-# Andressa Alves — Visualização de Dados
 
 Aluna da turma de Visualização de Dados — Lab365 / SENAI SC
 
@@ -59,7 +57,7 @@ Aluna da turma de Visualização de Dados — Lab365 / SENAI SC
 ## Entregas
 
 | Pasta | Conteúdo |
-|-------|---------|
+
 | `04.Exercicios/` | `pratica.py`, `cadastro_produtos.py` |
 | `semana_04/` | `base_rh.csv`, `base_rh.ipynb`, `base_rh.py` |
 | `projetos/` | `projeto_01.py` |
