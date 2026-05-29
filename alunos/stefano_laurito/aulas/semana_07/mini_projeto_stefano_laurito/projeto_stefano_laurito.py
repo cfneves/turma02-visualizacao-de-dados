@@ -2,9 +2,12 @@
 # Etapa 1 - Importação de bibliotecas e da base de dados
  
 import pandas as pd
+from pathlib import Path
+
+caminho_csv = Path(__file__).parent / "base_varejo.csv"
 
 # Importação da base
-df = pd.read_csv("base_varejo.csv", sep=";")
+df = pd.read_csv(caminho_csv, sep=";")
 
 # Visualização inicial
 print("\nVISUALIZAÇÃO INICIAL DA BASE")
