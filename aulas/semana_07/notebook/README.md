@@ -10,12 +10,12 @@ Aula prática de Web Scraping para iniciantes. Pré-requisitos: noções básica
 semana_07/
 └── notebook/
     ├── README.md
-    └── aula_semana07.ipynb    ← Aula 28/05
+    └── aula_semana07.ipynb
 ```
 
 ---
 
-## Conteúdo da Aula — 28/05/2026 | 19h – 22h
+## Conteúdo da Aula | 19h – 22h
 
 **Web Scraping: Introdução com requests e BeautifulSoup**
 
