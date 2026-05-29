@@ -7,4 +7,6 @@
 /aulas/*
 !/aulas/semana_06
 !/aulas/semana_06/**
+!/aulas/semana_07
+!/aulas/semana_07/**
 !.gitignore
