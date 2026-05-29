@@ -9,8 +9,8 @@ Aula prática de Web Scraping para iniciantes. Pré-requisitos: noções básica
 ```
 semana_07/
 └── notebook/
-    └── aula-02/
-        └── aula_semana07.ipynb    ← Aula 28/05
+    ├── README.md
+    └── aula_semana07.ipynb    ← Aula 28/05
 ```
 
 ---
