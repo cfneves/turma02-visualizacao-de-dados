@@ -26,10 +26,10 @@
 
 
 # Oque é esperado:
- • Gráfico da distribuição de categorias.
- • Gráfico da evolução de compras por ano.
- • Gráfico número de compras por Gênero.
- • Dados tratados sem valores nulos ou categorias inválidas.
+    • Gráfico da distribuição de categorias.
+    • Gráfico da evolução de compras por ano.
+    • Gráfico número de compras por Gênero.
+    • Dados tratados sem valores nulos ou categorias inválidas.
 
 # As Conclusões estão na parte inferior do projeto após os gráficos.
 

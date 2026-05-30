@@ -1,7 +1,8 @@
 # Mini projeto - Análise exploratoria de dados da Base Varejo.
 
 # Descrição:
-    Este projeto foi desenvolvido como parte de um exercicio para aplicação das habilidades adquiridas no  curso Visualização de Dados e Business Intelligence modulo: Modelagem de dados do Senai (SETEC) e tem como finalidade de aplicar conceitos de limpeza de dados, tratamento com python e visualização de dados com panda e matplotlib.
+    Este projeto foi desenvolvido como parte de um exercicio para aplicação das habilidades adquiridas no  curso Visualização de Dados e Business Intelligence
+    modulo: Modelagem de dados do Senai (SETEC) e tem como finalidade de aplicar conceitos de limpeza de dados, tratamento com python e visualização de dados com panda e matplotlib.
 
 # A base de dados contem:
     • DATA: Data da compra.
