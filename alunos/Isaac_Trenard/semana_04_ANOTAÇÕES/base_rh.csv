@@ -1,0 +1,1001 @@
+ID_Funcionario;Nome;Departamento;Cargo;Salario;Data_Admissao;Genero;Idade;Estado_Civil;Status
+1;Julia Nunes;Logística;Coordenador;9088,34;13/08/2024;F;43;Solteiro;Inativo
+2;Sr. Gustavo Duarte;TI;Gerente;8155,98;29/04/2017;F;59;Solteiro;Inativo
+3;Srta. Mariana Cunha;RH;Coordenador;14027,93;11/12/2024;F;27;Divorciado;Ativo
+4;Ana Sophia da Cruz;Produção;Técnico;6647,97;16/06/2019;M;50;Casado;Inativo
+5;Dr. Nicolas Pinto;Produção;Gerente;8730,19;29/03/2019;F;62;Casado;Inativo
+6;Marcela Costa;RH;Analista;12403,42;23/07/2024;M;55;Solteiro;Ativo
+7;João Miguel da Costa;Produção;Técnico;4771,89;11/11/2021;F;58;Viúvo;Inativo
+8;Gabrielly Cardoso;RH;Analista;2728,36;26/04/2022;M;56;Divorciado;Ativo
+9;Raul da Paz;Logística;Coordenador;3164,23;30/11/2022;F;51;Solteiro;Ativo
+10;Davi Lucca Teixeira;Produção;Gerente;13512,53;29/06/2020;M;35;Viúvo;Ativo
+11;Ana Beatriz Jesus;TI;Analista;5909,53;24/07/2019;M;52;Casado;Inativo
+12;Dr. Calebe Barbosa;RH;Analista;3852,93;04/09/2018;F;63;Casado;Inativo
+13;Laís da Mata;Vendas;Analista;4719,79;20/12/2019;M;64;Casado;Ativo
+14;Nina Azevedo;RH;Assistente;3487,12;14/12/2018;M;34;Divorciado;Ativo
+15;Laura Rezende;Logística;Analista;11978,82;26/02/2023;F;65;Casado;Ativo
+16;Maria Julia das Neves;Produção;Técnico;11440,3;18/04/2025;M;38;Solteiro;Ativo
+17;Luigi Santos;Financeiro;Gerente;8988,88;10/12/2016;F;32;Solteiro;Ativo
+18;Srta. Giovanna Pinto;Produção;Coordenador;2503,83;14/04/2025;F;35;Viúvo;Inativo
+19;Bernardo Cavalcanti;TI;Coordenador;6088,45;06/02/2020;F;59;Solteiro;Ativo
+20;Joaquim da Mota;Logística;Assistente;8922,49;29/12/2019;F;54;Divorciado;Inativo
+21;João Felipe da Cunha;Produção;Assistente;14015,44;15/09/2016;M;42;Viúvo;Inativo
+22;Marcela Mendes;TI;Técnico;4336,75;29/04/2017;M;21;Solteiro;Inativo
+23;Maria Cecília Teixeira;Financeiro;Técnico;12411,29;27/11/2023;F;19;Casado;Ativo
+24;Sr. Henrique Fogaça;Financeiro;Técnico;3889,2;24/05/2016;F;22;Solteiro;Inativo
+25;Dr. Theo Fernandes;TI;Técnico;9900,19;17/10/2017;M;41;Viúvo;Inativo
+26;Miguel Fernandes;Financeiro;Técnico;4045,15;16/05/2025;F;39;Solteiro;Inativo
+27;Cecília Silveira;Vendas;Assistente;5126,11;13/10/2022;F;49;Casado;Inativo
+28;Srta. Kamilly Freitas;Logística;Analista;6376,48;13/07/2018;F;28;Viúvo;Ativo
+29;Srta. Ana Lívia Alves;Vendas;Coordenador;14477,24;08/06/2022;F;33;Solteiro;Inativo
+30;Nathan da Mota;RH;Gerente;5525,11;29/07/2016;M;45;Viúvo;Inativo
+31;Fernando Barbosa;Logística;Gerente;10602,49;15/09/2022;F;51;Solteiro;Inativo
+32;Maria Sophia Campos;RH;Assistente;9515,1;25/12/2017;F;18;Solteiro;Inativo
+33;Augusto Jesus;Vendas;Assistente;8686,25;11/07/2021;M;36;Casado;Ativo
+34;Sr. Luigi Porto;Produção;Assistente;14387,97;12/12/2017;M;51;Casado;Ativo
+35;Luana Costa;Vendas;Coordenador;5824,04;29/03/2024;M;21;Casado;Ativo
+36;Laura da Rosa;Financeiro;Gerente;6576,83;07/09/2021;M;23;Viúvo;Ativo
+37;Dra. Letícia Jesus;TI;Assistente;13842,9;16/08/2020;M;40;Casado;Ativo
+38;Pietro Cunha;Logística;Analista;6665,09;30/11/2024;M;64;Casado;Inativo
+39;Pedro Lucas Nogueira;RH;Coordenador;3250,96;08/06/2019;M;30;Solteiro;Ativo
+40;Srta. Amanda Souza;TI;Analista;8381,25;17/05/2017;F;58;Solteiro;Ativo
+41;Sr. Bernardo da Cruz;Financeiro;Técnico;14074,49;13/12/2023;M;34;Casado;Ativo
+42;Sr. Pedro Fernandes;Logística;Coordenador;6640,43;02/06/2025;M;41;Viúvo;Ativo
+43;Marcos Vinicius Nogueira;Financeiro;Coordenador;9660,73;11/06/2019;F;41;Casado;Ativo
+44;Pedro Henrique Azevedo;Financeiro;Coordenador;6236,93;10/09/2017;F;40;Solteiro;Ativo
+45;Sophie Vieira;Financeiro;Assistente;2763,99;28/12/2024;F;35;Solteiro;Ativo
+46;Murilo da Paz;Logística;Analista;2765,1;09/02/2018;M;62;Viúvo;Ativo
+47;Sra. Luiza Barros;Logística;Analista;10035,11;09/11/2017;F;58;Divorciado;Ativo
+48;Maitê da Mota;Vendas;Coordenador;7727,77;05/02/2018;M;56;Casado;Ativo
+49;João Miguel Teixeira;RH;Coordenador;8396,11;04/06/2016;M;48;Solteiro;Ativo
+50;Benjamin da Costa;TI;Gerente;9766,01;27/04/2024;M;51;Divorciado;Inativo
+51;Esther Nunes;Vendas;Coordenador;6506,85;19/01/2016;F;30;Solteiro;Inativo
+52;Lorenzo Campos;Produção;Gerente;10022,05;08/12/2017;M;27;Casado;Ativo
+53;Bruno Monteiro;Logística;Coordenador;12624,23;19/04/2023;M;52;Solteiro;Inativo
+54;Caroline Freitas;Produção;Analista;4529,45;01/09/2020;F;18;Viúvo;Inativo
+55;Cauã Monteiro;Produção;Coordenador;6495,75;07/10/2019;F;56;Viúvo;Inativo
+56;Maria Julia Araújo;TI;Assistente;12478,91;25/03/2021;M;53;Viúvo;Ativo
+57;Marcela Almeida;Financeiro;Coordenador;4500,05;26/05/2020;F;50;Solteiro;Ativo
+58;Nina Cavalcanti;Financeiro;Técnico;8254,08;18/08/2022;M;60;Viúvo;Ativo
+59;Ryan da Rosa;Financeiro;Assistente;10487,35;22/09/2024;M;62;Viúvo;Inativo
+60;Dr. André Ramos;TI;Técnico;8037,41;05/09/2022;M;52;Viúvo;Ativo
+61;Luiz Henrique Barros;Financeiro;Assistente;8678,2;10/09/2024;M;46;Casado;Inativo
+62;Isabel Rodrigues;Produção;Assistente;14298,44;09/11/2024;M;33;Viúvo;Ativo
+63;Dr. Thiago Almeida;RH;Gerente;5063,42;25/03/2019;F;32;Casado;Inativo
+64;Stella Moraes;Produção;Analista;10365,67;12/11/2017;M;19;Viúvo;Ativo
+65;Vicente Dias;RH;Assistente;11324,25;22/07/2016;F;58;Divorciado;Ativo
+66;Bernardo Dias;RH;Assistente;5063,5;11/03/2023;F;44;Divorciado;Ativo
+67;João Gabriel Caldeira;Produção;Assistente;10561,08;10/10/2021;M;63;Viúvo;Ativo
+68;Daniela Farias;TI;Técnico;3875,09;23/10/2021;F;62;Solteiro;Inativo
+69;Bianca Lima;Vendas;Coordenador;3742,37;24/07/2025;F;33;Divorciado;Ativo
+70;Enzo Gabriel da Mota;TI;Técnico;9391,96;29/11/2015;F;65;Divorciado;Inativo
+71;Luiz Felipe Silva;Vendas;Gerente;2639,39;07/07/2023;M;24;Viúvo;Inativo
+72;Benício Monteiro;Produção;Técnico;9858,56;12/08/2019;F;35;Divorciado;Ativo
+73;Sr. Gustavo Henrique Moreira;RH;Assistente;3762,64;28/04/2018;M;30;Viúvo;Ativo
+74;Sr. Emanuel Rodrigues;RH;Técnico;10966,9;22/10/2021;M;37;Casado;Inativo
+75;Maria Eduarda da Rocha;Logística;Assistente;12104,93;21/10/2015;F;45;Casado;Inativo
+76;Luna Silva;Produção;Coordenador;3912,77;24/10/2024;F;48;Viúvo;Inativo
+77;Isaac Lopes;Produção;Coordenador;2297,43;06/02/2019;M;36;Viúvo;Ativo
+78;Arthur da Rosa;Logística;Analista;14226,15;04/10/2019;F;45;Viúvo;Inativo
+79;João Barbosa;TI;Assistente;3735,05;27/02/2025;F;65;Casado;Ativo
+80;Breno da Paz;TI;Técnico;9870,75;29/07/2017;F;54;Casado;Inativo
+81;Gabriela Freitas;Logística;Analista;5573,44;16/03/2021;F;65;Divorciado;Ativo
+82;Júlia Araújo;Logística;Coordenador;13835,96;22/09/2017;M;40;Viúvo;Inativo
+83;Vinicius da Cunha;Vendas;Técnico;5481,17;18/10/2018;M;48;Casado;Ativo
+84;Pietro Fernandes;RH;Técnico;3239,06;02/01/2017;M;49;Solteiro;Ativo
+85;Marina Ribeiro;Produção;Coordenador;6106,47;03/09/2017;F;18;Solteiro;Ativo
+86;Isabel Fogaça;RH;Técnico;12980,52;09/11/2016;F;52;Casado;Ativo
+87;Lucca Araújo;TI;Assistente;4696,83;20/03/2024;F;37;Divorciado;Inativo
+88;Cauã Silva;Vendas;Coordenador;2016,61;29/01/2018;F;19;Solteiro;Ativo
+89;Mirella da Costa;Produção;Gerente;14460,59;03/04/2024;F;41;Casado;Ativo
+90;Gabrielly Freitas;RH;Coordenador;11678;24/09/2016;F;30;Viúvo;Inativo
+91;Dra. Luiza Sales;RH;Técnico;5074,29;10/09/2020;F;23;Solteiro;Inativo
+92;Arthur Moura;Vendas;Coordenador;4435,83;02/07/2024;M;18;Divorciado;Ativo
+93;Calebe Campos;Vendas;Técnico;2417,15;29/07/2023;F;64;Viúvo;Inativo
+94;Júlia Cardoso;TI;Coordenador;13409,89;19/04/2018;M;24;Divorciado;Inativo
+95;Kevin Ferreira;RH;Coordenador;2523,3;09/08/2022;F;35;Casado;Inativo
+96;Yuri Porto;RH;Técnico;6330,58;20/08/2018;F;39;Casado;Ativo
+97;Ana Fogaça;Vendas;Gerente;2425,39;25/03/2022;M;37;Viúvo;Ativo
+98;Anthony das Neves;Produção;Gerente;10523,68;12/02/2018;F;39;Solteiro;Ativo
+99;Pietro Castro;RH;Assistente;7203,07;22/04/2019;F;58;Solteiro;Inativo
+100;Helena Gonçalves;Financeiro;Assistente;13896,74;08/06/2019;F;26;Casado;Ativo
+101;Luiz Otávio Novaes;TI;Analista;3301,95;12/11/2015;M;58;Viúvo;Inativo
+102;Brenda Aragão;Produção;Técnico;5450,49;24/06/2017;M;23;Solteiro;Inativo
+103;Evelyn da Rocha;RH;Coordenador;12030,35;17/05/2023;F;30;Casado;Inativo
+104;Ana Júlia da Luz;RH;Técnico;7329,99;13/01/2024;M;64;Viúvo;Inativo
+105;Fernanda Almeida;Produção;Gerente;14948,18;17/05/2017;M;20;Solteiro;Inativo
+106;Dr. Diego Campos;RH;Coordenador;14703,7;25/12/2020;F;52;Solteiro;Ativo
+107;Isadora Teixeira;Financeiro;Analista;2731,04;18/10/2016;F;40;Viúvo;Ativo
+108;Giovanna Mendes;Vendas;Técnico;2210,27;29/04/2025;M;36;Viúvo;Inativo
+109;Dra. Maria Alice Oliveira;TI;Técnico;12258,99;20/10/2016;F;63;Divorciado;Ativo
+110;Mirella Lima;Financeiro;Assistente;4119,5;13/11/2017;M;47;Casado;Inativo
+111;João Pedro Rodrigues;Produção;Assistente;12591,9;01/09/2024;M;37;Casado;Ativo
+112;Evelyn da Costa;Produção;Técnico;10380,64;09/01/2022;M;25;Divorciado;Inativo
+113;Pedro Lucas Cunha;Financeiro;Assistente;6587,44;19/05/2023;M;65;Divorciado;Ativo
+114;Pedro Lucas da Paz;RH;Gerente;7193,38;03/03/2020;F;60;Viúvo;Inativo
+115;Dr. Marcos Vinicius Campos;Financeiro;Analista;6118,75;15/01/2020;M;38;Solteiro;Ativo
+116;Dr. Erick da Rocha;Financeiro;Assistente;8893,64;10/07/2019;M;47;Casado;Ativo
+117;Gabriela Sales;Logística;Analista;3628,3;07/04/2024;M;30;Solteiro;Inativo
+118;Eloah Araújo;Vendas;Gerente;14440,92;19/01/2016;F;43;Divorciado;Inativo
+119;Pietro Almeida;Vendas;Coordenador;11445,42;29/09/2024;M;60;Viúvo;Ativo
+120;Davi Lucca Cardoso;Logística;Gerente;3265,14;21/09/2019;F;64;Casado;Ativo
+121;Rebeca Dias;Financeiro;Gerente;8487,38;06/07/2022;F;25;Viúvo;Inativo
+122;Srta. Maria Fernanda Melo;RH;Coordenador;3546,83;03/03/2025;F;50;Casado;Inativo
+123;Sr. João Lucas da Mota;Logística;Coordenador;13604,34;01/05/2019;F;57;Viúvo;Inativo
+124;Emanuella Costela;RH;Assistente;6640,74;20/05/2021;F;52;Solteiro;Ativo
+125;Pedro Henrique Santos;TI;Analista;12796,79;26/06/2017;M;47;Divorciado;Ativo
+126;João Gabriel Lopes;Logística;Gerente;10372,78;17/04/2025;F;24;Viúvo;Ativo
+127;Maria Clara da Rocha;Financeiro;Coordenador;7454,93;09/12/2022;F;41;Casado;Ativo
+128;Enzo Lima;Produção;Gerente;10084,05;21/02/2025;F;36;Solteiro;Ativo
+129;Eduarda Costa;Vendas;Gerente;9449,27;11/12/2021;M;28;Solteiro;Ativo
+130;Lívia Barros;TI;Técnico;5061,23;24/12/2018;F;28;Casado;Inativo
+131;Catarina Costela;TI;Gerente;9597,83;03/07/2023;M;56;Casado;Inativo
+132;Laura Cardoso;TI;Gerente;7364,46;29/06/2018;M;50;Divorciado;Inativo
+133;Cauã Fernandes;Produção;Coordenador;14125,48;28/08/2020;M;65;Divorciado;Inativo
+134;Dr. Benjamin Nunes;Vendas;Técnico;2614,77;12/12/2024;M;40;Casado;Ativo
+135;Yago Costela;Financeiro;Analista;7499,29;07/12/2015;M;19;Viúvo;Ativo
+136;Caio Moura;Vendas;Gerente;2963,24;12/06/2018;M;53;Viúvo;Ativo
+137;Sr. Nathan Farias;Logística;Gerente;5519,93;13/05/2021;F;63;Divorciado;Inativo
+138;Beatriz Duarte;Vendas;Assistente;4204,51;10/09/2024;M;35;Casado;Ativo
+139;Nina da Rocha;Logística;Assistente;7842,69;02/10/2020;F;45;Divorciado;Inativo
+140;Alexia Caldeira;Vendas;Gerente;11322;28/12/2024;F;25;Casado;Inativo
+141;Sra. Maria Julia Fernandes;RH;Técnico;11636,77;29/07/2020;M;25;Viúvo;Ativo
+142;Davi Lucca Castro;Vendas;Técnico;5753,21;22/10/2022;F;19;Divorciado;Inativo
+143;Helena da Mota;RH;Coordenador;10605,89;27/07/2020;F;44;Casado;Ativo
+144;Davi Lucas Caldeira;Produção;Coordenador;9086,65;08/02/2023;F;38;Solteiro;Inativo
+145;Luna Cardoso;Produção;Gerente;5621,19;20/03/2023;M;38;Casado;Ativo
+146;Sr. Antônio Silveira;TI;Técnico;10544,85;21/02/2018;M;26;Divorciado;Ativo
+147;Laís Melo;Produção;Técnico;14095,43;17/09/2019;F;48;Divorciado;Inativo
+148;Vinicius Campos;RH;Coordenador;9597,38;16/04/2021;M;35;Viúvo;Ativo
+149;Alícia Ribeiro;Vendas;Técnico;10987,24;22/09/2022;F;37;Viúvo;Ativo
+150;Srta. Raquel Duarte;Financeiro;Coordenador;8944,28;26/03/2017;F;34;Solteiro;Inativo
+151;Rafael Rocha;Produção;Técnico;2383;27/01/2016;M;40;Divorciado;Ativo
+152;Beatriz Nogueira;Financeiro;Técnico;4348,04;05/10/2018;F;58;Divorciado;Ativo
+153;Ana Carolina Peixoto;Logística;Analista;11241,83;27/06/2016;F;39;Casado;Ativo
+154;Bruno Pinto;Financeiro;Analista;4088,5;07/12/2019;M;42;Solteiro;Ativo
+155;Luiz Felipe Lopes;Logística;Coordenador;13376,95;08/06/2016;F;36;Solteiro;Ativo
+156;João Silva;Financeiro;Gerente;4966,75;31/05/2018;M;47;Casado;Ativo
+157;Vinicius Cavalcanti;Vendas;Técnico;7181,7;10/06/2020;M;31;Viúvo;Inativo
+158;Isadora Azevedo;Vendas;Técnico;11472,74;24/09/2023;M;64;Viúvo;Ativo
+159;Pedro Lucas Nascimento;Logística;Coordenador;10335,25;29/09/2019;F;58;Solteiro;Inativo
+160;Sra. Maria Clara Castro;RH;Gerente;8773,51;11/03/2022;F;46;Solteiro;Ativo
+161;Valentina Gomes;Produção;Analista;14040;18/12/2021;F;31;Viúvo;Inativo
+162;Giovanna Nascimento;Vendas;Gerente;14904,99;23/03/2019;F;42;Divorciado;Ativo
+163;Vicente Souza;RH;Gerente;13577,05;14/07/2019;M;38;Divorciado;Inativo
+164;Sr. Benício Ribeiro;RH;Técnico;8194,41;12/10/2016;M;28;Divorciado;Inativo
+165;Alexia da Cruz;RH;Analista;2720,29;19/01/2016;F;54;Viúvo;Ativo
+166;Diego Sales;Vendas;Técnico;14594,93;14/03/2023;M;40;Casado;Ativo
+167;Gustavo Henrique Rocha;Logística;Coordenador;7857,82;14/11/2015;F;47;Viúvo;Ativo
+168;Marcela Cavalcanti;TI;Técnico;4142,55;05/08/2016;F;50;Viúvo;Ativo
+169;Henrique Lopes;Logística;Coordenador;5878,06;24/04/2022;M;26;Divorciado;Ativo
+170;Sr. Lorenzo Melo;RH;Coordenador;14020,32;28/12/2024;M;18;Solteiro;Ativo
+171;Cauê Cardoso;Produção;Técnico;2862,18;01/11/2022;F;49;Casado;Ativo
+172;Lavínia Martins;RH;Gerente;7160,25;05/05/2025;M;26;Viúvo;Inativo
+173;Luiz Felipe Pires;Vendas;Analista;4225,91;09/04/2023;M;54;Viúvo;Ativo
+174;Srta. Bruna da Rocha;Produção;Técnico;4806,27;10/12/2023;F;57;Divorciado;Ativo
+175;Laura Peixoto;Logística;Assistente;11471,17;12/12/2024;F;54;Divorciado;Ativo
+176;Maria Cardoso;TI;Gerente;12127,27;22/05/2024;F;54;Casado;Inativo
+177;Larissa Castro;TI;Assistente;11964,67;18/04/2021;F;21;Divorciado;Ativo
+178;Kevin Freitas;Financeiro;Coordenador;9868,25;14/08/2018;M;63;Solteiro;Inativo
+179;Marcos Vinicius Castro;Financeiro;Gerente;7714,11;23/08/2018;M;55;Casado;Ativo
+180;Sra. Maria Alice Pires;Financeiro;Assistente;9254,91;01/10/2019;F;29;Viúvo;Ativo
+181;Brenda Moura;TI;Assistente;6704,32;19/02/2017;F;29;Divorciado;Inativo
+182;Matheus da Paz;Financeiro;Gerente;14270,97;01/02/2019;F;43;Solteiro;Inativo
+183;Dra. Amanda Ramos;Produção;Técnico;11408,29;06/06/2018;F;31;Viúvo;Ativo
+184;Marcos Vinicius Nascimento;Produção;Analista;13610,89;27/10/2015;M;36;Casado;Inativo
+185;Vitor Gabriel Carvalho;Produção;Assistente;10997,7;23/12/2023;F;35;Casado;Inativo
+186;Carlos Eduardo Nunes;Vendas;Coordenador;4563,36;25/05/2018;M;56;Solteiro;Ativo
+187;Isabel Barros;Logística;Assistente;5867,69;09/09/2023;M;46;Casado;Ativo
+188;Ana Júlia Cardoso;TI;Gerente;8738,63;30/05/2021;M;52;Viúvo;Ativo
+189;João Pereira;Produção;Técnico;8151,56;12/09/2016;M;28;Casado;Inativo
+190;Levi Freitas;Vendas;Assistente;3011,79;04/11/2017;M;22;Viúvo;Inativo
+191;Bruno Jesus;RH;Técnico;7224,6;18/06/2021;F;31;Solteiro;Ativo
+192;Laís Rodrigues;Financeiro;Técnico;3718,9;19/11/2021;F;64;Viúvo;Ativo
+193;Augusto Dias;Financeiro;Gerente;9930,1;20/05/2016;F;42;Viúvo;Ativo
+194;Enzo das Neves;Logística;Técnico;7686,01;02/10/2024;F;30;Solteiro;Inativo
+195;Kaique Ramos;Financeiro;Gerente;12459,69;24/11/2024;M;27;Solteiro;Inativo
+196;Anthony Ferreira;Logística;Gerente;4996,47;20/02/2022;F;40;Divorciado;Inativo
+197;Maitê Gomes;TI;Assistente;2926,46;09/11/2019;M;20;Solteiro;Ativo
+198;Dra. Maria Alice Pires;Logística;Assistente;10085,14;19/11/2022;M;19;Solteiro;Ativo
+199;Alice Gonçalves;Vendas;Coordenador;14561,17;11/05/2021;M;29;Casado;Ativo
+200;Sra. Bárbara Correia;Produção;Assistente;2248,04;24/03/2020;M;30;Solteiro;Inativo
+201;Diego Nunes;Produção;Analista;13768,79;13/03/2025;M;18;Solteiro;Inativo
+202;Eloah Almeida;RH;Coordenador;7814,48;13/04/2020;F;22;Divorciado;Ativo
+203;Isabelly Lopes;Vendas;Assistente;5096,17;21/02/2022;M;55;Viúvo;Ativo
+204;Isis Cavalcanti;Financeiro;Assistente;6711,24;23/05/2019;F;45;Casado;Inativo
+205;Thales Fogaça;Produção;Gerente;6475,29;20/03/2020;F;32;Divorciado;Ativo
+206;Sabrina Freitas;TI;Assistente;11009,86;04/10/2024;F;63;Casado;Inativo
+207;Srta. Maria Ramos;Logística;Assistente;6514,93;21/04/2022;M;53;Casado;Inativo
+208;Ana Luiza Caldeira;Logística;Assistente;4242,43;26/01/2022;M;63;Divorciado;Inativo
+209;Matheus Silva;Logística;Coordenador;14238,87;16/04/2023;F;58;Divorciado;Inativo
+210;Dr. Lorenzo Melo;Logística;Gerente;8282,04;21/09/2016;F;42;Solteiro;Inativo
+211;Ana Clara da Paz;RH;Técnico;6096,02;25/06/2019;M;18;Divorciado;Inativo
+212;Marcela Nunes;Vendas;Gerente;2328,5;13/11/2024;F;23;Divorciado;Ativo
+213;Maysa Moura;Produção;Assistente;14302,43;24/04/2021;F;37;Solteiro;Ativo
+214;Sra. Joana Azevedo;TI;Assistente;10368,29;17/02/2017;F;21;Solteiro;Ativo
+215;Amanda da Paz;TI;Analista;4007,65;21/10/2016;M;43;Divorciado;Inativo
+216;Fernando Carvalho;Logística;Gerente;10726,08;17/05/2025;M;53;Viúvo;Ativo
+217;Yago Farias;Produção;Analista;11439,23;09/12/2018;M;41;Divorciado;Inativo
+218;Laís Aragão;TI;Técnico;12537,3;05/12/2015;M;57;Divorciado;Inativo
+219;Cauã Ramos;Financeiro;Técnico;14918,19;30/06/2024;F;63;Casado;Inativo
+220;Raul da Cunha;Logística;Coordenador;12500,4;01/07/2020;M;63;Divorciado;Inativo
+221;Maitê da Luz;Vendas;Analista;3258,67;01/07/2023;F;22;Viúvo;Inativo
+222;Sra. Marina da Mota;Produção;Gerente;13608,9;31/05/2019;F;31;Viúvo;Ativo
+223;Larissa Barbosa;Vendas;Coordenador;13272,21;07/08/2024;M;37;Solteiro;Inativo
+224;Júlia Duarte;Logística;Assistente;6883,51;22/11/2021;F;33;Solteiro;Ativo
+225;Davi Lucas Rodrigues;Financeiro;Coordenador;7893,36;03/04/2023;F;23;Solteiro;Ativo
+226;Mirella Cavalcanti;Financeiro;Assistente;5820,53;10/05/2022;F;36;Solteiro;Inativo
+227;Maria Cecília Farias;Vendas;Coordenador;11589,7;06/01/2023;M;48;Casado;Inativo
+228;Heitor Azevedo;TI;Analista;6011,62;14/07/2020;F;65;Casado;Inativo
+229;Gabriel Lima;Produção;Assistente;8170,78;22/02/2024;F;37;Divorciado;Ativo
+230;Mariana Lima;Produção;Coordenador;13263,95;29/10/2017;F;47;Viúvo;Ativo
+231;Maria Julia Dias;Produção;Gerente;14782,61;25/08/2024;F;29;Viúvo;Ativo
+232;Ana Júlia Melo;Vendas;Gerente;11141,24;30/08/2016;F;30;Divorciado;Ativo
+233;Guilherme Rocha;Vendas;Gerente;9095,18;23/03/2023;M;18;Casado;Ativo
+234;Clara Cunha;Logística;Técnico;11135,83;08/03/2022;F;64;Divorciado;Ativo
+235;Srta. Laura Correia;RH;Assistente;12592,75;26/05/2023;F;37;Solteiro;Inativo
+236;Joaquim da Paz;TI;Técnico;2013,79;11/12/2021;M;49;Viúvo;Ativo
+237;Bernardo Souza;Vendas;Coordenador;9866,62;21/07/2018;F;32;Divorciado;Ativo
+238;Sra. Marina Novaes;RH;Gerente;5987,51;08/12/2017;F;37;Solteiro;Ativo
+239;Yasmin Pinto;Logística;Analista;8200,68;13/12/2015;M;61;Viúvo;Ativo
+240;Sr. Luiz Gustavo Novaes;Financeiro;Técnico;12475,64;15/05/2025;M;21;Solteiro;Ativo
+241;Sophie Vieira;RH;Técnico;14605,64;23/05/2018;F;23;Solteiro;Ativo
+242;Maria Fernanda Rocha;Logística;Gerente;5303,66;09/04/2016;M;65;Divorciado;Inativo
+243;João Miguel Ribeiro;TI;Coordenador;6180,75;15/06/2023;F;44;Divorciado;Ativo
+244;Srta. Joana da Cunha;TI;Assistente;2889,88;06/10/2018;F;25;Casado;Ativo
+245;Ana Beatriz Carvalho;Financeiro;Técnico;7419,92;16/07/2017;M;56;Divorciado;Ativo
+246;Evelyn da Cruz;Vendas;Técnico;5938,19;04/04/2018;F;49;Divorciado;Inativo
+247;Rodrigo Caldeira;Logística;Assistente;2742,71;16/08/2022;F;25;Divorciado;Inativo
+248;Ian Pereira;TI;Gerente;2395,32;10/05/2019;M;55;Divorciado;Ativo
+249;Davi Luiz Viana;TI;Analista;3812,72;27/01/2017;M;62;Divorciado;Inativo
+250;Matheus Nunes;Financeiro;Analista;12349,5;10/11/2022;F;24;Viúvo;Ativo
+251;Lorenzo Sales;Financeiro;Gerente;11537,39;13/08/2022;M;40;Viúvo;Ativo
+252;Rafael Cardoso;Produção;Assistente;6054,62;12/01/2022;M;44;Viúvo;Inativo
+253;Srta. Mariana Cardoso;Vendas;Técnico;13324,23;09/06/2021;M;23;Divorciado;Ativo
+254;Lucas Gabriel Azevedo;Logística;Técnico;7260,85;05/03/2023;F;46;Divorciado;Inativo
+255;Ana Sophia Nogueira;RH;Coordenador;11790,01;27/08/2024;F;24;Viúvo;Inativo
+256;Rodrigo da Costa;Financeiro;Técnico;6806,84;17/09/2024;F;38;Casado;Inativo
+257;Ana Dias;RH;Coordenador;5649,55;09/10/2021;F;34;Casado;Ativo
+258;Sr. Thales Ferreira;Vendas;Gerente;9749,29;22/02/2016;M;20;Divorciado;Inativo
+259;João Miguel Santos;RH;Analista;10236,2;18/10/2024;M;46;Viúvo;Inativo
+260;Maria Julia Alves;Produção;Coordenador;8100;25/11/2023;M;55;Casado;Ativo
+261;Sarah da Mota;RH;Analista;6452,88;10/09/2023;M;65;Casado;Ativo
+262;Isabelly da Conceição;Logística;Assistente;13707,53;14/12/2015;M;62;Solteiro;Inativo
+263;Dra. Maitê Gonçalves;Produção;Assistente;3932,61;04/06/2024;F;52;Divorciado;Ativo
+264;Henrique Ramos;Financeiro;Analista;6093,24;06/04/2024;M;42;Divorciado;Inativo
+265;Sr. Marcos Vinicius Azevedo;Vendas;Assistente;9756,53;11/12/2017;F;57;Casado;Ativo
+266;Emanuelly Santos;RH;Analista;7278,69;07/01/2020;M;39;Solteiro;Ativo
+267;Daniel Dias;Produção;Gerente;5567,84;25/06/2018;M;43;Viúvo;Ativo
+268;Lorena Pereira;TI;Analista;14641,36;15/06/2025;M;27;Divorciado;Ativo
+269;Ana Vitória Pires;RH;Técnico;7808,93;02/01/2017;M;50;Divorciado;Ativo
+270;Gabriela Alves;Produção;Analista;12211,27;07/01/2019;M;48;Divorciado;Ativo
+271;João Lucas Monteiro;TI;Assistente;5581,75;31/01/2022;F;53;Casado;Inativo
+272;Helena Novaes;Produção;Técnico;10223,23;21/12/2019;M;40;Casado;Ativo
+273;Ian Sales;Logística;Gerente;7637,83;02/02/2024;F;34;Viúvo;Inativo
+274;Ana Clara Peixoto;TI;Gerente;7301,14;16/11/2019;M;46;Casado;Ativo
+275;João Vitor da Conceição;Financeiro;Gerente;5160,25;26/12/2017;M;29;Solteiro;Inativo
+276;Dr. Marcos Vinicius Moraes;Vendas;Assistente;14836,14;28/07/2023;F;23;Divorciado;Ativo
+277;Srta. Milena da Rocha;Produção;Gerente;7196,01;05/06/2025;F;25;Solteiro;Ativo
+278;João Miguel Aragão;TI;Técnico;5652,06;04/10/2022;F;58;Viúvo;Inativo
+279;Dr. Davi Lucas Cardoso;Produção;Gerente;14899,72;23/11/2022;M;45;Divorciado;Inativo
+280;Sra. Clarice Campos;RH;Assistente;4036,18;06/07/2025;F;60;Divorciado;Ativo
+281;Arthur Rodrigues;TI;Coordenador;7191,1;30/04/2020;M;29;Solteiro;Inativo
+282;Calebe Nunes;Logística;Assistente;11435,01;15/03/2020;M;60;Solteiro;Ativo
+283;Samuel Rodrigues;Produção;Gerente;6349,11;26/02/2021;F;26;Divorciado;Inativo
+284;Luigi Duarte;Produção;Gerente;14565,16;15/07/2022;F;40;Viúvo;Ativo
+285;Marina Nogueira;Produção;Técnico;7214,06;15/11/2022;M;47;Divorciado;Ativo
+286;Melissa Dias;TI;Analista;2348,94;29/06/2023;F;44;Casado;Inativo
+287;Carlos Eduardo Jesus;Logística;Assistente;11209,82;16/12/2018;M;50;Casado;Ativo
+288;Calebe Dias;TI;Analista;8782,88;30/12/2020;F;58;Solteiro;Ativo
+289;Luigi da Costa;Vendas;Analista;11895,89;09/03/2020;M;43;Divorciado;Ativo
+290;Joana Pinto;Logística;Coordenador;10047,87;21/08/2025;F;39;Casado;Ativo
+291;Dra. Isis Lopes;RH;Coordenador;11550,46;03/04/2023;M;25;Divorciado;Inativo
+292;Anthony Novaes;TI;Analista;7603,57;14/04/2022;F;18;Viúvo;Ativo
+293;Dr. Bruno da Cunha;TI;Técnico;11386,4;26/07/2022;M;26;Viúvo;Inativo
+294;Elisa da Mota;RH;Assistente;14228,11;07/08/2023;M;32;Divorciado;Inativo
+295;Kamilly Moraes;TI;Assistente;12167,79;27/07/2025;F;57;Casado;Ativo
+296;Pedro Miguel Caldeira;Logística;Coordenador;3870,95;01/10/2019;F;58;Viúvo;Ativo
+297;Augusto Santos;TI;Gerente;8237,8;26/08/2021;M;45;Divorciado;Inativo
+298;Alexia Moraes;Financeiro;Gerente;7953,2;23/04/2016;M;34;Viúvo;Inativo
+299;Alice Melo;Logística;Gerente;14062,44;24/12/2021;M;28;Divorciado;Ativo
+300;Maria Cecília Almeida;Financeiro;Analista;12350,41;03/01/2018;M;56;Solteiro;Ativo
+301;Matheus Barbosa;Produção;Assistente;8977,74;26/01/2020;M;44;Solteiro;Inativo
+302;Rodrigo da Mata;RH;Analista;12426,7;01/06/2024;F;29;Viúvo;Ativo
+303;Thales Campos;TI;Assistente;10572,14;30/12/2022;F;57;Divorciado;Inativo
+304;Sr. Nicolas Ramos;Financeiro;Analista;3506,9;07/11/2024;M;46;Viúvo;Ativo
+305;Ana Julia Ribeiro;Produção;Coordenador;4056,8;13/06/2020;F;61;Viúvo;Ativo
+306;Evelyn Rocha;Logística;Analista;10407,39;06/07/2021;F;59;Solteiro;Inativo
+307;Diogo Souza;RH;Gerente;14332,37;15/11/2020;M;51;Solteiro;Ativo
+308;Manuela Barbosa;TI;Gerente;7015,91;21/06/2017;M;43;Casado;Ativo
+309;Sra. Olivia Correia;Vendas;Coordenador;12793,84;14/03/2021;F;50;Casado;Inativo
+310;Sofia Moreira;Financeiro;Coordenador;3542,86;28/10/2015;M;22;Divorciado;Inativo
+311;Rafael Souza;Produção;Coordenador;5928,84;23/01/2025;F;43;Viúvo;Inativo
+312;Bruna Pereira;Vendas;Assistente;6647,96;17/10/2023;M;18;Divorciado;Inativo
+313;Miguel Santos;Produção;Gerente;7732,66;25/09/2016;M;21;Divorciado;Inativo
+314;Manuela Viana;RH;Analista;8804,48;02/10/2020;M;29;Viúvo;Ativo
+315;Maria Fernanda Barbosa;Vendas;Assistente;4237,36;28/08/2018;M;57;Casado;Ativo
+316;Evelyn Castro;RH;Coordenador;14898,42;09/11/2016;F;46;Divorciado;Inativo
+317;Guilherme Costa;Financeiro;Coordenador;13212,94;24/06/2022;F;65;Divorciado;Inativo
+318;Alícia Cavalcanti;Produção;Técnico;2741,86;12/06/2023;M;41;Casado;Inativo
+319;Erick Moraes;TI;Assistente;10575,65;02/12/2016;M;25;Divorciado;Ativo
+320;Srta. Alana Carvalho;Logística;Analista;13137,26;31/07/2018;F;30;Viúvo;Inativo
+321;Alice Ferreira;RH;Assistente;3144,71;04/09/2022;F;52;Casado;Ativo
+322;Sr. Isaac Silva;Financeiro;Coordenador;5780,46;13/04/2019;M;22;Solteiro;Ativo
+323;Ana Clara Dias;RH;Coordenador;8776,59;18/05/2025;M;53;Divorciado;Ativo
+324;Antônio Oliveira;TI;Gerente;5273,24;22/08/2018;M;33;Solteiro;Ativo
+325;Maria Eduarda Cunha;Vendas;Assistente;14413,19;04/05/2018;F;47;Divorciado;Inativo
+326;Lívia Pires;RH;Coordenador;14099,03;11/07/2021;F;34;Divorciado;Inativo
+327;Dra. Maria Fernanda Caldeira;Vendas;Coordenador;7173,36;19/12/2015;F;29;Solteiro;Ativo
+328;Sr. Lorenzo da Mata;Vendas;Assistente;7379,98;25/08/2020;F;31;Viúvo;Ativo
+329;Ana Laura Ribeiro;Produção;Coordenador;6279,25;18/01/2023;M;59;Casado;Ativo
+330;Sr. Vitor Correia;Financeiro;Assistente;9494,91;18/08/2024;F;60;Viúvo;Inativo
+331;Luiz Henrique Aragão;Financeiro;Gerente;12507,89;02/01/2024;M;40;Divorciado;Ativo
+332;Maria Fernanda Ramos;TI;Analista;4759,22;25/06/2018;M;42;Solteiro;Ativo
+333;Bryan Barros;Logística;Gerente;8408,72;04/06/2021;F;50;Casado;Inativo
+334;Ana Julia Mendes;Financeiro;Analista;9445,73;28/06/2024;M;63;Viúvo;Inativo
+335;Renan Cunha;Financeiro;Técnico;11633,36;15/03/2025;F;33;Casado;Ativo
+336;Maria Castro;Vendas;Gerente;2592,53;24/10/2018;M;54;Divorciado;Ativo
+337;Pedro Lucas Cardoso;Vendas;Assistente;5568,23;17/02/2020;M;38;Divorciado;Inativo
+338;Dr. Calebe Costa;Vendas;Assistente;2258,91;27/12/2017;M;39;Divorciado;Ativo
+339;Erick Rezende;Logística;Analista;4429,05;02/04/2024;F;55;Solteiro;Inativo
+340;Thomas da Paz;Logística;Coordenador;7846,25;22/06/2021;M;42;Casado;Inativo
+341;Gabriela Novaes;Produção;Coordenador;5041,23;24/01/2018;F;27;Divorciado;Inativo
+342;Esther Moreira;Vendas;Analista;14578,56;29/01/2020;F;37;Divorciado;Inativo
+343;Mirella Porto;Produção;Assistente;13280,53;16/09/2016;M;25;Divorciado;Inativo
+344;Bianca Farias;Financeiro;Coordenador;8631,59;04/10/2018;M;56;Solteiro;Inativo
+345;Natália Costela;Produção;Analista;3248,37;09/09/2021;M;45;Divorciado;Inativo
+346;Otávio Duarte;Vendas;Analista;11987,25;13/01/2024;F;58;Divorciado;Inativo
+347;Ana Julia Campos;Financeiro;Técnico;4427,1;23/03/2025;M;26;Casado;Inativo
+348;Clara da Conceição;Financeiro;Coordenador;14923,61;11/07/2023;F;51;Solteiro;Inativo
+349;Ana Julia Sales;Logística;Técnico;8426,6;29/04/2025;M;51;Viúvo;Inativo
+350;Bryan Teixeira;Produção;Coordenador;13969,86;19/06/2018;M;59;Solteiro;Ativo
+351;Lucas Barbosa;TI;Assistente;12341,75;14/04/2025;M;45;Solteiro;Ativo
+352;Lívia Farias;Produção;Coordenador;7846,46;24/04/2019;F;22;Casado;Ativo
+353;Carolina Jesus;Produção;Técnico;4879,13;27/08/2022;M;46;Viúvo;Ativo
+354;Sra. Brenda Martins;Financeiro;Coordenador;3223,41;31/01/2020;F;52;Divorciado;Inativo
+355;Sophia Pinto;Vendas;Assistente;13521,17;07/05/2016;M;32;Viúvo;Inativo
+356;Maria Sophia Nascimento;RH;Assistente;13705,94;02/10/2017;F;40;Viúvo;Inativo
+357;Lavínia da Costa;Financeiro;Analista;10364,85;03/04/2017;M;45;Solteiro;Inativo
+358;João Pedro Souza;RH;Analista;13885,41;19/12/2018;M;54;Casado;Ativo
+359;Sr. Augusto Jesus;Financeiro;Assistente;6380,41;04/03/2020;F;28;Casado;Inativo
+360;Fernanda Castro;TI;Analista;10803,55;07/01/2017;F;31;Viúvo;Inativo
+361;Gustavo da Cruz;Financeiro;Analista;6079,93;15/03/2017;M;32;Viúvo;Ativo
+362;Luiz Fernando Sales;TI;Analista;12489,05;18/08/2024;F;61;Viúvo;Inativo
+363;Maria Clara Lopes;RH;Assistente;14547,69;23/02/2016;F;59;Casado;Ativo
+364;Isabelly Monteiro;Logística;Coordenador;5506,18;14/09/2024;F;64;Viúvo;Ativo
+365;Dra. Camila Gomes;RH;Assistente;6992,66;29/07/2016;M;29;Casado;Ativo
+366;Dr. João Vitor Correia;TI;Técnico;5671,94;01/02/2021;F;54;Casado;Inativo
+367;Milena Barbosa;RH;Assistente;4202,08;30/07/2024;F;30;Solteiro;Ativo
+368;Nathan Rocha;Produção;Gerente;11079,15;11/01/2022;M;35;Viúvo;Ativo
+369;Maria Alice Fogaça;TI;Assistente;12027,74;09/06/2019;F;23;Solteiro;Inativo
+370;Juan da Luz;Vendas;Analista;10276,78;27/03/2022;F;25;Divorciado;Ativo
+371;Paulo Porto;Financeiro;Coordenador;3492,12;09/10/2024;M;23;Solteiro;Ativo
+372;Dra. Isadora Pinto;Financeiro;Assistente;4139,84;18/02/2020;M;58;Casado;Ativo
+373;Luna Lopes;Financeiro;Coordenador;12301,28;16/12/2024;M;64;Casado;Inativo
+374;João Pedro Costa;Logística;Assistente;11530,52;15/11/2018;F;18;Solteiro;Inativo
+375;Sr. Lucas Gabriel Gomes;Financeiro;Técnico;7640,47;19/07/2022;F;62;Viúvo;Ativo
+376;Nicole Pereira;RH;Analista;5438,89;28/08/2023;F;61;Casado;Inativo
+377;Sra. Yasmin Araújo;RH;Analista;4440,74;25/02/2018;F;56;Divorciado;Ativo
+378;Sofia Gonçalves;Vendas;Coordenador;10078,37;10/03/2023;M;29;Viúvo;Inativo
+379;Esther Ferreira;Vendas;Técnico;12145,13;04/02/2024;M;52;Viúvo;Ativo
+380;Sra. Rafaela Nascimento;Produção;Assistente;11688,16;18/08/2017;M;29;Casado;Ativo
+381;Maria Sophia Santos;Financeiro;Analista;2134,47;01/02/2025;F;55;Divorciado;Ativo
+382;Lavínia Martins;Vendas;Analista;7175,22;07/04/2023;M;39;Casado;Ativo
+383;Dr. Erick Santos;RH;Gerente;9913,66;17/09/2023;M;60;Casado;Inativo
+384;Heloísa Dias;RH;Técnico;9523,11;14/06/2017;M;54;Viúvo;Ativo
+385;Carolina Novaes;Financeiro;Gerente;14730,98;23/11/2020;F;31;Casado;Ativo
+386;Gustavo Henrique Fogaça;Produção;Assistente;13690,11;25/10/2022;M;59;Viúvo;Ativo
+387;Lucas Gabriel Costa;Logística;Gerente;8339,2;16/09/2020;M;33;Solteiro;Ativo
+388;Sra. Maria Eduarda Barros;RH;Assistente;7688,53;21/04/2022;M;58;Divorciado;Ativo
+389;Sr. Bryan Teixeira;Vendas;Coordenador;10594,04;17/05/2020;F;43;Viúvo;Inativo
+390;Olivia Fernandes;Logística;Assistente;14419,84;23/01/2024;M;62;Viúvo;Inativo
+391;Carlos Eduardo Pinto;Logística;Assistente;11046,19;28/12/2022;F;52;Solteiro;Inativo
+392;Srta. Pietra Azevedo;Financeiro;Gerente;3516,69;30/03/2020;F;33;Viúvo;Inativo
+393;Joana Gomes;Produção;Gerente;5993,21;10/09/2024;F;38;Solteiro;Inativo
+394;Luiz Gustavo da Luz;TI;Gerente;2543,19;09/10/2015;M;29;Viúvo;Inativo
+395;Luiz Miguel Duarte;TI;Assistente;3531,94;21/01/2025;F;63;Divorciado;Ativo
+396;Dra. Raquel da Costa;Financeiro;Analista;6719,08;13/02/2025;M;19;Viúvo;Ativo
+397;Stephany Azevedo;Financeiro;Técnico;10970,48;17/03/2022;F;37;Divorciado;Inativo
+398;Isaac Melo;Vendas;Gerente;14768,46;16/10/2024;F;34;Casado;Ativo
+399;Maria Vitória Costa;Vendas;Gerente;5195,52;05/03/2024;M;43;Solteiro;Inativo
+400;Alice Carvalho;Logística;Analista;6189,23;15/07/2019;F;19;Casado;Inativo
+401;Samuel Santos;Vendas;Analista;8289,2;26/02/2017;M;63;Divorciado;Ativo
+402;Stephany Pereira;Vendas;Analista;14557,12;13/05/2017;F;44;Divorciado;Inativo
+403;Rodrigo Oliveira;Financeiro;Gerente;10424,46;07/11/2021;M;38;Divorciado;Inativo
+404;Diogo Ribeiro;TI;Assistente;6337,12;14/05/2018;M;26;Viúvo;Ativo
+405;Felipe Monteiro;Produção;Assistente;14317,94;30/05/2018;M;45;Solteiro;Ativo
+406;Mirella da Costa;Financeiro;Técnico;3672,14;20/07/2022;F;29;Solteiro;Inativo
+407;Luiz Fernando da Mota;RH;Analista;9206,08;03/02/2020;M;36;Viúvo;Ativo
+408;Gabriel Pereira;Vendas;Assistente;10052,23;06/08/2016;M;48;Casado;Inativo
+409;Thales das Neves;Financeiro;Assistente;10233,37;07/05/2019;F;40;Solteiro;Ativo
+410;Sra. Elisa Duarte;Financeiro;Coordenador;3956,06;07/08/2020;F;48;Divorciado;Ativo
+411;Miguel Araújo;TI;Técnico;11541,38;14/12/2024;F;43;Solteiro;Inativo
+412;João Lucas da Cunha;TI;Assistente;7927,06;16/03/2019;F;55;Casado;Inativo
+413;Yuri Melo;RH;Assistente;11987,13;05/11/2020;F;50;Solteiro;Ativo
+414;Laura Peixoto;Logística;Analista;4860,39;17/06/2017;F;34;Solteiro;Ativo
+415;Stella Costa;TI;Gerente;11718,3;09/05/2023;F;45;Casado;Ativo
+416;Elisa Barros;RH;Gerente;7145,94;16/10/2022;M;19;Viúvo;Ativo
+417;Isadora Oliveira;Vendas;Gerente;7005,21;19/07/2017;F;23;Solteiro;Inativo
+418;Ana Vitória Monteiro;Vendas;Coordenador;5525,4;22/02/2022;M;27;Solteiro;Ativo
+419;Ana Clara Nunes;Financeiro;Analista;5854,83;01/04/2022;M;48;Divorciado;Ativo
+420;Felipe Pires;TI;Coordenador;5538,14;30/11/2015;F;63;Casado;Ativo
+421;Dr. Luiz Miguel Teixeira;TI;Analista;10645,42;10/09/2018;F;46;Casado;Ativo
+422;Luiz Gustavo Costa;Financeiro;Coordenador;8771,34;01/12/2016;M;21;Solteiro;Inativo
+423;Bryan da Cruz;TI;Gerente;11790,21;08/02/2021;F;49;Viúvo;Ativo
+424;Emanuel Fernandes;TI;Assistente;7114,85;20/08/2020;M;53;Casado;Ativo
+425;Murilo Araújo;Logística;Coordenador;14643,55;01/09/2017;M;58;Casado;Inativo
+426;Gabriel da Cruz;Produção;Gerente;6656,1;14/02/2021;F;39;Divorciado;Ativo
+427;Emilly Freitas;TI;Gerente;5147,62;10/05/2018;F;19;Viúvo;Inativo
+428;Vitor Fernandes;Financeiro;Gerente;10268,35;30/08/2018;M;25;Divorciado;Inativo
+429;Helena Moraes;TI;Analista;7621,99;12/08/2023;M;65;Divorciado;Inativo
+430;Vicente Aragão;Produção;Assistente;13689,65;01/03/2022;F;33;Viúvo;Ativo
+431;Pedro Miguel Rezende;Financeiro;Técnico;14062,03;26/01/2024;M;19;Casado;Ativo
+432;Sr. Theo da Paz;Logística;Gerente;3997,42;09/12/2022;F;41;Divorciado;Inativo
+433;Nina Alves;RH;Coordenador;9471,91;19/11/2018;F;47;Viúvo;Inativo
+434;Sra. Manuela Fogaça;Financeiro;Gerente;8884,66;07/03/2019;F;51;Viúvo;Ativo
+435;Luiz Fernando Lopes;Vendas;Técnico;2252,23;26/06/2024;F;61;Viúvo;Inativo
+436;Mirella Fernandes;Vendas;Assistente;4375,45;28/06/2023;F;40;Divorciado;Inativo
+437;Levi Lopes;Financeiro;Coordenador;9882,46;08/06/2017;F;46;Viúvo;Inativo
+438;Clarice Duarte;TI;Analista;9357,3;07/10/2023;M;25;Casado;Inativo
+439;Paulo Silva;Financeiro;Técnico;14316,18;02/09/2019;M;30;Viúvo;Ativo
+440;Dra. Milena da Mata;Vendas;Analista;2567,41;04/01/2020;M;35;Solteiro;Inativo
+441;Brenda Barbosa;Vendas;Coordenador;3831,72;20/09/2017;M;44;Divorciado;Ativo
+442;Ana Júlia Moraes;Produção;Coordenador;3331,66;17/01/2019;F;22;Divorciado;Ativo
+443;Dr. Benjamin Lima;TI;Técnico;13621,22;03/07/2023;M;30;Casado;Ativo
+444;Carlos Eduardo Martins;Logística;Gerente;4799,43;10/12/2019;M;57;Divorciado;Inativo
+445;Maria Cardoso;Logística;Gerente;5968,81;05/10/2024;F;65;Solteiro;Inativo
+446;Marina Aragão;Produção;Assistente;9215,5;02/08/2024;F;29;Divorciado;Inativo
+447;Maria Eduarda Ramos;Vendas;Coordenador;11516,35;07/09/2020;F;61;Solteiro;Inativo
+448;Augusto Carvalho;Logística;Técnico;8544,5;08/11/2022;F;23;Solteiro;Inativo
+449;Enzo Gabriel da Rocha;Logística;Gerente;5196,9;25/06/2018;F;25;Solteiro;Inativo
+450;Sarah Nunes;Logística;Assistente;8660,23;31/03/2020;M;45;Viúvo;Ativo
+451;Maria Julia Freitas;Vendas;Analista;12853,52;31/10/2024;F;40;Solteiro;Ativo
+452;Laís Gomes;TI;Técnico;9017,05;30/05/2021;F;56;Viúvo;Inativo
+453;João Miguel Azevedo;RH;Assistente;5815,4;29/04/2019;F;36;Viúvo;Inativo
+454;Clarice da Rosa;Logística;Gerente;12883,74;22/09/2025;M;54;Viúvo;Inativo
+455;Maria Fernanda Silva;Logística;Analista;7610,01;14/12/2016;F;55;Casado;Ativo
+456;Sr. Pedro Miguel Rocha;Produção;Assistente;10247,34;11/05/2020;M;61;Solteiro;Inativo
+457;Enrico Campos;TI;Coordenador;7057,44;16/09/2018;M;45;Casado;Inativo
+458;Joaquim Dias;RH;Assistente;11381,05;05/12/2022;F;64;Divorciado;Ativo
+459;Isaac Moura;Vendas;Coordenador;7688,98;12/03/2022;M;39;Solteiro;Inativo
+460;Vitória Caldeira;Logística;Gerente;13497,28;28/10/2022;F;57;Solteiro;Inativo
+461;Davi Gonçalves;RH;Gerente;10940,46;25/06/2023;M;33;Viúvo;Inativo
+462;Anthony Novaes;Vendas;Gerente;7858,87;04/01/2018;M;62;Solteiro;Inativo
+463;Sr. Lucas Silva;TI;Técnico;5856,3;25/04/2022;M;34;Casado;Inativo
+464;Brenda Nascimento;TI;Gerente;5429,24;25/08/2018;M;57;Casado;Ativo
+465;Sra. Julia Cardoso;Vendas;Coordenador;2916,85;01/06/2021;F;62;Solteiro;Ativo
+466;Maria Vitória Costela;Financeiro;Gerente;5363,98;10/02/2025;M;58;Solteiro;Ativo
+467;Enrico da Rocha;Logística;Técnico;11593,64;13/01/2025;M;47;Casado;Ativo
+468;Yago da Mata;Produção;Gerente;6794,22;14/11/2020;F;38;Solteiro;Ativo
+469;Gustavo Henrique Nogueira;TI;Coordenador;10803,29;25/09/2015;M;55;Viúvo;Ativo
+470;Sr. João Vitor Pinto;Logística;Analista;9716,65;11/11/2020;F;18;Viúvo;Inativo
+471;Ana Beatriz Silva;Produção;Gerente;14151,34;05/07/2020;M;52;Casado;Ativo
+472;Rebeca Souza;Produção;Técnico;11851,15;28/02/2017;F;33;Casado;Ativo
+473;Gabriela Rocha;Financeiro;Técnico;8323,48;11/05/2018;M;38;Divorciado;Inativo
+474;Marina Alves;RH;Assistente;12839,97;25/01/2023;F;25;Solteiro;Ativo
+475;Sr. Davi Luiz Aragão;Produção;Assistente;5978,55;06/05/2024;F;36;Casado;Ativo
+476;Letícia Caldeira;Financeiro;Gerente;4474,6;05/04/2020;F;47;Casado;Inativo
+477;Vicente da Cruz;Vendas;Técnico;5554,66;24/06/2017;F;39;Solteiro;Ativo
+478;Breno Vieira;Financeiro;Analista;6811,98;21/07/2016;M;37;Viúvo;Inativo
+479;Helena Cardoso;Produção;Assistente;8785,26;06/11/2023;F;38;Solteiro;Ativo
+480;Enzo Correia;Produção;Coordenador;13133,64;06/09/2019;M;63;Viúvo;Ativo
+481;Davi Luiz Barbosa;Produção;Analista;9686,19;22/11/2017;F;27;Divorciado;Inativo
+482;Brenda Fogaça;Produção;Gerente;12754,84;12/01/2018;F;49;Viúvo;Ativo
+483;Sra. Alana Fogaça;Produção;Técnico;12957,5;08/09/2021;M;56;Viúvo;Inativo
+484;Ana Nunes;TI;Assistente;8469,19;12/04/2018;F;44;Viúvo;Ativo
+485;Eduardo Moreira;Vendas;Assistente;2850,29;03/05/2016;F;19;Viúvo;Inativo
+486;Sra. Valentina Rezende;Produção;Técnico;10011,05;04/05/2025;F;63;Solteiro;Inativo
+487;Juan Gomes;RH;Analista;8651,5;19/02/2017;F;40;Casado;Inativo
+488;Davi Peixoto;Produção;Coordenador;7160,05;23/01/2016;M;46;Solteiro;Ativo
+489;Fernando Jesus;Produção;Coordenador;6370,08;21/06/2020;M;34;Casado;Ativo
+490;Luiz Otávio Nogueira;Vendas;Técnico;7419,58;27/03/2019;M;50;Viúvo;Ativo
+491;Ana Júlia Novaes;Financeiro;Analista;11166,45;04/11/2022;M;58;Viúvo;Inativo
+492;Gustavo Campos;Logística;Gerente;2000,71;31/08/2024;M;65;Solteiro;Ativo
+493;Pedro Lucas da Luz;RH;Assistente;14163,32;11/07/2022;F;40;Solteiro;Inativo
+494;Sofia Sales;TI;Gerente;4941,24;15/08/2023;F;37;Casado;Inativo
+495;Ana Laura Cavalcanti;Produção;Coordenador;6093,91;21/05/2022;M;63;Casado;Ativo
+496;Davi Luiz da Mata;RH;Coordenador;13118,85;05/09/2024;M;42;Viúvo;Inativo
+497;Raul das Neves;Financeiro;Gerente;4566,46;02/05/2023;F;19;Casado;Inativo
+498;João Gabriel Azevedo;TI;Coordenador;2606,64;21/04/2025;M;42;Viúvo;Ativo
+499;Caroline da Rocha;TI;Técnico;6500,51;11/04/2021;F;53;Casado;Inativo
+500;Nicolas Rezende;Financeiro;Gerente;2799,98;15/06/2016;F;38;Viúvo;Inativo
+501;João Silveira;Financeiro;Coordenador;11183,81;17/07/2021;F;53;Casado;Inativo
+502;Dr. João Felipe Novaes;Vendas;Analista;6084,1;20/10/2019;F;28;Solteiro;Inativo
+503;Noah Rocha;Vendas;Gerente;2202,19;19/08/2022;F;50;Casado;Inativo
+504;Mariane Gomes;Produção;Coordenador;7995,87;28/07/2022;F;41;Viúvo;Ativo
+505;Stella Melo;Produção;Assistente;6718,72;10/10/2019;M;43;Divorciado;Ativo
+506;Guilherme Nunes;Logística;Assistente;6193,6;26/07/2022;M;22;Solteiro;Inativo
+507;Luiz Felipe Aragão;Logística;Analista;12250,89;05/11/2015;F;29;Casado;Ativo
+508;Sra. Sofia das Neves;RH;Analista;8391,4;16/04/2022;F;55;Casado;Ativo
+509;Vitor Melo;RH;Assistente;5930,17;14/12/2024;M;21;Solteiro;Inativo
+510;Gustavo Mendes;Produção;Assistente;9301,91;07/07/2025;F;51;Viúvo;Inativo
+511;Maria Clara Correia;Vendas;Coordenador;14622,45;09/08/2017;M;58;Solteiro;Ativo
+512;Mariane Melo;TI;Coordenador;14078,79;03/08/2022;M;21;Casado;Ativo
+513;Pedro Gonçalves;RH;Coordenador;9805,47;05/02/2020;M;22;Viúvo;Ativo
+514;Lorenzo Ramos;Financeiro;Coordenador;3457,21;05/12/2017;F;27;Casado;Ativo
+515;Eduardo Azevedo;Vendas;Técnico;8403,36;17/03/2020;M;39;Viúvo;Inativo
+516;Sra. Natália Gomes;Produção;Gerente;4561,05;13/06/2023;M;46;Solteiro;Inativo
+517;Murilo Melo;Financeiro;Coordenador;8772,93;06/12/2024;M;36;Casado;Ativo
+518;Pietro Duarte;Logística;Técnico;4556,22;01/12/2016;F;32;Casado;Inativo
+519;Dra. Larissa Carvalho;Vendas;Analista;4765,08;20/12/2016;M;22;Divorciado;Ativo
+520;Luiz Felipe Lima;RH;Técnico;5917,68;27/08/2019;F;38;Solteiro;Ativo
+521;Dr. Benjamin Moraes;Vendas;Analista;12376,6;10/08/2021;M;18;Casado;Inativo
+522;Vitória Porto;Logística;Assistente;10105,57;20/01/2020;F;21;Casado;Ativo
+523;Olivia Viana;Financeiro;Assistente;13236,26;24/02/2025;F;37;Divorciado;Ativo
+524;Pietra Jesus;Financeiro;Gerente;7644,44;06/07/2020;F;59;Divorciado;Inativo
+525;Samuel Pires;Financeiro;Assistente;2737,48;07/03/2021;F;27;Solteiro;Ativo
+526;Gabrielly Freitas;TI;Analista;9650,34;05/07/2017;F;42;Viúvo;Inativo
+527;Rebeca da Cruz;Produção;Analista;11307,12;25/12/2019;M;44;Viúvo;Ativo
+528;Sr. Samuel Farias;Vendas;Gerente;13174,17;23/12/2021;F;18;Casado;Inativo
+529;Sra. Maria Julia Melo;Logística;Analista;14889,69;19/11/2015;F;32;Solteiro;Inativo
+530;Anthony Pereira;TI;Coordenador;14054,92;19/09/2017;M;37;Viúvo;Inativo
+531;Theo Silveira;Vendas;Coordenador;3737,13;13/12/2022;F;44;Solteiro;Inativo
+532;Sophia Gomes;Produção;Analista;9027,53;12/06/2016;M;43;Viúvo;Ativo
+533;Eduardo Dias;Logística;Assistente;8922,43;17/07/2020;M;39;Casado;Inativo
+534;Manuela Cardoso;TI;Gerente;5305,96;21/01/2017;M;52;Solteiro;Inativo
+535;André Ramos;Logística;Assistente;13657,82;27/04/2016;M;38;Solteiro;Ativo
+536;Noah Moreira;Produção;Técnico;13546,43;08/09/2016;F;49;Viúvo;Inativo
+537;Raul Gomes;Financeiro;Analista;2865,95;28/11/2020;F;29;Viúvo;Inativo
+538;Enzo Gabriel Teixeira;Logística;Assistente;6573,08;06/09/2019;F;59;Solteiro;Inativo
+539;Sr. João Vitor Melo;RH;Analista;12096,56;06/07/2017;M;60;Viúvo;Inativo
+540;Kaique da Paz;Financeiro;Assistente;9502,59;22/08/2024;M;32;Solteiro;Inativo
+541;Marcos Vinicius Fogaça;Logística;Coordenador;11358,72;18/02/2024;F;39;Viúvo;Ativo
+542;Olivia Souza;Logística;Assistente;10680,65;18/06/2023;F;62;Solteiro;Inativo
+543;Luiz Miguel Fogaça;RH;Coordenador;12069,43;05/12/2016;M;27;Casado;Ativo
+544;Dra. Julia Cunha;Produção;Assistente;7777,4;27/10/2015;F;34;Divorciado;Inativo
+545;Rebeca Oliveira;Logística;Coordenador;8130,18;26/01/2018;M;51;Casado;Ativo
+546;Luiz Henrique Nogueira;Financeiro;Gerente;8791,54;02/07/2023;M;32;Solteiro;Ativo
+547;Dra. Ana Julia Rocha;TI;Coordenador;7556,46;21/01/2018;M;48;Divorciado;Ativo
+548;Theo Nunes;RH;Coordenador;3694,36;08/11/2019;F;64;Solteiro;Inativo
+549;Ryan Cunha;Vendas;Coordenador;12503,7;13/08/2018;M;32;Solteiro;Ativo
+550;Maria Vitória Fogaça;Vendas;Coordenador;11642,05;22/01/2022;F;38;Viúvo;Inativo
+551;Marcela Silva;Financeiro;Gerente;4788,38;13/03/2025;F;64;Casado;Inativo
+552;Sofia Rezende;Logística;Assistente;9137,33;06/09/2019;F;28;Divorciado;Ativo
+553;Alexia Araújo;Vendas;Assistente;3057,56;03/10/2016;F;65;Viúvo;Ativo
+554;Lívia da Paz;Financeiro;Gerente;14062,84;13/03/2024;F;31;Divorciado;Ativo
+555;Eduardo Novaes;TI;Técnico;6373,89;06/06/2019;F;61;Casado;Inativo
+556;Noah Viana;Vendas;Gerente;5214,63;29/06/2017;M;35;Divorciado;Inativo
+557;Dra. Ana Laura Fogaça;Financeiro;Gerente;14873,06;09/03/2017;M;51;Solteiro;Inativo
+558;Maria Fernanda Nunes;TI;Assistente;7883,22;16/01/2019;M;58;Divorciado;Ativo
+559;Maria Julia Nogueira;Produção;Coordenador;7829,34;19/03/2024;M;50;Solteiro;Ativo
+560;Maria Clara Souza;Produção;Gerente;11849,51;22/09/2023;M;35;Solteiro;Ativo
+561;Thales Moura;TI;Técnico;3575,64;14/07/2025;M;22;Divorciado;Ativo
+562;Dr. João da Mata;TI;Técnico;5465;14/01/2024;M;18;Casado;Inativo
+563;Ryan da Mata;Vendas;Técnico;10374,14;04/11/2024;M;43;Solteiro;Ativo
+564;Catarina Moreira;Vendas;Gerente;5824,38;12/02/2023;M;47;Casado;Ativo
+565;Vitor Gabriel Alves;Vendas;Assistente;13246,1;03/01/2021;M;42;Solteiro;Ativo
+566;Gabriela da Cruz;Produção;Técnico;10382,44;07/04/2017;M;23;Viúvo;Ativo
+567;Giovanna da Cruz;Produção;Assistente;12983,94;10/02/2022;M;18;Solteiro;Inativo
+568;Catarina Rezende;RH;Gerente;4093,33;06/07/2024;M;38;Solteiro;Inativo
+569;Paulo Barbosa;TI;Assistente;9135,53;29/09/2019;F;45;Viúvo;Inativo
+570;Augusto Nogueira;Vendas;Coordenador;11055,28;23/03/2020;M;36;Casado;Inativo
+571;Diego Viana;Financeiro;Assistente;14208,94;28/12/2019;F;56;Solteiro;Ativo
+572;Dr. Samuel Oliveira;Logística;Coordenador;10141,8;23/07/2024;M;42;Casado;Inativo
+573;Sra. Ana Laura Cavalcanti;Financeiro;Coordenador;2469,29;04/04/2019;M;29;Casado;Ativo
+574;Nicole Fernandes;Financeiro;Analista;11708,37;19/10/2018;M;32;Divorciado;Ativo
+575;Letícia Silva;Financeiro;Técnico;3899,09;15/11/2019;F;46;Solteiro;Ativo
+576;Ana Vitória Melo;Vendas;Gerente;11907,22;10/03/2019;M;20;Divorciado;Inativo
+577;Camila Cavalcanti;Financeiro;Assistente;10295,41;05/12/2022;F;18;Viúvo;Ativo
+578;Sra. Milena Azevedo;Vendas;Assistente;13211,18;30/06/2017;M;59;Casado;Ativo
+579;Ana Clara Cardoso;Financeiro;Coordenador;2848,42;06/09/2024;M;52;Solteiro;Inativo
+580;Noah Azevedo;Financeiro;Assistente;13472,79;06/12/2024;M;59;Viúvo;Inativo
+581;Rafaela Gomes;RH;Analista;11490,86;24/05/2021;F;18;Solteiro;Ativo
+582;Igor Costa;Vendas;Coordenador;13335,49;27/08/2021;F;58;Divorciado;Ativo
+583;Pietra Lima;Produção;Assistente;10490,91;22/07/2018;M;19;Divorciado;Inativo
+584;Yago Porto;Logística;Gerente;8584,47;23/04/2019;F;33;Divorciado;Ativo
+585;Dra. Alícia Nascimento;Logística;Técnico;12963,09;09/04/2023;M;29;Divorciado;Inativo
+586;Vitor Gabriel Nunes;Financeiro;Coordenador;10030,17;23/06/2019;F;42;Divorciado;Ativo
+587;Leandro Jesus;Logística;Assistente;13204,33;12/04/2022;F;63;Viúvo;Ativo
+588;Erick Oliveira;TI;Técnico;4229,32;24/12/2022;F;60;Viúvo;Inativo
+589;Lucca Moraes;Logística;Assistente;8067,4;14/08/2025;M;55;Divorciado;Ativo
+590;Srta. Marcela Fernandes;TI;Analista;11556,07;08/03/2022;F;48;Viúvo;Inativo
+591;Srta. Lavínia Campos;Produção;Assistente;8279,33;27/01/2018;M;38;Viúvo;Ativo
+592;Breno Gonçalves;Vendas;Gerente;13664,97;10/12/2023;F;20;Viúvo;Ativo
+593;Fernanda Pinto;RH;Coordenador;9498,01;31/10/2018;F;27;Divorciado;Inativo
+594;Sr. Diego Gomes;TI;Técnico;9866,58;20/07/2017;M;37;Divorciado;Ativo
+595;Dra. Maria Sophia Oliveira;Produção;Coordenador;11672,08;25/12/2020;M;24;Solteiro;Ativo
+596;Sra. Emilly Campos;Produção;Assistente;14584,88;18/07/2022;F;21;Casado;Ativo
+597;João Pedro Pereira;Logística;Coordenador;4481,93;06/05/2017;M;22;Viúvo;Inativo
+598;Vinicius Sales;TI;Analista;5013,82;10/11/2015;M;22;Solteiro;Inativo
+599;Dra. Rebeca Lima;RH;Gerente;11208,23;31/10/2019;F;33;Casado;Inativo
+600;Mariane Barbosa;Vendas;Gerente;2227,42;31/08/2022;F;43;Solteiro;Ativo
+601;Milena Teixeira;Logística;Coordenador;2645,77;23/12/2019;M;50;Viúvo;Inativo
+602;Dr. Antônio Azevedo;RH;Analista;6001,03;29/10/2016;F;18;Casado;Inativo
+603;Felipe Alves;TI;Analista;8957,34;10/09/2019;M;41;Viúvo;Inativo
+604;Maria Fernanda Santos;RH;Analista;4787,47;19/06/2018;F;59;Solteiro;Ativo
+605;Sophia Barros;RH;Coordenador;14942,39;20/06/2025;M;35;Viúvo;Ativo
+606;Emanuel Caldeira;Logística;Gerente;14263,11;25/06/2020;F;50;Viúvo;Ativo
+607;Nathan da Mota;Produção;Gerente;13457,81;18/12/2016;F;56;Casado;Ativo
+608;Luiz Henrique Souza;TI;Gerente;4398,17;21/11/2015;F;37;Casado;Ativo
+609;Renan Araújo;Logística;Gerente;12539,35;25/11/2021;M;35;Casado;Ativo
+610;Isis Teixeira;Vendas;Assistente;7896,84;15/12/2020;M;43;Solteiro;Ativo
+611;Emilly Cardoso;RH;Coordenador;14743,35;10/05/2020;F;33;Viúvo;Inativo
+612;Davi Luiz Viana;Logística;Técnico;10162,18;04/08/2019;F;47;Viúvo;Inativo
+613;João Peixoto;Vendas;Coordenador;12305,98;06/05/2016;F;33;Solteiro;Ativo
+614;Felipe Costela;RH;Coordenador;2300,54;09/05/2016;M;33;Viúvo;Inativo
+615;Stella da Rosa;TI;Coordenador;2262,37;15/01/2022;M;42;Casado;Inativo
+616;Luana Dias;RH;Coordenador;5915,3;21/04/2021;F;55;Solteiro;Inativo
+617;Lorena Lopes;Vendas;Coordenador;4668,76;19/02/2025;F;39;Viúvo;Inativo
+618;Dra. Lara Alves;TI;Coordenador;10536,54;21/09/2020;F;25;Viúvo;Inativo
+619;Heloísa Alves;Produção;Analista;9377,39;03/12/2019;F;62;Casado;Ativo
+620;Rafaela Lima;Vendas;Coordenador;9170,3;31/05/2021;F;48;Viúvo;Inativo
+621;Maria Alice Souza;Financeiro;Analista;9146,49;15/09/2020;F;59;Viúvo;Ativo
+622;Mirella Melo;Financeiro;Técnico;13723,55;21/04/2020;M;22;Viúvo;Inativo
+623;Maria Clara Porto;Logística;Analista;3006,18;10/02/2025;F;64;Divorciado;Ativo
+624;Alice da Rocha;RH;Analista;9675,37;29/09/2022;F;35;Solteiro;Ativo
+625;Elisa Aragão;Financeiro;Técnico;4728,51;07/03/2022;M;43;Solteiro;Ativo
+626;Raul Sales;Logística;Técnico;7036,21;22/10/2019;M;52;Divorciado;Inativo
+627;Felipe Moreira;TI;Coordenador;12777,68;25/11/2017;M;33;Divorciado;Ativo
+628;Carolina da Luz;RH;Técnico;10995,05;28/10/2024;F;47;Viúvo;Inativo
+629;Pedro Miguel Oliveira;Produção;Assistente;6860,91;04/12/2023;M;44;Viúvo;Ativo
+630;Vitor Gabriel Castro;Vendas;Técnico;12134,29;30/05/2018;M;58;Casado;Inativo
+631;Maria Santos;Vendas;Gerente;13048,29;26/07/2023;M;44;Casado;Inativo
+632;Ana Carolina Viana;Logística;Analista;4148,17;14/06/2023;F;38;Casado;Ativo
+633;Lorena Alves;Vendas;Assistente;6806,02;11/06/2025;F;50;Divorciado;Ativo
+634;Diego Teixeira;Produção;Gerente;3116,35;28/04/2021;M;58;Viúvo;Ativo
+635;Bruna da Cunha;TI;Gerente;3423,93;17/12/2024;M;53;Viúvo;Inativo
+636;Srta. Valentina Cardoso;RH;Coordenador;2919,57;20/04/2020;F;28;Casado;Ativo
+637;Melissa Martins;Produção;Gerente;13950,54;28/11/2020;M;57;Casado;Inativo
+638;Benício Moreira;Vendas;Coordenador;13660,28;13/12/2024;F;20;Divorciado;Ativo
+639;Olivia Freitas;Logística;Assistente;8531,93;19/01/2021;F;49;Casado;Ativo
+640;Ana Julia Rezende;Financeiro;Analista;12628,52;28/08/2020;M;36;Viúvo;Ativo
+641;Ian da Luz;Financeiro;Técnico;7655,18;05/05/2023;F;26;Solteiro;Inativo
+642;Bianca Gomes;TI;Analista;6417,02;21/07/2025;M;23;Divorciado;Inativo
+643;Levi Barbosa;RH;Assistente;8821,78;16/05/2017;F;65;Solteiro;Ativo
+644;Benício Castro;TI;Coordenador;2948,85;14/07/2021;M;39;Divorciado;Ativo
+645;Marcos Vinicius Aragão;Produção;Técnico;11598,68;13/09/2023;F;54;Solteiro;Inativo
+646;Marcelo Viana;TI;Coordenador;12970,54;23/05/2023;M;30;Solteiro;Inativo
+647;Davi Teixeira;RH;Gerente;6441,72;14/06/2016;M;50;Divorciado;Ativo
+648;Bianca Barros;Logística;Coordenador;11072,08;15/04/2021;M;62;Viúvo;Ativo
+649;Vitória Jesus;Vendas;Gerente;4738,68;13/07/2017;M;59;Viúvo;Inativo
+650;Maria Araújo;RH;Coordenador;12841,55;05/09/2023;M;32;Divorciado;Inativo
+651;Alícia Porto;TI;Gerente;9547,18;18/12/2024;M;45;Casado;Inativo
+652;Dr. Kevin Cunha;RH;Gerente;5111,95;20/11/2022;M;49;Solteiro;Inativo
+653;Ryan Cavalcanti;Produção;Coordenador;8473,62;10/07/2018;M;20;Casado;Inativo
+654;Thiago Melo;RH;Gerente;13461,71;17/08/2023;F;33;Solteiro;Inativo
+655;Emanuelly Souza;Logística;Coordenador;9827,09;02/08/2023;M;22;Viúvo;Ativo
+656;Sra. Larissa Sales;Financeiro;Coordenador;11270,18;31/03/2017;F;48;Solteiro;Inativo
+657;Amanda Moraes;Produção;Técnico;10983,14;20/06/2021;M;56;Solteiro;Inativo
+658;Ana Carolina Caldeira;RH;Coordenador;6961,17;19/09/2021;M;50;Solteiro;Inativo
+659;Srta. Brenda da Luz;Logística;Técnico;11708,42;18/02/2021;F;50;Divorciado;Inativo
+660;Bárbara da Cunha;Financeiro;Analista;14900,49;04/04/2019;M;45;Solteiro;Ativo
+661;Luiz Miguel Farias;RH;Coordenador;11138,65;31/12/2015;M;60;Casado;Ativo
+662;Vitor Souza;Financeiro;Analista;5336,99;11/04/2022;M;52;Divorciado;Inativo
+663;Pedro Miguel Gomes;Produção;Analista;7381,56;03/11/2015;F;20;Divorciado;Ativo
+664;Benício Rodrigues;RH;Gerente;13142,67;05/06/2019;M;26;Divorciado;Inativo
+665;Luna da Rosa;Financeiro;Técnico;9259,96;02/03/2023;M;51;Divorciado;Ativo
+666;Joana Oliveira;Financeiro;Gerente;3561,37;13/03/2022;F;58;Solteiro;Inativo
+667;Cecília da Rosa;Produção;Coordenador;10043,49;22/11/2017;F;54;Viúvo;Ativo
+668;Alexandre da Rosa;Vendas;Técnico;3454,48;03/11/2021;M;42;Casado;Ativo
+669;Milena Costa;Logística;Coordenador;9271,8;14/06/2020;F;48;Viúvo;Inativo
+670;Gabrielly Sales;Financeiro;Assistente;12184,75;02/08/2021;F;31;Divorciado;Inativo
+671;Luiza Azevedo;RH;Assistente;3009,13;21/09/2017;F;25;Solteiro;Inativo
+672;Milena Moura;Produção;Assistente;7482,93;21/04/2016;F;50;Divorciado;Ativo
+673;Ana Júlia Cunha;RH;Gerente;13240,68;31/07/2022;F;56;Solteiro;Ativo
+674;Davi Vieira;Produção;Coordenador;4810,96;22/10/2016;M;20;Divorciado;Ativo
+675;Sr. Alexandre Rezende;Logística;Coordenador;6575,58;26/06/2020;M;56;Divorciado;Ativo
+676;Rodrigo Moura;Vendas;Técnico;14954,51;09/07/2018;F;29;Viúvo;Ativo
+677;Bianca da Cruz;TI;Gerente;7903,06;04/10/2024;M;57;Viúvo;Inativo
+678;Luiz Miguel Moreira;Financeiro;Gerente;6648,11;16/02/2019;M;58;Solteiro;Ativo
+679;Elisa Dias;Vendas;Assistente;6931;08/02/2021;M;37;Divorciado;Inativo
+680;Gabriela Nascimento;Vendas;Coordenador;6462,96;08/03/2018;F;30;Viúvo;Ativo
+681;Maria Fernanda da Rosa;Produção;Coordenador;7949,4;14/08/2025;M;23;Solteiro;Ativo
+682;Sarah Farias;RH;Assistente;2899,32;07/12/2021;F;29;Viúvo;Ativo
+683;Natália Azevedo;RH;Gerente;7632,69;01/07/2020;M;24;Viúvo;Inativo
+684;Ryan da Mata;Logística;Gerente;13885,84;01/08/2025;F;41;Solteiro;Inativo
+685;Olivia Peixoto;Logística;Técnico;7512,82;03/01/2023;M;38;Divorciado;Inativo
+686;Sra. Maria Vitória Pires;TI;Técnico;13628,87;07/11/2023;F;20;Viúvo;Ativo
+687;João Gabriel Campos;TI;Coordenador;8861,52;31/05/2024;F;50;Viúvo;Inativo
+688;Maria Cecília Mendes;Vendas;Gerente;5770,64;28/09/2023;M;32;Casado;Ativo
+689;Melissa Monteiro;Produção;Gerente;2204,68;08/05/2020;M;19;Casado;Inativo
+690;Sr. Augusto Mendes;Produção;Técnico;9634,87;02/03/2019;M;36;Viúvo;Inativo
+691;João Miguel Nogueira;Vendas;Técnico;2112,2;02/09/2016;M;27;Solteiro;Ativo
+692;Sra. Maria Fernanda Freitas;TI;Gerente;2686,67;15/09/2019;M;46;Viúvo;Ativo
+693;Ana Julia Freitas;RH;Coordenador;3564,59;05/08/2020;M;23;Divorciado;Ativo
+694;Luiz Miguel Silveira;RH;Gerente;8350,66;07/05/2018;F;20;Casado;Inativo
+695;Fernando da Mota;RH;Analista;7940,99;14/10/2022;M;40;Divorciado;Ativo
+696;Luiza Barbosa;Financeiro;Coordenador;9341,12;09/01/2023;F;61;Divorciado;Ativo
+697;Maria Clara da Mata;Financeiro;Coordenador;6715,37;31/07/2021;M;48;Casado;Ativo
+698;Natália Aragão;Logística;Técnico;11983,36;28/02/2021;M;40;Viúvo;Ativo
+699;Vicente Cavalcanti;Financeiro;Gerente;9664,37;29/07/2023;F;24;Divorciado;Ativo
+700;Bryan Gomes;Logística;Analista;12520,01;28/01/2023;F;64;Viúvo;Inativo
+701;Manuela da Mata;Logística;Analista;6764,42;01/02/2025;F;47;Viúvo;Ativo
+702;Ana Beatriz Vieira;Financeiro;Assistente;12473,78;18/12/2022;M;59;Divorciado;Inativo
+703;Carlos Eduardo da Cruz;Produção;Coordenador;3675,56;01/09/2021;F;19;Divorciado;Ativo
+704;Leonardo Dias;Vendas;Gerente;3908,46;08/11/2021;F;64;Solteiro;Inativo
+705;Murilo Porto;Produção;Analista;5959,18;30/05/2019;F;49;Divorciado;Ativo
+706;Luiz Miguel Costela;Produção;Coordenador;7378,84;31/07/2021;F;27;Casado;Inativo
+707;Pietro da Mota;Financeiro;Coordenador;8180,49;13/04/2017;F;57;Divorciado;Inativo
+708;Emanuelly Souza;TI;Gerente;8305,81;26/03/2019;M;60;Solteiro;Inativo
+709;Vicente Souza;Financeiro;Técnico;12004,09;23/01/2022;F;31;Divorciado;Inativo
+710;Natália da Conceição;Logística;Assistente;5899,64;08/06/2024;F;39;Casado;Ativo
+711;Lorena Vieira;Produção;Assistente;8053,99;30/01/2025;M;62;Viúvo;Ativo
+712;Evelyn da Costa;Logística;Analista;5422,55;22/02/2024;F;54;Casado;Ativo
+713;Maria Sophia Carvalho;TI;Técnico;12350,47;10/02/2017;F;36;Divorciado;Ativo
+714;Emilly Sales;Vendas;Assistente;11462,46;22/01/2017;F;48;Divorciado;Ativo
+715;Antônio Souza;Financeiro;Analista;11412,2;10/10/2016;M;29;Solteiro;Inativo
+716;Sra. Rafaela Araújo;Vendas;Assistente;10483,01;03/10/2016;F;53;Viúvo;Ativo
+717;Heloísa Nunes;Financeiro;Assistente;2795,33;11/10/2024;M;59;Casado;Ativo
+718;Nicole da Cunha;Logística;Gerente;6741,32;27/10/2019;F;24;Divorciado;Inativo
+719;Sra. Fernanda Caldeira;Logística;Assistente;10482,04;30/07/2021;M;40;Viúvo;Inativo
+720;João Lucas Rezende;Vendas;Assistente;9078,87;08/12/2020;M;24;Viúvo;Inativo
+721;Cauã Pires;RH;Coordenador;9267,3;19/11/2021;F;24;Viúvo;Ativo
+722;Dra. Raquel Lopes;Financeiro;Gerente;4469,58;20/10/2017;F;34;Solteiro;Inativo
+723;Agatha Moraes;Produção;Coordenador;8242,39;08/12/2021;M;20;Solteiro;Inativo
+724;Srta. Vitória Freitas;Financeiro;Coordenador;14914,63;09/01/2016;F;46;Solteiro;Inativo
+725;Olivia Moraes;TI;Gerente;3124,24;25/05/2018;F;59;Divorciado;Inativo
+726;Dr. Kevin Silveira;RH;Gerente;4317,24;25/05/2019;M;39;Solteiro;Inativo
+727;Rodrigo Viana;Logística;Assistente;13290,4;03/04/2016;F;36;Viúvo;Ativo
+728;Sra. Sophie Correia;Logística;Coordenador;13143,32;05/11/2021;M;34;Divorciado;Ativo
+729;Diogo Cunha;Produção;Analista;8023,23;01/05/2016;F;51;Solteiro;Inativo
+730;Marcela Cardoso;RH;Técnico;8091,72;18/03/2019;F;33;Viúvo;Inativo
+731;Gustavo Nogueira;Logística;Assistente;11497,26;26/06/2024;F;34;Viúvo;Ativo
+732;Heloísa Pires;Financeiro;Gerente;6503,52;02/03/2021;M;18;Divorciado;Ativo
+733;Pedro Duarte;Financeiro;Coordenador;10963,62;25/02/2021;M;49;Solteiro;Inativo
+734;Sra. Isabel Lopes;RH;Assistente;10172,51;20/01/2019;F;19;Divorciado;Ativo
+735;Laura da Cruz;Produção;Gerente;9601,96;21/08/2025;M;49;Viúvo;Ativo
+736;Sr. Calebe Oliveira;Logística;Coordenador;13741,09;29/06/2019;F;60;Casado;Ativo
+737;Dra. Bruna da Mata;Financeiro;Analista;14278,78;26/04/2019;M;19;Viúvo;Ativo
+738;Dr. Gustavo Melo;Produção;Assistente;5385,31;08/07/2017;F;44;Divorciado;Inativo
+739;Emanuelly Nascimento;Logística;Gerente;12773,89;04/05/2017;M;29;Viúvo;Ativo
+740;Luiz Miguel Mendes;RH;Coordenador;4459,96;21/05/2020;M;27;Solteiro;Ativo
+741;Isabelly Souza;Produção;Assistente;11553,81;25/11/2017;M;56;Divorciado;Inativo
+742;Stephany Novaes;Produção;Gerente;5609,09;31/03/2020;M;65;Solteiro;Inativo
+743;Sr. Diogo da Conceição;Financeiro;Técnico;8963,24;01/05/2024;M;22;Casado;Ativo
+744;Agatha Souza;Financeiro;Coordenador;3319,28;27/11/2016;M;22;Solteiro;Ativo
+745;Joaquim Costa;Vendas;Gerente;2120,42;31/03/2016;M;46;Casado;Inativo
+746;Matheus Ramos;Vendas;Técnico;8551,4;22/06/2017;F;59;Solteiro;Inativo
+747;Sra. Maria Fernanda Barbosa;Logística;Coordenador;5370,15;05/03/2016;F;60;Viúvo;Inativo
+748;Ana Lívia Azevedo;Logística;Analista;13347,75;08/03/2018;F;22;Casado;Inativo
+749;Lívia Rodrigues;Financeiro;Técnico;4625,58;18/09/2021;M;56;Casado;Inativo
+750;Dra. Ana Vitória Araújo;Produção;Gerente;2001,65;13/01/2020;M;35;Casado;Inativo
+751;Lavínia Sales;Logística;Analista;10363,18;19/08/2025;F;30;Viúvo;Inativo
+752;João da Mata;Logística;Técnico;8854,66;25/06/2021;F;40;Divorciado;Ativo
+753;Enzo Barros;Produção;Analista;5805,29;15/08/2020;M;37;Casado;Ativo
+754;Dra. Milena Barbosa;Logística;Assistente;13542,27;01/03/2019;F;27;Casado;Ativo
+755;Brenda Oliveira;RH;Gerente;13024,07;16/02/2019;F;19;Viúvo;Inativo
+756;Maria Clara Pereira;TI;Técnico;13307,83;03/01/2025;F;39;Divorciado;Inativo
+757;Kaique das Neves;Vendas;Analista;9565,35;01/05/2025;F;54;Viúvo;Inativo
+758;Emilly Moura;Financeiro;Analista;11134,37;01/05/2022;F;39;Viúvo;Ativo
+759;Antônio Cardoso;RH;Coordenador;9192,61;29/05/2019;F;48;Casado;Ativo
+760;Sra. Maria Cecília Araújo;RH;Analista;11071,33;06/12/2016;M;44;Casado;Ativo
+761;Gabriela Freitas;Vendas;Gerente;3200,46;05/09/2022;M;29;Solteiro;Inativo
+762;Dr. Marcelo Cardoso;RH;Técnico;11206,43;05/07/2019;F;59;Viúvo;Ativo
+763;Anthony Lima;Produção;Gerente;14620,37;05/05/2021;F;18;Solteiro;Ativo
+764;Thiago Fernandes;Logística;Analista;3492,67;28/10/2016;F;53;Casado;Inativo
+765;Júlia da Rocha;Logística;Analista;8820,83;16/09/2019;F;24;Solteiro;Inativo
+766;Ana Beatriz da Cunha;Vendas;Gerente;12100,67;18/11/2015;F;23;Solteiro;Inativo
+767;Rebeca Alves;RH;Gerente;4011,89;24/01/2017;F;33;Viúvo;Ativo
+768;Dr. Felipe Barros;TI;Coordenador;10529,69;26/07/2017;M;57;Casado;Inativo
+769;Clara Sales;Vendas;Analista;14873,95;15/01/2023;M;30;Casado;Inativo
+770;João Pedro Monteiro;RH;Assistente;13740,48;21/05/2024;M;55;Casado;Ativo
+771;Alexandre Nascimento;Financeiro;Assistente;7489,46;15/05/2023;M;20;Divorciado;Ativo
+772;Maysa Martins;Financeiro;Técnico;5770,53;09/04/2024;F;46;Divorciado;Ativo
+773;Sophia Correia;Vendas;Coordenador;2882,02;03/04/2021;M;48;Viúvo;Inativo
+774;Lucas Pires;RH;Assistente;5162,19;14/08/2019;F;22;Solteiro;Inativo
+775;Sra. Bárbara da Conceição;RH;Técnico;2505,36;20/07/2018;M;21;Casado;Ativo
+776;Augusto Pereira;Logística;Técnico;5312,66;01/05/2017;M;62;Divorciado;Inativo
+777;Valentina Barros;Vendas;Coordenador;5111,45;30/04/2020;M;21;Divorciado;Ativo
+778;Alana da Luz;TI;Coordenador;7877,6;22/03/2020;F;65;Viúvo;Ativo
+779;Ana Beatriz Sales;Produção;Técnico;11645,65;21/01/2017;M;29;Divorciado;Inativo
+780;Anthony Nogueira;Financeiro;Coordenador;5717,67;06/10/2022;F;19;Casado;Inativo
+781;Mariane Monteiro;Financeiro;Gerente;8001,7;09/06/2025;M;33;Divorciado;Ativo
+782;Kamilly Cavalcanti;Logística;Gerente;6131,91;28/07/2018;M;34;Solteiro;Inativo
+783;Carlos Eduardo da Mata;Logística;Coordenador;10180,82;05/05/2023;M;38;Viúvo;Inativo
+784;Eduarda Fogaça;Vendas;Técnico;2307,3;07/09/2024;F;50;Casado;Ativo
+785;Marcelo Novaes;Vendas;Coordenador;14201,49;05/11/2017;F;58;Viúvo;Ativo
+786;Vicente Cardoso;TI;Coordenador;8991,42;11/09/2016;F;34;Solteiro;Ativo
+787;Dra. Ana Luiza Porto;Produção;Gerente;9925,17;20/02/2023;F;63;Viúvo;Inativo
+788;Thales Carvalho;TI;Coordenador;2994,15;04/06/2024;F;32;Casado;Inativo
+789;Arthur Gomes;Produção;Gerente;9642,68;25/02/2023;F;53;Divorciado;Inativo
+790;Agatha Nogueira;Financeiro;Analista;6066,9;15/05/2020;F;27;Solteiro;Inativo
+791;Henrique da Mata;Logística;Analista;7130,45;17/02/2023;M;61;Divorciado;Ativo
+792;Leandro Nogueira;Logística;Gerente;4547,4;05/03/2025;F;43;Viúvo;Ativo
+793;João Felipe Almeida;Logística;Coordenador;5877,47;23/12/2024;M;54;Divorciado;Ativo
+794;Sr. Breno da Mata;TI;Técnico;4024,83;09/02/2021;M;51;Viúvo;Ativo
+795;Gustavo Santos;Logística;Técnico;11063,38;11/11/2021;F;63;Viúvo;Inativo
+796;Fernando Fernandes;TI;Analista;9688,82;28/12/2021;M;43;Divorciado;Ativo
+797;Ana Pires;Logística;Coordenador;8282,93;20/10/2015;M;52;Viúvo;Inativo
+798;Maitê da Mata;Vendas;Analista;12065,72;22/01/2017;F;26;Viúvo;Inativo
+799;Lucas Nogueira;Produção;Técnico;11310,73;06/11/2015;M;53;Solteiro;Ativo
+800;Emilly Pinto;Financeiro;Gerente;8435,1;12/02/2017;M;35;Solteiro;Ativo
+801;Carolina Carvalho;Financeiro;Coordenador;7492,24;19/09/2025;M;41;Divorciado;Inativo
+802;Francisco Campos;Produção;Analista;14951,53;21/11/2017;F;31;Solteiro;Ativo
+803;Joana Mendes;Logística;Coordenador;7442,27;13/12/2016;F;47;Solteiro;Inativo
+804;Caroline Monteiro;Financeiro;Gerente;2534,4;02/05/2021;M;38;Divorciado;Inativo
+805;Maria Julia Gonçalves;TI;Assistente;7899,44;15/08/2023;F;26;Casado;Ativo
+806;Nicolas Cavalcanti;RH;Assistente;5813,31;02/08/2023;M;32;Solteiro;Ativo
+807;Natália Lopes;Produção;Gerente;4710,34;07/03/2023;F;44;Casado;Inativo
+808;Isabel Cardoso;Vendas;Gerente;10437,78;03/05/2023;M;36;Solteiro;Ativo
+809;Maria Fernanda Correia;TI;Analista;5678,31;14/12/2022;M;55;Divorciado;Ativo
+810;Diogo da Rosa;RH;Gerente;8165,84;28/10/2015;M;45;Solteiro;Inativo
+811;Maria Alice da Mata;Financeiro;Técnico;8383,62;29/10/2022;F;25;Solteiro;Ativo
+812;Laís Silva;Produção;Coordenador;8182,98;17/09/2025;M;19;Viúvo;Ativo
+813;Murilo Mendes;Vendas;Gerente;2558,67;19/05/2016;F;56;Viúvo;Ativo
+814;Luana da Mota;Logística;Coordenador;3879,62;10/01/2016;F;43;Casado;Inativo
+815;Calebe da Rocha;Produção;Assistente;11646,89;30/06/2025;M;49;Solteiro;Inativo
+816;Srta. Maria Eduarda Souza;TI;Coordenador;7586,56;17/02/2018;F;57;Divorciado;Ativo
+817;Ana Julia Campos;Produção;Assistente;10084,01;29/03/2023;F;22;Solteiro;Ativo
+818;Lorena Silveira;Produção;Gerente;2132,59;07/06/2024;F;59;Viúvo;Inativo
+819;Emanuel da Cunha;Produção;Assistente;8861,9;14/10/2024;M;58;Casado;Ativo
+820;Maria Vitória Oliveira;Vendas;Técnico;10636,32;02/07/2020;F;35;Viúvo;Inativo
+821;João Vitor das Neves;Financeiro;Técnico;5443,92;09/12/2016;M;45;Viúvo;Ativo
+822;Maria Barros;Financeiro;Assistente;9601,34;06/04/2021;F;42;Viúvo;Inativo
+823;Maria Vitória da Rocha;Produção;Gerente;9726,11;25/07/2025;F;51;Divorciado;Ativo
+824;Eduarda Araújo;TI;Analista;5296,3;22/02/2021;F;34;Viúvo;Inativo
+825;Enzo Moreira;Vendas;Coordenador;12624,27;17/05/2024;M;52;Casado;Ativo
+826;Diogo Farias;Logística;Técnico;5472,53;12/02/2016;F;35;Divorciado;Inativo
+827;Sr. Felipe Santos;Logística;Coordenador;14088,83;22/03/2018;F;65;Casado;Ativo
+828;Rafaela Souza;Financeiro;Analista;6976,57;30/09/2015;M;36;Solteiro;Inativo
+829;Pedro Lucas da Cunha;RH;Gerente;13283,77;30/10/2017;F;32;Viúvo;Inativo
+830;Srta. Lorena Costa;Financeiro;Analista;10870,24;10/07/2020;F;25;Casado;Inativo
+831;Renan Lima;Produção;Técnico;6100,12;03/09/2017;M;62;Solteiro;Ativo
+832;Maria Luiza Rezende;Financeiro;Técnico;4530,85;05/02/2023;F;28;Solteiro;Inativo
+833;Kevin Ferreira;Vendas;Assistente;7360,67;20/01/2023;M;55;Viúvo;Ativo
+834;Stella Caldeira;Produção;Gerente;10866,24;10/12/2020;M;30;Viúvo;Ativo
+835;Beatriz Souza;TI;Analista;9164,28;01/09/2025;M;64;Divorciado;Ativo
+836;Vitor Ribeiro;RH;Técnico;5645,12;14/07/2018;M;57;Divorciado;Inativo
+837;Erick Martins;RH;Técnico;8557,8;26/08/2021;M;58;Viúvo;Inativo
+838;Srta. Ana Beatriz Souza;TI;Analista;11554,15;06/01/2022;F;63;Divorciado;Inativo
+839;João Vitor da Conceição;Financeiro;Analista;9403,99;10/03/2023;M;54;Solteiro;Inativo
+840;Maysa Ribeiro;Vendas;Técnico;6468,08;17/01/2023;M;55;Viúvo;Ativo
+841;Diogo Caldeira;Financeiro;Analista;10744;21/02/2023;F;22;Solteiro;Inativo
+842;Bernardo Lima;TI;Gerente;6149,05;24/04/2024;F;28;Divorciado;Ativo
+843;Emanuel Pereira;RH;Analista;5166,54;19/01/2016;M;36;Divorciado;Inativo
+844;Maria Rezende;TI;Técnico;10958,91;08/12/2019;F;62;Casado;Inativo
+845;André Sales;Produção;Técnico;2970,37;05/12/2015;M;48;Divorciado;Inativo
+846;Matheus Barbosa;RH;Gerente;13514,86;07/03/2020;F;62;Casado;Inativo
+847;Gustavo Ribeiro;Produção;Técnico;11818,75;15/04/2019;F;51;Solteiro;Inativo
+848;Elisa Correia;RH;Gerente;11899,58;29/06/2018;M;63;Solteiro;Ativo
+849;Sra. Esther Jesus;Financeiro;Coordenador;10325,45;14/10/2022;F;48;Viúvo;Inativo
+850;Mariana Carvalho;Produção;Analista;6588,17;28/02/2022;M;20;Divorciado;Inativo
+851;Sra. Maria Fernanda Cardoso;Produção;Assistente;10329,25;21/01/2020;F;26;Divorciado;Ativo
+852;Stephany Pereira;Vendas;Gerente;7004,25;09/03/2025;M;33;Divorciado;Inativo
+853;Matheus das Neves;Logística;Coordenador;12152,65;06/01/2019;F;23;Viúvo;Inativo
+854;Maitê Novaes;RH;Assistente;6147,64;26/07/2019;M;50;Solteiro;Ativo
+855;Dra. Sarah Pinto;Financeiro;Técnico;14496,74;10/11/2015;F;19;Viúvo;Ativo
+856;Juliana Fogaça;Produção;Assistente;5178,08;16/03/2020;F;27;Viúvo;Ativo
+857;João Lucas da Conceição;Financeiro;Gerente;9957,07;07/09/2025;M;37;Solteiro;Ativo
+858;Levi Rocha;Produção;Coordenador;4880,12;10/04/2021;M;65;Divorciado;Inativo
+859;Maria Eduarda da Mota;Produção;Analista;13678,63;30/09/2019;M;42;Casado;Inativo
+860;Levi Ramos;Financeiro;Gerente;4650,43;16/11/2020;M;39;Divorciado;Ativo
+861;Marcela Viana;Produção;Coordenador;7676,38;24/05/2022;F;52;Divorciado;Inativo
+862;Benjamin Porto;Financeiro;Assistente;8825,56;19/07/2016;M;23;Solteiro;Inativo
+863;João Vitor Nogueira;RH;Analista;14076,03;13/02/2016;F;62;Casado;Ativo
+864;Lavínia Dias;TI;Coordenador;14510,91;22/10/2016;M;59;Solteiro;Inativo
+865;Caroline Fernandes;Financeiro;Assistente;14363,19;15/04/2018;M;42;Divorciado;Ativo
+866;Ryan Moreira;Produção;Assistente;14278,15;21/03/2024;M;55;Casado;Inativo
+867;Srta. Júlia Caldeira;Financeiro;Analista;4957,31;10/10/2019;M;57;Divorciado;Inativo
+868;Henrique Gomes;Produção;Técnico;3097,82;28/05/2022;M;53;Divorciado;Ativo
+869;Eloah Oliveira;TI;Técnico;4784,12;26/09/2015;F;34;Solteiro;Ativo
+870;João das Neves;TI;Coordenador;3095,73;28/07/2024;F;41;Divorciado;Ativo
+871;Sr. Davi Luiz Campos;Vendas;Analista;10015,26;01/03/2016;M;58;Divorciado;Ativo
+872;Isadora Vieira;TI;Analista;14762,59;30/03/2025;F;31;Solteiro;Ativo
+873;Luana Campos;Produção;Técnico;11017,45;11/03/2018;M;35;Viúvo;Ativo
+874;Sabrina Porto;Vendas;Gerente;4583,52;28/09/2024;M;44;Casado;Inativo
+875;Elisa Cavalcanti;Produção;Gerente;12804,24;11/05/2022;F;39;Solteiro;Inativo
+876;Eduardo da Rocha;Vendas;Gerente;12318,96;15/07/2017;F;31;Casado;Inativo
+877;João Felipe das Neves;Produção;Técnico;10746,37;30/04/2020;M;31;Viúvo;Inativo
+878;Benício Barbosa;Financeiro;Gerente;4771,3;27/08/2025;M;22;Viúvo;Ativo
+879;João Miguel da Costa;Financeiro;Analista;4107,84;21/09/2023;M;47;Casado;Inativo
+880;Pedro Lucas Peixoto;RH;Analista;4698,21;13/04/2023;M;39;Solteiro;Inativo
+881;Daniela Melo;Financeiro;Gerente;9129,6;31/03/2025;F;36;Solteiro;Ativo
+882;Ana Laura Farias;Vendas;Gerente;10221,12;29/07/2016;F;22;Solteiro;Ativo
+883;Nina Moreira;Vendas;Analista;6642,72;12/04/2016;F;49;Casado;Inativo
+884;Dr. Antônio Pinto;RH;Assistente;7642,03;24/03/2025;F;60;Solteiro;Inativo
+885;Enzo Costela;TI;Analista;5025,05;05/06/2025;M;20;Solteiro;Ativo
+886;Luiz Gustavo Pereira;Logística;Assistente;6888,77;23/11/2015;F;46;Solteiro;Inativo
+887;Sra. Caroline Araújo;TI;Gerente;6750,44;30/04/2025;F;25;Solteiro;Inativo
+888;Luana da Conceição;Financeiro;Técnico;12222,41;22/10/2022;F;29;Solteiro;Ativo
+889;Lívia Pires;Produção;Gerente;5673,53;18/11/2022;M;30;Solteiro;Inativo
+890;Emilly da Conceição;Produção;Assistente;13069,08;25/07/2025;M;34;Solteiro;Inativo
+891;Sra. Gabriela da Cruz;RH;Coordenador;14278,75;26/10/2016;F;35;Divorciado;Ativo
+892;Ana Clara Moreira;TI;Gerente;14523,1;06/01/2025;M;53;Casado;Ativo
+893;Ana Vitória Alves;Logística;Gerente;10860,8;13/06/2021;F;37;Divorciado;Ativo
+894;Murilo Pereira;Vendas;Analista;7037,65;12/11/2017;F;39;Solteiro;Ativo
+895;Yago Moreira;Logística;Gerente;3106,35;21/07/2018;F;28;Viúvo;Inativo
+896;Pedro Lopes;TI;Coordenador;2757,36;05/03/2024;F;20;Solteiro;Ativo
+897;Sra. Joana Jesus;RH;Analista;6030,37;12/01/2025;M;34;Divorciado;Inativo
+898;Maria da Mota;Financeiro;Assistente;7918,65;05/12/2015;F;29;Viúvo;Ativo
+899;Nicole Peixoto;Financeiro;Assistente;8008,91;29/04/2019;F;30;Casado;Inativo
+900;Yuri Farias;RH;Gerente;7255,85;19/09/2025;M;46;Casado;Inativo
+901;Daniela Jesus;Vendas;Gerente;4618,91;17/03/2018;F;33;Viúvo;Inativo
+902;Evelyn Novaes;Produção;Coordenador;9848,38;28/12/2015;M;29;Casado;Inativo
+903;Vitor Dias;Logística;Coordenador;9474,91;06/05/2024;F;57;Divorciado;Ativo
+904;Levi Silva;RH;Técnico;9184,68;17/08/2016;M;35;Solteiro;Ativo
+905;Benjamin Sales;Produção;Técnico;2468,32;23/01/2017;M;32;Solteiro;Inativo
+906;Dra. Lara Monteiro;RH;Coordenador;9488,02;26/09/2018;M;54;Solteiro;Inativo
+907;Dr. Leonardo Silveira;Vendas;Analista;6091,7;19/02/2017;M;59;Divorciado;Inativo
+908;Vinicius Monteiro;RH;Analista;12737,9;08/07/2017;F;32;Casado;Inativo
+909;Pedro Miguel Lopes;Financeiro;Analista;5747,29;02/02/2024;M;46;Solteiro;Inativo
+910;Luna Novaes;TI;Gerente;3106,49;17/08/2025;M;61;Divorciado;Inativo
+911;Vinicius Duarte;Produção;Coordenador;10509,89;26/10/2021;F;28;Casado;Ativo
+912;Dra. Maria Vitória Peixoto;RH;Assistente;9934,84;04/01/2023;F;54;Divorciado;Ativo
+913;Dra. Júlia Pinto;Logística;Gerente;9685,05;28/08/2017;F;54;Solteiro;Inativo
+914;Ana Sophia da Cruz;RH;Gerente;7091,82;25/05/2025;M;20;Divorciado;Ativo
+915;Davi da Mota;TI;Analista;14562,6;08/07/2017;F;29;Casado;Ativo
+916;Eduardo da Mata;Produção;Coordenador;12283,89;28/09/2017;F;29;Solteiro;Ativo
+917;Stephany Almeida;Financeiro;Gerente;6822,3;10/12/2024;M;35;Divorciado;Ativo
+918;Vicente Duarte;Logística;Assistente;5855,69;27/05/2024;M;26;Casado;Inativo
+919;Yuri Costela;Logística;Assistente;6568,88;16/04/2024;F;45;Viúvo;Inativo
+920;Dra. Laura da Conceição;Financeiro;Assistente;4496,46;25/06/2023;M;42;Viúvo;Inativo
+921;Vitória Farias;Vendas;Técnico;10455,24;30/01/2016;F;42;Viúvo;Inativo
+922;Mirella Fernandes;RH;Assistente;5183,45;20/03/2018;F;29;Divorciado;Ativo
+923;Ian Porto;RH;Analista;4254,68;24/09/2018;M;49;Viúvo;Inativo
+924;Raul Cardoso;Vendas;Assistente;8044,37;05/07/2017;M;30;Divorciado;Ativo
+925;Luiz Otávio Azevedo;RH;Coordenador;10793,43;16/06/2022;M;64;Viúvo;Ativo
+926;Davi Lucas Gonçalves;Vendas;Analista;11509,79;07/01/2025;M;48;Casado;Inativo
+927;Dr. Antônio Ramos;Logística;Assistente;2856,45;05/12/2023;F;63;Divorciado;Ativo
+928;Valentina Cardoso;TI;Gerente;10602,13;04/06/2023;F;64;Solteiro;Ativo
+929;Camila Rodrigues;RH;Gerente;14161,36;23/01/2024;F;27;Casado;Ativo
+930;Luiza Viana;Produção;Técnico;12613,61;30/07/2023;F;47;Solteiro;Ativo
+931;Yuri Ferreira;TI;Coordenador;10328,64;16/07/2022;M;57;Casado;Ativo
+932;Evelyn Dias;Vendas;Assistente;9636,35;22/11/2019;F;42;Casado;Inativo
+933;Benício da Cunha;Financeiro;Técnico;13633,66;01/02/2019;F;29;Solteiro;Ativo
+934;Caio Ramos;Vendas;Técnico;11269,41;05/01/2018;M;39;Divorciado;Inativo
+935;Felipe Pinto;Financeiro;Coordenador;13914,73;24/10/2016;M;28;Solteiro;Inativo
+936;Marina Souza;Produção;Analista;7953,85;13/04/2018;F;41;Solteiro;Inativo
+937;Pedro Henrique Barros;Financeiro;Analista;4544,38;14/06/2020;M;43;Solteiro;Ativo
+938;Laís Gonçalves;Financeiro;Gerente;10750,29;09/08/2025;M;21;Viúvo;Ativo
+939;Sarah Correia;Produção;Coordenador;9941,08;19/02/2023;F;57;Casado;Inativo
+940;Juliana Freitas;Vendas;Técnico;3632,13;08/12/2023;F;28;Divorciado;Ativo
+941;Renan Vieira;Financeiro;Analista;7091;01/10/2024;M;44;Solteiro;Inativo
+942;Ana Almeida;Produção;Coordenador;8933,21;05/07/2016;F;63;Viúvo;Ativo
+943;Alícia das Neves;Financeiro;Gerente;2721,74;11/12/2017;F;19;Casado;Ativo
+944;Isaac Aragão;Financeiro;Técnico;8164,23;09/06/2023;F;28;Viúvo;Inativo
+945;Srta. Isis Sales;Vendas;Coordenador;9908,02;14/03/2020;F;46;Solteiro;Ativo
+946;Stella Almeida;Vendas;Analista;10290,07;05/08/2025;F;39;Viúvo;Ativo
+947;Enzo Gabriel Aragão;Produção;Técnico;7077,24;21/02/2021;F;46;Solteiro;Inativo
+948;Daniela Cardoso;Vendas;Gerente;11931,82;02/08/2018;F;24;Divorciado;Ativo
+949;Rebeca Teixeira;Financeiro;Coordenador;13773,18;30/01/2023;M;50;Divorciado;Inativo
+950;Renan da Cruz;Produção;Coordenador;2792,28;31/03/2024;F;55;Divorciado;Inativo
+951;Giovanna Rocha;Financeiro;Coordenador;13312,73;30/08/2023;M;41;Casado;Inativo
+952;Calebe Alves;TI;Coordenador;11199,99;12/11/2018;M;37;Solteiro;Ativo
+953;Isabelly Fernandes;Vendas;Gerente;13734,64;16/01/2016;F;23;Divorciado;Ativo
+954;Sr. Enrico Vieira;RH;Analista;8955,19;19/02/2022;M;18;Solteiro;Ativo
+955;Helena Porto;RH;Analista;11458,19;08/01/2020;M;28;Divorciado;Ativo
+956;Sra. Gabriela Cavalcanti;TI;Assistente;14196,4;13/06/2023;F;36;Solteiro;Ativo
+957;Felipe Campos;Financeiro;Analista;6488,76;26/07/2018;F;30;Casado;Inativo
+958;Dr. Benjamin Silveira;Logística;Técnico;11235,89;06/06/2021;F;44;Solteiro;Ativo
+959;Maria Sophia Vieira;TI;Analista;14633,75;28/05/2024;M;63;Solteiro;Inativo
+960;João Gabriel da Mata;RH;Coordenador;11923,11;16/08/2021;F;42;Divorciado;Ativo
+961;Murilo da Rocha;Produção;Gerente;9241,84;27/11/2021;F;63;Solteiro;Ativo
+962;João Felipe Fernandes;Logística;Gerente;7508,99;17/12/2023;F;46;Solteiro;Inativo
+963;Marcos Vinicius Cardoso;Logística;Gerente;13208,7;30/08/2018;F;34;Casado;Inativo
+964;Kaique Melo;RH;Técnico;2567,76;22/05/2019;F;41;Casado;Ativo
+965;Srta. Luana Nunes;Financeiro;Analista;6742,77;13/02/2024;M;20;Casado;Inativo
+966;Srta. Isadora Alves;RH;Técnico;9592,61;09/12/2024;M;22;Viúvo;Inativo
+967;Lavínia Pires;RH;Assistente;10326,2;01/07/2022;F;29;Casado;Ativo
+968;Luana Barros;Financeiro;Técnico;9067,35;28/04/2022;M;38;Casado;Inativo
+969;Ana Luiza Oliveira;Financeiro;Técnico;8009,59;13/10/2019;F;36;Casado;Inativo
+970;Pietro Lopes;Logística;Assistente;10672,76;18/09/2017;M;24;Solteiro;Ativo
+971;Paulo Silveira;RH;Analista;13249,05;16/01/2017;F;41;Solteiro;Ativo
+972;Daniel Rocha;TI;Coordenador;11487,67;09/08/2016;M;65;Divorciado;Inativo
+973;Maria Luiza Souza;TI;Técnico;13609,81;04/05/2022;M;56;Solteiro;Inativo
+974;Sr. João Lucas Almeida;Produção;Analista;9268,53;10/09/2022;F;43;Casado;Inativo
+975;Davi Lucas Melo;RH;Técnico;4336,87;27/12/2022;F;32;Solteiro;Ativo
+976;Ana Vitória Freitas;RH;Técnico;2224,18;11/08/2021;M;61;Solteiro;Inativo
+977;Dr. Davi Lucas Nascimento;RH;Coordenador;13216,01;30/12/2020;M;49;Divorciado;Inativo
+978;Fernando Gonçalves;Vendas;Gerente;13004,21;05/04/2019;F;24;Casado;Inativo
+979;Dra. Pietra da Luz;RH;Analista;9486,05;17/03/2016;F;65;Casado;Ativo
+980;Stephany Novaes;Produção;Coordenador;3106,89;07/07/2017;M;22;Divorciado;Ativo
+981;Ryan Freitas;Produção;Assistente;3045,96;19/08/2021;F;36;Solteiro;Ativo
+982;João Moraes;Logística;Coordenador;9376,05;23/06/2019;M;23;Viúvo;Inativo
+983;Maria Alice Silva;Financeiro;Gerente;14942,48;13/09/2025;F;50;Viúvo;Inativo
+984;Eduarda da Rocha;RH;Coordenador;8208,2;08/11/2018;F;61;Divorciado;Ativo
+985;Sophia Azevedo;Financeiro;Técnico;5039,08;01/05/2016;M;65;Casado;Ativo
+986;Dra. Evelyn Souza;Financeiro;Analista;4975,88;13/04/2017;F;35;Solteiro;Inativo
+987;Maitê Cardoso;Financeiro;Gerente;14046,6;01/03/2020;F;52;Viúvo;Inativo
+988;Lara Monteiro;Financeiro;Gerente;4331,98;18/03/2024;M;56;Divorciado;Inativo
+989;Ana Freitas;Vendas;Assistente;12257,28;09/02/2022;F;30;Casado;Inativo
+990;Sr. Rodrigo Moreira;Logística;Assistente;8671,52;01/10/2021;M;53;Casado;Ativo
+991;Sr. Vicente Silveira;Produção;Gerente;8026,7;11/07/2021;F;55;Viúvo;Inativo
+992;Emanuel da Cruz;Logística;Gerente;12572,11;30/01/2024;M;33;Viúvo;Ativo
+993;Enrico Monteiro;RH;Coordenador;14677,33;26/12/2017;M;52;Divorciado;Inativo
+994;Ana Lívia Cardoso;RH;Coordenador;14912,48;22/10/2015;M;27;Solteiro;Inativo
+995;Fernando Monteiro;RH;Assistente;10983,02;09/01/2023;F;42;Viúvo;Ativo
+996;Matheus Aragão;Financeiro;Analista;11389,03;06/05/2022;F;26;Viúvo;Ativo
+997;Ryan Martins;Financeiro;Analista;14060,42;05/06/2023;F;37;Viúvo;Ativo
+998;Isabelly Ferreira;TI;Gerente;2348,73;29/12/2023;F;58;Solteiro;Inativo
+999;Thales Farias;Produção;Analista;9430,62;25/12/2019;M;41;Solteiro;Ativo
+1000;Sra. Maysa Costela;Produção;Técnico;12549,72;14/11/2022;M;46;Viúvo;Inativo

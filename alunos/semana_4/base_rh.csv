@@ -1,0 +1,11 @@
+# Sempre a primeira célula do notebook: importar o que você vai usar
+# Se aparecer erro aqui, a biblioteca não está instalada.
+# Solução: abra o terminal e rode:  pip install pandas openpyxl
+
+import pandas as pd      # biblioteca de análise de dados
+import re                # expressões regulares (para limpar texto)
+from datetime import datetime  # para trabalhar com datas
+
+# Confirmar que as importações funcionaram
+print('✓ pandas versão:', pd.__version__)
+print('✓ Bibliotecas importadas com sucesso!')
