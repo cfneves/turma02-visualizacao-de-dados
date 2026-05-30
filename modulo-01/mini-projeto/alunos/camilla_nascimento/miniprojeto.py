@@ -13,3 +13,4 @@ df = pd.read_csv(
 print("Arquivo CSV carregado com sucesso")
 
 print(df.head())
+
