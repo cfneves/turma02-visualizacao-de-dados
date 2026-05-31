@@ -51,3 +51,7 @@ htmlcov/
 # Arquivos temporários
 *.tmp
 *.swp
+
+# Base Varejo
+
+mini-projeto/data/Base Varejo.csv

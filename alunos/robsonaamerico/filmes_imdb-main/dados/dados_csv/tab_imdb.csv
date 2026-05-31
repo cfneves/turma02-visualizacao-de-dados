@@ -1,0 +1,101 @@
+id_filme,titulo,ano_lancamento,genero,duracao_min,rating_imdb,orcamento_milhoes,data_lancamento,bilheteria_dolares,nome_pais,continente,idioma_principal,moeda,capital,nome_produtora,ano_fundacao,pais_sede
+1,The Godfather,1972,Crime,175,9.2,7.2,1972-03-24,246000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Paramount Pictures,1912.0,Estados Unidos
+2,The Godfather Part II,1974,Crime,202,9.0,13.0,1974-12-24,93000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Paramount Pictures,1912.0,Estados Unidos
+3,The Dark Kight,2008,Action,152,9.1,185.0,2008-07-18,1005000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,","Warner Bros,",1923.0,Estados Unidos
+4,The Dark Knight Rises,2012,Action,165,8.4,250.0,2012-07-20,1081000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,","Warner Bros,",1923.0,Estados Unidos
+5,Pulp Fction,1994,Crime,154,8.9,8.0,1994-10-14,213900000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Miramax Films,1979.0,Estados Unidos
+6,Schindlers List,1993,Drama,195,8.9,22.0,1994-02-04,322200000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Universal Pictures,1912.0,Estados Unidos
+7,Inception,2010,Action,148,8.8,160.0,2010-07-16,836800000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,","Warner Bros,",1923.0,Estados Unidos
+8,Fight Club,1999,Drama,139,8.8,63.0,1999-10-15,101200000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",20th Century Fox,1935.0,estados unidos
+9,Forrest Gump,1994,Drama,142,8.8,55.0,1994-07-06,678200000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Universal Pictures,1912.0,Estados Unidos
+10,The Matrix,1999,Sci-Fi,136,8.7,63.0,1999-03-31,467200000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,","Warner Bros, Pictures",1923.0,Estados Unidos
+11,The Matrix Reloaded,2003,SciFi,138,7.2,150.0,2003-05-15,738600000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,","Warner Bros, Pictures",1923.0,Estados Unidos
+12,The Lord of the Rings: The Fellowship of the Ring,2001,Fantasy,178,8.8,93.0,2001-12-19,898200000.0,Nova Zelândia,Oceania,Inglês,Dólar Neozelandês,Wellington,New Line Cinema,1967.0,Estados Unidos
+13,The Lord of the Rings: The Two Towers,2002,Fantasia,179,8.7,94.0,2002-12-18,947500000.0,Nova Zelândia,Oceania,Inglês,Dólar Neozelandês,Wellington,New Line Cinema,1967.0,Estados Unidos
+14,The Lord of the Rings: The Return of the King,2003,Fantasy,201,8.9,94.0,2003-12-17,1142000000.0,Nova Zelândia,Oceania,Inglês,Dólar Neozelandês,Wellington,New Line Cinema,1967.0,Estados Unidos
+15,Star Wars: Episode IV - A New Hope,1977,Sci-Fi,121,8.6,11.0,1977-05-25,775400000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Lucasfilm,1971.0,Estados Unidos
+16,Star Wars: Episode V - The Empire Strikes Back,1980,Sci-Fi,124,8.7,18.0,1980-05-21,538400000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Lucasfilm,1971.0,Estados Unidos
+17,Star Wars: Episode VI - Return of the Jedi,1983,Science Fiction,131,8.3,32.0,1983-05-25,475100000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Lucasfilm,1971.0,Estados Unidos
+18,The Shawshank Redemption,1994,Drama,142,9.3,25.0,1994-10-14,58300000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Columbia Pictures,1919.0,EUA
+19,The Silence of the Lambs,1991,Thriller,118,8.6,19.0,1991-02-14,272700000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Orion Pictures,1978.0,Estados Unidos
+20,Se7en,1995,Thriler,127,8.6,33.0,1995-09-22,327300000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",20th Century Fox,1935.0,estados unidos
+21,Interstellar,2014,Adventure,169,8.6,165.0,2014-11-07,701700000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,","Warner Bros,",1923.0,Estados Unidos
+22,Gladiator,2000,Action,155,8.5,103.0,2000-05-05,460500000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",DreamWorks Pictures,1994.0,Estados unidos
+23,The Lion King,1994,Animation,88,8.5,45.0,1994-06-24,968500000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Walt Disney Pictures,1983.0,Estados Unidos
+24,Titanic,1997,Romance,195,7.8,200.0,1997-12-19,2201000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",20th Century Studios,2020.0,Estados Unidos
+25,Avatar,2009,Action,162,7.8,237.0,2009-12-18,2847000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",20th Century Studios,2020.0,Estados Unidos
+26,Avenger: Endgame,2019,Action,181,8.4,356.0,2019-04-26,2798000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Marvel Studios,2008.0,Estados Unidos
+27,Avengers: Infinity War,2018,Action,149,8.4,316.0,2018-04-27,2048000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Marvel Studios,2008.0,Estados Unidos
+28,Jurassic Park,1993,Adventure,127,8.2,63.0,1993-06-11,1040000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Universal Pictures,1912.0,Estados Unidos
+29,The Terminator,1984,Action,107,8.1,6.4,1984-10-26,78300000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Hemdale Film,1967.0,Reino Unido
+30,Terminator 2: Judgment Day,1991,Action,137,8.5,102.0,1991-07-03,520900000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Hemdale Film,1967.0,Reino Unido
+31,Back to the Future,1985,Adventure,116,8.5,19.0,1985-07-03,388800000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Universal Pictures,1912.0,Estados Unidos
+32,Toy Story,1995,Anim,81,8.3,30.0,1995-11-22,394400000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Pixar Animation Studios,1986.0,Estados Unidos
+33,Finding Nemo,2003,Animation,100,8.1,94.0,2003-05-30,940300000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Pixar Animation Studios,1986.0,Estados Unidos
+34,The Incredibles,2004,Animation,115,8.0,92.0,2004-11-05,631600000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Pixar Animation Studios,1986.0,Estados Unidos
+35,The Social Network,2010,Drama,120,7.7,40.0,2010-10-01,224900000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",20th Century Fox,1935.0,estados unidos
+36,The Wolf of Wall Street,2013,Comedy,180,8.2,100.0,2013-12-25,406900000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Netflix,2012.0,EUA
+37,Inglourious Basterds,2009,War,153,8.3,70.0,2009-08-21,,França,Europa,Francês,Euro,Paris,Miramax Films,1979.0,Estados Unidos
+38,Django Unchained,2012,Western,165,8.4,100.0,2012-12-25,426100000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Miramax Films,1979.0,Estados Unidos
+39,Mad Max: Fury Road,2015,Action,120,8.1,150.0,2015-05-15,375800000.0,Australia,Oceania,Inglês,Dólar Australiano,Camberra,Kennedy Miller Mitchell,0.0,Australia
+40,La La Land,2016,Musical,128,8.0,30.0,2016-12-09,448900000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Anonymous Content,1999.0,Estados Unidos
+41,The Godfatehr,197X,Crime,175,9.8,7.2,1972-03-24,246000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Paramount Pictures,1912.0,Estados Unidos
+42,The Dark Knight,2008,ACTION,152 min,9.5,185.0,2008-07-18,1005000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,","Warner Bros,",1923.0,Estados Unidos
+43,Pulp Fiction,1994,Crime,,8.9,8.0,1994-10-14,213900000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Miramax Films,1979.0,Estados Unidos
+44,Interstelar,2014,Adventure,169,15.0,165.0,2014-11-07,701700000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,","Warner Bros,",1923.0,Estados Unidos
+45,Avatar,2009,Science-Fiction,162,7.8,,2009-12-18,2847000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",20th Century Studios,2020.0,Estados Unidos
+46,Avengers: Endgame,2019,Action,0,8.4,356.0,2019-04-26,2798000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Marvel Studios,2008.0,Estados Unidos
+47,Forrest Gump,1994,Drama,142,8.8,55.0,,678200000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Universal Pictures,1912.0,Estados Unidos
+48,Unknown Movie,1895,Unknown,90,4.3,0.1,1895-12-28,500000.0,,,,,,,,
+49,Test Movie,2025,Drama,abc,11.0,5.0,2025-01-01,0.0,,,,,,,,
+50,,1999,Action,120,7.0,50.0,1999-07-01,125000000.0,,,,,,,,
+51,The Pianist,2002,Drama,150,8.5,35.0,2002-09-25,120200000.0,Polonia,Europa,Polonês,Zloty,Varsóvia,Heritage Films,1992.0,Polonia
+52,The Green Mile,1999,Drama,189,8.6,60.0,1999-12-10,286800000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Columbia Pictures,1919.0,EUA
+53,City of God,2002,Crime,130,8.6,3.3,2002-08-30,30600000.0,Brasil,América do Sul,Portugues,Real,Brasilia,O2 Filmes,2000.0,Brasil
+54,Spirited Away,2001,Animation,125,8.6,19.0,2001-07-20,395800000.0,Japão,Ásia,Japonês,Iene,Tóquio,Studio Ghibli,1985.0,Japão
+55,Parasite,2019,Thriller,132,8.6,11.4,2019-05-30,263300000.0,Coreia do Sul,Ásia,Coreano,Won,Seul,Barunson E&A,2004.0,Coreia do Sul
+56,Joker,2019,Drama,122,8.5,55.0,2019-10-04,1074000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,","Warner Bros, Pictures",1923.0,Estados Unidos
+57,Whiplash,2014,Drama,107,8.5,3.3,2014-10-10,48900000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Anonymous Content,1999.0,Estados Unidos
+58,The Departed,2006,Crime,151,8.5,90.0,2006-10-06,291500000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Netflix,2012.0,EUA
+59,The Prestige,2006,Drama,130,8.5,40.0,2006-10-20,109700000.0,Reino Unido,Europa,Inglês,Libra Esterlina,Londres,"Warner Bros,",1923.0,Estados Unidos
+60,Memento,2000,Thriller,113,8.4,9.0,2000-10-11,39900000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,","Warner Bros,",1923.0,Estados Unidos
+61,The Intouchables,2011,Comedy,112,8.5,10.8,2011-11-02,426600000.0,França,Europa,Francês,Euro,Paris,Gaumont,1895.0,França
+62,The Lion King,1994,Anim,88,18.0,45.0,1994-06-24,968500000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Walt Disney Pictures,1983.0,Estados Unidos
+63,Up,2009,Animation,96,8.2,175.0,2009-05-29,735100000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Pixar Animation Studios,1986.0,Estados Unidos
+64,WALL-E,2008,Animation,98,8.4,180.0,2008-06-27,521300000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Pixar Animation Studios,1986.0,Estados Unidos
+65,Ratatouille,2007,Animation,111,8.1,150.0,2007-06-29,623700000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Pixar Animation Studios,1986.0,Estados Unidos
+66,Inside Out,2015,Animation,95,8.1,175.0,2015-06-19,857600000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Pixar Animation Studios,1986.0,Estados Unidos
+67,Coco,2017,Animation,105,8.4,175.0,2017-11-22,807100000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Pixar Animation Studios,1986.0,Estados Unidos
+68,The Irishman,2019,Crime,209,7.8,159.0,2019-11-01,8000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Netflix,2012.0,EUA
+69,The Hateful Eight,2015,Western,168,7.8,44.0,2015-12-25,155800000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Miramax Films,1979.0,Estados Unidos
+70,Once Upon a Time in Hollywood,2019,Comedy,161,7.6,90.0,2019-07-26,377400000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Miramax Films,1979.0,Estados Unidos
+71,The Revenant,2015,Adventure,156,8.0,135.0,2016-01-08,533000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Fox Searchlight Pictures,1994.0,EUA
+72,Gravity,2013,Sci-Fi,91,7.7,100.0,2013-10-04,723200000.0,Reino Unido,Europa,Inglês,Libra Esterlina,Londres,"Warner Bros, Pictures",1923.0,Estados Unidos
+73,Her,2013,Romance,126,8.0,23.0,2013-12-18,48000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Anonymous Content,1999.0,Estados Unidos
+74,The Shape of Water,2017,Fantasy,123,7.3,19.5,2017-12-01,195300000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Fox Searchlight Pictures,1994.0,EUA
+75,Black Panther,2018,Action,134,7.3,200.0,2018-02-16,1347000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Marvel Studios,2008.0,Estados Unidos
+76,Avengers End Game,2019,Acton,181,9.9,356.0,2019-04-26,2798000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Marvel Studios,2008.0,Estados Unidos
+77,Captain Marvel,2019,Action,123,7.0,152.0,2019-03-08,1128000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Marvel Studios,2008.0,Estados Unidos
+78,Iron Man,2008,Action,126,7.9,140.0,2008-05-02,585800000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Marvel Studios,2008.0,Estados Unidos
+79,Iron Man 2,2010,Action,124,7.0,200.0,2010-05-07,623900000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Marvel Studios,2008.0,Estados Unidos
+80,Iron Man 3,2013,Action,130,7.1,200.0,2013-05-03,1215000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Marvel Studios,2008.0,Estados Unidos
+81,Doctor Strange,2016,Action,115,7.5,165.0,2016-11-04,677700000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Marvel Studios,2008.0,Estados Unidos
+82,Guardians of the Galaxy,2014,Action,121,8.0,170.0,2014-08-01,773300000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Marvel Studios,2008.0,Estados Unidos
+83,"Guardians of the Galaxy Vol, 2",2017,Action,136,7.6,200.0,2017-05-05,863800000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Marvel Studios,2008.0,Estados Unidos
+84,Thor,2011,Action,115,7.0,150.0,2011-05-06,449300000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Marvel Studios,2008.0,Estados Unidos
+85,Thor: The Dark World,2013,Action,112,6.8,170.0,2013-11-08,644800000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Marvel Studios,2008.0,Estados Unidos
+86,Thor: Ragnarok,2017,Action,130,7.9,180.0,2017-11-03,854000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Marvel Studios,2008.0,Estados Unidos
+87,The Avengers,2012,Action,143,8.0,220.0,2012-05-04,1519000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Marvel Studios,2008.0,Estados Unidos
+88,Avengers: Age of Ultron,2015,Action,141,7.3,250.0,2015-05-01,1405000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Marvel Studios,2008.0,Estados Unidos
+89,Ant-Man,2015,Action,117,7.3,130.0,2015-07-17,519300000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Marvel Studios,2008.0,Estados Unidos
+90,Ant-Man and the Wasp,2018,Action,118,7.1,162.0,2018-07-06,622700000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",Marvel Studios,2008.0,Estados Unidos
+91,Logan,2017,Action,137,8.1,97.0,2017-03-03,619000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",20th Century Fox,1935.0,Estados Unidos
+92,Deadpool,2016,Action,108,8.0,58.0,2016-02-12,782600000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",20th Century Fox,1935.0,Estados Unidos
+93,Deadpool 2,2018,Action,119,7.7,110.0,2018-05-18,786500000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",20th Century Fox,1935.0,Estados Unidos
+94,X-Men: Days of Future Past,2014,Action,132,8.0,200.0,2014-05-23,746000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,",20th Century Fox,1935.0,Estados Unidos
+95,The Dark Knight,2008,Crime,152,20.0,185.0,2008-07-18,1005000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,","Warner Bros,",1923.0,Estados Unidos
+96,Batman Begins,2005,Action,140,8.2,150.0,2005-06-15,373700000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,","Warner Bros,",1923.0,Estados Unidos
+97,The Dark Knight Risses,2012,Action,165,8.4,250.0,2012-07-20,1081000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,","Warner Bros,",1923.0,Estados Unidos
+98,Man of Steel,2013,Action,143,7.0,225.0,2013-06-14,668000000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,","Warner Bros, Pictures",1923.0,Estados Unidos
+99,Justice League,2017,Action,120,6.4,300.0,2017-11-17,657900000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,","Warner Bros, Pictures",1923.0,Estados Unidos
+100,Justice League,201,Action,120,6.4,300.0,2017-11-17,657900000.0,Estados Unidos,América do Norte,Inglês,Dólar Americano,"Washington D,C,","Warner Bros, Pictures",1923.0,Estados Unidos
