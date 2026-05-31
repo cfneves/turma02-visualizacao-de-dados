@@ -7,3 +7,5 @@ Para testar e avaliar esta Análise Exploratória de Dados, siga os passos abaix
    `pip install pandas matplotlib numpy`
 3. Rode o código (executando todas as células no Colab ou rodando o comando `python nome_do_arquivo.py` no terminal).
 4. Acompanhe os insights formatados diretamente no terminal (Dashboard em Texto) e aguarde a janela do Matplotlib abrir para visualizar o painel gráfico gerencial.
+
+5. Nota sobre os arquivos de dados: Seguindo as boas práticas de versionamento, os arquivos .csv originais e o df_limpo.csv não foram subidos para este repositório por excederem o limite ideal de armazenamento. 
