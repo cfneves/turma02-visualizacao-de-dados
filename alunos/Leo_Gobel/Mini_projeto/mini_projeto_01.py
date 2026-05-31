@@ -1,14 +1,5 @@
 # ==========================================================
 # MINI PROJETO AVALIATIVO - ANÁLISE EXPLORATÓRIA DE DADOS
-# Visualização de Dados e Business Intelligence
-#
-# Autor: SEU NOME
-# Turma: T2
-#
-# Objetivo:
-# Realizar uma análise exploratória da base Varejo,
-# aplicando técnicas de limpeza, tratamento e
-# sumarização de dados utilizando Pandas.
 # ==========================================================
 
 import pandas as pd
