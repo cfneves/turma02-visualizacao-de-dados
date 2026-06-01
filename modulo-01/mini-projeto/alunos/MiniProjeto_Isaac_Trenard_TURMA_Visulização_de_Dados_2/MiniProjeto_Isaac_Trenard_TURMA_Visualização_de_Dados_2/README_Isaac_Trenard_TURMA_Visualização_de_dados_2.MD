@@ -101,4 +101,5 @@ MiniProjeto_Isaac_Trenard/
 Este mini-projeto foi uma experiência completa de como é o dia a dia de um analista de dados. Saí da zona de conforto do Jupyter Notebook e entreguei um script .py funcional, documentado e versionado no GitHub. Me sinto mais preparado para os próximos desafios!
 
 📅 Data da Entrega: 01/Junho/2026
-🐙 Repositório: 
+🐙 Repositório: https://github.com/cfneves/turma-visualizacao-de-dados/tree/master/modulo-01/mini-projeto/alunos/MiniProjeto_Isaac_Trenard_TURMA_Visuliza%C3%A7%C3%A3o_de_Dados_2/MiniProjeto_Isaac_Trenard_TURMA_Visualiza%C3%A7%C3%A3o_de_Dados_2
+
