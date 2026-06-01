@@ -40,3 +40,28 @@ Avaliando a base, listei os 5 problemas críticos que precisavam de correção a
   * Salvei o progresso final direto em um novo arquivo físico: `Base_Varejo_Limpa.csv`.
   * Travei com `index=False` para não criar coluna de índice inútil, `sep=';'` para manter o padrão e `encoding='cp1252'` para blindar a acentuação. 
   * **Resultado final:** Base limpa, higienizada e consolidada com exatamente **733.447 linhas**.
+
+### Sprint 4: Estatistica Descritiva e Padrões de Agrupamento
+
+  * **Análise de Variaveis Quantitativas (perfil Familiar):**
+    * Isolei a coluna `CL_FHL` (Número de Filhos) para extrair os dados estatísticos, para uma melhor compreensão da base.
+    * O resultado apresentou uma **Contagem de 733.447 registros**, com mínimo de **0** e máxima de **4** filhos.
+    * **Métricas de Tendência Central:** A **Média** fixou-se em **1.15**, enquanto a **Mediana** e a **Moda** fixaram-se em **0**, uma forte indicação de que os clientes não possuem filhos. O **Desvio Padrão** apresentou um resultado de **1.42** que indica uma distribuição normal.
+
+  * **Exploração de Padrões com `groupby`():**
+    * Apliquei agrupamentos cruzando colunas categóricas e volumetria de identificadores para responder a perguntas operacionais.
+    * **Segmentação por Genêro:** O público femino (`F`) liderou o volume de compras com **`382.427` compras**, enquanto o público masculino (`M`) com **351.020 compras.**
+    * **Volumetria por categoria:** A categoria **ALIMENTOS** liderou como maior volume de compras, acumulando **384.197 itens vendidos** (mais do que a soma de todas as outras categorias juntas). As categorias HIGIENE e LIMPEZA apresentaram **137.702** e **128.632** compras, respectivamente. Sendo esses o top 3 de volume de compras.
+
+### Sprint 5: Relatório Final (ETL e Qualidade dos Dados)
+
+* **Minhas considerações do processo de ETL:**
+  * Fazer esse mini-projeto me mostrou que não da para confiar em algumas informações apresentadas pela leitura rasa do (df.info), lá no df.info() ele disse que 830.000 non-null, mas na verdade haviam 3650 #N/D na base. Ao ignorar essa etapa os valores estatísticos seriam bem diferentes dos que eu apresentei. Além de colunas fantasmas que estavam ali no meio, 100% vazias sem nenhuma utilidade. 
+
+
+### Sprint 5: Conclusão e o que aprendi sobre ETL (Qualidade dos Dados)
+
+* **O que achei do processo de ETL:**
+  Fazer esse mini-projeto me mostrou na prática que não dá para confiar em base de dados bruta. Se eu jogasse os dados direto num gráfico ou relatório sem antes fazer o tratamento que fiz nas primeiras sprints, os números iam dar totalmente errados por causa daquelas quase 100 mil linhas duplicadas e das colunas fantasmas que estavam ali no meio atrapalhando tudo. É aquilo: se entra dado ruim, o resultado final sai ruim. 
+
+  Mudar a coluna de DATA para o formato certo de data e colocar todos os textos em letras maiúsculas não é só para deixar o arquivo bonito. É isso que garante que o código não vai quebrar e que o `groupby` da Sprint 4 funcione de verdade, trazendo os números certos de compras por gênero e por categoria para o dono do negócio tomar as decisões certas com dados de confiança.
