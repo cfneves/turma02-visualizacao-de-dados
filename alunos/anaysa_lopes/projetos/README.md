@@ -9,7 +9,7 @@ Esta pasta centraliza os projetos e análises desenvolvidos ao longo do curso.
 ## Estrutura de Módulos
 
 ### Módulo 1: Análise Exploratória de Dados
-* **Diretório:** `modulo_01/Miniprojeto_AnaysaLopes_T2`
+* **Diretório:** `projetos/Miniprojeto_AnaysaLopes_T2`
 * **Descrição:** Script de automação para extração de estatísticas, auditoria de qualidade de dados e tratamento de nulos/duplicatas em base de varejo.
 * **Status:** Concluído
 * **Tecnologias:** Python (Pandas e Matplotlib)
