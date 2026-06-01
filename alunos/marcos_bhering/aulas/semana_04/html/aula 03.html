@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semana 04 · Dia 03 — Aula de Treino | SENAI BI</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+  :root{--bg:#0f1117;--bg2:#161b27;--bg3:#1e2535;--bg4:#252d40;--border:#2a3350;--text:#e2e8f4;--muted:#7a8aaa;--dim:#3a4a6a;--blue:#4f8ef7;--blue2:#38bdf8;--green:#34d399;--yellow:#fbbf24;--red:#f87171;--purple:#a78bfa;--orange:#fb923c;--teal:#2dd4bf;--code:#0d1120}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px}
+  header{background:var(--bg2);border-bottom:1px solid var(--border);padding:2.5rem 4rem 2rem}
+  .htop{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin-bottom:1.1rem}
+  .badge{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:500;padding:3px 10px;border-radius:4px;letter-spacing:.05em;text-transform:uppercase;border:1px solid}
+  .bb{background:rgba(79,142,247,.12);color:#7fb3ff;border-color:rgba(79,142,247,.28)}
+  .bg{background:rgba(52,211,153,.10);color:#5ee8b5;border-color:rgba(52,211,153,.28)}
+  .by{background:rgba(251,191,36,.10);color:#fcd34d;border-color:rgba(251,191,36,.28)}
+  .bp{background:rgba(167,139,250,.10);color:#c4b5fd;border-color:rgba(167,139,250,.28)}
+  .br{background:rgba(248,113,113,.10);color:#fca5a5;border-color:rgba(248,113,113,.28)}
+  h1{font-size:2rem;font-weight:600;color:#fff;letter-spacing:-.02em;line-height:1.25;margin-bottom:.4rem}
+  h1 em{color:var(--green);font-style:normal}
+  .hsub{display:flex;gap:2rem;flex-wrap:wrap}
+  .hsub span{color:var(--muted);font-size:.9rem}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 2.5rem}
+  section{padding:2.5rem 0;border-bottom:1px solid var(--border)}
+  section:last-of-type{border-bottom:none}
+  h2{font-size:1.2rem;font-weight:600;color:#fff;display:flex;align-items:center;gap:.7rem;margin-bottom:1.25rem}
+  .stag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:4px;background:rgba(79,142,247,.12);color:var(--blue);border:1px solid rgba(79,142,247,.25)}
+  .stag.g{background:rgba(52,211,153,.10);color:var(--green);border-color:rgba(52,211,153,.25)}
+  .stag.y{background:rgba(251,191,36,.10);color:var(--yellow);border-color:rgba(251,191,36,.25)}
+  .stag.p{background:rgba(167,139,250,.10);color:var(--purple);border-color:rgba(167,139,250,.25)}
+  .stag.r{background:rgba(248,113,113,.10);color:var(--red);border-color:rgba(248,113,113,.25)}
+  h3{font-size:1rem;font-weight:600;color:var(--blue2);margin:1.75rem 0 .7rem;display:flex;align-items:center;gap:8px}
+  h3::before{content:'';width:3px;height:15px;background:var(--blue2);border-radius:2px;flex-shrink:0}
+  p{margin-bottom:.7rem} p:last-child{margin-bottom:0}
+  ul{padding-left:1.3rem} ul li{margin-bottom:.35rem}
+  code{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--orange);background:rgba(251,146,60,.1);padding:1px 6px;border-radius:3px}
+  strong{font-weight:600}
+  .cal{border-left:3px solid;border-radius:0 8px 8px 0;padding:.9rem 1.2rem;margin:1.1rem 0}
+  .cal.b{background:rgba(79,142,247,.07);border-color:var(--blue)}
+  .cal.g{background:rgba(52,211,153,.07);border-color:var(--green)}
+  .cal.y{background:rgba(251,191,36,.07);border-color:var(--yellow)}
+  .cal.r{background:rgba(248,113,113,.07);border-color:var(--red)}
+  .cal.p{background:rgba(167,139,250,.07);border-color:var(--purple)}
+  .cal strong{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem}
+  .cal.b strong{color:var(--blue)}.cal.g strong{color:var(--green)}.cal.y strong{color:var(--yellow)}
+  .cal.r strong{color:var(--red)}.cal.p strong{color:var(--purple)}
+  .prof{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1rem 1.35rem;margin:1.1rem 0}
+  .prof::before{content:'💬  Professor';font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--yellow);text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:.45rem}
+  .prof p{color:#c8d6f0;font-style:italic;margin:0}
+  .tl{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-radius:8px;overflow:hidden;border:1px solid var(--border);margin:1.2rem 0}
+  .tlb{text-align:center;padding:.65rem .4rem}
+  .tlb .t{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);display:block;margin-bottom:3px}
+  .tlb .l{font-size:.75rem;font-weight:600;display:block}
+  .tl1{background:rgba(79,142,247,.1)}.tl1 .l{color:var(--blue)}
+  .tl2{background:rgba(52,211,153,.1)}.tl2 .l{color:var(--green)}
+  .tl3{background:rgba(42,51,80,.5)}.tl3 .l{color:var(--muted)}
+  .tl4{background:rgba(251,191,36,.1)}.tl4 .l{color:var(--yellow)}
+  .tl5{background:rgba(167,139,250,.1)}.tl5 .l{color:var(--purple)}
+  .cb{background:var(--code);border:1px solid var(--border);border-radius:8px;margin:.9rem 0;overflow:hidden}
+  .ch{display:flex;justify-content:space-between;align-items:center;padding:.5rem 1rem;background:var(--bg4);border-bottom:1px solid var(--border)}
+  .ch .fn{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
+  .ch .lg{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--blue);text-transform:uppercase;letter-spacing:.07em}
+  pre{padding:1.1rem 1.4rem;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.75;color:#cdd6f4}
+  .kw{color:#89b4fa}.fn{color:#89dceb}.st{color:#a6e3a1}.cm{color:#4a5a7a;font-style:italic}.nm{color:#fab387}.cl{color:#cba6f7}
+  .out{background:#070b14;border:1px solid #1a2540;border-radius:6px;padding:.85rem 1.2rem;margin-top:.6rem;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.75;color:#94a3b8;white-space:pre;overflow-x:auto}
+  .olbl{color:#2a3a5a;font-size:10px;text-transform:uppercase;letter-spacing:.07em;display:block;margin-bottom:.35rem}
+
+  /* CARD DE DESAFIO */
+  .desafio{background:var(--bg2);border:1px solid var(--border);border-radius:12px;margin:1.5rem 0;overflow:hidden}
+  .desafio-header{display:flex;align-items:center;gap:1rem;padding:1rem 1.4rem;border-bottom:1px solid var(--border)}
+  .desafio-num{font-family:'JetBrains Mono',monospace;font-size:1.4rem;font-weight:700;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:8px;flex-shrink:0}
+  .d1 .desafio-num{background:rgba(79,142,247,.15);color:var(--blue)}
+  .d2 .desafio-num{background:rgba(52,211,153,.15);color:var(--green)}
+  .d3 .desafio-num{background:rgba(251,191,36,.15);color:var(--yellow)}
+  .d4 .desafio-num{background:rgba(167,139,250,.15);color:var(--purple)}
+  .d5 .desafio-num{background:rgba(248,113,113,.15);color:var(--red)}
+  .d6 .desafio-num{background:rgba(45,212,191,.15);color:var(--teal)}
+  .desafio-meta{flex:1}
+  .desafio-titulo{font-size:1rem;font-weight:600;color:#fff;margin-bottom:.2rem}
+  .desafio-tags{display:flex;gap:.5rem;flex-wrap:wrap}
+  .tag{font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 8px;border-radius:3px;font-weight:600}
+  .tag-arq{background:rgba(79,142,247,.12);color:#7fb3ff;border:1px solid rgba(79,142,247,.25)}
+  .tag-dt{background:rgba(251,191,36,.12);color:#fcd34d;border:1px solid rgba(251,191,36,.25)}
+  .tag-rx{background:rgba(248,113,113,.12);color:#fca5a5;border:1px solid rgba(248,113,113,.25)}
+  .tag-gb{background:rgba(52,211,153,.12);color:#5ee8b5;border:1px solid rgba(52,211,153,.25)}
+  .tag-ft{background:rgba(167,139,250,.12);color:#c4b5fd;border:1px solid rgba(167,139,250,.25)}
+  .dificuldade{font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 10px;border-radius:20px;font-weight:700;white-space:nowrap}
+  .nivel-1{background:rgba(52,211,153,.15);color:var(--green);border:1px solid rgba(52,211,153,.3)}
+  .nivel-2{background:rgba(251,191,36,.15);color:var(--yellow);border:1px solid rgba(251,191,36,.3)}
+  .nivel-3{background:rgba(248,113,113,.15);color:var(--red);border:1px solid rgba(248,113,113,.3)}
+  .desafio-body{padding:1.2rem 1.4rem}
+  .pergunta{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.9rem 1.1rem;margin:.6rem 0;font-size:.93rem}
+  .pergunta::before{content:'→ ';color:var(--yellow);font-weight:700}
+
+
+  /* GABARITO */
+  .gab{background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.18);border-radius:10px;padding:1.4rem;margin:1.2rem 0}
+  .gabh{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--purple);text-transform:uppercase;letter-spacing:.09em;margin-bottom:.9rem;display:flex;align-items:center;gap:8px}
+  .gabh::before{content:'';width:6px;height:6px;background:var(--purple);border-radius:50%;display:inline-block}
+  .gabh.g{color:var(--green)}.gabh.g::before{background:var(--green)}
+
+  /* DICA */
+  .dica{background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.18);border-radius:6px;padding:.65rem 1rem;margin-top:.75rem}
+  .dica strong{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green);text-transform:uppercase;letter-spacing:.07em;display:block;margin-bottom:.25rem}
+  .dica p{color:var(--muted);font-size:.87rem;margin:0}
+
+  /* TABELA */
+  .etab{width:100%;border-collapse:collapse;margin-top:.6rem;font-size:13px}
+  .etab th{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left;padding:.45rem .7rem;border-bottom:1px solid var(--border)}
+  .etab td{padding:.55rem .7rem;border-bottom:1px solid rgba(42,51,80,.45);vertical-align:top}
+  .etab tr:last-child td{border-bottom:none}
+  .cmd{color:var(--orange);font-family:'JetBrains Mono',monospace;font-size:12px}
+  .desc{color:var(--muted);font-size:12px}
+
+  .g2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:.9rem 0}
+  @media(max-width:680px){.g2{grid-template-columns:1fr}}
+  footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.5rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem}
+  footer span{color:var(--muted);font-size:.83rem}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="htop">
+      <span class="badge bb">SENAI · T2 · Noturno</span>
+      <span class="badge bg">Semana 04</span>
+      <span class="badge by">Dia 03 · Sexta · 19h–22h</span>
+      <span class="badge bp">Módulo 1 — Modelagem</span>
+      <span class="badge br">Aula de Treino</span>
+    </div>
+    <h1>Praticando o que você<br>já <em>sabe fazer</em></h1>
+    <div class="hsub">
+      <span>🔁 Revisão · 6 desafios progressivos · base_rh.csv</span>
+      <span>🏭 Sem conteúdo novo — só prática com contexto diferente</span>
+      <span>🎯 Objetivo: sair desta aula confiante no que aprendeu</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ═══ ABERTURA ═══ -->
+<section>
+  <h2><span class="stag">Abertura</span> Por que uma aula inteira de treino?</h2>
+
+  <div class="prof">
+    <p>"Vocês aprenderam bastante essa semana. Mas aprender e saber usar são coisas diferentes. Você pode assistir cem aulas de natação — mas enquanto não entrar na água, não sabe nadar. Hoje vocês entram na água. Sem conteúdo novo. Os mesmos comandos da terça e da quinta, mas agora vocês vão ter que decidir sozinhos qual usar, quando usar e por quê. É isso que o mercado vai pedir."</p>
+  </div>
+
+  <h3>O que você vai treinar hoje</h3>
+
+  <table class="etab">
+    <thead>
+      <tr><th>Habilidade</th><th>Aprendida no</th><th>Como vai aparecer hoje</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="cmd">pd.read_csv com parâmetros</td>
+        <td class="desc">Dia 01</td>
+        <td class="desc">Carregar o arquivo sem instrução direta — você decide os parâmetros</td>
+      </tr>
+      <tr>
+        <td class="cmd">head · info · describe · nunique</td>
+        <td class="desc">Dia 01</td>
+        <td class="desc">Diagnóstico livre — você decide o que investigar</td>
+      </tr>
+      <tr>
+        <td class="cmd">Filtros simples e compostos</td>
+        <td class="desc">Dia 01</td>
+        <td class="desc">Perguntas de negócio reais que exigem combinar condições</td>
+      </tr>
+      <tr>
+        <td class="cmd">pd.to_datetime · .dt.year · .dt.month</td>
+        <td class="desc">Dia 01</td>
+        <td class="desc">Análise temporal com contexto diferente</td>
+      </tr>
+      <tr>
+        <td class="cmd">groupby · mean · size · sort_values</td>
+        <td class="desc">Dia 01</td>
+        <td class="desc">Perguntas que exigem encadear 3–4 métodos</td>
+      </tr>
+      <tr>
+        <td class="cmd">re.sub · str.contains · str.extract</td>
+        <td class="desc">Dia 02</td>
+        <td class="desc">Limpeza de texto com padrões reais do dataset</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="tl">
+    <div class="tlb tl1"><span class="t">19h00–19h20</span><span class="l">Revisão rápida</span></div>
+    <div class="tlb tl2"><span class="t">19h20–20h20</span><span class="l">Desafios 1–3</span></div>
+    <div class="tlb tl3"><span class="t">20h20–20h35</span><span class="l">☕ Intervalo</span></div>
+    <div class="tlb tl4"><span class="t">20h35–21h35</span><span class="l">Desafios 4–6</span></div>
+    <div class="tlb tl5"><span class="t">21h35–22h00</span><span class="l">Correção + Commit</span></div>
+  </div>
+
+  <div class="cal y">
+    <strong>⚠ Regra da aula de hoje</strong>
+    Não copie do notebook do dia anterior. Tente escrever o código de memória primeiro. Olhar é permitido só depois de tentar. O objetivo é descobrir o que você realmente sabe — não o que você consegue localizar em outro arquivo.
+  </div>
+</section>
+
+
+<!-- ═══ REVISÃO ═══ -->
+<section>
+  <h2><span class="stag">Revisão · 19h00</span> Tabela de consulta rápida</h2>
+
+  <div class="prof">
+    <p>"Antes de entrar nos desafios, 20 minutos revisando os comandos. Não é explicação — é só refrescar a memória. Cada comando na tabela, uma linha de exemplo. Se você conseguir explicar o que faz cada uma dessas linhas para o colega do lado, você está pronto para a aula."</p>
+  </div>
+
+  <div class="cb">
+    <div class="ch"><span class="fn">cola rápida — Dia 01</span><span class="lg">Python</span></div>
+    <pre><span class="kw">import</span> pandas <span class="kw">as</span> pd
+
+<span class="cm"># ── LEITURA ───────────────────────────────────────────────────</span>
+df = pd.<span class="fn">read_csv</span>(<span class="st">"base_rh.csv"</span>, sep=<span class="st">";"</span>, encoding=<span class="st">"cp1252"</span>, decimal=<span class="st">","</span>)
+
+<span class="cm"># ── EXPLORAÇÃO ────────────────────────────────────────────────</span>
+df.shape           <span class="cm"># (1000, 10) — linhas × colunas</span>
+df.head(<span class="nm">5</span>)         <span class="cm"># primeiras 5 linhas</span>
+df.tail(<span class="nm">3</span>)         <span class="cm"># últimas 3 linhas</span>
+df.info()          <span class="cm"># tipos, nulos, memória</span>
+df.describe()      <span class="cm"># estatísticas numéricas</span>
+df.nunique()       <span class="cm"># valores únicos por coluna</span>
+df[<span class="st">"col"</span>].<span class="fn">value_counts</span>()   <span class="cm"># distribuição de uma coluna</span>
+df.<span class="fn">isnull</span>().<span class="fn">sum</span>()  <span class="cm"># nulos por coluna</span>
+
+<span class="cm"># ── SELEÇÃO E FILTROS ──────────────────────────────────────────</span>
+df[<span class="st">"Nome"</span>]                             <span class="cm"># uma coluna → Series</span>
+df[[<span class="st">"Nome"</span>, <span class="st">"Salario"</span>]]                 <span class="cm"># várias colunas → DataFrame</span>
+df[df[<span class="st">"Status"</span>] == <span class="st">"Ativo"</span>]            <span class="cm"># filtro simples</span>
+df[(df[<span class="st">"Cargo"</span>] == <span class="st">"Gerente"</span>) &amp; (df[<span class="st">"Salario"</span>] &gt; <span class="nm">10000</span>)]  <span class="cm"># filtro composto</span>
+
+<span class="cm"># ── DATAS ─────────────────────────────────────────────────────</span>
+df[<span class="st">"Data_Admissao"</span>] = pd.<span class="fn">to_datetime</span>(df[<span class="st">"Data_Admissao"</span>], format=<span class="st">"%d/%m/%Y"</span>, errors=<span class="st">"coerce"</span>)
+df[<span class="st">"Ano"</span>]  = df[<span class="st">"Data_Admissao"</span>].dt.year
+df[<span class="st">"Mes"</span>]  = df[<span class="st">"Data_Admissao"</span>].dt.month
+df[<span class="st">"Trim"</span>] = df[<span class="st">"Data_Admissao"</span>].dt.quarter
+df[<span class="st">"Tempo"</span>] = ((pd.Timestamp.<span class="fn">today</span>() - df[<span class="st">"Data_Admissao"</span>]).dt.days / <span class="nm">365.25</span>).<span class="fn">round</span>(<span class="nm">1</span>)
+novos = df[df[<span class="st">"Data_Admissao"</span>] &gt;= pd.Timestamp.<span class="fn">today</span>() - pd.<span class="fn">DateOffset</span>(years=<span class="nm">1</span>)]
+
+<span class="cm"># ── GROUPBY ───────────────────────────────────────────────────</span>
+df.<span class="fn">groupby</span>(<span class="st">"Departamento"</span>)[<span class="st">"Salario"</span>].<span class="fn">mean</span>().<span class="fn">round</span>(<span class="nm">2</span>)
+df.<span class="fn">groupby</span>(<span class="st">"Departamento"</span>).<span class="fn">size</span>().<span class="fn">sort_values</span>(ascending=<span class="kw">False</span>)
+
+<span class="cm"># ── EXPORTAÇÃO ────────────────────────────────────────────────</span>
+df.to_csv(<span class="st">"saida.csv"</span>, index=<span class="kw">False</span>, sep=<span class="st">";"</span>, encoding=<span class="st">"utf-8-sig"</span>)
+df.to_json(<span class="st">"saida.json"</span>, orient=<span class="st">"records"</span>, force_ascii=<span class="kw">False</span>, indent=<span class="nm">2</span>)
+<span class="kw">with</span> pd.<span class="fn">ExcelWriter</span>(<span class="st">"saida.xlsx"</span>, engine=<span class="st">"openpyxl"</span>) <span class="kw">as</span> w:
+    df.to_excel(w, sheet_name=<span class="st">"Aba1"</span>, index=<span class="kw">False</span>)</pre>
+  </div>
+
+  <div class="cb">
+    <div class="ch"><span class="fn">cola rápida — Dia 02 · regex</span><span class="lg">Python</span></div>
+    <pre><span class="kw">import</span> re
+
+<span class="cm"># ── MÓDULO RE ─────────────────────────────────────────────────</span>
+re.<span class="fn">sub</span>(padrao, substituto, texto)    <span class="cm"># substitui o padrão pelo substituto</span>
+re.<span class="fn">search</span>(padrao, texto)             <span class="cm"># procura o padrão → retorna Match ou None</span>
+re.<span class="fn">findall</span>(padrao, texto)            <span class="cm"># retorna lista de todas as ocorrências</span>
+
+<span class="cm"># ── PANDAS COM TEXTO ──────────────────────────────────────────</span>
+df[<span class="st">"col"</span>].<span class="fn">str</span>.<span class="fn">contains</span>(<span class="st">"padrão"</span>, regex=<span class="kw">True</span>)   <span class="cm"># retorna True/False por linha</span>
+df[<span class="st">"col"</span>].<span class="fn">str</span>.<span class="fn">extract</span>(<span class="st">r"(grupo)"</span>)             <span class="cm"># extrai o grupo capturado</span>
+df[<span class="st">"col"</span>].<span class="fn">str</span>.<span class="fn">replace</span>(<span class="st">"padrão"</span>, <span class="st">""</span>, regex=<span class="kw">True</span>) <span class="cm"># substitui direto na coluna</span>
+
+<span class="cm"># ── METACARACTERES MAIS USADOS ────────────────────────────────</span>
+<span class="cm"># ^     → início da string</span>
+<span class="cm"># \s    → espaço em branco</span>
+<span class="cm"># \d    → qualquer dígito (0–9)</span>
+<span class="cm"># \w    → letra, número ou underscore</span>
+<span class="cm"># +     → 1 ou mais repetições</span>
+<span class="cm"># *     → 0 ou mais repetições</span>
+<span class="cm"># \.    → ponto literal (o ponto sem \ = qualquer caractere)</span>
+<span class="cm"># (abc) → grupo de captura</span>
+<span class="cm"># (?:abc) → grupo sem captura (só agrupa alternativas)</span></pre>
+  </div>
+</section>
+
+
+<!-- ═══ DESAFIOS ═══ -->
+<section>
+  <h2><span class="stag g">Desafios · 19h20</span> Seis situações reais — resolva no notebook</h2>
+
+  <div class="prof">
+    <p>"Cada desafio é uma situação que você vai encontrar no mercado. Não tem 'execute esta célula' — você lê o problema, pensa no que precisa usar e escreve o código. Crie uma célula para cada desafio. Coloque um título em Markdown antes de cada um. Ao final, esse notebook vai ser a sua entrega da semana."</p>
+  </div>
+
+  <div class="cal b" style="margin-bottom:1.5rem">
+    <strong>Setup — execute esta célula primeiro</strong>
+    Carregue a base antes de começar os desafios. Esta é a única instrução direta da aula.
+    <div class="cb" style="margin-top:.75rem;margin-bottom:0">
+      <div class="ch"><span class="fn">aula_03.ipynb · Célula 1 — obrigatória</span><span class="lg">Python</span></div>
+      <pre><span class="kw">import</span> pandas <span class="kw">as</span> pd
+<span class="kw">import</span> re
+
+URL = (
+    <span class="st">"https://raw.githubusercontent.com/"</span>
+    <span class="st">"cfneves/turma-visualizacao-de-dados/"</span>
+    <span class="st">"master/aulas/semana_04/base_rh.csv"</span>
+)
+
+df = pd.<span class="fn">read_csv</span>(URL, sep=<span class="st">";"</span>, encoding=<span class="st">"cp1252"</span>, decimal=<span class="st">","</span>)
+df_limpo = df.<span class="fn">copy</span>()  <span class="cm"># sempre trabalhe na cópia</span>
+
+<span class="fn">print</span>(<span class="st">f"✓ Base carregada: {df.shape[0]} linhas × {df.shape[1]} colunas"</span>)</pre>
+    </div>
+  </div>
+
+
+  <!-- ─── DESAFIO 1 ─── -->
+  <div class="desafio d1">
+    <div class="desafio-header">
+      <div class="desafio-num">01</div>
+      <div class="desafio-meta">
+        <div class="desafio-titulo">Diagnóstico livre — o que está diferente nesta base?</div>
+        <div class="desafio-tags">
+          <span class="tag tag-arq">read_csv</span>
+          <span class="tag tag-arq">info</span>
+          <span class="tag tag-arq">describe</span>
+          <span class="tag tag-arq">nunique</span>
+        </div>
+      </div>
+      <span class="dificuldade nivel-1">★☆☆ Básico</span>
+    </div>
+    <div class="desafio-body">
+      <p>Você recebeu a base e precisa fazer o diagnóstico <strong>sem que ninguém te diga o que procurar</strong>. Use os comandos de exploração que você aprendeu e responda as três perguntas abaixo em uma célula Markdown.</p>
+
+      <div class="pergunta">Quantas colunas são numéricas e quantas são texto? Como você sabe?</div>
+      <div class="pergunta">Existe alguma coluna com nulos? Se sim, qual e quantos?</div>
+      <div class="pergunta">Qual coluna tem o maior número de valores únicos? O que isso diz sobre ela?</div>
+
+
+
+      <div class="dica">
+        <strong>Lembra?</strong>
+        <p><code>df.info()</code> mostra tipos e nulos. <code>df.nunique()</code> mostra valores únicos. <code>df.describe()</code> só processa colunas numéricas — quantas aparecem?</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─── DESAFIO 2 ─── -->
+  <div class="desafio d2">
+    <div class="desafio-header">
+      <div class="desafio-num">02</div>
+      <div class="desafio-meta">
+        <div class="desafio-titulo">Filtrando para o gestor de RH</div>
+        <div class="desafio-tags">
+          <span class="tag tag-ft">filtros</span>
+          <span class="tag tag-gb">groupby</span>
+        </div>
+      </div>
+      <span class="dificuldade nivel-1">★☆☆ Básico</span>
+    </div>
+    <div class="desafio-body">
+      <p>O gestor de RH ligou com três perguntas. Responda cada uma com uma célula de código diferente. Exiba o resultado formatado — não só o número.</p>
+
+      <div class="pergunta">Quais são os <strong>Gerentes ativos</strong> com salário acima de R$ 10.000? Mostre nome, departamento e salário ordenados do maior para o menor salário.</div>
+      <div class="pergunta">Qual é o <strong>salário médio por departamento</strong>, ordenado do maior para o menor? Arredonde para 2 casas decimais.</div>
+      <div class="pergunta">Quantos funcionários estão em cada combinação de <strong>Cargo + Status</strong>? (ex: Gerente Ativo, Gerente Inativo, Analista Ativo...)</div>
+
+
+
+      <div class="dica">
+        <strong>Lembra?</strong>
+        <p>Filtro composto: <code>df[(cond1) &amp; (cond2)]</code> — cada condição entre parênteses. Para ordenar: <code>.sort_values("Salario", ascending=False)</code>. Para agrupar por dois campos: <code>.groupby(["Cargo", "Status"])</code>.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─── DESAFIO 3 ─── -->
+  <div class="desafio d3">
+    <div class="desafio-header">
+      <div class="desafio-num">03</div>
+      <div class="desafio-meta">
+        <div class="desafio-titulo">Análise de datas — quem está perto da aposentadoria?</div>
+        <div class="desafio-tags">
+          <span class="tag tag-dt">to_datetime</span>
+          <span class="tag tag-dt">.dt.year</span>
+          <span class="tag tag-ft">filtros</span>
+        </div>
+      </div>
+      <span class="dificuldade nivel-2">★★☆ Intermediário</span>
+    </div>
+    <div class="desafio-body">
+      <p>O RH precisa de um relatório de atenção: funcionários ativos com 60 anos ou mais. Além disso, quer entender o histórico de contratações por ano.</p>
+
+      <div class="pergunta">Converta <code>Data_Admissao</code> para datetime e crie as colunas <code>Ano_Admissao</code> e <code>Tempo_Casa_Anos</code>.</div>
+      <div class="pergunta">Filtre os funcionários <strong>ativos com 60 anos ou mais</strong>. Quantos são? Mostre nome, idade, departamento, cargo e tempo de casa — ordenados pela idade decrescente.</div>
+      <div class="pergunta">Mostre o <strong>total de admissões por ano</strong> desde 2015. Use <code>groupby</code> e <code>sort_index()</code> para exibir em ordem cronológica.</div>
+
+
+
+      <div class="dica">
+        <strong>Lembra?</strong>
+        <p><code>pd.to_datetime(df["col"], format="%d/%m/%Y", errors="coerce")</code>. Após converter, <code>.dt.year</code> extrai o ano. Tempo de casa: <code>(pd.Timestamp.today() - df["Data_Admissao"]).dt.days / 365.25</code>.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══ INTERVALO ═══ -->
+  <div class="cal p" style="margin:1.5rem 0">
+    <strong>☕ Intervalo — 20h20 · 15 minutos</strong>
+    Você terminou os 3 primeiros? Ótimo. Não terminou? Normal — anote onde travou e pergunte ao professor na volta. Os próximos 3 são mais complexos: exigem encadear mais de um comando.
+  </div>
+
+
+  <!-- ─── DESAFIO 4 ─── -->
+  <div class="desafio d4">
+    <div class="desafio-header">
+      <div class="desafio-num">04</div>
+      <div class="desafio-meta">
+        <div class="desafio-titulo">Limpeza de texto — nomes e títulos</div>
+        <div class="desafio-tags">
+          <span class="tag tag-rx">re.sub</span>
+          <span class="tag tag-rx">str.contains</span>
+          <span class="tag tag-rx">str.extract</span>
+        </div>
+      </div>
+      <span class="dificuldade nivel-2">★★☆ Intermediário</span>
+    </div>
+    <div class="desafio-body">
+      <p>O sistema legado tem problemas clássicos de texto. Use as ferramentas do Dia 02 para corrigir.</p>
+
+      <div class="pergunta">Quantos nomes <strong>ainda têm título</strong> (<code>Sr.</code>, <code>Sra.</code>, <code>Dr.</code>, <code>Dra.</code>, <code>Srta.</code>)? Use <code>str.contains</code> com regex para contar — não percorra linha por linha.</div>
+      <div class="pergunta">Crie a coluna <code>Nome_Limpo</code> removendo os títulos com <code>re.sub</code> dentro de um <code>.apply()</code>. Mostre 5 exemplos do antes e depois.</div>
+      <div class="pergunta">A partir de <code>Nome_Limpo</code>, extraia o <strong>sobrenome</strong> (última palavra do nome) usando <code>str.extract</code> com um grupo de captura. Quais são os 5 sobrenomes mais comuns na empresa?</div>
+
+
+
+      <div class="dica">
+        <strong>Lembra?</strong>
+        <p>Para <code>str.contains</code>: <code>df["Nome"].str.contains(r"^(Sr\.|Dr\.|...)", regex=True)</code>. Para extrair a última palavra com <code>str.extract</code>: o padrão <code>r"(\w+)$"</code> captura uma ou mais letras no final da string.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─── DESAFIO 5 ─── -->
+  <div class="desafio d5">
+    <div class="desafio-header">
+      <div class="desafio-num">05</div>
+      <div class="desafio-meta">
+        <div class="desafio-titulo">Exportação completa — três formatos para três destinatários</div>
+        <div class="desafio-tags">
+          <span class="tag tag-arq">to_csv</span>
+          <span class="tag tag-arq">to_json</span>
+          <span class="tag tag-arq">ExcelWriter</span>
+        </div>
+      </div>
+      <span class="dificuldade nivel-2">★★☆ Intermediário</span>
+    </div>
+    <div class="desafio-body">
+      <p>Você tem o <code>df_limpo</code> pronto (com <code>Nome_Limpo</code>, <code>Ano_Admissao</code>, <code>Tempo_Casa_Anos</code> das etapas anteriores). Exporte para os três formatos que o RH pediu.</p>
+
+      <div class="pergunta">Salve como <code>base_rh_treino.csv</code> com separador <code>;</code> e encoding <code>utf-8-sig</code> (sem o índice). Leia de volta e confirme que tem 1.000 linhas.</div>
+      <div class="pergunta">Salve como <code>base_rh_treino.json</code> com <code>orient="records"</code> e <code>force_ascii=False</code>. Abra o arquivo e mostre os 2 primeiros registros no terminal.</div>
+      <div class="pergunta">Salve como <code>base_rh_treino.xlsx</code> com uma aba <code>"Completo"</code> e uma aba por status (<code>"Ativo"</code> e <code>"Inativo"</code>). Mostre quantos registros tem cada aba.</div>
+
+
+
+      <div class="dica">
+        <strong>Lembra?</strong>
+        <p>Para ler o JSON de volta: <code>import json; with open("arquivo.json") as f: dados = json.load(f); print(dados[:2])</code>. Para o Excel com abas dinâmicas: <code>for status in df["Status"].unique():</code> dentro do <code>with ExcelWriter</code>.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─── DESAFIO 6 ─── -->
+  <div class="desafio d6">
+    <div class="desafio-header">
+      <div class="desafio-num">06</div>
+      <div class="desafio-meta">
+        <div class="desafio-titulo">Relatório final — responda ao diretor</div>
+        <div class="desafio-tags">
+          <span class="tag tag-gb">groupby</span>
+          <span class="tag tag-dt">datas</span>
+          <span class="tag tag-ft">filtros</span>
+          <span class="tag tag-rx">regex</span>
+        </div>
+      </div>
+      <span class="dificuldade nivel-3">★★★ Avançado</span>
+    </div>
+    <div class="desafio-body">
+      <p>O diretor da empresa quer um relatório executivo antes da reunião de segunda. Ele fez 4 perguntas. Responda cada uma com código e escreva a resposta em texto numa célula Markdown logo abaixo.</p>
+
+      <div class="pergunta"><strong>Qual departamento tem a maior proporção de funcionários inativos?</strong> (inativos ÷ total do departamento × 100)</div>
+      <div class="pergunta"><strong>Nos últimos 2 anos, qual cargo foi mais contratado?</strong> Use a coluna <code>Data_Admissao</code> convertida para datetime e <code>DateOffset</code>.</div>
+      <div class="pergunta"><strong>Existe diferença de salário médio entre funcionários com e sem título no nome original?</strong> Compare os dois grupos usando o <code>df</code> original (antes da limpeza).</div>
+      <div class="pergunta"><strong>Qual é a média de idade por departamento?</strong> Ordene do mais jovem para o mais velho. O resultado faz sentido para o contexto industrial?</div>
+
+
+
+      <div class="dica">
+        <strong>Dicas para o Desafio 6</strong>
+        <p>Pergunta 1: <code>groupby("Departamento")["Status"].value_counts().unstack()</code> e depois calcule a proporção dividindo a coluna "Inativo" pelo total.
+        Pergunta 2: crie a máscara de data com <code>df["Data_Admissao"] >= pd.Timestamp.today() - pd.DateOffset(years=2)</code>, filtre e agrupe por Cargo.
+        Pergunta 3: use <code>df["Nome"].str.contains(r"^(Sr\.|Dr\.|...)", regex=True)</code> para criar a máscara, depois compare <code>df[mask]["Salario"].mean()</code> com <code>df[~mask]["Salario"].mean()</code>. O <code>~</code> inverte a máscara.
+        Pergunta 4: <code>groupby("Departamento")["Idade"].mean().round(1).sort_values()</code>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ GABARITO ═══ -->
+<section>
+  <h2><span class="stag p">Gabarito</span> Correção dos desafios mais difíceis</h2>
+
+  <div class="prof">
+    <p>"Gabarito não é para copiar. É para comparar. Se o seu código chegou no mesmo resultado por um caminho diferente, isso é tão válido quanto o meu. O que importa é: o dado está certo? Você entende cada linha que escreveu?"</p>
+  </div>
+
+  <!-- Desafio 3 -->
+  <div class="gab">
+    <div class="gabh">Desafio 3 — Funcionários perto da aposentadoria</div>
+    <div class="cb">
+      <div class="ch"><span class="fn">gabarito · desafio 3</span><span class="lg">Python</span></div>
+      <pre><span class="cm"># Converter a data</span>
+df_limpo[<span class="st">"Data_Admissao"</span>] = pd.<span class="fn">to_datetime</span>(
+    df_limpo[<span class="st">"Data_Admissao"</span>], format=<span class="st">"%d/%m/%Y"</span>, errors=<span class="st">"coerce"</span>
+)
+
+<span class="cm"># Criar colunas derivadas</span>
+df_limpo[<span class="st">"Ano_Admissao"</span>]    = df_limpo[<span class="st">"Data_Admissao"</span>].dt.year
+df_limpo[<span class="st">"Tempo_Casa_Anos"</span>] = (
+    (pd.Timestamp.<span class="fn">today</span>() - df_limpo[<span class="st">"Data_Admissao"</span>]).dt.days / <span class="nm">365.25</span>
+).<span class="fn">round</span>(<span class="nm">1</span>)
+
+<span class="cm"># Filtrar ativos com 60+</span>
+aposentadoria = df_limpo[
+    (df_limpo[<span class="st">"Idade"</span>] &gt;= <span class="nm">60</span>) &amp; (df_limpo[<span class="st">"Status"</span>] == <span class="st">"Ativo"</span>)
+].<span class="fn">sort_values</span>(<span class="st">"Idade"</span>, ascending=<span class="kw">False</span>)
+
+<span class="fn">print</span>(<span class="st">f"Funcionários ativos com 60+ anos: {len(aposentadoria)}"</span>)
+cols = [<span class="st">"Nome"</span>, <span class="st">"Idade"</span>, <span class="st">"Departamento"</span>, <span class="st">"Cargo"</span>, <span class="st">"Tempo_Casa_Anos"</span>]
+<span class="fn">print</span>(aposentadoria[cols].<span class="fn">to_string</span>(index=<span class="kw">False</span>))
+
+<span class="cm"># Admissões por ano</span>
+<span class="fn">print</span>(<span class="st">"\nAdmissões por ano:"</span>)
+<span class="fn">print</span>(
+    df_limpo.<span class="fn">groupby</span>(<span class="st">"Ano_Admissao"</span>)
+    .<span class="fn">size</span>().<span class="fn">rename</span>(<span class="st">"Admissoes"</span>)
+    .<span class="fn">sort_index</span>()
+    .<span class="fn">to_string</span>()
+)</pre>
+    </div>
+    <div class="out"><span class="olbl">output</span>Funcionários ativos com 60+ anos: 54
+
+Nome                   Idade  Departamento       Cargo  Tempo_Casa_Anos
+Laura Rezende             65     Logística    Analista              9.3
+...
+(54 registros)</div>
+  </div>
+
+  <!-- Desafio 4 -->
+  <div class="gab">
+    <div class="gabh">Desafio 4 — Limpeza de nomes e sobrenomes mais comuns</div>
+    <div class="cb">
+      <div class="ch"><span class="fn">gabarito · desafio 4</span><span class="lg">Python</span></div>
+      <pre><span class="kw">import</span> re
+
+<span class="cm"># Contar com str.contains</span>
+padrao_titulo = <span class="st">r"^(Sr\.|Sra\.|Dr\.|Dra\.|Srta\.)"</span>
+com_titulo = df[<span class="st">"Nome"</span>].<span class="fn">str</span>.<span class="fn">contains</span>(padrao_titulo, regex=<span class="kw">True</span>).<span class="fn">sum</span>()
+<span class="fn">print</span>(<span class="st">f"Nomes com título: {com_titulo}"</span>)   <span class="cm"># → 175</span>
+
+<span class="cm"># Remover títulos com re.sub dentro de .apply()</span>
+<span class="kw">def</span> <span class="fn">remover_titulo</span>(nome):
+    <span class="kw">if not</span> <span class="fn">isinstance</span>(nome, <span class="fn">str</span>):
+        <span class="kw">return</span> nome
+    <span class="kw">return</span> re.<span class="fn">sub</span>(<span class="st">r"^(?:Sr\.|Sra\.|Dr\.|Dra\.|Srta\.)\s+"</span>, <span class="st">""</span>, nome).<span class="fn">strip</span>()
+
+df_limpo[<span class="st">"Nome_Limpo"</span>] = df_limpo[<span class="st">"Nome"</span>].<span class="fn">apply</span>(remover_titulo)
+
+<span class="cm"># Mostrar 5 exemplos antes × depois</span>
+mask = df[<span class="st">"Nome"</span>].<span class="fn">str</span>.<span class="fn">contains</span>(padrao_titulo, regex=<span class="kw">True</span>)
+<span class="fn">print</span>(<span class="st">"\n5 exemplos antes × depois:"</span>)
+<span class="kw">for</span> i <span class="kw">in</span> df[mask].head(<span class="nm">5</span>).index:
+    <span class="fn">print</span>(<span class="st">f"  '{df.loc[i,'Nome']}' → '{df_limpo.loc[i,'Nome_Limpo']}'"</span>)
+
+<span class="cm"># Extrair sobrenome com str.extract</span>
+<span class="cm"># r"(\w+)$" → captura 1+ letras/números no FIM da string</span>
+df_limpo[<span class="st">"Sobrenome"</span>] = df_limpo[<span class="st">"Nome_Limpo"</span>].<span class="fn">str</span>.<span class="fn">extract</span>(<span class="st">r"(\w+)$"</span>)
+
+<span class="fn">print</span>(<span class="st">"\n5 sobrenomes mais comuns:"</span>)
+<span class="fn">print</span>(df_limpo[<span class="st">"Sobrenome"</span>].<span class="fn">value_counts</span>().<span class="fn">head</span>(<span class="nm">5</span>))</pre>
+    </div>
+    <div class="out"><span class="olbl">output</span>Nomes com título: 175
+
+5 exemplos antes × depois:
+  'Sr. Gustavo Duarte' → 'Gustavo Duarte'
+  'Srta. Mariana Cunha' → 'Mariana Cunha'
+  'Dr. Nicolas Pinto' → 'Nicolas Pinto'
+  'Dr. Calebe Barbosa' → 'Calebe Barbosa'
+  'Srta. Giovanna Pinto' → 'Giovanna Pinto'
+
+5 sobrenomes mais comuns:
+Cardoso    31
+Rocha      30
+Costa      25
+Souza      25
+Cunha      24</div>
+  </div>
+
+  <!-- Desafio 6 - Pergunta 3 (a mais difícil) -->
+  <div class="gab">
+    <div class="gabh">Desafio 6 · Pergunta 3 — Salário médio com vs. sem título</div>
+    <div class="cb">
+      <div class="ch"><span class="fn">gabarito · desafio 6 · pergunta 3</span><span class="lg">Python</span></div>
+      <pre><span class="cm"># Criamos a máscara no df ORIGINAL (antes da limpeza)</span>
+mask_titulo = df[<span class="st">"Nome"</span>].<span class="fn">str</span>.<span class="fn">contains</span>(
+    <span class="st">r"^(Sr\.|Sra\.|Dr\.|Dra\.|Srta\.)"</span>, regex=<span class="kw">True</span>
+)
+
+sal_com_titulo    = df[mask_titulo][<span class="st">"Salario"</span>].<span class="fn">mean</span>()
+sal_sem_titulo    = df[~mask_titulo][<span class="st">"Salario"</span>].<span class="fn">mean</span>()
+<span class="cm"># ~mask_titulo → inverte a máscara (~ = NOT lógico)</span>
+
+<span class="fn">print</span>(<span class="st">f"Funcionários COM título : {mask_titulo.sum()}"</span>)
+<span class="fn">print</span>(<span class="st">f"  Salário médio         : R$ {sal_com_titulo:,.2f}"</span>)
+<span class="fn">print</span>(<span class="st">f"\nFuncionários SEM título : {(~mask_titulo).sum()}"</span>)
+<span class="fn">print</span>(<span class="st">f"  Salário médio         : R$ {sal_sem_titulo:,.2f}"</span>)
+<span class="fn">print</span>(<span class="st">f"\nDiferença               : R$ {abs(sal_com_titulo - sal_sem_titulo):,.2f}"</span>)</pre>
+    </div>
+    <div class="out"><span class="olbl">output</span>Funcionários COM título : 175
+  Salário médio         : R$ 8.XXX,XX
+
+Funcionários SEM título : 825
+  Salário médio         : R$ 8.XXX,XX
+
+Diferença               : R$ XXX,XX
+
+→ Responda na célula Markdown: existe diferença significativa?
+   O que isso pode indicar sobre o perfil dos funcionários com título?</div>
+    <div class="cal g" style="margin-top:.75rem">
+      <strong>💡 Por que o output está mascarado?</strong>
+      Porque a resposta é parte do aprendizado. Você precisa rodar o código para descobrir. Se a diferença for pequena, o que isso diz? Se for grande, o que pode explicar?
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ COMMIT FINAL ═══ -->
+<section>
+  <h2><span class="stag y">Commit · 21h35</span> Entrega final da semana 04</h2>
+
+  <div class="prof">
+    <p>"Vocês acabaram de construir algo real. Um notebook com diagnóstico, filtros, análise de datas, limpeza de texto, exportação e um relatório executivo — tudo na mesma base. Façam o commit. Isso vai ficar no repositório de vocês para sempre. Quando forem numa entrevista de emprego, vão poder mostrar isso."</p>
+  </div>
+
+  <div class="cb">
+    <div class="ch"><span class="fn">terminal — na raiz do repositório</span><span class="lg">Shell</span></div>
+    <pre><span class="cm"># 1. Sempre puxar antes de qualquer commit</span>
+git pull origin master
+
+<span class="cm"># 2. Adicionar somente a sua pasta</span>
+git add alunos/seunome/
+
+<span class="cm"># 3. Commit descritivo — descreva o que fez</span>
+git commit -m <span class="st">"semana 04 - treino: diagnostico, filtros, datas, regex e relatorio"</span>
+
+<span class="cm"># 4. Enviar</span>
+git push origin master
+
+<span class="cm"># 5. Confirmar — mostre esse output na última célula do notebook</span>
+git log --oneline -<span class="nm">3</span></pre>
+  </div>
+
+  <div class="g2">
+    <div class="cal g">
+      <strong>✅ O que você entregou esta semana</strong>
+      <ul style="margin-top:.4rem;padding-left:1.2rem">
+        <li><strong>Dia 01:</strong> leitura CSV, JSON, Excel, datetime — <code>aula_01.ipynb</code></li>
+        <li><strong>Dia 02:</strong> regex, limpeza de texto — <code>aula_02.ipynb</code></li>
+        <li><strong>Dia 03:</strong> 6 desafios práticos + relatório executivo — <code>aula_03.ipynb</code></li>
+        <li>Arquivos exportados: <code>base_rh_treino.csv</code> · <code>.json</code> · <code>.xlsx</code></li>
+      </ul>
+    </div>
+    <div class="cal b">
+      <strong>🔜 Semana 05 — o que vem a seguir</strong>
+      <ul style="margin-top:.4rem;padding-left:1.2rem">
+        <li>ETL completo — pipeline de múltiplas fontes</li>
+        <li>Leitura de banco de dados SQLite com pandas</li>
+        <li>Transformações avançadas de qualidade</li>
+        <li>Os notebooks dessa semana serão a base</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</div>
+<footer>
+  <span>SENAI · Visualização de Dados e Business Intelligence · Turma T2 · Noturno</span>
+  <span>Semana 04 · Módulo 1 — Modelagem de Dados · <strong style="color:var(--green)">Dia 03 de 3 · Sexta · Aula de Treino</strong></span>
+</footer>
+</body>
+</html>
