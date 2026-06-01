@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semana 05 · Dia 02 — groupby · merge · pivot_table | SENAI BI</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+  :root{--bg:#0f1117;--bg2:#161b27;--bg3:#1e2535;--bg4:#252d40;--border:#2a3350;--text:#e2e8f4;--muted:#7a8aaa;--dim:#3a4a6a;--blue:#4f8ef7;--blue2:#38bdf8;--green:#34d399;--yellow:#fbbf24;--red:#f87171;--purple:#a78bfa;--orange:#fb923c;--teal:#2dd4bf;--code:#0d1120}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px}
+  header{background:var(--bg2);border-bottom:1px solid var(--border);padding:2.5rem 4rem 2rem}
+  .htop{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin-bottom:1.1rem}
+  .badge{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:500;padding:3px 10px;border-radius:4px;letter-spacing:.05em;text-transform:uppercase;border:1px solid}
+  .bb{background:rgba(79,142,247,.12);color:#7fb3ff;border-color:rgba(79,142,247,.28)}
+  .bg{background:rgba(52,211,153,.10);color:#5ee8b5;border-color:rgba(52,211,153,.28)}
+  .by{background:rgba(251,191,36,.10);color:#fcd34d;border-color:rgba(251,191,36,.28)}
+  .bp{background:rgba(167,139,250,.10);color:#c4b5fd;border-color:rgba(167,139,250,.28)}
+  .bt{background:rgba(45,212,191,.10);color:#5eead4;border-color:rgba(45,212,191,.28)}
+  h1{font-size:2rem;font-weight:600;color:#fff;letter-spacing:-.02em;line-height:1.25;margin-bottom:.4rem}
+  h1 em{color:var(--teal);font-style:normal}
+  .hsub{display:flex;gap:2rem;flex-wrap:wrap}
+  .hsub span{color:var(--muted);font-size:.9rem}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 2.5rem}
+  section{padding:2.5rem 0;border-bottom:1px solid var(--border)}
+  section:last-of-type{border-bottom:none}
+  h2{font-size:1.2rem;font-weight:600;color:#fff;display:flex;align-items:center;gap:.7rem;margin-bottom:1.25rem}
+  .stag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:4px;background:rgba(79,142,247,.12);color:var(--blue);border:1px solid rgba(79,142,247,.25)}
+  .stag.g{background:rgba(52,211,153,.10);color:var(--green);border-color:rgba(52,211,153,.25)}
+  .stag.y{background:rgba(251,191,36,.10);color:var(--yellow);border-color:rgba(251,191,36,.25)}
+  .stag.p{background:rgba(167,139,250,.10);color:var(--purple);border-color:rgba(167,139,250,.25)}
+  .stag.t{background:rgba(45,212,191,.10);color:var(--teal);border-color:rgba(45,212,191,.25)}
+  h3{font-size:1rem;font-weight:600;color:var(--teal);margin:1.75rem 0 .7rem;display:flex;align-items:center;gap:8px}
+  h3::before{content:'';width:3px;height:15px;background:var(--teal);border-radius:2px;flex-shrink:0}
+  p{margin-bottom:.7rem}
+  p:last-child{margin-bottom:0}
+  ul{padding-left:1.3rem}
+  ul li{margin-bottom:.35rem}
+  code{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--orange);background:rgba(251,146,60,.1);padding:1px 6px;border-radius:3px}
+  strong{font-weight:600}
+  .cal{border-left:3px solid;border-radius:0 8px 8px 0;padding:.9rem 1.2rem;margin:1.1rem 0}
+  .cal.b{background:rgba(79,142,247,.07);border-color:var(--blue)}
+  .cal.g{background:rgba(52,211,153,.07);border-color:var(--green)}
+  .cal.y{background:rgba(251,191,36,.07);border-color:var(--yellow)}
+  .cal.r{background:rgba(248,113,113,.07);border-color:var(--red)}
+  .cal.p{background:rgba(167,139,250,.07);border-color:var(--purple)}
+  .cal.o{background:rgba(251,146,60,.08);border-color:var(--orange)}
+  .cal.t{background:rgba(45,212,191,.07);border-color:var(--teal)}
+  .cal strong{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem}
+  .cal.b strong{color:var(--blue)}.cal.g strong{color:var(--green)}.cal.y strong{color:var(--yellow)}.cal.r strong{color:var(--red)}.cal.p strong{color:var(--purple)}.cal.o strong{color:var(--orange)}.cal.t strong{color:var(--teal)}
+  .prof{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1rem 1.35rem;margin:1.1rem 0}
+  .prof::before{content:'💬  Professor';font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--yellow);text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:.45rem}
+  .prof p{color:#c8d6f0;font-style:italic;margin:0}
+  .tl{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-radius:8px;overflow:hidden;border:1px solid var(--border);margin:1.2rem 0}
+  .tlb{text-align:center;padding:.65rem .4rem}
+  .tlb .t{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);display:block;margin-bottom:3px}
+  .tlb .l{font-size:.75rem;font-weight:600;display:block}
+  .tl1{background:rgba(45,212,191,.10)}.tl1 .l{color:var(--teal)}
+  .tl2{background:rgba(52,211,153,.10)}.tl2 .l{color:var(--green)}
+  .tl3{background:rgba(42,51,80,.5)}.tl3 .l{color:var(--muted)}
+  .tl4{background:rgba(251,191,36,.10)}.tl4 .l{color:var(--yellow)}
+  .tl5{background:rgba(167,139,250,.10)}.tl5 .l{color:var(--purple)}
+  .cb{background:var(--code);border:1px solid var(--border);border-radius:8px;margin:.9rem 0;overflow:hidden}
+  .cb.chart{border-color:rgba(251,146,60,.3)}
+  .ch{display:flex;justify-content:space-between;align-items:center;padding:.5rem 1rem;background:var(--bg4);border-bottom:1px solid var(--border)}
+  .ch.chart-h{background:rgba(251,146,60,.10);border-bottom-color:rgba(251,146,60,.25)}
+  .ch .fn{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
+  .ch .lg{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--teal);text-transform:uppercase;letter-spacing:.07em}
+  .ch .lg.ol{color:var(--orange)}
+  pre{padding:1.1rem 1.4rem;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.75;color:#cdd6f4}
+  .kw{color:#89b4fa}.fn{color:#89dceb}.st{color:#a6e3a1}.cm{color:#4a5a7a;font-style:italic}.nm{color:#fab387}.cl{color:#cba6f7}
+  .out{background:#070b14;border:1px solid #1a2540;border-radius:6px;padding:.85rem 1.2rem;margin-top:.6rem;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.75;color:#94a3b8;white-space:pre;overflow-x:auto}
+  .olbl{color:#2a3a5a;font-size:10px;text-transform:uppercase;letter-spacing:.07em;display:block;margin-bottom:.35rem}
+  .cprev{background:#070b14;border:1px solid rgba(251,146,60,.18);border-radius:6px;padding:1rem 1.4rem;margin-top:.5rem}
+  .clbl{color:rgba(251,146,60,.55);font-size:10px;text-transform:uppercase;letter-spacing:.07em;font-family:'JetBrains Mono',monospace;display:block;margin-bottom:.7rem}
+  .ctitle{color:#4a5a7a;font-size:10.5px;font-family:'JetBrains Mono',monospace;display:block;margin-bottom:.6rem}
+  .br{display:flex;align-items:center;gap:.7rem;margin-bottom:.42rem}
+  .blbl{color:#7a8aaa;min-width:110px;font-size:11px;text-align:right;font-family:'JetBrains Mono',monospace}
+  .bf{height:13px;border-radius:2px;display:inline-block;opacity:.8}
+  .bv{color:#c8d6f0;font-size:11px;font-family:'JetBrains Mono',monospace}
+  .divline{border:none;border-top:1px dashed rgba(251,146,60,.18);margin:1.1rem 0}
+  .cwhy{background:rgba(251,146,60,.05);border:1px solid rgba(251,146,60,.15);border-radius:6px;padding:.7rem 1rem;margin-top:.65rem}
+  .cwhy strong{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--orange);text-transform:uppercase;letter-spacing:.07em;display:block;margin-bottom:.25rem}
+  .cwhy p{color:var(--muted);font-size:.87rem;margin:0}
+  .why{background:rgba(45,212,191,.05);border:1px solid rgba(45,212,191,.15);border-radius:6px;padding:.7rem 1rem;margin-top:.65rem}
+  .why strong{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--teal);text-transform:uppercase;letter-spacing:.07em;display:block;margin-bottom:.25rem}
+  .why p{color:var(--muted);font-size:.87rem;margin:0}
+  .g2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:.9rem 0}
+  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:.9rem 0}
+  @media(max-width:680px){.g2,.g3{grid-template-columns:1fr}.tl{grid-template-columns:1fr 1fr}}
+  .card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.9rem 1.1rem}
+  .card .lbl{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem}
+  .ex{background:var(--bg2);border:1px solid var(--border);border-radius:10px;margin:1.5rem 0;overflow:hidden}
+  .exh{display:flex;align-items:center;gap:.9rem;padding:.85rem 1.4rem;background:var(--bg3);border-bottom:1px solid var(--border)}
+  .exn{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--teal);background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.28);border-radius:4px;padding:3px 9px;white-space:nowrap}
+  .ext{font-weight:600;color:#fff;font-size:.95rem}
+  .exb{padding:1.2rem 1.4rem}
+  .exer{background:rgba(251,191,36,.04);border:1px solid rgba(251,191,36,.18);border-radius:10px;padding:1.4rem;margin:2rem 0}
+  .exerh{display:flex;align-items:center;gap:.75rem;margin-bottom:.9rem;padding-bottom:.75rem;border-bottom:1px solid rgba(251,191,36,.14)}
+  .exerh h3{margin:0;color:var(--yellow)}
+  .exerh h3::before{background:var(--yellow)}
+  .steps{list-style:none;counter-reset:s}
+  .steps li{counter-increment:s;display:flex;gap:.9rem;margin-bottom:.8rem;align-items:flex-start}
+  .steps li::before{content:counter(s);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--yellow);background:rgba(251,191,36,.11);border:1px solid rgba(251,191,36,.24);border-radius:4px;padding:2px 8px;min-width:30px;text-align:center;flex-shrink:0;margin-top:3px}
+  .steps li.cs::before{color:var(--orange);background:rgba(251,146,60,.11);border-color:rgba(251,146,60,.28)}
+  .steps li p{margin:0}
+  .dica{background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.18);border-radius:6px;padding:.65rem 1rem;margin-top:.9rem}
+  .dica strong{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green);text-transform:uppercase;letter-spacing:.07em;display:block;margin-bottom:.25rem}
+  .dica p{color:var(--muted);font-size:.87rem;margin:0}
+  .gab{background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.18);border-radius:10px;padding:1.4rem;margin:1.5rem 0}
+  .gabh{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--purple);text-transform:uppercase;letter-spacing:.09em;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+  .gabh::before{content:'';width:6px;height:6px;background:var(--purple);border-radius:50%;display:inline-block}
+  .gabc{background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.18);border-radius:10px;padding:1.4rem;margin:1.5rem 0}
+  .gabch{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--orange);text-transform:uppercase;letter-spacing:.09em;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+  .gabch::before{content:'';width:6px;height:6px;background:var(--orange);border-radius:50%;display:inline-block}
+  .etab{width:100%;border-collapse:collapse;margin-top:.6rem;font-size:13px}
+  .etab th{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left;padding:.45rem .7rem;border-bottom:1px solid var(--border)}
+  .etab td{padding:.55rem .7rem;border-bottom:1px solid rgba(42,51,80,.45);vertical-align:top}
+  .etab tr:last-child td{border-bottom:none}
+  .err{color:var(--red);font-family:'JetBrains Mono',monospace;font-size:12px}
+  .fix{color:var(--green);font-family:'JetBrains Mono',monospace;font-size:12px}
+  footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.5rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem}
+  footer span{color:var(--muted);font-size:.83rem}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="htop">
+      <span class="badge bb">SENAI · T2 · Noturno</span>
+      <span class="badge bg">Semana 05</span>
+      <span class="badge by">Dia 02 · Quinta · 19h–22h</span>
+      <span class="badge bp">Módulo 1 — Modelagem</span>
+      <span class="badge bt">3 horas · Remota</span>
+    </div>
+    <h1>groupby · merge<br><em>pivot_table · visualizando agregações</em></h1>
+    <div class="hsub">
+      <span>📦 Agrupamento com groupby + agg</span>
+      <span>🔗 Cruzamento de tabelas com merge</span>
+      <span>📊 pivot_table e gráficos de barras agrupadas</span>
+      <span>🏭 base_rh.xlsx · 1.000 funcionários</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ABERTURA -->
+<section>
+  <h2><span class="stag t">Abertura</span> Contexto e objetivo da aula</h2>
+  <div class="prof">
+    <p>"Na terça vocês aprenderam a selecionar dados com precisão. Hoje a gente vai um nível acima: agregar, cruzar e pivotar. São três operações que aparecem em todo relatório de gestão industrial. groupby responde 'qual é a média por grupo', merge responde 'como junto duas tabelas', e pivot_table transforma qualquer agregação num relatório cruzado. E a regra continua: calculou, plotou."</p>
+  </div>
+  <h3>O que você vai saber fazer ao final desta aula</h3>
+  <ul>
+    <li>Usar <code>groupby</code> com <strong>múltiplas colunas</strong> e <code>agg()</code> com várias funções de uma vez</li>
+    <li>Usar <code>sort_values</code> e <code>reset_index</code> para preparar o resultado do groupby para plotar</li>
+    <li>Entender e usar <code>merge</code> para cruzar duas tabelas (inner e left)</li>
+    <li>Criar relatórios cruzados com <code>pivot_table</code></li>
+    <li>Plotar barras agrupadas e gráfico de linha com matplotlib</li>
+  </ul>
+  <div class="tl">
+    <div class="tlb tl1"><span class="t">19h00–19h15</span><span class="l">Setup + revisão</span></div>
+    <div class="tlb tl2"><span class="t">19h15–20h30</span><span class="l">groupby + agg (Ex 1–3)</span></div>
+    <div class="tlb tl3"><span class="t">20h30–20h40</span><span class="l">☕ Intervalo</span></div>
+    <div class="tlb tl4"><span class="t">20h40–21h40</span><span class="l">merge + pivot_table (Ex 4–5)</span></div>
+    <div class="tlb tl5"><span class="t">21h40–22h00</span><span class="l">Exercício + Commit</span></div>
+  </div>
+</section>
+
+<!-- SETUP -->
+<section>
+  <h2><span class="stag t">Bloco 0 · 19h00</span> Setup — mesma base, notebook novo</h2>
+  <div class="prof">
+    <p>"Notebook novo, mesma célula 1 da semana passada — só mude o nome do arquivo para aula_02.ipynb. Quem ainda não fez o commit do Dia 01, faz agora antes de criar arquivo novo."</p>
+  </div>
+  <div class="cb">
+    <div class="ch"><span class="fn">terminal</span><span class="lg">Shell</span></div>
+    <pre><span class="cm"># Atualizar repositório e criar notebook do dia</span>
+git pull origin master
+touch alunos/seunome/semana_05/aula_02.ipynb
+code alunos/seunome/semana_05/aula_02.ipynb</pre>
+  </div>
+  <div class="cb">
+    <div class="ch"><span class="fn">aula_02.ipynb · Célula 1 — sempre igual para toda aula desta semana</span><span class="lg">Python</span></div>
+    <pre><span class="kw">import</span> pandas <span class="kw">as</span> pd
+<span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
+
+URL = (
+    <span class="st">"https://raw.githubusercontent.com/"</span>
+    <span class="st">"cfneves/turma-visualizacao-de-dados/"</span>
+    <span class="st">"master/aulas/semana_04/bases/base_rh.xlsx"</span>
+)
+
+df = pd.read_excel(URL)
+
+df[<span class="st">"Data_Admissao"</span>] = pd.to_datetime(
+    df[<span class="st">"Data_Admissao"</span>],
+    format=<span class="st">"%d/%m/%Y"</span>,
+    errors=<span class="st">"coerce"</span>
+)
+
+<span class="fn">print</span>(<span class="st">f"Dataset: {df.shape[0]} linhas x {df.shape[1]} colunas"</span>)
+<span class="fn">print</span>(df.dtypes)</pre>
+  </div>
+</section>
+
+<!-- BLOCO 1: groupby -->
+<section>
+  <h2><span class="stag g">Bloco 1 · 19h15</span> groupby — agrupando e resumindo dados</h2>
+  <div class="prof">
+    <p>"groupby é o equivalente do GROUP BY do SQL. Você escolhe uma ou mais colunas para agrupar, escolhe uma coluna para calcular, e escolhe a função. O resultado sempre é uma Series ou DataFrame menor que o original — e é exatamente esse resultado que você vai plotar."</p>
+  </div>
+
+  <!-- EXEMPLO 1 -->
+  <div class="ex">
+    <div class="exh"><span class="exn">EXEMPLO 01</span><span class="ext">groupby com uma coluna e agg() com múltiplas funções</span></div>
+    <div class="exb">
+      <p>O padrão mais comum: agrupa por uma coluna categórica e calcula várias estatísticas de uma vez com <code>agg()</code>.</p>
+      <div class="cb">
+        <div class="ch"><span class="fn">aula_02.ipynb · Célula 2</span><span class="lg">Python</span></div>
+        <pre><span class="cm"># Resumo salarial por departamento</span>
+resumo = (
+    df.groupby(<span class="st">"Departamento"</span>)[<span class="st">"Salario"</span>]
+    .agg(
+        quantidade = <span class="st">"count"</span>,
+        media      = <span class="st">"mean"</span>,
+        mediana    = <span class="st">"median"</span>,
+        minimo     = <span class="st">"min"</span>,
+        maximo     = <span class="st">"max"</span>
+    )
+    .round(<span class="nm">2</span>)
+    .sort_values(<span class="st">"media"</span>, ascending=<span class="kw">False</span>)
+    .reset_index()   <span class="cm"># transforma o índice em coluna normal</span>
+)
+
+<span class="fn">print</span>(resumo.to_string(index=<span class="kw">False</span>))</pre>
+      </div>
+      <div class="out"><span class="olbl">output</span>  Departamento  quantidade      media   mediana    minimo     maximo
+      Produção         188    8843.21   8712.50   2016.61  14942.48
+            RH         172    8654.33   8589.10   2134.20  14811.90
+    Financeiro         142    8312.55   8204.30   2218.40  14732.60
+     Logística         132    8198.44   8110.75   2089.30  14655.20
+            TI         128    8102.10   7980.20   2195.60  14580.40
+        Vendas         120    7944.82   7830.55   2043.10  14412.30
+    Manutenção         118    7820.64   7710.40   2012.80  14311.20</div>
+
+      <hr class="divline">
+
+      <div class="cb chart">
+        <div class="ch chart-h"><span class="fn">📊 Célula 3 — salário médio por departamento</span><span class="lg ol">Matplotlib</span></div>
+        <pre><span class="cm"># Ordena do maior para o menor antes de plotar</span>
+dados = resumo.sort_values(<span class="st">"media"</span>)   <span class="cm"># crescente fica no topo do barh</span>
+
+plt.barh(dados[<span class="st">"Departamento"</span>], dados[<span class="st">"media"</span>], color=<span class="st">"steelblue"</span>)
+plt.title(<span class="st">"Salário Médio por Departamento"</span>)
+plt.xlabel(<span class="st">"Salário Médio (R$)"</span>)
+plt.show()</pre>
+      </div>
+      <div class="cprev">
+        <span class="clbl">📊 prévia — o que aparece no notebook</span>
+        <span class="ctitle">Salário Médio por Departamento</span>
+        <div class="br"><span class="blbl">Produção</span><span class="bf" style="width:195px;background:steelblue"></span><span class="bv">R$ 8.843</span></div>
+        <div class="br"><span class="blbl">RH</span><span class="bf" style="width:182px;background:steelblue"></span><span class="bv">R$ 8.654</span></div>
+        <div class="br"><span class="blbl">Financeiro</span><span class="bf" style="width:168px;background:steelblue"></span><span class="bv">R$ 8.312</span></div>
+        <div class="br"><span class="blbl">Logística</span><span class="bf" style="width:161px;background:steelblue"></span><span class="bv">R$ 8.198</span></div>
+        <div class="br"><span class="blbl">TI</span><span class="bf" style="width:155px;background:steelblue"></span><span class="bv">R$ 8.102</span></div>
+        <div class="br"><span class="blbl">Vendas</span><span class="bf" style="width:148px;background:steelblue"></span><span class="bv">R$ 7.944</span></div>
+        <div class="br"><span class="blbl">Manutenção</span><span class="bf" style="width:143px;background:steelblue"></span><span class="bv">R$ 7.820</span></div>
+      </div>
+      <div class="cwhy">
+        <strong>📊 O que o gráfico mostra</strong>
+        <p>Produção lidera o salário médio — faz sentido para uma indústria onde operadores e técnicos especializados têm remuneração maior. A diferença entre o topo e a base é de ~13%, sinal de uma folha relativamente equilibrada entre departamentos.</p>
+      </div>
+      <div class="why">
+        <strong>Por que reset_index() após groupby</strong>
+        <p>O <code>groupby</code> transforma a coluna agrupada em <strong>índice</strong> do resultado. Para plotar com <code>plt.barh(dados["Departamento"], ...)</code> você precisa que "Departamento" seja uma coluna normal — não o índice. O <code>reset_index()</code> faz exatamente isso.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXEMPLO 2 -->
+  <div class="ex">
+    <div class="exh"><span class="exn">EXEMPLO 02</span><span class="ext">groupby com duas colunas — análise cruzada</span></div>
+    <div class="exb">
+      <p>Agrupe por mais de uma coluna para obter visões cruzadas — equivalente a um <code>GROUP BY dept, cargo</code> no SQL.</p>
+      <div class="cb">
+        <div class="ch"><span class="fn">aula_02.ipynb · Célula 4</span><span class="lg">Python</span></div>
+        <pre><span class="cm"># Contagem de funcionários por Departamento e Status</span>
+headcount = (
+    df.groupby([<span class="st">"Departamento"</span>, <span class="st">"Status"</span>])[<span class="st">"ID_Funcionario"</span>]
+    .count()
+    .reset_index()
+    .rename(columns={<span class="st">"ID_Funcionario"</span>: <span class="st">"Quantidade"</span>})
+)
+
+<span class="fn">print</span>(headcount.to_string(index=<span class="kw">False</span>))
+
+<span class="cm"># Salário médio por Departamento e Genero</span>
+sal_genero = (
+    df.groupby([<span class="st">"Departamento"</span>, <span class="st">"Genero"</span>])[<span class="st">"Salario"</span>]
+    .mean()
+    .round(<span class="nm">2</span>)
+    .reset_index()
+)
+<span class="fn">print</span>(<span class="st">"\nSalário médio por Depto e Gênero (5 primeiras):"</span>)
+<span class="fn">print</span>(sal_genero.<span class="fn">head</span>(<span class="nm">6</span>).to_string(index=<span class="kw">False</span>))</pre>
+      </div>
+      <div class="out"><span class="olbl">output</span>  Departamento   Status  Quantidade
+    Financeiro    Ativo          86
+    Financeiro  Inativo          56
+     Logística    Ativo          80
+     Logística  Inativo          52
+    Manutenção    Ativo          72
+    Manutenção  Inativo          46
+      Produção    Ativo         114
+      Produção  Inativo          74
+            RH    Ativo         104
+            RH  Inativo          68
+            TI    Ativo          78
+            TI  Inativo          50
+        Vendas    Ativo          69
+        Vendas  Inativo          51
+
+Salário médio por Depto e Gênero (5 primeiras):
+  Departamento Genero  Salario
+    Financeiro      F  8412.30
+    Financeiro      M  8218.70
+     Logística      F  8301.55
+     Logística      M  8103.40
+    Manutenção      F  7944.20</div>
+
+      <hr class="divline">
+
+      <div class="cb chart">
+        <div class="ch chart-h"><span class="fn">📊 Célula 5 — barras agrupadas: Ativo vs Inativo por departamento</span><span class="lg ol">Matplotlib</span></div>
+        <pre><span class="cm"># Para barras agrupadas precisamos "pivotar" o headcount</span>
+<span class="cm"># unstack() transforma os valores de Status em colunas</span>
+hc_pivot = (
+    df.groupby([<span class="st">"Departamento"</span>, <span class="st">"Status"</span>])[<span class="st">"ID_Funcionario"</span>]
+    .count()
+    .unstack(fill_value=<span class="nm">0</span>)
+)
+
+hc_pivot.plot(kind=<span class="st">"bar"</span>, color=[<span class="st">"steelblue"</span>, <span class="st">"salmon"</span>])
+plt.title(<span class="st">"Headcount por Departamento e Status"</span>)
+plt.xlabel(<span class="st">"Departamento"</span>)
+plt.ylabel(<span class="st">"Quantidade"</span>)
+plt.xticks(rotation=<span class="nm">45</span>)
+plt.legend(title=<span class="st">"Status"</span>)
+plt.tight_layout()
+plt.show()</pre>
+      </div>
+      <div class="cprev">
+        <span class="clbl">📊 prévia — barras agrupadas por departamento</span>
+        <span class="ctitle">Headcount por Departamento e Status</span>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin:.4rem 0 .2rem">
+          <span style="display:inline-block;width:12px;height:10px;background:steelblue;margin-right:4px;border-radius:1px"></span>Ativo &nbsp;&nbsp;
+          <span style="display:inline-block;width:12px;height:10px;background:salmon;margin-right:4px;border-radius:1px"></span>Inativo
+        </div>
+        <div style="display:flex;gap:6px;align-items:flex-end;margin-top:.5rem">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+            <div style="display:flex;gap:2px;align-items:flex-end">
+              <div style="width:16px;height:57px;background:steelblue;opacity:.8;border-radius:2px 2px 0 0"></div>
+              <div style="width:16px;height:37px;background:salmon;opacity:.8;border-radius:2px 2px 0 0"></div>
+            </div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted)">Fin</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+            <div style="display:flex;gap:2px;align-items:flex-end">
+              <div style="width:16px;height:40px;background:steelblue;opacity:.8;border-radius:2px 2px 0 0"></div>
+              <div style="width:16px;height:26px;background:salmon;opacity:.8;border-radius:2px 2px 0 0"></div>
+            </div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted)">Log</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+            <div style="display:flex;gap:2px;align-items:flex-end">
+              <div style="width:16px;height:36px;background:steelblue;opacity:.8;border-radius:2px 2px 0 0"></div>
+              <div style="width:16px;height:23px;background:salmon;opacity:.8;border-radius:2px 2px 0 0"></div>
+            </div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted)">Man</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+            <div style="display:flex;gap:2px;align-items:flex-end">
+              <div style="width:16px;height:57px;background:steelblue;opacity:.8;border-radius:2px 2px 0 0"></div>
+              <div style="width:16px;height:37px;background:salmon;opacity:.8;border-radius:2px 2px 0 0"></div>
+            </div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted)">Prod</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+            <div style="display:flex;gap:2px;align-items:flex-end">
+              <div style="width:16px;height:52px;background:steelblue;opacity:.8;border-radius:2px 2px 0 0"></div>
+              <div style="width:16px;height:34px;background:salmon;opacity:.8;border-radius:2px 2px 0 0"></div>
+            </div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted)">RH</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+            <div style="display:flex;gap:2px;align-items:flex-end">
+              <div style="width:16px;height:39px;background:steelblue;opacity:.8;border-radius:2px 2px 0 0"></div>
+              <div style="width:16px;height:25px;background:salmon;opacity:.8;border-radius:2px 2px 0 0"></div>
+            </div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted)">TI</span>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+            <div style="display:flex;gap:2px;align-items:flex-end">
+              <div style="width:16px;height:35px;background:steelblue;opacity:.8;border-radius:2px 2px 0 0"></div>
+              <div style="width:16px;height:26px;background:salmon;opacity:.8;border-radius:2px 2px 0 0"></div>
+            </div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted)">Ven</span>
+          </div>
+        </div>
+      </div>
+      <div class="cwhy">
+        <strong>📊 O que o gráfico mostra</strong>
+        <p>Produção e RH têm o maior volume de inativos em números absolutos — o que faz sentido por serem os maiores departamentos. Para comparar taxa de inatividade de forma justa entre departamentos de tamanhos diferentes, o próximo passo seria calcular o percentual, não o absoluto.</p>
+      </div>
+      <div class="why">
+        <strong>Por que unstack() para barras agrupadas</strong>
+        <p><code>unstack()</code> "gira" o segundo nível do índice hierárquico e transforma os valores em colunas separadas. Isso é o que o <code>plot(kind="bar")</code> precisa para criar barras lado a lado: uma coluna por grupo. Sem o <code>unstack</code>, você teria uma série única e uma barra só por linha.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXEMPLO 3 -->
+  <div class="ex">
+    <div class="exh"><span class="exn">EXEMPLO 03</span><span class="ext">groupby + gráfico de linha — evolução por ano de admissão</span></div>
+    <div class="exb">
+      <p>Quando o agrupamento envolve tempo, o gráfico de linha é mais adequado que barras — mostra tendência, não comparação.</p>
+      <div class="cb">
+        <div class="ch"><span class="fn">aula_02.ipynb · Célula 6</span><span class="lg">Python</span></div>
+        <pre><span class="cm"># Extrair o ano da coluna datetime (aprendemos na Semana 04)</span>
+df[<span class="st">"Ano_Admissao"</span>] = df[<span class="st">"Data_Admissao"</span>].dt.year
+
+<span class="cm"># Contar admissões por ano</span>
+admissoes_ano = (
+    df.groupby(<span class="st">"Ano_Admissao"</span>)[<span class="st">"ID_Funcionario"</span>]
+    .count()
+    .reset_index()
+    .rename(columns={<span class="st">"ID_Funcionario"</span>: <span class="st">"Admissoes"</span>})
+    .sort_values(<span class="st">"Ano_Admissao"</span>)
+)
+
+<span class="fn">print</span>(admissoes_ano.to_string(index=<span class="kw">False</span>))</pre>
+      </div>
+      <div class="out"><span class="olbl">output</span>  Ano_Admissao  Admissoes
+          2015         38
+          2016         52
+          2017         71
+          2018         88
+          2019        102
+          2020         94
+          2021         87
+          2022         98
+          2023        112
+          2024        148
+          2025         72
+          2026         38</div>
+
+      <hr class="divline">
+
+      <div class="cb chart">
+        <div class="ch chart-h"><span class="fn">📊 Célula 7 — linha: admissões por ano</span><span class="lg ol">Matplotlib</span></div>
+        <pre><span class="cm"># Gráfico de linha — adequado para tendência temporal</span>
+plt.plot(
+    admissoes_ano[<span class="st">"Ano_Admissao"</span>],
+    admissoes_ano[<span class="st">"Admissoes"</span>],
+    marker=<span class="st">"o"</span>,          <span class="cm"># ponto em cada ano</span>
+    color=<span class="st">"steelblue"</span>
+)
+plt.title(<span class="st">"Admissões por Ano"</span>)
+plt.xlabel(<span class="st">"Ano"</span>)
+plt.ylabel(<span class="st">"Quantidade de Admissões"</span>)
+plt.show()</pre>
+      </div>
+      <div class="cprev">
+        <span class="clbl">📊 prévia — tendência de admissões</span>
+        <span class="ctitle">Admissões por Ano</span>
+        <div style="display:flex;align-items:flex-end;gap:0;height:60px;margin:.4rem 0 .3rem;border-bottom:1px solid #1a2540;padding-bottom:2px">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end">
+            <div style="width:6px;height:6px;border-radius:50%;background:steelblue;margin-bottom:2px"></div>
+            <div style="width:2px;height:19px;background:steelblue;opacity:.6"></div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end">
+            <div style="width:6px;height:6px;border-radius:50%;background:steelblue;margin-bottom:2px"></div>
+            <div style="width:2px;height:26px;background:steelblue;opacity:.6"></div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end">
+            <div style="width:6px;height:6px;border-radius:50%;background:steelblue;margin-bottom:2px"></div>
+            <div style="width:2px;height:36px;background:steelblue;opacity:.6"></div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end">
+            <div style="width:6px;height:6px;border-radius:50%;background:steelblue;margin-bottom:2px"></div>
+            <div style="width:2px;height:44px;background:steelblue;opacity:.6"></div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end">
+            <div style="width:6px;height:6px;border-radius:50%;background:steelblue;margin-bottom:2px"></div>
+            <div style="width:2px;height:51px;background:steelblue;opacity:.6"></div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end">
+            <div style="width:6px;height:6px;border-radius:50%;background:steelblue;margin-bottom:2px"></div>
+            <div style="width:2px;height:47px;background:steelblue;opacity:.6"></div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end">
+            <div style="width:6px;height:6px;border-radius:50%;background:steelblue;margin-bottom:2px"></div>
+            <div style="width:2px;height:44px;background:steelblue;opacity:.6"></div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end">
+            <div style="width:6px;height:6px;border-radius:50%;background:steelblue;margin-bottom:2px"></div>
+            <div style="width:2px;height:49px;background:steelblue;opacity:.6"></div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end">
+            <div style="width:6px;height:6px;border-radius:50%;background:steelblue;margin-bottom:2px"></div>
+            <div style="width:2px;height:56px;background:steelblue;opacity:.6"></div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end">
+            <div style="width:6px;height:6px;border-radius:50%;background:steelblue;margin-bottom:2px"></div>
+            <div style="width:2px;height:60px;background:steelblue;opacity:.6"></div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end">
+            <div style="width:6px;height:6px;border-radius:50%;background:steelblue;margin-bottom:2px"></div>
+            <div style="width:2px;height:36px;background:steelblue;opacity:.6"></div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end">
+            <div style="width:6px;height:6px;border-radius:50%;background:steelblue;margin-bottom:2px"></div>
+            <div style="width:2px;height:19px;background:steelblue;opacity:.6"></div>
+          </div>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#4a5a7a;margin-top:.3rem">2015 ── 2016 ── 2017 ── 2018 ── 2019 ── 2020 ── 2021 ── 2022 ── 2023 ── 2024 ── 2025 ── 2026</div>
+      </div>
+      <div class="cwhy">
+        <strong>📊 O que o gráfico mostra</strong>
+        <p>Crescimento consistente de contratações até 2024, com queda em 2025–2026 (anos ainda em andamento ou com dados parciais). Esse padrão é típico de empresas em expansão — o gráfico de linha comunica a tendência de forma imediata. Barras mostrariam comparação; linha mostra evolução.</p>
+      </div>
+      <div class="why">
+        <strong>plt.plot() vs plt.bar()</strong>
+        <p>Use <code>plt.bar()</code> para comparar categorias sem relação de sequência. Use <code>plt.plot()</code> quando o eixo x é temporal ou ordinal — o traço entre os pontos comunica continuidade e tendência, que é exatamente o que você quer mostrar numa série histórica.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERVALO -->
+<section style="padding:1.2rem 0">
+  <div class="cal p" style="margin:0">
+    <strong>☕ Intervalo — 20h30 · 10 minutos</strong>
+    Confirme: você tem o DataFrame <code>resumo</code> com salário médio por departamento e o <code>hc_pivot</code> com headcount por status. Esses dois serão a base do exercício.
+  </div>
+</section>
+
+<!-- BLOCO 2: merge + pivot_table -->
+<section>
+  <h2><span class="stag y">Bloco 2 · 20h40</span> merge e pivot_table</h2>
+  <div class="prof">
+    <p>"merge é o JOIN do SQL — você cruza duas tabelas por uma coluna em comum. pivot_table é a Tabela Dinâmica do Excel — você cruza duas colunas categóricas e coloca um número no meio. Os dois são muito usados em relatórios de gestão, e os dois têm um gráfico natural que conta a história do dado."</p>
+  </div>
+
+  <!-- EXEMPLO 4 -->
+  <div class="ex">
+    <div class="exh"><span class="exn">EXEMPLO 04</span><span class="ext">merge — cruzando duas tabelas</span></div>
+    <div class="exb">
+      <p>Aqui vamos criar uma segunda tabela manualmente (simulando uma base de metas) e cruzar com o dataset de RH.</p>
+      <div class="cb">
+        <div class="ch"><span class="fn">aula_02.ipynb · Célula 8 — criando a tabela de metas</span><span class="lg">Python</span></div>
+        <pre><span class="cm"># Tabela de metas salariais por departamento</span>
+<span class="cm"># Simulando uma segunda fonte de dados</span>
+metas = pd.DataFrame({
+    <span class="st">"Departamento"</span>: [
+        <span class="st">"Produção"</span>, <span class="st">"RH"</span>, <span class="st">"Financeiro"</span>,
+        <span class="st">"Logística"</span>, <span class="st">"TI"</span>, <span class="st">"Vendas"</span>
+    ],
+    <span class="st">"Meta_Salario"</span>: [<span class="nm">9000</span>, <span class="nm">8500</span>, <span class="nm">8200</span>, <span class="nm">8000</span>, <span class="nm">8800</span>, <span class="nm">8000</span>]
+})
+
+<span class="fn">print</span>(<span class="st">"Tabela de metas:"</span>)
+<span class="fn">print</span>(metas.to_string(index=<span class="kw">False</span>))</pre>
+      </div>
+      <div class="out"><span class="olbl">output</span>Tabela de metas:
+  Departamento  Meta_Salario
+      Produção          9000
+            RH          8500
+    Financeiro          8200
+     Logística          8000
+            TI          8800
+        Vendas          8000</div>
+
+      <div class="cb" style="margin-top:1rem">
+        <div class="ch"><span class="fn">aula_02.ipynb · Célula 9 — merge e comparação com a meta</span><span class="lg">Python</span></div>
+        <pre><span class="cm"># INNER merge: só departamentos que existem nos dois DataFrames</span>
+comparacao = pd.merge(
+    resumo[[<span class="st">"Departamento"</span>, <span class="st">"media"</span>]],
+    metas,
+    on=<span class="st">"Departamento"</span>,
+    how=<span class="st">"inner"</span>
+)
+
+<span class="cm"># Calcular diferença entre média real e meta</span>
+comparacao[<span class="st">"Diferenca"</span>] = (comparacao[<span class="st">"media"</span>] - comparacao[<span class="st">"Meta_Salario"</span>]).round(<span class="nm">2</span>)
+comparacao[<span class="st">"Status_Meta"</span>] = comparacao[<span class="st">"Diferenca"</span>].apply(
+    <span class="kw">lambda</span> x: <span class="st">"✅ Acima"</span> <span class="kw">if</span> x >= <span class="nm">0</span> <span class="kw">else</span> <span class="st">"❌ Abaixo"</span>
+)
+
+<span class="fn">print</span>(comparacao.to_string(index=<span class="kw">False</span>))</pre>
+      </div>
+      <div class="out"><span class="olbl">output</span>  Departamento     media  Meta_Salario  Diferenca Status_Meta
+      Produção   8843.21          9000    -156.79   ❌ Abaixo
+            RH   8654.33          8500     154.33   ✅ Acima
+    Financeiro   8312.55          8200     112.55   ✅ Acima
+     Logística   8198.44          8000     198.44   ✅ Acima
+            TI   8102.10          8800    -697.90   ❌ Abaixo
+        Vendas   7944.82          8000     -55.18   ❌ Abaixo</div>
+
+      <hr class="divline">
+
+      <div class="cb chart">
+        <div class="ch chart-h"><span class="fn">📊 Célula 10 — barras: real vs meta por departamento</span><span class="lg ol">Matplotlib</span></div>
+        <pre><span class="cm"># Para mostrar duas barras lado a lado precisamos do numpy</span>
+<span class="kw">import</span> numpy <span class="kw">as</span> np
+
+x = np.arange(<span class="fn">len</span>(comparacao))
+largura = <span class="nm">0.35</span>
+
+plt.bar(x - largura/<span class="nm">2</span>, comparacao[<span class="st">"media"</span>],         largura, label=<span class="st">"Média Real"</span>,  color=<span class="st">"steelblue"</span>)
+plt.bar(x + largura/<span class="nm">2</span>, comparacao[<span class="st">"Meta_Salario"</span>],  largura, label=<span class="st">"Meta"</span>,         color=<span class="st">"salmon"</span>)
+plt.xticks(x, comparacao[<span class="st">"Departamento"</span>], rotation=<span class="nm">45</span>)
+plt.title(<span class="st">"Salário Médio Real vs Meta por Departamento"</span>)
+plt.ylabel(<span class="st">"Salário (R$)"</span>)
+plt.legend()
+plt.tight_layout()
+plt.show()</pre>
+      </div>
+      <div class="cprev">
+        <span class="clbl">📊 prévia — real vs meta</span>
+        <span class="ctitle">Salário Médio Real vs Meta por Departamento</span>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin:.3rem 0">
+          <span style="display:inline-block;width:12px;height:10px;background:steelblue;margin-right:4px;border-radius:1px"></span>Média Real &nbsp;
+          <span style="display:inline-block;width:12px;height:10px;background:salmon;margin-right:4px;border-radius:1px"></span>Meta
+        </div>
+        <div style="display:flex;gap:8px;align-items:flex-end;margin-top:.4rem">
+          <div style="text-align:center"><div style="display:flex;gap:2px;align-items:flex-end"><div style="width:14px;height:49px;background:steelblue;opacity:.8;border-radius:2px 2px 0 0"></div><div style="width:14px;height:50px;background:salmon;opacity:.7;border-radius:2px 2px 0 0"></div></div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);margin-top:2px">Prod</div></div>
+          <div style="text-align:center"><div style="display:flex;gap:2px;align-items:flex-end"><div style="width:14px;height:48px;background:steelblue;opacity:.8;border-radius:2px 2px 0 0"></div><div style="width:14px;height:47px;background:salmon;opacity:.7;border-radius:2px 2px 0 0"></div></div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);margin-top:2px">RH</div></div>
+          <div style="text-align:center"><div style="display:flex;gap:2px;align-items:flex-end"><div style="width:14px;height:46px;background:steelblue;opacity:.8;border-radius:2px 2px 0 0"></div><div style="width:14px;height:46px;background:salmon;opacity:.7;border-radius:2px 2px 0 0"></div></div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);margin-top:2px">Fin</div></div>
+          <div style="text-align:center"><div style="display:flex;gap:2px;align-items:flex-end"><div style="width:14px;height:46px;background:steelblue;opacity:.8;border-radius:2px 2px 0 0"></div><div style="width:14px;height:44px;background:salmon;opacity:.7;border-radius:2px 2px 0 0"></div></div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);margin-top:2px">Log</div></div>
+          <div style="text-align:center"><div style="display:flex;gap:2px;align-items:flex-end"><div style="width:14px;height:45px;background:steelblue;opacity:.8;border-radius:2px 2px 0 0"></div><div style="width:14px;height:49px;background:salmon;opacity:.7;border-radius:2px 2px 0 0"></div></div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);margin-top:2px">TI</div></div>
+          <div style="text-align:center"><div style="display:flex;gap:2px;align-items:flex-end"><div style="width:14px;height:44px;background:steelblue;opacity:.8;border-radius:2px 2px 0 0"></div><div style="width:14px;height:44px;background:salmon;opacity:.7;border-radius:2px 2px 0 0"></div></div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);margin-top:2px">Ven</div></div>
+        </div>
+      </div>
+      <div class="cwhy">
+        <strong>📊 O que o gráfico mostra</strong>
+        <p>TI está 8% abaixo da meta — o gap mais preocupante. Produção aparenta estar quase no alvo mas ainda não atingiu. RH, Financeiro e Logística superam a meta. Esse tipo de visualização direto ao ponto é exatamente o que um gestor precisa para tomar decisão de reajuste.</p>
+      </div>
+      <div class="why">
+        <strong>inner vs left merge</strong>
+        <p><code>how="inner"</code> retorna apenas departamentos que existem <strong>nos dois DataFrames</strong>. "Manutenção" sumiu do resultado porque não estava na tabela de metas. Se você quisesse manter todos os departamentos do RH e preencher a meta como <code>NaN</code> onde não existir, usaria <code>how="left"</code>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXEMPLO 5 -->
+  <div class="ex">
+    <div class="exh"><span class="exn">EXEMPLO 05</span><span class="ext">pivot_table — relatório cruzado em uma linha</span></div>
+    <div class="exb">
+      <p><code>pivot_table</code> é o equivalente da Tabela Dinâmica do Excel: você coloca uma coluna no eixo das linhas, outra no eixo das colunas, e agrega um valor no meio.</p>
+      <div class="cb">
+        <div class="ch"><span class="fn">aula_02.ipynb · Célula 11</span><span class="lg">Python</span></div>
+        <pre><span class="cm"># Salário médio cruzando Departamento × Cargo</span>
+pivot = pd.pivot_table(
+    df,
+    values  = <span class="st">"Salario"</span>,      <span class="cm"># o que calcular</span>
+    index   = <span class="st">"Departamento"</span>,  <span class="cm"># linhas</span>
+    columns = <span class="st">"Cargo"</span>,         <span class="cm"># colunas</span>
+    aggfunc = <span class="st">"mean"</span>,          <span class="cm"># função de agregação</span>
+    fill_value = <span class="nm">0</span>             <span class="cm"># preenche onde não há dado</span>
+).round(<span class="nm">0</span>)
+
+<span class="fn">print</span>(pivot.to_string())</pre>
+      </div>
+      <div class="out"><span class="olbl">output</span>Cargo         Analista  Assistente  Coordenador   Gerente  Operador  Técnico
+Departamento
+Financeiro        7980        5210         9102     10341      4820     6540
+Logística         7812        5088         8944     10102      4712     6388
+Manutenção        7644        4966         8786      9863      4604     6236
+Produção          8200        5332         9260     10580      4928     6692
+RH                8036        5210         9102     10341      4820     6540
+TI                8116        5288         9181     10460      4874     6616
+Vendas            7728        5044         8865      9982      4658     6312</div>
+
+      <hr class="divline">
+
+      <div class="cb chart">
+        <div class="ch chart-h"><span class="fn">📊 Célula 12 — barras agrupadas direto do pivot_table</span><span class="lg ol">Matplotlib</span></div>
+        <pre><span class="cm"># pivot_table já tem o formato ideal para plot(kind="bar")</span>
+<span class="cm"># Cada coluna do pivot vira uma série de barras</span>
+pivot.plot(kind=<span class="st">"bar"</span>, figsize=(<span class="nm">12</span>, <span class="nm">5</span>))
+plt.title(<span class="st">"Salário Médio por Departamento e Cargo"</span>)
+plt.xlabel(<span class="st">"Departamento"</span>)
+plt.ylabel(<span class="st">"Salário Médio (R$)"</span>)
+plt.xticks(rotation=<span class="nm">45</span>)
+plt.legend(title=<span class="st">"Cargo"</span>, bbox_to_anchor=(<span class="nm">1</span>, <span class="nm">1</span>))
+plt.tight_layout()
+plt.show()</pre>
+      </div>
+      <div class="cprev">
+        <span class="clbl">📊 prévia — cada cor é um cargo</span>
+        <span class="ctitle">Salário Médio por Departamento e Cargo</span>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);margin:.3rem 0;display:flex;gap:.8rem;flex-wrap:wrap">
+          <span><span style="display:inline-block;width:10px;height:8px;background:#1f77b4;margin-right:3px;border-radius:1px"></span>Analista</span>
+          <span><span style="display:inline-block;width:10px;height:8px;background:#ff7f0e;margin-right:3px;border-radius:1px"></span>Assistente</span>
+          <span><span style="display:inline-block;width:10px;height:8px;background:#2ca02c;margin-right:3px;border-radius:1px"></span>Coordenador</span>
+          <span><span style="display:inline-block;width:10px;height:8px;background:#d62728;margin-right:3px;border-radius:1px"></span>Gerente</span>
+          <span><span style="display:inline-block;width:10px;height:8px;background:#9467bd;margin-right:3px;border-radius:1px"></span>Operador</span>
+          <span><span style="display:inline-block;width:10px;height:8px;background:#8c564b;margin-right:3px;border-radius:1px"></span>Técnico</span>
+        </div>
+        <p style="color:var(--muted);font-size:.83rem;margin-top:.5rem">Cada grupo de barras representa um departamento. Dentro de cada grupo, as barras representam os cargos. A hierarquia salarial Gerente → Coordenador → Analista → Técnico → Assistente → Operador é visível em todos os departamentos.</p>
+      </div>
+      <div class="cwhy">
+        <strong>📊 O que o gráfico mostra</strong>
+        <p>A estrutura salarial por cargo é consistente entre departamentos — o que indica uma política de remuneração padronizada. O cargo "Gerente" tem a maior dispersão entre departamentos, sugerindo maior negociação individual nesse nível.</p>
+      </div>
+      <div class="why">
+        <strong>Por que pivot_table é mais rápido que groupby aqui</strong>
+        <p>Para cruzar duas colunas categóricas com uma agregação, <code>pivot_table</code> é mais direto que <code>groupby</code> + <code>unstack</code>. O resultado já vem no formato de tabela bidimensional que o <code>plot(kind="bar")</code> entende nativamente — sem precisar de reshape.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXERCÍCIO -->
+<section>
+  <h2><span class="stag y">Exercício · 21h40</span> Atividade prática — Dia 02</h2>
+  <div class="exer">
+    <div class="exerh"><h3>Painel de RH para reunião de produção — Metalúrgica Catarinense</h3></div>
+    <div class="cal b" style="margin-bottom:1rem">
+      <strong>Cenário</strong>
+      O gerente de produção pediu um painel rápido com três informações: distribuição de cargos por departamento, evolução de admissões nos últimos 5 anos e comparação do salário médio entre gêneros por departamento. Você tem 20 minutos para entregar o notebook.
+    </div>
+    <ul class="steps">
+      <li><p>Carregue o <code>base_rh.xlsx</code> com <code>pd.read_excel(URL)</code>. Converta <code>Data_Admissao</code> para datetime. Crie a coluna <code>Ano_Admissao</code> com <code>.dt.year</code>.</p></li>
+      <li><p>Use <code>groupby(["Departamento", "Cargo"])</code> para contar funcionários por departamento e cargo. Exiba o resultado com <code>reset_index()</code> e <code>to_string(index=False)</code>.</p></li>
+      <li><p>Use <code>groupby("Ano_Admissao")</code> para contar admissões por ano. Filtre apenas os anos de 2020 a 2024 com <code>query()</code>. Exiba o resultado.</p></li>
+      <li><p>Crie uma tabela de metas de headcount por departamento (use <code>pd.DataFrame</code> manualmente). Faça um <code>merge left</code> com o resultado do passo 2 somado por departamento. Identifique quais departamentos atingiram a meta.</p></li>
+      <li><p>Crie um <code>pivot_table</code> com <code>Salario</code> médio, <code>index="Departamento"</code> e <code>columns="Genero"</code>. Calcule a diferença salarial entre F e M em cada departamento.</p></li>
+      <li class="cs"><p>📊 <strong>Gráfico 1 — linha:</strong> admissões por ano (2020–2024). Use <code>plt.plot()</code> com <code>marker="o"</code>.</p></li>
+      <li class="cs"><p>📊 <strong>Gráfico 2 — barras agrupadas:</strong> pivot_table do passo 5 (salário médio por gênero e departamento). Use <code>pivot.plot(kind="bar")</code>.</p></li>
+      <li><p>Commit: <code>git pull</code>, <code>git add alunos/seunome/</code>, commit <code>"semana 05 - dia 02: groupby, merge, pivot_table, graficos"</code>, push. Exiba <code>git log --oneline -3</code>.</p></li>
+    </ul>
+    <div class="dica">
+      <strong>Dicas estratégicas</strong>
+      <p>Passo 3: <code>query("Ano_Admissao >= 2020 and Ano_Admissao <= 2024")</code> funciona direto. Passo 4: para somar por departamento use <code>.groupby("Departamento").size().reset_index(name="Total")</code>. Passo 7: se a legenda ficar em cima do gráfico, adicione <code>bbox_to_anchor=(1, 1)</code> dentro de <code>plt.legend()</code>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GABARITO -->
+<section>
+  <h2><span class="stag p">Gabarito</span> Correção dos passos mais difíceis</h2>
+
+  <div class="gab">
+    <div class="gabh">Passo 3 — admissões 2020–2024 com query()</div>
+    <div class="cb">
+      <div class="ch"><span class="fn">gabarito · passo 3</span><span class="lg">Python</span></div>
+      <pre>df[<span class="st">"Ano_Admissao"</span>] = df[<span class="st">"Data_Admissao"</span>].dt.year
+
+admissoes = (
+    df.groupby(<span class="st">"Ano_Admissao"</span>)[<span class="st">"ID_Funcionario"</span>]
+    .count()
+    .reset_index()
+    .rename(columns={<span class="st">"ID_Funcionario"</span>: <span class="st">"Admissoes"</span>})
+    .query(<span class="st">"Ano_Admissao >= 2020 and Ano_Admissao <= 2024"</span>)
+    .sort_values(<span class="st">"Ano_Admissao"</span>)
+)
+<span class="fn">print</span>(admissoes.to_string(index=<span class="kw">False</span>))</pre>
+    </div>
+  </div>
+
+  <div class="gab">
+    <div class="gabh">Passo 5 — pivot_table salário por gênero</div>
+    <div class="cb">
+      <div class="ch"><span class="fn">gabarito · passo 5</span><span class="lg">Python</span></div>
+      <pre>pivot_genero = pd.pivot_table(
+    df,
+    values  = <span class="st">"Salario"</span>,
+    index   = <span class="st">"Departamento"</span>,
+    columns = <span class="st">"Genero"</span>,
+    aggfunc = <span class="st">"mean"</span>,
+    fill_value = <span class="nm">0</span>
+).round(<span class="nm">2</span>)
+
+<span class="cm"># Diferença F - M (positivo = mulheres ganham mais)</span>
+pivot_genero[<span class="st">"Diferenca_F_M"</span>] = (pivot_genero[<span class="st">"F"</span>] - pivot_genero[<span class="st">"M"</span>]).round(<span class="nm">2</span>)
+<span class="fn">print</span>(pivot_genero.to_string())</pre>
+    </div>
+  </div>
+
+  <div class="gabc">
+    <div class="gabch">Passos 6 e 7 — gráficos</div>
+    <div class="cb chart">
+      <div class="ch chart-h"><span class="fn">gabarito · passo 6 — linha</span><span class="lg ol">Matplotlib</span></div>
+      <pre>plt.plot(
+    admissoes[<span class="st">"Ano_Admissao"</span>],
+    admissoes[<span class="st">"Admissoes"</span>],
+    marker=<span class="st">"o"</span>, color=<span class="st">"steelblue"</span>
+)
+plt.title(<span class="st">"Admissões por Ano (2020–2024)"</span>)
+plt.xlabel(<span class="st">"Ano"</span>)
+plt.ylabel(<span class="st">"Admissões"</span>)
+plt.show()</pre>
+    </div>
+    <div class="cb chart" style="margin-top:.7rem">
+      <div class="ch chart-h"><span class="fn">gabarito · passo 7 — barras agrupadas</span><span class="lg ol">Matplotlib</span></div>
+      <pre>pivot_genero[[<span class="st">"F"</span>, <span class="st">"M"</span>]].plot(kind=<span class="st">"bar"</span>, color=[<span class="st">"#e879a0"</span>, <span class="st">"steelblue"</span>])
+plt.title(<span class="st">"Salário Médio por Gênero e Departamento"</span>)
+plt.xlabel(<span class="st">"Departamento"</span>)
+plt.ylabel(<span class="st">"Salário Médio (R$)"</span>)
+plt.xticks(rotation=<span class="nm">45</span>)
+plt.legend(title=<span class="st">"Gênero"</span>)
+plt.tight_layout()
+plt.show()</pre>
+    </div>
+  </div>
+
+  <h3>Erros mais comuns desta aula</h3>
+  <table class="etab">
+    <thead><tr><th>Erro</th><th>Causa</th><th>Solução</th></tr></thead>
+    <tbody>
+      <tr><td><span class="err">KeyError ao acessar coluna após groupby</span></td><td>Esqueceu o <code>reset_index()</code> — coluna virou índice</td><td>Adicionar <span class="fix">.reset_index()</span> ao final do groupby</td></tr>
+      <tr><td><span class="err">ValueError: num < 1 (plot vazio)</span></td><td>DataFrame vazio — filtro do query() não retornou nada</td><td>Verificar se os anos existem: <span class="fix">df["Ano_Admissao"].unique()</span></td></tr>
+      <tr><td><span class="err">Merge retornou 0 linhas</span></td><td>Nomes de departamento com espaço extra ou capitalização diferente</td><td><span class="fix">df["Departamento"].str.strip()</span> antes do merge</td></tr>
+      <tr><td><span class="err">pivot_table com NaN em vez de 0</span></td><td>Esqueceu o parâmetro <code>fill_value</code></td><td>Adicionar <span class="fix">fill_value=0</span> no pivot_table</td></tr>
+      <tr><td><span class="err">Gráfico de linha saiu como barras</span></td><td>Usou <code>plt.bar()</code> em vez de <code>plt.plot()</code></td><td>Usar <span class="fix">plt.plot(x, y, marker="o")</span></td></tr>
+      <tr><td><span class="err">Legenda cobrindo o gráfico</span></td><td>Muitas séries no gráfico agrupado</td><td>Adicionar <span class="fix">bbox_to_anchor=(1,1)</span> no <code>plt.legend()</code></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ENCERRAMENTO -->
+<section>
+  <h2><span class="stag">Encerramento</span> Resumo + prévia do Dia 03</h2>
+  <div class="prof">
+    <p>"Hoje vocês aprenderam as três operações de agregação mais usadas em análise de dados: groupby para resumir, merge para cruzar tabelas, e pivot_table para relatórios cruzados. E cada resultado virou um gráfico. Na sexta, NumPy — sem loops, tudo vetorizado. Façam o commit antes de fechar."</p>
+  </div>
+  <div class="g2">
+    <div class="cal g">
+      <strong>✅ O que fizemos hoje</strong>
+      <ul style="margin-top:.4rem;padding-left:1.2rem">
+        <li><code>groupby</code> com uma e duas colunas + <code>agg()</code> com múltiplas funções</li>
+        <li><code>reset_index()</code> após groupby — transforma índice em coluna</li>
+        <li><code>unstack()</code> para barras agrupadas a partir de groupby duplo</li>
+        <li><code>merge</code> inner e left — cruzando duas tabelas por coluna comum</li>
+        <li><code>pivot_table</code> — relatório cruzado com linhas, colunas e valor</li>
+        <li><code>plt.plot()</code> para tendência temporal com <code>marker="o"</code></li>
+        <li>Barras agrupadas com <code>numpy</code> e com <code>pivot.plot(kind="bar")</code></li>
+      </ul>
+    </div>
+    <div class="cal p">
+      <strong>🔜 Dia 03 — Sexta · 19h</strong>
+      <ul style="margin-top:.4rem;padding-left:1.2rem">
+        <li>NumPy: arrays, dimensões, slicing</li>
+        <li>Operações vetorizadas — sem loop</li>
+        <li>Broadcasting — shapes compatíveis</li>
+        <li><code>np.where()</code> para colunas derivadas</li>
+        <li>📊 Histograma com <code>bins</code> NumPy</li>
+      </ul>
+    </div>
+  </div>
+  <div class="cal y">
+    <strong>📌 Entrega no AVA</strong>
+    Pasta <code>alunos/seunome/semana_05/</code>: <code>aula_02.ipynb</code> com todas as células + 2 gráficos do exercício. Prazo conforme AVA.
+  </div>
+</section>
+
+</div>
+<footer>
+  <span>SENAI · Visualização de Dados e Business Intelligence · Turma T2 · Noturno</span>
+  <span>Semana 05 · Módulo 1 — Modelagem de Dados · <strong>Dia 02 de 3 · Quinta</strong></span>
+</footer>
+</body>
+</html>
