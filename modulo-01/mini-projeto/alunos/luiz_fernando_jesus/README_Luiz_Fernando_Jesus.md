@@ -1,3 +1,13 @@
+# Mini-Projeto — Visualização de Dados
+**Aluno:** Luiz Fernando de Jesus Silva Homem
+
+## Como Rodar o Projeto
+
+O projeto foi desenvolvido em um Jupyter Notebook (`.ipynb`).
+
+1. Abra o arquivo **`anlise_varejo.ipynb`** localizado nesta mesma pasta.
+2. Clique em **"Run All"** (Executar Tudo) no topo do arquivo ou execute célula por célula pressionando `Shift + Enter`.
+
 ## Sprints do Projeto
 
 ### Sprint 1: Importação de Bibliotecas e Diagnóstico Inicial
