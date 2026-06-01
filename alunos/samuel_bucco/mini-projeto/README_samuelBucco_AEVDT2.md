@@ -21,7 +21,7 @@ mini_projeto_01.ipynb
 A base utilizada esta em:
 
 ```text
-modulo-01/base_do_projeto/Base Varejo.csv
+data/Base Varejo.csv
 ```
 
 ## Dependencias
