@@ -12,3 +12,28 @@ Professor: Claudio F Neves
 ## Objetivo 
 Praticar o conteúdo ensinado durante as aulas do curso, aplicando:
 Realizar limpeza, tratamento e análise exploratória do arquivo Varelo.csv, disponível no Kaggle (kaggle.com)
+
+## Ferramentas, Liguagem e Bibliotecas utilizadas
+- VS Code
+- Python
+- Pandas
+- NumPy
+- Kaggle
+
+## Como executar o MiniProjeto
+- Abra seu aplicativo para edição de código-fonte (este foi realizado no VS Code)
+- Prepare o ambiente criando as pastas principais do MiniProjeto
+- Instale as bibliotecas: Pandas, NumPy
+    pip install pandas numpy kagglehub
+- Execute o arquivo
+    python miniprojeto_luisnapolitano_T2
+
+## Etapas processadas
+- Acesso/Importação da base;
+- Analise da base sem edição ou tratamento;
+- Verificação de nulos;
+- Remoção de duplicatas;
+- Conversão de datas
+- Estatisticas descritiva 
+- Agrupamentos diversos para análise no foco definido
+- Exportação da base limpa 
