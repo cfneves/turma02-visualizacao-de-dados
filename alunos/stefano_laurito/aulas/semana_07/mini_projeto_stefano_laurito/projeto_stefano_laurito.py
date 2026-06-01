@@ -2,13 +2,9 @@
 # Etapa 1 - Importação de bibliotecas e da base de dados
  
 import pandas as pd
-from pathlib import Path
 
-raiz_projeto = Path(__file__).resolve().parents[5]
-
-caminho_csv = raiz_projeto / "modulo-01" / "base_do_projeto" / "Base Varejo.csv"
-
-df = pd.read_csv(caminho_csv, sep=";")
+# Importação da base
+df = pd.read_csv("base_varejo.csv", sep=";")
 
 # Visualização inicial
 print("\nVISUALIZAÇÃO INICIAL DA BASE")
