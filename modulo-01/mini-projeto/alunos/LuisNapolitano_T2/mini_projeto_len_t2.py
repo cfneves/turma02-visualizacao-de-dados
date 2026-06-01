@@ -285,3 +285,21 @@ grupo_genero_ano_prcat = pd.pivot_table(
 print(grupo_genero_ano_prcat)
 
 print("\n" * 2)
+
+#-----------------------------------------------------------------------------------------------
+# =====================================================================
+# SPRINT 6 - VERSIONAMENTO 
+# =====================================================================
+# Criando do 'df_limpo' após todas as alterações para Análise Explortório de Dados
+# README.md enviado para o GitHub
+# Todo código em .py será enviado para o GitHub
+#----------------------------------------------------------------------------------------------------
+
+df.to_csv(
+    "df_bv_limpo.csv",
+    sep=";",
+    index=False,
+    encoding="utf-8"
+)
+
+print("Arquivo df_limpo.csv salvo com sucesso!")
