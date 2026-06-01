@@ -2,8 +2,6 @@ import pandas as pd
 from sprint01 import carregar_dados
 
 df = carregar_dados()
-print(df.info())
-
 
 
 def tratamentos_dados(df):
@@ -23,8 +21,6 @@ def tratamentos_dados(df):
 
 df=carregar_dados()
 df=tratamentos_dados(df)
-print(df.head())
-print(df.info())
 
 
    
