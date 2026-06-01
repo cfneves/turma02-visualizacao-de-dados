@@ -11,7 +11,7 @@ Professor: Claudio F Neves
 
 ## Objetivo 
 Praticar o conteúdo ensinado durante as aulas do curso, aplicando:
-Realizar limpeza, tratamento e análise exploratória do arquivo Varelo.csv, disponível no Kaggle (kaggle.com)
+Realizar limpeza, tratamento e análise exploratória do arquivo BaseVarejo.csv, disponível no Kaggle (kaggle.com)
 
 ## Ferramentas, Liguagem e Bibliotecas utilizadas
 - VS Code
