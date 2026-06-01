@@ -53,3 +53,27 @@ print("ln - Exibindo as informações gerais do dataframe:")
 print(df.info())
 print("\n" * 2)
 
+#-----------------------------------------------------------------------------------------------
+# =====================================================================
+# SPRINT 2: TRANSFORMAÇÃO DE STR, INT, FLOAT E DATETIME
+# =====================================================================
+
+# 5. Transformando a coluna DATA para o formato datetime, usando errors="coerce" tratamento de erros.
+try:
+    df["DATA"] = pd.to_datetime(
+        df["DATA"],
+        format="%d/%m/%Y",
+        errors="coerce",
+    )
+
+    print("Conversão realizada com sucesso!")
+
+except Exception as erro:
+    print("Erro encontrado:")
+    print(erro)
+
+print("\n")
+print("ln - Coluna DATA passou para o formato 'datetime' com tratamento do 'errors'.")
+print("\n" * 2)
+
+#-----------------------------------------------------------------------------------------------
