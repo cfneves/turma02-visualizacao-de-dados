@@ -147,3 +147,29 @@ print("Coluna CL_SEG    : ",(df["CL_SEG"] == "n/d").sum())
 print("Coluna PR_ID     : ",(df["PR_ID"] == "n/d").sum())
 print("Coluna PR_CAT    : ",(df["PR_CAT"] == "n/d").sum())
 print("Coluna PR_NOME   : ",(df["PR_NOME"] == "n/d").sum())
+
+# =====================================================================
+# SPRINT 4: ESTATÍSTICA DESCRITIVA
+# =====================================================================
+print("\n" * 2)
+print("ESTATÍSTICA DESCRITIVA - SPRINT 4\n")
+
+# 14. Verificar quantos clientes existem a base, para que não seja repetida a contagem de filhos.
+clientes = df.drop_duplicates(subset=["CL_ID"])
+clientes = df.drop_duplicates(subset=["CL_ID"])
+
+# 15. Verificar se o cliente possui registros diferentes de filhos 
+verif_cl_fhl = df.groupby("CL_ID")["CL_FHL"]
+
+# 16. Exibindo os dados estáticos dos filhos, já consolidado pela associação ao ID do cliente
+# Com esta instrução não serão computados os mesmos filhos em duplicidade
+  
+filhos = clientes["CL_FHL"]
+
+print(f"Total de filhos........:  {filhos.count()}\n")
+print(f"Média de filhos........:  {filhos.mean():.2f}\n")
+print(f"Mediana de filhos......:  {filhos.median():.2f}\n")
+print(f"Desvio padrão de filhos:  {filhos.std():.2f}\n")
+print(f"Moda de filhos.........:  {filhos.mode()[0]:.2f}\n")
+print(f"Máximo de filhos.......:  {filhos.max():.2f}\n")
+print(f"Mínimo de filhos.......:  {filhos.min():.2f}\n")
