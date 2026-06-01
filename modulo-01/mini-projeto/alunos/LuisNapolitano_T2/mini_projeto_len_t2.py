@@ -12,6 +12,7 @@
 # Script 4 - Estatística Descritiva - aplicação de funções estatísticas e criação para coletar parametros da coluna de Número de filhos do cliente; 
 # Script 5 - Relatório e Documentação: construção de contadores do relatório final exibido no terminal, finalização do README.md com reflexao teórica e submissão do link AVA
 # Script 6 - Versionamento: Envio dos arquivos (script + README.md + df_limpo), via Git para o repositório da turma no Githu.
+<<<<<<< HEAD
 
 # =====================================================================
 # SPRINT 1: IMPORTAÇÃO DOS DADOS
@@ -303,3 +304,5 @@ df.to_csv(
 )
 
 print("Arquivo df_limpo.csv salvo com sucesso!")
+=======
+>>>>>>> 5434d13a7d362b774198afbefdceeabe998d3087
