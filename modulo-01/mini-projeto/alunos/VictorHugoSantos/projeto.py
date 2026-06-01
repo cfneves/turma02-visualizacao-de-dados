@@ -8,7 +8,7 @@ print("INICIANDO DADOS")
 
 # IMPORTAÇÃO E INSPEÇÃO DOS DADOS
 
-# Baixa o dataset via Kagglehub e mapeia o caminho (Certifique-se de ter a lib instalada no VSCode)
+# Baixa o dataset via Kagglehub
 path = kagglehub.dataset_download("namespaiva/base-varejo")
 full_path = os.path.join(path, "Base Varejo.csv")
 
