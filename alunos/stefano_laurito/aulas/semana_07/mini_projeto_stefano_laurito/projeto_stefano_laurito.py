@@ -4,9 +4,10 @@
 import pandas as pd
 from pathlib import Path
 
-caminho_csv = Path(__file__).parent / "base_varejo.csv"
+raiz_projeto = Path(__file__).resolve().parents[5]
 
-# Importação da base
+caminho_csv = raiz_projeto / "modulo-01" / "base_do_projeto" / "Base Varejo.csv"
+
 df = pd.read_csv(caminho_csv, sep=";")
 
 # Visualização inicial
