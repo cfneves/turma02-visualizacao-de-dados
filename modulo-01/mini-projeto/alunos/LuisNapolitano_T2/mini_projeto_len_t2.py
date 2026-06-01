@@ -148,6 +148,7 @@ print("Coluna PR_ID     : ",(df["PR_ID"] == "n/d").sum())
 print("Coluna PR_CAT    : ",(df["PR_CAT"] == "n/d").sum())
 print("Coluna PR_NOME   : ",(df["PR_NOME"] == "n/d").sum())
 
+#-----------------------------------------------------------------------------------------------
 # =====================================================================
 # SPRINT 4: ESTATÍSTICA DESCRITIVA
 # =====================================================================
@@ -173,3 +174,114 @@ print(f"Desvio padrão de filhos:  {filhos.std():.2f}\n")
 print(f"Moda de filhos.........:  {filhos.mode()[0]:.2f}\n")
 print(f"Máximo de filhos.......:  {filhos.max():.2f}\n")
 print(f"Mínimo de filhos.......:  {filhos.min():.2f}\n")
+
+#-----------------------------------------------------------------------------------------------
+# =====================================================================
+# SPRINT 5 - RELATÓRIO E DOCUMENTAÇÃO
+# =====================================================================
+print("\n" * 2)
+
+# 17. Iniciando a formação de grupos e dados para análises, estudos e apresentação
+print("FORMAÇÃO DE NOVOS GRUPOS PARA EXLPLORAR ANALISES - SPRINT 5\n")
+
+# 18.0 Renomeando as colunas apenas para exibição dos relatórios
+df_relatorio = df.rename(
+    columns={
+        "CO_ID": "ID Compra",
+        "CL_ID": "ID Cliente",
+        "CL_GENERO": "Gênero",
+        "CL_EC": "Estado Civil",
+        "CL_FHL": "Nº Filhos",
+        "CL_SEG": "Classe Econômica",
+        "PR_ID": "ID Produto",
+        "PR_CAT": "Categoria Produto",
+        "PR_NOME": "Nome Produto"
+    }
+)
+print()
+
+# 18.1 Renomenado os dados do estado civil para melhor exibição e entendimento do resultado
+df_relatorio["Estado Civil"] = df_relatorio["Estado Civil"].replace({
+    1: "Solteiro",
+    2: "Casado",
+    3: "Divorciado",
+    4: "União Estável",
+    5: "Viúvo"
+})
+
+
+
+# 19. Exibindo período analisado
+print(">>> PERÍODO ANALISADO")
+print("=" * 60)
+print()
+print(
+    f"Período da base: "
+    f"{df['DATA'].min():%d/%m/%Y} até "
+    f"{df['DATA'].max():%d/%m/%Y}"
+)
+print("\n" * 2)
+
+# 20. Criando e exibindo resultados do grupo 'Genero X Categoria': identificar como cada genero distribui suas compras
+print(">>> Grupo 1 - Genero X Categoria Produto ==")
+print("=" * 60)
+
+grupo_genero_prcat = pd.pivot_table(
+    df_relatorio,
+    index="Gênero",
+    columns="Categoria Produto",
+    aggfunc="size",
+    fill_value=0
+)
+
+print(grupo_genero_prcat)
+
+print("\n" * 2)
+
+# 21. Criando e exibindo resultados do grupo 'Genero e Periodo (mês e ano) X Categoria Produto': identificar os meses que os generos distribuem suas compras
+print(">>> Grupo 2 - Genero e Periodo (mês e ano) X Categoria Produto ==")
+print("=" * 60)
+
+grupo_genero_mesano_prcat = pd.pivot_table(
+    df_relatorio,
+    index=["Gênero", "MesAno"],
+    columns="Categoria Produto",
+    aggfunc="size",
+    fill_value=0
+)
+
+print(grupo_genero_mesano_prcat)
+
+print("\n" * 2)
+
+# 22. Criando e exibindo resultados do grupo 'Genero e Ano X Categoria': identificar por ano como acontece as compras por genero
+print(">>> Grupo Genero e Ano X Categoria Produto ==")
+print("=" * 60)
+
+grupo_genero_ano_prcat = pd.pivot_table(
+    df_relatorio,
+    index=["Gênero", "Ano"],
+    columns="Categoria Produto",
+    aggfunc="size",
+    fill_value=0
+)
+
+print(grupo_genero_ano_prcat)
+
+print("\n" * 2)
+
+# 23. Criando e exibindo resultados do grupo 'Classe Econonima e Estado Civil X Categoria do Produto': identificar como compram os clientes pela situação econômica, estado civil e categoria do produto.
+print(">>> Grupo Classe Econômica e Estado Civil X Categoria Produto ==")
+print("=" * 60)
+
+grupo_genero_ano_prcat = pd.pivot_table(
+    df_relatorio,
+    index=["Classe Econômica", "Estado Civil"],
+    columns="Categoria Produto",
+    aggfunc="size",
+    fill_value=0
+)
+
+print(grupo_genero_ano_prcat)
+
+print("\n" * 2)
