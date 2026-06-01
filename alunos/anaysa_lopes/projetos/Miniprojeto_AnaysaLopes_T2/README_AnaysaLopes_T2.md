@@ -16,12 +16,16 @@ A estrutura de diretórios do projeto foi organizada para facilitar a compreens�
 ```text
 Miniprojeto_AnaysaLopes_T2/
 ├── data/
-│   ├── raw/
-│   │   └── base_varejo.csv
-│   └── processed/
-│       └── base_varejo_limpa.csv
-└── src/
-    └── miniprojeto_anaysa_lopes.py
+│   ├── processed/
+│   │   ├── .gitkeep                 <--- Garante a existência da pasta no repositório
+│   │   └── base_varejo_limpa.csv    <--- Gerado automaticamente pelo script (oculto no Git)
+│   └── raw/
+│       ├── .gitkeep                 <--- Garante a existência da pasta no repositório
+│       └── base_varejo.csv          <--- Deve ser inserido manualmente para teste (oculto no Git)
+├── src/
+│   └── miniprojeto_anaysa_lopes.py  <--- Script principal de automação
+├── .gitignore                       <--- Bloqueio de segurança para os arquivos .csv
+└── README_AnaysaLopes_T2.md         <--- Documentação do projeto
 ```
 
 * **Miniprojeto_AnaysaLopes_T2/**: Diretório raiz do projeto.
@@ -58,10 +62,10 @@ cd Miniprojeto_AnaysaLopes_T2
 ```
 
 2. **Base de Dados:** Certifique-se de que o arquivo de dados brutos (`base_varejo.csv`) esteja na pasta `data/raw/`. Você pode obtê-lo no Kaggle.
-3. **Execute o script Python:**
-* **No VS Code:** Abra a pasta `Miniprojeto_AnaysaLopes_T2` no VS Code e execute o arquivo `src/miniprojeto_anaysa_lopes.py` diretamente. O script imprimirá os resultados no terminal.
-* **No Google Colab:** Faça upload do arquivo `miniprojeto_anaysa_lopes.py` e da estrutura de pastas `data/raw/base_varejo.csv` para o ambiente do Colab. Adapte o caminho do arquivo de dados, se necessário, e execute as células.
-* **Via terminal:** Navegue até a pasta raiz do projeto e execute:
+3. Execute o script Python:
+   * No VS Code: Abra o diretório principal do repositório no VS Code, navegue até a pasta projetos/Miniprojeto_AnaysaLopes_T2 e execute o arquivo src/miniprojeto_anaysa_lopes.py diretamente. O script imprimirá os resultados no terminal.
+   * No Google Colab: Faça upload do arquivo miniprojeto_anaysa_lopes.py e reproduza a estrutura de pastas data/raw/base_varejo.csv no ambiente do Colab. Adapte o caminho do arquivo de dados, se necessário, e execute as células.
+   * Via terminal: Navegue até a pasta raiz do mini-projeto e execute:
 
 ```bash
 python src/miniprojeto_anaysa_lopes.py
@@ -71,7 +75,7 @@ O script gerará o arquivo `base_varejo_limpa.csv` na pasta `data/processed/` e 
 
 ---
 
-## 5. Resultados, Insights Principais e Problemas Remanescentes (Critério de Avaliação 2)
+## 5. Resultados, Insights Principais
 Após a execução do script de Análise Exploratória de Dados, os seguintes insights e resultados analíticos foram consolidados:
 
 * **Limpeza de Dados Eficaz:** A base de dados foi purificada com sucesso, resultando na remoção de todas as compras duplicadas de registros redundantes e na correção de falhas de dados na coluna de categoria de produtos (`PR_CAT`) por meio de substituição condicional pelo rótulo descritivo 'Sem Categoria'. Isso garante a integridade e a confiabilidade dos dados para análises futuras.
@@ -82,7 +86,7 @@ Após a execução do script de Análise Exploratória de Dados, os seguintes in
 
 ---
 
-## 6. Reflexão Teórica: ETL e Qualidade de Dados (Critério de Avaliação 1)
+## 6. Reflexão Teórica: ETL e Qualidade de Dados 
 O processo de Análise Exploratória de Dados (AED) é intrinsecamente ligado aos conceitos de ETL (Extract, Transform, Load) e à importância da qualidade dos dados. No contexto deste mini-projeto, as etapas de ETL foram aplicadas da seguinte forma:
 
 * **Extract (Extração):** A leitura do arquivo `base_varejo.csv` utilizando `pandas.read_csv()` representa a fase de extração. É fundamental que esta etapa seja robusta, capaz de lidar com diferentes formatos de arquivo e encodings, como demonstrado pelo uso de `sep=";"` e `encoding="utf-8-sig"` para sanar as distorções comuns geradas pelo Excel.
