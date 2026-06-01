@@ -1,7 +1,19 @@
+# Módulo 01 — Mini-Projeto Avaliativo
 
-=== EM CONSTRUÇÃO ===
+## Estrutura da Pasta
 
-1. CONTEXTUALIZAÇÃO
+```
+modulo-01/
+├── base_do_projeto/
+│   ├── Base Varejo.csv                                              # Base de dados do projeto
+│   └── Projeto III - Análise Exploratória de Dados...pdf           # Enunciado completo
+└── mini-projeto/
+    └── alunos/                                                      # Entregas dos alunos
+```
+
+---
+
+## 1. CONTEXTUALIZAÇÃO
 Você está desenvolvendo uma Análise Exploratória de Dados (AED) aplicada ao varejo para aprender como transformar dados brutos em informações úteis.
 
 A base “Varejo” contém registros reais de compras (datas, clientes, produtos, categorias e valores). Aprender a verificar qualidade, limpar e sumarizar esses dados é uma habilidade prática essencial para quem trabalha com BI e Visualização de Dados.

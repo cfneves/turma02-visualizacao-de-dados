@@ -13,7 +13,12 @@
       "Bash(python *)",
       "Bash(git rebase *)",
       "Bash(git config *)",
-      "Bash(Select-String -Pattern \"user|remote|url|credential|email\")"
+      "Bash(Select-String -Pattern \"user|remote|url|credential|email\")",
+      "Bash(git status *)",
+      "Bash(git commit *)",
+      "Bash(git remote *)",
+      "Bash(git ls-tree *)",
+      "Bash(git mv *)"
     ]
   }
 }
