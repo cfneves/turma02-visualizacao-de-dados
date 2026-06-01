@@ -149,6 +149,8 @@ print("""
 """)
 
 # Exportação da base limpa
-df_limpo.to_csv("df_limpo.csv", index=False)
+caminho_saida = Path(__file__).parent / "df_limpo.csv"
+
+df_limpo.to_csv(caminho_saida, index=False)
 
 print("\nBASE LIMPA EXPORTADA COM SUCESSO")
