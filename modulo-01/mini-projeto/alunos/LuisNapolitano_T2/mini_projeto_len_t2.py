@@ -77,3 +77,73 @@ print("ln - Coluna DATA passou para o formato 'datetime' com tratamento do 'erro
 print("\n" * 2)
 
 #-----------------------------------------------------------------------------------------------
+# =====================================================================
+# SPRINT 3: LIMPEZA DE NULOS E DUPLICADAS
+# =====================================================================
+
+print(" LIMPEZA DE NULOS E DUPLICADOS - SPRINT 3")
+
+# 6. Identificando a quantade de valores nulos e duplicados no dataframe
+print("ln - Identificando a quantidade de valores nulos e duplicados no dataframe:")
+print(f"Valores nulos por coluna:\n{df.isna().sum()}")
+print("\n" * 2)
+
+# 7. Identificando a quantidade de linhas duplicadas ...
+print(f"Quantidade de linhas duplicadas: {df.duplicated().sum()}")
+print("\n")
+
+print(df[df.duplicated()])
+print("\n" * 2 )
+
+# OBSERVAÇÃO PARA ANALISTA: Indentificado que a quantidade de duplicadoos são valores que devem continuar para que a analise seja o mais fidedigna possível
+
+# 8. Limpando as colunos identificadas sem dados ...
+df = df.drop(
+    ["Unnamed: 10", "Unnamed: 11", "Unnamed: 12", "Unnamed: 13"],
+    axis=1,
+)
+print("\n" * 2)
+
+# 9. Exibindo a nova formatação das colunas após limpeza ...
+print("ln - Exibindo os nomes das colunas do dataframe após limpeza de colunas:")
+print(df.columns.tolist(),"\n")
+print(df.info())
+print("\n" * 2)
+
+# 10. Contando as datas inválidas - conferindo a conversão da coluna DATA para datetime
+print("ln - Contando as datas inválidas - conferindo a conversão da coluna DATA para datetime:")
+print(f"Quantidade de datas inválidas: {df['DATA'].isna().sum()}")
+print("\n")
+
+# 11. Criando colunas dia, mês, ano e mesano a partir da coluna DATA
+df["Dia"] = df["DATA"].dt.day       #Criando a coluna Dia para possível análise de sazonalidade e tendências diárias
+df["Mês"] = df["DATA"].dt.month     #Criando a coluna Mês para possível análise de sazonalidade e tendências mensais
+df["Ano"] = df["DATA"].dt.year      #Criando a coluna Ano para possível análise de sazonalidade e tendências anuais
+df["MesAno"] = df["DATA"].dt.to_period("M")  #Criando a coluna MêsAno para possível análise de sazonalidade e tendências mensais e anuais
+
+# 12. Exibindo a lista e informações das colunas após criação de novas ...
+print("ln - Exibindo os nomes das colunas do dataframe após criação de novas")
+print(df.columns.tolist())
+print(df.info())
+print("\n" * 2)
+# 12.1 Exibindo as 5 primeiras linhas do df após criação das colunas de novas ...
+print("Exibindo as 5 primeiras linhas do df após criação das colunas de novas:")
+print(df.head(5))
+print("\n" * 2)
+
+# 13. Tratando as informações de cada coluna que possuam "N/D"
+print(" Exibindo as quantidade de valores unicos nas colunas")
+print(df.nunique())
+df["PR_CAT"].value_counts()
+
+print("\n" * 2)
+
+print("Coluna CO_ID     : ",(df["CO_ID"] == "n/d").sum())
+print("Coluna CL_ID     : ",(df["CL_ID"] == "n/d").sum())
+print("Coluna CL_GENERO : ",(df["CL_GENERO"] == "n/d").sum())
+print("Coluna CL_EC     : ",(df["CL_EC"] == "n/d").sum())
+print("Coluna CL_FHL    : ",(df["CL_FHL"] == "n/d").sum())
+print("Coluna CL_SEG    : ",(df["CL_SEG"] == "n/d").sum())
+print("Coluna PR_ID     : ",(df["PR_ID"] == "n/d").sum())
+print("Coluna PR_CAT    : ",(df["PR_CAT"] == "n/d").sum())
+print("Coluna PR_NOME   : ",(df["PR_NOME"] == "n/d").sum())
