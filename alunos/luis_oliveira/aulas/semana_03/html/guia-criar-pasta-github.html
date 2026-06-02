@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Cláudio Ferreira Neves">
+    <title>Guia: Criar Sua Pasta no GitHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-code: #1c1f26;
+            --accent-green: #238636;
+            --accent-blue: #2f81f7;
+            --accent-orange: #f85149;
+            --accent-yellow: #d29922;
+            --text-primary: #e6edf3;
+            --text-secondary: #7d8590;
+            --border: #30363d;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Navegação */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h1 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--accent-green);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .step-indicator {
+            font-family: 'Fira Code', monospace;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .nav-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.5rem 1.2rem;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* Slides */
+        .slide {
+            min-height: 100vh;
+            padding: 100px 2rem 3rem;
+            display: none;
+        }
+
+        .slide.active {
+            display: block;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Títulos */
+        .slide-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--accent-green);
+            line-height: 1.2;
+        }
+
+        .slide-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+        }
+
+        /* Big Number */
+        .big-step {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+            border-radius: 50%;
+            font-size: 4rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(35, 134, 54, 0.4);
+        }
+
+        /* Screenshot mockup */
+        .screenshot {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 2rem 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .screenshot-header {
+            background: #24292f;
+            padding: 0.7rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .screenshot-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--text-secondary);
+        }
+
+        .screenshot-url {
+            font-family: 'Fira Code', monospace;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-left: 1rem;
+        }
+
+        .screenshot-body {
+            padding: 2rem;
+            min-height: 300px;
+        }
+
+        /* GitHub UI Elements */
+        .github-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent-green);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(35, 134, 54, 0.3);
+            font-size: 1rem;
+        }
+
+        .github-button-secondary {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        .file-icon {
+            width: 20px;
+            height: 20px;
+            background: var(--accent-blue);
+            border-radius: 3px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+        }
+
+        .folder-icon {
+            width: 20px;
+            height: 20px;
+            background: var(--accent-yellow);
+            border-radius: 3px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+        }
+
+        /* Step instruction */
+        .instruction {
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-left: 4px solid var(--accent-green);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .instruction-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .instruction-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .instruction-text strong {
+            color: var(--text-primary);
+        }
+
+        /* Alert boxes */
+        .alert {
+            border-left: 4px solid;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .alert-warning {
+            border-color: var(--accent-yellow);
+            background: rgba(210, 153, 34, 0.1);
+        }
+
+        .alert-success {
+            border-color: var(--accent-green);
+            background: rgba(35, 134, 54, 0.1);
+        }
+
+        .alert-danger {
+            border-color: var(--accent-orange);
+            background: rgba(248, 81, 73, 0.1);
+        }
+
+        .alert-info {
+            border-color: var(--accent-blue);
+            background: rgba(47, 129, 247, 0.1);
+        }
+
+        .alert-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .alert-warning .alert-title { color: var(--accent-yellow); }
+        .alert-success .alert-title { color: var(--accent-green); }
+        .alert-danger .alert-title { color: var(--accent-orange); }
+        .alert-info .alert-title { color: var(--accent-blue); }
+
+        /* Code block */
+        .code-block {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .code-header {
+            background: #24292f;
+            padding: 0.6rem 1rem;
+            border-bottom: 1px solid var(--border);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .code-body {
+            padding: 1.5rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        .code-line {
+            margin: 0.3rem 0;
+        }
+
+        .prompt { color: var(--accent-green); }
+        .command { color: var(--accent-blue); }
+        .comment { color: var(--text-secondary); }
+
+        /* Checklist */
+        .checklist {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .checklist-item:hover {
+            background: rgba(35, 134, 54, 0.1);
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-green);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Comparison */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-box {
+            background: var(--bg-card);
+            border: 3px solid;
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .comparison-box.correct {
+            border-color: var(--accent-green);
+        }
+
+        .comparison-box.incorrect {
+            border-color: var(--accent-orange);
+        }
+
+        .comparison-label {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .comparison-box.correct .comparison-label {
+            color: var(--accent-green);
+        }
+
+        .comparison-box.incorrect .comparison-label {
+            color: var(--accent-orange);
+        }
+
+        /* Flow diagram */
+        .flow {
+            margin: 3rem 0;
+        }
+
+        .flow-step {
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .flow-arrow {
+            text-align: center;
+            font-size: 3rem;
+            color: var(--accent-green);
+            margin: 1rem 0;
+        }
+
+        .flow-number {
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            background: var(--accent-green);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .flow-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .flow-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .slide-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-highlight {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .slide-title {
+                font-size: 2.5rem;
+            }
+
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .big-step {
+                width: 80px;
+                height: 80px;
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegação -->
+    <div class="navbar">
+        <h1>📁 Criar Sua Pasta no GitHub</h1>
+        <div class="step-indicator">
+            Passo <span id="current">1</span> de <span id="total">7</span>
+        </div>
+        <div class="nav-buttons">
+            <button class="nav-btn" id="prev" onclick="prevSlide()">← Anterior</button>
+            <button class="nav-btn" id="next" onclick="nextSlide()">Próximo →</button>
+        </div>
+    </div>
+
+    <!-- SLIDE 1: Introdução -->
+    <div class="slide active" data-slide="1">
+        <div class="container">
+            <div style="text-align: center;">
+                <div class="big-step">1</div>
+                <h1 class="slide-title">Como Criar Sua Pasta no Repositório</h1>
+                <p class="slide-subtitle">Guia completo passo a passo</p>
+            </div>
+
+            <div class="alert alert-info">
+                <div class="alert-title">ℹ️ O que vamos fazer?</div>
+                <p>
+                    Você vai criar sua pasta pessoal DIRETO no GitHub (navegador), sem precisar do Git Bash no começo. Depois de criada, você vai clonar o repositório para o seu computador e trabalhar normalmente.
+                </p>
+            </div>
+
+            <div class="flow">
+                <div class="flow-step">
+                    <div class="flow-number">1</div>
+                    <div class="flow-title">Acessar o Repositório da Turma</div>
+                    <div class="flow-description">
+                        Você vai entrar no repositório oficial da turma no GitHub
+                    </div>
+                </div>
+
+                <div class="flow-arrow">↓</div>
+
+                <div class="flow-step">
+                    <div class="flow-number">2</div>
+                    <div class="flow-title">Navegar até a Pasta "alunos"</div>
+                    <div class="flow-description">
+                        Clicar na pasta "alunos" onde todos os alunos têm suas pastas
+                    </div>
+                </div>
+
+                <div class="flow-arrow">↓</div>
+
+                <div class="flow-step">
+                    <div class="flow-number">3</div>
+                    <div class="flow-title">Criar Sua Pasta + README.md</div>
+                    <div class="flow-description">
+                        Usar o botão "Add file" do GitHub para criar sua pasta e arquivo README
+                    </div>
+                </div>
+
+                <div class="flow-arrow">↓</div>
+
+                <div class="flow-step">
+                    <div class="flow-number">4</div>
+                    <div class="flow-title">Fazer Commit pelo GitHub</div>
+                    <div class="flow-description">
+                        Salvar (commit) direto no GitHub usando a interface web
+                    </div>
+                </div>
+
+                <div class="flow-arrow">↓</div>
+
+                <div class="flow-step">
+                    <div class="flow-number">5</div>
+                    <div class="flow-title">Clonar o Repositório</div>
+                    <div class="flow-description">
+                        Baixar o repositório inteiro (com sua pasta) para seu computador
+                    </div>
+                </div>
+
+                <div class="flow-arrow">↓</div>
+
+                <div class="flow-step">
+                    <div class="flow-number">6</div>
+                    <div class="flow-title">Trabalhar Localmente</div>
+                    <div class="flow-description">
+                        Agora você pode adicionar arquivos, fazer commits e push normalmente
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-success">
+                <div class="alert-title">✅ Por que fazer assim?</div>
+                <p>
+                    • Mais fácil para iniciantes (usa interface visual)<br>
+                    • Cria a estrutura correta logo de cara<br>
+                    • Você vê sua pasta aparecer no GitHub imediatamente<br>
+                    • Depois você trabalha normalmente no VS Code
+                </p>
+            </div>
+
+            <div class="slide-footer">
+                <p>Desenvolvido por <span class="footer-highlight">Cláudio Ferreira Neves</span></p>
+                <p>Visualização de Dados e BI • SENAI 2026</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: Acessar Repositório -->
+    <div class="slide" data-slide="2">
+        <div class="container">
+            <div class="big-step">1</div>
+            <h1 class="slide-title">Acessar o Repositório</h1>
+            <p class="slide-subtitle">Primeiro passo: entrar no repositório da turma</p>
+
+            <div class="instruction">
+                <div class="instruction-title">
+                    🌐 Abra o Navegador
+                </div>
+                <div class="instruction-text">
+                    1. Abra o navegador (Chrome, Firefox, Edge, etc.)<br>
+                    2. Acesse: <strong>https://github.com/cfneves/turma-visualizacao-de-dados</strong><br>
+                    3. Faça login na sua conta do GitHub (se ainda não estiver logado)
+                </div>
+            </div>
+
+            <div class="screenshot">
+                <div class="screenshot-header">
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-url">github.com/cfneves/turma-visualizacao-de-dados</div>
+                </div>
+                <div class="screenshot-body">
+                    <div style="text-align: center; padding: 3rem;">
+                        <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--text-primary);">
+                            📚 turma-visualizacao-de-dados
+                        </h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                            Repositório oficial da turma Visualização de Dados e BI T2 - SENAI 2026
+                        </p>
+                        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                            <button class="github-button">
+                                <span>⭐</span> Star
+                            </button>
+                            <button class="github-button-secondary">
+                                <span>👁️</span> Watch
+                            </button>
+                            <button class="github-button-secondary">
+                                <span>🔱</span> Fork
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-warning">
+                <div class="alert-title">⚠️ Atenção</div>
+                <p>
+                    Certifique-se de estar no repositório CERTO:<br>
+                    <code>github.com/cfneves/turma-visualizacao-de-dados</code><br><br>
+                    NÃO é o seu fork! É o repositório original do professor.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: Navegar até pasta alunos -->
+    <div class="slide" data-slide="3">
+        <div class="container">
+            <div class="big-step">2</div>
+            <h1 class="slide-title">Navegar até "alunos"</h1>
+            <p class="slide-subtitle">Encontrar a pasta onde você vai criar sua pasta pessoal</p>
+
+            <div class="instruction">
+                <div class="instruction-title">
+                    📁 Clicar na Pasta "alunos"
+                </div>
+                <div class="instruction-text">
+                    1. Na página principal do repositório, você verá uma lista de pastas e arquivos<br>
+                    2. Procure pela pasta chamada <strong>"alunos"</strong><br>
+                    3. Clique nela para entrar
+                </div>
+            </div>
+
+            <div class="screenshot">
+                <div class="screenshot-header">
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-url">github.com/cfneves/turma-visualizacao-de-dados</div>
+                </div>
+                <div class="screenshot-body">
+                    <div style="padding: 1rem;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <strong style="color: var(--text-primary);">📂 Arquivos e pastas:</strong>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem; background: rgba(255,255,255,0.03); border-radius: 4px;">
+                                <span class="folder-icon">📁</span>
+                                <span style="color: var(--accent-blue); font-weight: 600;">alunos</span>
+                                <span style="color: var(--text-secondary); margin-left: auto; font-size: 0.9rem;">← Clique aqui!</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem; background: rgba(255,255,255,0.03); border-radius: 4px;">
+                                <span class="folder-icon">📁</span>
+                                <span>aulas</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem; background: rgba(255,255,255,0.03); border-radius: 4px;">
+                                <span class="folder-icon">📁</span>
+                                <span>datasets</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem; background: rgba(255,255,255,0.03); border-radius: 4px;">
+                                <span class="folder-icon">📁</span>
+                                <span>exercicios</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem; background: rgba(255,255,255,0.03); border-radius: 4px;">
+                                <span class="file-icon">📄</span>
+                                <span>README.md</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-info">
+                <div class="alert-title">💡 Dica</div>
+                <p>
+                    A pasta "alunos" pode já ter pastas de outros alunos dentro. Tudo bem! Você vai criar a SUA pasta junto com as deles.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: Criar arquivo via GitHub -->
+    <div class="slide" data-slide="4">
+        <div class="container">
+            <div class="big-step">3</div>
+            <h1 class="slide-title">Criar Pasta + Arquivo</h1>
+            <p class="slide-subtitle">Usando a interface do GitHub</p>
+
+            <div class="instruction">
+                <div class="instruction-title">
+                    ➕ Adicionar Novo Arquivo
+                </div>
+                <div class="instruction-text">
+                    1. Dentro da pasta "alunos", procure o botão <strong>"Add file"</strong> no canto superior direito<br>
+                    2. Clique nele<br>
+                    3. Escolha <strong>"Create new file"</strong>
+                </div>
+            </div>
+
+            <div class="screenshot">
+                <div class="screenshot-header">
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-dot"></div>
+                    <div class="screenshot-url">github.com/.../turma-visualizacao-de-dados/tree/main/alunos</div>
+                </div>
+                <div class="screenshot-body">
+                    <div style="padding: 2rem; text-align: center;">
+                        <div style="margin-bottom: 2rem;">
+                            <p style="color: var(--text-secondary); margin-bottom: 1rem;">Você está em: <strong style="color: var(--text-primary);">alunos/</strong></p>
+                        </div>
+                        <button class="github-button" style="font-size: 1.1rem; padding: 0.8rem 2rem;">
+                            <span>➕</span> Add file ▼
+                        </button>
+                        <div style="margin-top: 1rem; padding: 1.5rem; background: rgba(35, 134, 54, 0.1); border-radius: 6px; border-left: 4px solid var(--accent-green);">
+                            <p style="color: var(--accent-green); font-weight: 600;">
+                                ↓ Clique aqui e depois em "Create new file"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instruction">
+                <div class="instruction-title">
+                    📝 Digitar o Caminho do Arquivo
+                </div>
+                <div class="instruction-text">
+                    No campo "Name your file", digite o caminho completo seguindo este formato:<br><br>
+                    <code style="background: var(--bg-code); padding: 0.5rem 1rem; border-radius: 4px; display: inline-block; margin: 0.5rem 0; color: var(--accent-blue); font-family: 'Fira Code', monospace;">
+                        seu_nome/README.md
+                    </code><br><br>
+                    <strong>Exemplo:</strong> Se seu nome é João Silva, digite:<br>
+                    <code style="background: var(--bg-code); padding: 0.5rem 1rem; border-radius: 4px; display: inline-block; margin: 0.5rem 0; color: var(--accent-green); font-family: 'Fira Code', monospace;">
+                        joao_silva/README.md
+                    </code>
+                </div>
+            </div>
+
+            <div class="alert alert-danger">
+                <div class="alert-title">🚫 IMPORTANTE: Regras de Nomenclatura</div>
+                <p>
+                    • Use <strong>snake_case</strong>: tudo minúsculo, separado por underscore (_)<br>
+                    • NÃO use espaços: <code>joao silva</code> ❌<br>
+                    • NÃO use hífen: <code>joao-silva</code> ❌<br>
+                    • NÃO use maiúsculas: <code>JoaoSilva</code> ❌<br>
+                    • USE underscore: <code>joao_silva</code> ✅
+                </p>
+            </div>
+
+            <div class="comparison">
+                <div class="comparison-box incorrect">
+                    <div class="comparison-label">❌ ERRADO</div>
+                    <div style="font-family: 'Fira Code', monospace; color: var(--accent-orange);">
+                        <div>João Silva/README.md</div>
+                        <div>joao-silva/README.md</div>
+                        <div>JoaoSilva/README.md</div>
+                        <div>joaosilva/README.md</div>
+                    </div>
+                </div>
+
+                <div class="comparison-box correct">
+                    <div class="comparison-label">✅ CERTO</div>
+                    <div style="font-family: 'Fira Code', monospace; color: var(--accent-green);">
+                        <div>joao_silva/README.md</div>
+                        <div>maria_santos/README.md</div>
+                        <div>pedro_costa/README.md</div>
+                        <div>ana_oliveira/README.md</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: Escrever conteúdo do README -->
+    <div class="slide" data-slide="5">
+        <div class="container">
+            <div class="big-step">4</div>
+            <h1 class="slide-title">Escrever o README</h1>
+            <p class="slide-subtitle">Adicionar informações básicas sobre você</p>
+
+            <div class="instruction">
+                <div class="instruction-title">
+                    ✍️ Conteúdo do Arquivo
+                </div>
+                <div class="instruction-text">
+                    No editor que aparecer, digite o seguinte conteúdo (substitua com seus dados):
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="code-header">README.md</div>
+                <div class="code-body">
+<div class="code-line"># João Silva</div>
+<div class="code-line"></div>
+<div class="code-line">## Curso</div>
+<div class="code-line">Visualização de Dados e Business Intelligence T2</div>
+<div class="code-line"></div>
+<div class="code-line">## Instituição</div>
+<div class="code-line">SENAI</div>
+<div class="code-line"></div>
+<div class="code-line">## Sobre Mim</div>
+<div class="code-line">Estudante de Business Intelligence aprendendo Git, Python e análise de dados.</div>
+<div class="code-line"></div>
+<div class="code-line">## Exercícios</div>
+<div class="code-line">- [ ] Exercício 01 - Git/GitHub</div>
+<div class="code-line">- [ ] Exercício 02 - Python Fundamentos</div>
+<div class="code-line">- [ ] Exercício 03 - Pandas Básico</div>
+                </div>
+            </div>
+
+            <div class="alert alert-info">
+                <div class="alert-title">💡 Personalize!</div>
+                <p>
+                    Você pode adicionar mais informações se quiser:<br>
+                    • Seus objetivos com o curso<br>
+                    • Linguagens que quer aprender<br>
+                    • Projetos que quer fazer<br>
+                    • Links para LinkedIn ou portfólio
+                </p>
+            </div>
+
+            <div class="instruction">
+                <div class="instruction-title">
+                    💾 Fazer o Commit
+                </div>
+                <div class="instruction-text">
+                    1. Role a página até o final<br>
+                    2. No campo <strong>"Commit new file"</strong>, escreva uma mensagem:<br>
+                    <code style="background: var(--bg-code); padding: 0.5rem 1rem; border-radius: 4px; display: inline-block; margin: 0.5rem 0; font-family: 'Fira Code', monospace;">
+                        Cria pasta pessoal de João Silva
+                    </code><br>
+                    3. Deixe marcado <strong>"Commit directly to the main branch"</strong><br>
+                    4. Clique no botão verde <strong>"Commit new file"</strong>
+                </div>
+            </div>
+
+            <div class="alert alert-success">
+                <div class="alert-title">🎉 Parabéns!</div>
+                <p>
+                    Sua pasta foi criada no GitHub! Agora você vai ver:<br>
+                    <code>alunos/seu_nome/README.md</code><br><br>
+                    A pasta aparece automaticamente porque você criou um arquivo dentro dela.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 6: Clonar o repositório -->
+    <div class="slide" data-slide="6">
+        <div class="container">
+            <div class="big-step">5</div>
+            <h1 class="slide-title">Clonar o Repositório</h1>
+            <p class="slide-subtitle">Baixar o repositório inteiro para seu computador</p>
+
+            <div class="alert alert-info">
+                <div class="alert-title">📥 Agora vamos trabalhar no PC</div>
+                <p>
+                    Sua pasta já existe no GitHub! Agora vamos baixar o repositório inteiro (com sua pasta) para o computador.
+                </p>
+            </div>
+
+            <div class="instruction">
+                <div class="instruction-title">
+                    🔗 Copiar URL do Repositório
+                </div>
+                <div class="instruction-text">
+                    1. Volte para a página principal do repositório<br>
+                    2. Clique no botão verde <strong>"Code"</strong><br>
+                    3. Copie a URL que aparece (HTTPS):<br>
+                    <code style="background: var(--bg-code); padding: 0.5rem 1rem; border-radius: 4px; display: inline-block; margin: 0.5rem 0; font-family: 'Fira Code', monospace;">
+                        https://github.com/cfneves/turma-visualizacao-de-dados.git
+                    </code>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="code-header">Terminal / Git Bash</div>
+                <div class="code-body">
+<div class="code-line"><span class="comment"># Navegue até onde quer guardar o repositório</span></div>
+<div class="code-line"><span class="prompt">$</span> <span class="command">cd Documents</span></div>
+<div class="code-line"></div>
+<div class="code-line"><span class="comment"># Clone o repositório</span></div>
+<div class="code-line"><span class="prompt">$</span> <span class="command">git clone https://github.com/cfneves/turma-visualizacao-de-dados.git</span></div>
+<div class="code-line"></div>
+<div class="code-line"><span class="comment"># Aguarde o download...</span></div>
+<div class="code-line"></div>
+<div class="code-line"><span class="comment"># Entre na pasta</span></div>
+<div class="code-line"><span class="prompt">$</span> <span class="command">cd turma-visualizacao-de-dados</span></div>
+<div class="code-line"></div>
+<div class="code-line"><span class="comment"># Verifique que sua pasta está lá!</span></div>
+<div class="code-line"><span class="prompt">$</span> <span class="command">ls alunos/</span></div>
+                </div>
+            </div>
+
+            <div class="alert alert-success">
+                <div class="alert-title">✅ Verifique</div>
+                <p>
+                    Abra a pasta no explorador de arquivos e confira:<br>
+                    <code>turma-visualizacao-de-dados/alunos/seu_nome/README.md</code><br><br>
+                    Seu arquivo está lá! 🎉
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 7: Trabalhar localmente -->
+    <div class="slide" data-slide="7">
+        <div class="container">
+            <div class="big-step">6</div>
+            <h1 class="slide-title">Trabalhar Localmente</h1>
+            <p class="slide-subtitle">Agora você pode adicionar arquivos e fazer commits normalmente</p>
+
+            <div class="instruction">
+                <div class="instruction-title">
+                    📁 Adicionar Arquivos na Sua Pasta
+                </div>
+                <div class="instruction-text">
+                    Exemplo: Criar pasta para Exercício 02 (Python)
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="code-header">Terminal</div>
+                <div class="code-body">
+<div class="code-line"><span class="comment"># Entre na sua pasta</span></div>
+<div class="code-line"><span class="prompt">$</span> <span class="command">cd alunos/seu_nome</span></div>
+<div class="code-line"></div>
+<div class="code-line"><span class="comment"># Crie pasta do exercício</span></div>
+<div class="code-line"><span class="prompt">$</span> <span class="command">mkdir exercicio_02</span></div>
+<div class="code-line"><span class="prompt">$</span> <span class="command">cd exercicio_02</span></div>
+<div class="code-line"></div>
+<div class="code-line"><span class="comment"># Crie seu arquivo Python</span></div>
+<div class="code-line"><span class="prompt">$</span> <span class="command">code caixa.py</span></div>
+                </div>
+            </div>
+
+            <div class="instruction">
+                <div class="instruction-title">
+                    💾 Fazer Commit e Push
+                </div>
+                <div class="instruction-text">
+                    Depois de criar seus arquivos:
+                </div>
+            </div>
+
+            <div class="code-block">
+                <div class="code-header">Terminal</div>
+                <div class="code-body">
+<div class="code-line"><span class="comment"># Volte para raiz do repositório</span></div>
+<div class="code-line"><span class="prompt">$</span> <span class="command">cd ../..</span></div>
+<div class="code-line"></div>
+<div class="code-line"><span class="comment"># Veja o que mudou</span></div>
+<div class="code-line"><span class="prompt">$</span> <span class="command">git status</span></div>
+<div class="code-line"></div>
+<div class="code-line"><span class="comment"># Adicione seus arquivos</span></div>
+<div class="code-line"><span class="prompt">$</span> <span class="command">git add .</span></div>
+<div class="code-line"></div>
+<div class="code-line"><span class="comment"># Faça commit</span></div>
+<div class="code-line"><span class="prompt">$</span> <span class="command">git commit -m "[Seu Nome] Adiciona exercício 02 - Python"</span></div>
+<div class="code-line"></div>
+<div class="code-line"><span class="comment"># Envie para o GitHub</span></div>
+<div class="code-line"><span class="prompt">$</span> <span class="command">git push origin main</span></div>
+                </div>
+            </div>
+
+            <div class="alert alert-danger">
+                <div class="alert-title">⚠️ IMPORTANTE</div>
+                <p>
+                    Você está fazendo push DIRETO no repositório principal!<br>
+                    NÃO está usando Fork → Pull Request.<br><br>
+                    <strong>Regra de ouro:</strong> Só mexa em <code>alunos/seu_nome/</code><br>
+                    NUNCA altere arquivos fora da sua pasta!
+                </p>
+            </div>
+
+            <div class="checklist">
+                <h3 style="color: var(--accent-green); margin-bottom: 1.5rem;">✅ Checklist Final</h3>
+                <div class="checklist-item">
+                    <div class="checkbox">✓</div>
+                    <div>Pasta criada no GitHub com nome em snake_case</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox">✓</div>
+                    <div>README.md com suas informações</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox">✓</div>
+                    <div>Repositório clonado no seu computador</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox">✓</div>
+                    <div>Consegue ver sua pasta localmente</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox">✓</div>
+                    <div>Sabe fazer commit e push dos exercícios</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checkbox">✓</div>
+                    <div>Lembra de só mexer na SUA pasta!</div>
+                </div>
+            </div>
+
+            <div class="alert alert-success">
+                <div class="alert-title">🎉 Pronto!</div>
+                <p>
+                    Agora você está configurado e pronto para fazer todos os exercícios do curso!<br><br>
+                    Sempre que fizer um exercício:<br>
+                    1. Crie dentro de <code>alunos/seu_nome/</code><br>
+                    2. Faça commit com mensagem clara<br>
+                    3. Faça push para o GitHub<br>
+                    4. O professor vai ver automaticamente!
+                </p>
+            </div>
+
+            <div class="slide-footer">
+                <p>Desenvolvido por <span class="footer-highlight">Cláudio Ferreira Neves</span></p>
+                <p>Visualização de Dados e BI • SENAI 2026</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 7;
+
+        function updateNav() {
+            document.getElementById('current').textContent = currentSlide;
+            document.getElementById('total').textContent = totalSlides;
+            document.getElementById('prev').disabled = currentSlide === 1;
+            document.getElementById('next').disabled = currentSlide === totalSlides;
+        }
+
+        function showSlide(n) {
+            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+            if (n > totalSlides) currentSlide = totalSlides;
+            if (n < 1) currentSlide = 1;
+            document.querySelector(`[data-slide="${currentSlide}"]`).classList.add('active');
+            updateNav();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        updateNav();
+    </script>
+</body>
+</html>
