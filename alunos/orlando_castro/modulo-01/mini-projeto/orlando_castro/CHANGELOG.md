@@ -4,9 +4,15 @@ Registro de atualizações dos arquivos no mini-projeto.
 
 O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
+
+## [1.1.0] — 2026-06-28
+
+### Melhorado
+- `notebook/Miniprojeto_Orlando_Castro.ipynb` — Adicionado o Passo 2 - Análise preliminar dos dados
+
 ---
 
-## ## [1.0.0] — 2026-05-26
+## ## [1.0.0] — 2026-06-26
 
 ### Adicionado
 
