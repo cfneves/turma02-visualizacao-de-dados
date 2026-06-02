@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
 !/alunos
 !/alunos/**
@@ -9,4 +10,17 @@
 !/aulas/semana_06/**
 !/aulas/semana_07
 !/aulas/semana_07/**
+=======
+/*
+!/alunos
+!/alunos/**
+!/modulo-01
+!/modulo-01/**
+!/aulas
+/aulas/*
+!/aulas/semana_06
+!/aulas/semana_06/**
+!/aulas/semana_07
+!/aulas/semana_07/**
+>>>>>>> 5434d13a7d362b774198afbefdceeabe998d3087
 !.gitignore
