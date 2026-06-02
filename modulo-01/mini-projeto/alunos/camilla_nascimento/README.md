@@ -190,7 +190,7 @@ A categoria ALIMENTOS apresentou a maior participação na base, seguida pelas c
 
 # Arquivos Entregues
 
-- `miniprojeto.py`
+- `miniprojeto.ipynb`
 - `df_limpo.csv`
 - `README.md`
 
