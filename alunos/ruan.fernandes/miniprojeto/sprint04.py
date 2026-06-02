@@ -2,8 +2,8 @@ import pandas as pd
 from sprint03 import limpeza_dados
 
 def analise_dados(df):
-    
-    analise_de_Gênero = (
+        
+    analise_de_Genero = (
         df.groupby("Gênero do Cliente")
         ["ID do Cliente"].nunique()
         .reset_index(name="Quantidade de Clientes")
@@ -26,9 +26,9 @@ def analise_dados(df):
         ["ID do Cliente"].nunique()
         .reset_index(name="Quantidade de Clientes")
     )
-    
+        
     return {
-        "genero": analise_de_Gênero,
+        "genero": analise_de_Genero,
         "categoria": analise_de_Categoria,
         "meses": analise_de_meses,
         "filhos": analise_de_filhos

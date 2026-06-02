@@ -13,4 +13,10 @@ def carregar_dados():
         decimal=','        
     )
 
+    print(f"[Sprint 01] Dados carregados: {df.shape[0]} linhas, {df.shape[1]} colunas.")
     return df
+ 
+ 
+if __name__ == "__main__":
+    df = carregar_dados()
+    print(df.head())
