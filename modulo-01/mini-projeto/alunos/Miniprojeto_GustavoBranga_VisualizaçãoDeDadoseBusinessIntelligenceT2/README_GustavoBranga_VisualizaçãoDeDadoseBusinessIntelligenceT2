@@ -1,0 +1,35 @@
+# Mini-Projeto — Varejo
+**Aluno:** Gustavo Branga | **Turma:** Visualização de Dados e Businnes Intelligence T2
+
+## Como executar
+```bash
+python Miniprojeto_NomeAluno_Turma.py
+```
+Certifique-se de que o arquivo `Base Varejo.csv` está na mesma pasta do script.  
+Ou abra no Google Colab e execute todas as células em ordem.
+
+Instalar com:
+```bash
+pip install pandas numpy
+```
+
+## Arquivos do projeto
+ `Miniprojeto_NomeAluno_Turma.py` - Script principal com toda a análise
+ `Base Varejo.csv` - Base de dados original
+ `df_limpo.csv` - Base após limpeza e tratamento 
+ `README_GustavoBranga_VisualizaçãoDeDadoseBusinessIntelligenceT2.md` -  Este arquivo 
+
+## Principais insights
+1. **Volume:** A base contém 830.000 registros e 10 colunas úteis após a remoção de 4 colunas completamente vazias geradas pelo CSV.
+2. **Qualidade:** Nenhuma coluna principal apresentou valores nulos. A categoria inválida **#N/D** (3.650 registros) foi substituída por **Sem Categoria**. Foram removidas 96.553 linhas duplicadas.
+3. **Gênero:** Clientes do sexo Feminino realizam mais compras (382.427) do que o Masculino (351.020), representando cerca de 52% do total.
+4. **Categorias:** Alimentos lidera com 384.197 compras, seguida de Higiene (137.702) e Limpeza (128.632), concentrando mais de 85% de todas as transações.
+5. **Perfil de filhos:** A média é de 1,15 filhos por cliente, mas a moda é 0 — ou seja, a maioria dos clientes não tem filhos, porém uma parcela com muitos filhos puxa a média para cima.
+6. **Limitação remanescente:** A base não possui coluna de valor de compras.
+
+## Reflexão sobre ETL e qualidade de dados
+ETL (Extract, Transform, Load) é o processo de extrair dados de uma fonte bruta, transformá-los — aplicando limpeza, padronização de tipos e tratamento de inconsistências — e carregá-los em um destino analítico confiável.
+
+Neste projeto, a etapa de **Extract** consistiu na leitura do arquivo CSV com o pandas. A etapa de **Transform** envolveu a conversão da coluna DATA para o tipo datetime, a remoção de colunas 100% vazias, o tratamento da categoria inválida `#N/D` e a eliminação de 96.553 duplicatas. A etapa de **Load** resultou no arquivo `base_varejo_limpo.csv`, pronto para alimentar dashboards ou modelos.
+
+A qualidade dos dados é fundamental porque erros na base se propagam para toda a análise: uma coluna de data mantida como texto impede qualquer análise temporal, e categorias inconsistentes distorcem agrupamentos. Por isso, a limpeza não é uma etapa opcional — ela define a credibilidade de qualquer insight gerado.

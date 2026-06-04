@@ -6,7 +6,7 @@ O objetivo e realizar uma Analise Exploratoria de Dados (AED) utilizando uma bas
 
 ## Base de Dados
 
-A base utilizada é o arquivo `Base Varejo.csv`, localizado na pasta `modulo-01/base_do_projeto/Base Varejo.csv`.
+A base utilizada e o arquivo `Base Varejo.csv`, localizado na pasta `data/`.
 
 Ela contem registros de compras com informacoes como:
 
