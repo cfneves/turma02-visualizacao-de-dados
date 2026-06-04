@@ -264,6 +264,12 @@ plt.tight_layout()
 plt.show()
 print()
 
+# Exportando o dataframe transformado para CSV
+print('Gerando arquivo de saída CSV com o dataframe transformado...')
+df.to_csv('Base_varejo_transformado.csv', index=False, encoding='utf-8-sig')
+print('Arquivo CSV gerado: Base_varejo_transformado.csv')
+print()
+
 #SPRINT 7 - RELATÓRIO FINAL DO TERMINAL
 print('Construindo o relatório final do terminal...')
 print()
