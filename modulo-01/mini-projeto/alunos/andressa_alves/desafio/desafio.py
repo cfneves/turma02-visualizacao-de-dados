@@ -96,7 +96,7 @@ print()
 print("Transformando a coluna 'data_compra' para o tipo datetime...")
 df['data_compra'] = pd.to_datetime(
     df['data_compra'], 
-    format='%d,%m,%Y',
+    format='%d-%m-%Y',
     errors='coerce')
 print("Coluna 'data_compra' transformada com sucesso!")
 print()
@@ -107,6 +107,7 @@ df['MES'] = df['data_compra'].dt.month
 df['ANO'] = df['data_compra'].dt.year
 print("Colunas 'MES' e 'ANO' adicionadas com sucesso!")
 print()
+
 
 # Verificando os tipos de dados após a transformação
 print("Verificando os tipos de dados após a transformação:")
@@ -263,9 +264,33 @@ plt.tight_layout()
 plt.show()
 print()
 
-# Exportando o dataframe transformado para CSV
-print('Gerando arquivo de saída CSV com o dataframe transformado...')
-df.to_csv('Base_varejo_transformado.csv', index=False, encoding='utf-8-sig')
-print('Arquivo CSV gerado: Base_varejo_transformado.csv')
+#SPRINT 7 - RELATÓRIO FINAL DO TERMINAL
+print('Construindo o relatório final do terminal...')
 print()
+print('=== RELATÓRIO FINAL ===')
+print(f'Total de linhas no dataset original: {len(df)}')
+print(f'Total de colunas no dataset original: {df.shape[1]}')
+print(f'Total de linhas após limpeza: {len(df_limpo)}')
+print(f'Total de colunas após limpeza: {df_limpo.shape[1]}')
+print(f'Linhas duplicadas removidas: {duplicatas}')
+print(f'Colunas com valores ausentes removidas: {len(colunas_com_nan)}')
+print(f'Total de valores ausentes originais: {int(df.isnull().sum().sum())}')
+print(f'Linhas com pelo menos um valor ausente no original: {int(df.isnull().any(axis=1).sum())}')
+print(f'Categorias únicas em produto_categoria após limpeza: {df_limpo["produto_categoria"].nunique()}')
+print(f'Quantidade de registros com categoria "Sem Categoria": {df_limpo["produto_categoria"].value_counts().get("Sem Categoria", 0)}')
+print(f'Total de compras contabilizadas no groupby de categoria: {int(groupby_categoria["quantidade_compras"].sum())}')
+if not groupby_categoria.empty:
+    top_categoria = groupby_categoria.sort_values('quantidade_compras', ascending=False).iloc[0]
+    print(f'Categoria com maior número de compras: {top_categoria['produto_categoria']} ({top_categoria['quantidade_compras']} compras)')
+else:
+    print('Não há categorias disponíveis para relatório de compras.')
+
+compras_por_genero = groupby_categoria_genero.groupby('cliente_genero')['quantidade_compras'].sum().sort_values(ascending=False)
+if not compras_por_genero.empty:
+    genero_top = compras_por_genero.index[0]
+    qtd_top = compras_por_genero.iloc[0]
+    print(f'Gênero com maior volume de compras por categoria: {genero_top} ({qtd_top} compras)')
+else:
+    print('Não há dados de gênero disponíveis para relatório de compras.')
+print('=== FIM DO RELATÓRIO ===')
 
