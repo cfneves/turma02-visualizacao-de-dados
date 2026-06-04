@@ -96,9 +96,16 @@ print()
 print("Transformando a coluna 'data_compra' para o tipo datetime...")
 df['data_compra'] = pd.to_datetime(
     df['data_compra'], 
-    format='%Y-%m-%d',
+    format='%d,%m,%Y',
     errors='coerce')
 print("Coluna 'data_compra' transformada com sucesso!")
+print()
+
+# Extraindo mês e ano para habilitar análises temporais
+print("Extraindo mês e ano da coluna 'data_compra'...")
+df['MES'] = df['data_compra'].dt.month
+df['ANO'] = df['data_compra'].dt.year
+print("Colunas 'MES' e 'ANO' adicionadas com sucesso!")
 print()
 
 # Verificando os tipos de dados após a transformação
@@ -254,5 +261,11 @@ plt.ylabel('Quantidade de Compras')
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
+print()
+
+# Exportando o dataframe transformado para CSV
+print('Gerando arquivo de saída CSV com o dataframe transformado...')
+df.to_csv('Base_varejo_transformado.csv', index=False, encoding='utf-8-sig')
+print('Arquivo CSV gerado: Base_varejo_transformado.csv')
 print()
 
