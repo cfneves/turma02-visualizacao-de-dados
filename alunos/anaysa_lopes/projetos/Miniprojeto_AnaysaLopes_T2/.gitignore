@@ -1,8 +1,0 @@
-# Bloquear as bases de dados (tanto a bruta quanto a limpa)
-data/raw/base_varejo.csv
-data/processed/base_varejo_limpa.csv
-
-# Bloquear pastas temporárias ou caches do Python (boa prática)
-__pycache__/
-.pytest_cache/
-.DS_Store

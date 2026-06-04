@@ -73,6 +73,9 @@ Download automático via `kagglehub` e carregamento do CSV com separador `;`. A 
 ### Sprint 5 — Agrupamentos
 - Compras agrupadas por **gênero** do cliente
 - Compras agrupadas por **categoria de produto**
+- **Agrupamento cruzado:** `groupby(['CL_GENERO', 'PR_CAT'])` cruzando gênero com categoria
+- **Pivot Table:** visão matricial de Gênero × Categoria de Produto
+- **Análise Temporal:** colunas derivadas `ANO` e `MES` extraídas de `DATA`, com agrupamento mensal das vendas por ano
 
 ### Sprint 6 — Insights
 Principais conclusões extraídas dos dados:
@@ -82,13 +85,15 @@ Principais conclusões extraídas dos dados:
 3. **Produto:** `ALIMENTOS` representa 52,4% de todas as transações
 4. **Segmento:** segmento `B` concentra 63,9% das compras; segmento `A` (premium) apenas 8,1%
 5. **Filhos:** mediana igual a 0 — a maioria dos clientes não possui filhos; média de 1,15
+6. **Padrão Temporal:** análise mensal por ano revela sazonalidade nas vendas e permite identificar períodos de pico
 
 ### Sprint 7 — Visualização de Dados
-Dashboard com três gráficos gerados via `matplotlib`:
+Dashboard com quatro gráficos gerados via `matplotlib`:
 
 - **Barras horizontais:** compras por categoria de produto (com valores absolutos e percentuais)
 - **Pizza:** distribuição de compras por gênero
 - **Barras verticais:** compras por segmento de cliente
+- **Linha:** evolução mensal das vendas por ano (sazonalidade)
 
 ---
 
@@ -115,6 +120,9 @@ pip install pandas kagglehub matplotlib
 
 # 2. Abrir o notebook
 jupyter notebook mini_projeto.ipynb
+
+# 3. Versão corrigida (v2)
+python mini_projeto_corrigido.py
 ```
 
 > É necessário ter uma conta no Kaggle e o arquivo `~/.kaggle/kaggle.json` configurado para o download automático via `kagglehub`.
@@ -127,6 +135,7 @@ jupyter notebook mini_projeto.ipynb
 |---|---|
 | `mini_projeto.ipynb` | Notebook principal com todas as sprints |
 | `mini_projeto.py` | Versão em script Python |
+| `mini_projeto_corrigido.py` | Versão corrigida com agrupamento cruzado e análise temporal |
 | `base_limpa.csv` | Dataset exportado após limpeza |
 | `README.md` | Documentação detalhada do projeto |
 | `README_WaldineiLameira_VD2.md` | Descrição resumida do projeto |

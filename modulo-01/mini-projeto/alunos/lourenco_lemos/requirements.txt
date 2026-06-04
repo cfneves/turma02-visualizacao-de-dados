@@ -1,5 +1,0 @@
-pandas
-numpy
-matplotlib
-VS Code
-Jupyter Notebook
