@@ -1,0 +1,42 @@
+1º PASSO:
+
+# No terminal, dentro da pasta onde quer salvar o projeto:
+git clone https://github.com/SEU_USUARIO/turma-visualizacao-de-dados.git
+
+2º PASSO:
+
+# Vou confirmar se o Git está instalado
+git --version
+
+3º PASSO
+# Troque SEU_USUARIO pelo usuário real do GitHub
+git clone https://github.com/SEU_USUARIO/turma-visualizacao-de-dados.git
+
+4º PASSO
+cd C:\Users\SUA_MAQUINAs\Desktop\senai\turma-visualizacao-de-dados\alunos\SUA_PASTA
+
+5º PASSO
+# Criar a pasta semana_04
+mkdir semana_04
+
+6º PASSO
+# Navega pra dentro da pasta criada
+cd semana_04
+
+# Agora vc está aqui: C:\Users\SUA_MAQUINA\Desktop\senai\turma-visualizacao-de-dados\alunos\SUA_PASTA\semana_04
+
+7º PASSO
+# Copiar o arquivo base_rh.csv da pasta original
+Copy-Item "C:\Users\claudio.neves\Desktop\senai\turma-visualizacao-de-dados\aulas\semana_04\base_rh.csv"
+
+digita "dir"
+# o arquivo vai aparecer: base_rh.csv
+
+8º PASSO
+
+# Agora, dentro da sua pasta: C:\Users\SUA_MAQUINA\Desktop\senai\turma-visualizacao-de-dados\alunos\SUA_PASTA\semana_04
+
+# 1. Você vai criar o arquivo .py para criar o em python
+# 2. Você tbm vai roda o arquivo .pynb para criar o arquivo notebook
+digita: code base_rh.py
+digita: code base_rh.ipynb

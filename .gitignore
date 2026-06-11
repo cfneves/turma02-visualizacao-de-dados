@@ -1,0 +1,12 @@
+/*
+!/alunos
+!/alunos/**
+!/modulo-01
+!/modulo-01/**
+!/aulas
+/aulas/*
+!/aulas/semana_06
+!/aulas/semana_06/**
+!/aulas/semana_07
+!/aulas/semana_07/**
+!.gitignore

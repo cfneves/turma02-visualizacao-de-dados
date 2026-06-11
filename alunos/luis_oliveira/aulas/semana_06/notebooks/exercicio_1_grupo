@@ -1,0 +1,193 @@
+# ============================================================
+# 👥 ATIVIDADE EM GRUPO 1 — Sistema de Registro de Produção
+# ============================================================
+
+# Lista que armazenará os registros
+registros = []
+
+# ============================================================
+# 📌 FUNÇÃO — Registrar produção
+# ============================================================
+
+def registrar_producao():
+
+    print("\n===== REGISTRO DE PRODUÇÃO =====")
+
+    operador = input("Nome do operador: ").strip()
+
+    turno = input(
+        "Turno (Manhã/Tarde/Noite): "
+    ).strip()
+
+    quantidade = int(
+        input("Quantidade produzida: ").strip()
+    )
+
+    defeitos = int(
+        input("Quantidade com defeito: ").strip()
+    )
+
+    # Cálculo da taxa de defeito
+    taxa_defeito = (
+        defeitos / quantidade
+    ) * 100
+
+    # Criação do registro
+    registro = {
+        "operador": operador,
+        "turno": turno,
+        "quantidade": quantidade,
+        "defeitos": defeitos,
+        "taxa_defeito": taxa_defeito
+    }
+
+    # Salva na lista
+    registros.append(registro)
+
+    print("\n✅ Registro salvo com sucesso!")
+
+# ============================================================
+# 📌 FUNÇÃO — Mostrar registros
+# ============================================================
+
+def mostrar_registros():
+
+    print("\n===== TODOS OS REGISTROS =====")
+
+    # Verifica se existem registros
+    if len(registros) == 0:
+
+        print("Nenhum registro encontrado.")
+        return
+
+    # Mostra os registros salvos
+    for registro in registros:
+
+        print("-----------------------------------")
+
+        print(
+            f"Operador: "
+            f"{registro['operador']}"
+        )
+
+        print(
+            f"Turno: "
+            f"{registro['turno']}"
+        )
+
+        print(
+            f"Produção: "
+            f"{registro['quantidade']}"
+        )
+
+        print(
+            f"Defeitos: "
+            f"{registro['defeitos']}"
+        )
+
+        print(
+            f"Taxa de defeito: "
+            f"{registro['taxa_defeito']:.2f}%"
+        )
+
+# ============================================================
+# 📌 FUNÇÃO — Estatísticas
+# ============================================================
+
+def ver_estatisticas():
+
+    print("\n===== ESTATÍSTICAS =====")
+
+    # Verifica se existem registros
+    if len(registros) == 0:
+
+        print("Nenhum registro encontrado.")
+        return
+
+    # Lista apenas das produções
+    producoes = []
+
+    # Percorre os registros
+    for registro in registros:
+
+        producoes.append(
+            registro["quantidade"]
+        )
+
+    # Cálculos
+    total = sum(producoes)
+
+    maior = max(producoes)
+
+    menor = min(producoes)
+
+    media = total / len(producoes)
+
+    # Exibição
+    print(f"Total produzido: {total}")
+
+    print(f"Maior produção: {maior}")
+
+    print(f"Menor produção: {menor}")
+
+    print(f"Média de produção: {media:.2f}")
+
+# ============================================================
+# 📌 MENU PRINCIPAL
+# ============================================================
+
+while True:
+
+    print("\n================================")
+    print("📊 SISTEMA DE PRODUÇÃO")
+    print("================================")
+
+    print("[1] Registrar produção")
+    print("[2] Ver registros")
+    print("[3] Ver estatísticas")
+    print("[4] Sair")
+
+    opcao = input(
+        "\nEscolha uma opção: "
+    ).strip()
+
+    # ========================================================
+    # OPÇÃO 1 — Registrar produção
+    # ========================================================
+
+    if opcao == "1":
+
+        registrar_producao()
+
+    # ========================================================
+    # OPÇÃO 2 — Mostrar registros
+    # ========================================================
+
+    elif opcao == "2":
+
+        mostrar_registros()
+
+    # ========================================================
+    # OPÇÃO 3 — Estatísticas
+    # ========================================================
+
+    elif opcao == "3":
+
+        ver_estatisticas()
+
+    # ========================================================
+    # OPÇÃO 4 — Encerrar sistema
+    # ========================================================
+
+    elif opcao == "4":
+
+        print("\n✅ Sistema encerrado.")
+        break
+
+    # ========================================================
+    # OPÇÃO INVÁLIDA
+    # ========================================================
+
+    else:
+
+        print("\n❌ Opção inválida!")
